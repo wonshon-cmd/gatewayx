@@ -1,8 +1,12 @@
-# Gateway X — "Connecting St. Louis to the world"
+# Gateway X website
 
-Team project site for MGMT 7640 Block Week (Gateway X venture studio). Opens with a presentation, a live Herd OS demo, and a working "Bring your idea" form.
+- `index.html` — the Gateway X website: who it's for, what we bring, how it works, ways to work together, results, events, FAQ, and a working "Bring your idea" application form.
+- `presentation.html` — the MGMT 7640 Block Week team presentation and Herd OS demo (used for the video).
 
-- Live site: GitHub Pages (Settings → Pages → Deploy from branch `main`, folder `/root`).
-- Logo: add the Gateway X logo as `logo.png` in this folder; it replaces the text wordmark automatically.
-- Form submissions are emailed via FormSubmit. The first submission sends a one-time activation email to the receiving address.
-- Portfolio figures come from Gateway X's deck and Jesse Pujji's public posts; partner hours, buyers, alumni and growth curves are illustrative.
+**Go live:** Settings → Pages → Deploy from branch `main`, folder `/(root)`. Site: https://wonshon-cmd.github.io/gatewayx/
+
+**Logo:** upload the Gateway X logo as `logo.png` in this folder; it replaces the text logo automatically on both pages.
+
+**Forms:** the application and "Notify me" forms send through FormSubmit to the address in `FORM_ENDPOINT` (near the bottom of `index.html`). The first submission triggers a one-time activation email to that address.
+
+**Before launch, Gateway X should confirm:** event names and schedule, the work-together options (service package, network partner, success fee), milestone-based capital, and the promises in the FAQ. Results use public, founder-reported figures only.

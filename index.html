@@ -3,1685 +3,406 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Herd OS · GatewayX</title>
+  <title>Gateway X · Connecting the Midwest to the world</title>
+  <meta name="description" content="Gateway X is a St. Louis venture studio. Bring your idea or the business you already run. We bring technology, training, network and marketing, and we grow with you.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-:root {
-  --ink: #16181d;
-  --muted: #6b7280;
-  --line: #e7e5e0;
-  --bg: #faf8f4;
-  --card: #ffffff;
-  --accent: #e8833a;
-  --accent-soft: #fdf0e6;
-  --bad: #c2410c;
-  --gx: #d4691f;   /* chart: with GatewayX */
-  --own: #5a7fd0;  /* chart: on your own */
-  --third: #2f9e7a; /* chart: third series */
-}
+    :root {
+      --ink: #16181d; --muted: #6b7280; --line: #e7e5e0; --bg: #faf8f4; --card: #fff;
+      --accent: #e8833a; --accent-ink: #b85a17; --accent-soft: #fdf0e6;
+      --c1: #d4691f; --c2: #5a7fd0; --c3: #2f9e7a; --own: #5a7fd0; --gx: #d4691f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Inter", system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--bg); font-size: 18px; line-height: 1.5; }
+    a { color: inherit; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 96px 0; }
+    section.alt { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .kicker { font-size: 14px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 12px; }
+    h1, h2, h3 { margin: 0; letter-spacing: -.02em; line-height: 1.12; }
+    h2 { font-size: clamp(32px, 4.5vw, 52px); }
+    h3 { font-size: 22px; }
+    .lead { font-size: clamp(18px, 2vw, 22px); color: var(--muted); max-width: 720px; margin: 16px 0 0; }
+    .btn { display: inline-block; font: inherit; font-weight: 800; font-size: 18px; padding: 16px 26px; border-radius: 14px; border: 2px solid var(--accent); background: var(--accent); color: #fff; text-decoration: none; cursor: pointer; }
+    .btn:hover { filter: brightness(1.05); }
+    .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .grid { display: grid; gap: 18px; }
+    .g2 { grid-template-columns: repeat(2, 1fr); } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); }
+    .card { background: var(--card); border: 2px solid var(--line); border-radius: 20px; padding: 26px; }
+    .card.hi { border-color: var(--accent); }
+    .emoji { font-size: 44px; line-height: 1; }
+    .card h3 { margin-top: 14px; }
+    .card p { color: var(--muted); margin: 8px 0 0; font-size: 17px; }
+    .tag { display: inline-block; font-size: 14px; font-weight: 800; padding: 4px 12px; border-radius: 99px; background: #f1f0ec; margin-top: 14px; }
+    .card.hi .tag { background: var(--accent-soft); color: var(--accent-ink); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
 
-* { box-sizing: border-box; }
+    /* Nav */
+    header { position: sticky; top: 0; z-index: 10; background: rgba(250,248,244,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 22px; text-decoration: none; }
+    .brand img { height: 36px; }
+    .brand.has-logo .wordmark, .brand.has-logo svg { display: none; }
+    .links { display: flex; gap: 26px; align-items: center; font-weight: 600; font-size: 16px; }
+    .links a { text-decoration: none; color: var(--muted); }
+    .links a:hover { color: var(--ink); }
+    .links .btn { color: #fff; padding: 10px 18px; font-size: 16px; }
+    .menu { display: none; background: none; border: 0; font-size: 28px; cursor: pointer; }
 
-body {
-  margin: 0;
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  font-size: 20px;
-}
+    /* Hero */
+    .hero { padding: 56px 0 72px; text-align: center; }
+    .hero .kicker { margin-bottom: 0; }
+    .hero h1 { font-size: clamp(40px, 7vw, 80px); letter-spacing: -.035em; margin-top: 4px; }
+    .hero .lead { margin: 18px auto 0; }
+    .hero .ctas { display: flex; gap: 14px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+    .gw { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto 8px; }
+    .gw .arch { fill: none; stroke: var(--ink); stroke-width: 20; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.6s ease forwards; }
+    .gw .globe { transform-origin: 400px 250px; transform: scale(0); animation: open 1s cubic-bezier(.2,1.4,.4,1) 1.2s forwards; }
+    .gw .link { fill: none; stroke: var(--c2); stroke-width: 2.5; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .7; animation: draw 1.1s ease forwards; }
+    .gw .city { opacity: 0; animation: fadein .5s ease forwards; }
+    .gw text { font-size: 18px; font-weight: 700; fill: var(--muted); font-family: inherit; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes open { to { transform: scale(1); } }
+    @keyframes fadein { to { opacity: 1; } }
 
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 48px;
-  background: var(--card);
-  border-bottom: 1px solid var(--line);
-}
-.brand { font-weight: 800; font-size: 26px; }
-.brand .logo { font-size: 30px; }
-.brand .by { font-weight: 400; color: var(--muted); font-size: 18px; margin-left: 6px; }
-.who { color: var(--muted); font-size: 17px; }
+    /* How it works */
+    .steps { counter-reset: s; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+    .step { position: relative; padding-top: 58px; }
+    .step::before { counter-increment: s; content: counter(s); position: absolute; top: 22px; left: 26px; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; display: grid; place-items: center; font-size: 15px; }
+    .step .when { font-size: 14px; font-weight: 800; color: var(--accent-ink); margin-top: 10px; }
 
-.screen { display: none; max-width: 1100px; margin: 0 auto; padding: 40px 48px 80px; }
-.screen.active { display: block; animation: fade .4s ease; }
-@keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    /* Capital strip */
+    .strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 26px; border-radius: 18px; overflow: hidden; border: 2px solid var(--accent); }
+    .strip div { padding: 18px 22px; background: var(--accent-soft); }
+    .strip div + div { border-left: 2px solid #fff; }
+    .strip b { display: block; font-size: 20px; }
+    .strip span { font-size: 16px; color: var(--muted); }
 
-h1 { font-size: 52px; margin: 0 0 28px; letter-spacing: -1px; }
-h2 { font-size: 28px; margin: 48px 0 18px; }
-.hint { font-size: 17px; font-weight: 400; color: var(--muted); margin-left: 10px; }
-.accent { color: var(--accent); }
+    /* Results */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+    .stat { text-align: center; }
+    .stat .n { font-size: clamp(40px, 6vw, 64px); font-weight: 800; letter-spacing: -.03em; color: var(--accent-ink); }
+    .stat .l { color: var(--muted); }
+    .chart-card { margin-top: 28px; }
+    .legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 15px; color: var(--muted); margin-bottom: 8px; }
+    .legend i { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+    .race { width: 100%; height: auto; display: block; }
+    .race .grid { stroke: #ecebe7; }
+    .race .ax { fill: var(--muted); font-size: 16px; font-family: inherit; }
+    .race .rl { fill: none; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .race .re { opacity: 0; }
+    .race .ret { font-size: 18px; font-weight: 800; fill: var(--ink); font-family: inherit; }
+    .race .red { font-size: 15px; fill: var(--muted); font-family: inherit; }
+    .chart-card.in .rl { animation: draw 2.6s linear forwards; }
+    .chart-card.in .re { animation: fadein .4s ease forwards; }
+    .note { font-size: 14px; color: var(--muted); margin-top: 10px; }
 
-.hero-row { display: flex; justify-content: space-between; align-items: flex-start; }
-.proof { display: flex; gap: 28px; }
-.proof div { text-align: right; }
-.proof strong { display: block; font-size: 34px; letter-spacing: -1px; }
-.proof span { color: var(--muted); font-size: 15px; }
+    /* Events */
+    .when { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); }
+    .how { font-size: 15px; font-weight: 700; margin-top: 4px; }
+    .signup { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+    .signup input { flex: 1; min-width: 240px; }
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+    .chip { font-weight: 800; padding: 10px 18px; border-radius: 99px; background: var(--card); border: 2px solid var(--c2); }
 
-/* Herd */
-.herd { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
-.camel {
-  background: var(--card); border: 1px solid var(--line); border-radius: 18px;
-  padding: 20px 12px; text-align: center;
-}
-.camel .emoji { font-size: 56px; line-height: 1; }
-.camel .name { font-weight: 800; font-size: 17px; margin-top: 10px; }
-.camel .tag { color: var(--muted); font-size: 14px; margin-top: 4px; }
-.camel .status { display: inline-block; margin-top: 10px; font-size: 13px; padding: 3px 10px; border-radius: 99px; background: #f1f1ef; }
-.camel.breakout .status { background: var(--accent); color: #fff; }
-.camel.down { opacity: .45; }
+    /* FAQ */
+    details { background: var(--card); border: 2px solid var(--line); border-radius: 16px; padding: 18px 22px; }
+    details + details { margin-top: 12px; }
+    summary { font-weight: 800; font-size: 19px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    summary::after { content: "+"; color: var(--accent-ink); font-size: 24px; line-height: 1; }
+    details[open] summary::after { content: "–"; }
+    details p { color: var(--muted); margin: 10px 0 0; }
 
-.herd.small { grid-template-columns: repeat(12, 1fr); gap: 6px; margin: 18px 0; min-height: 56px; }
-.herd.small span { font-size: 40px; text-align: center; animation: pop .3s ease; }
-.herd.small span.new { filter: drop-shadow(0 0 0 var(--accent)); }
-@keyframes pop { from { transform: scale(.3); } to { transform: scale(1); } }
+    /* Form */
+    form { background: var(--card); border: 2px solid var(--line); border-radius: 22px; padding: 30px; margin-top: 32px; }
+    label { display: block; font-weight: 800; font-size: 16px; margin: 18px 0 8px; }
+    label:first-child { margin-top: 0; }
+    input, select, textarea { width: 100%; font: inherit; font-size: 17px; padding: 13px 15px; border: 2px solid var(--line); border-radius: 12px; background: #fff; outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+    textarea { min-height: 110px; resize: vertical; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .checks { display: flex; flex-wrap: wrap; gap: 10px; }
+    .checks label { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; margin: 0; padding: 9px 14px; border: 2px solid var(--line); border-radius: 99px; cursor: pointer; }
+    .checks input { width: auto; }
+    .checks label:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+    .hp { position: absolute; left: -9999px; }
+    .status { margin-top: 16px; font-weight: 700; min-height: 26px; }
+    .status.ok { color: var(--c3); } .status.err { color: #c2410c; }
+    .privacy { font-size: 14px; color: var(--muted); margin-top: 12px; }
 
-/* Capacity bar */
-.capacity { margin-top: 36px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px 28px; }
-.cap-label { display: flex; justify-content: space-between; font-size: 20px; margin-bottom: 12px; }
-.cap-note { margin-top: 12px; color: var(--bad); font-size: 20px; }
-.bar { height: 22px; background: #efede8; border-radius: 99px; overflow: hidden; }
-.fill { height: 100%; background: var(--accent); border-radius: 99px; transition: width .4s ease, background .3s; }
-.fill.full { background: var(--bad); }
+    footer { padding: 40px 0; color: var(--muted); font-size: 15px; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
-/* Ask */
-.ask { margin-top: 44px; }
-.ask label { display: block; font-size: 36px; font-weight: 800; margin-bottom: 16px; }
-.ask-row { display: flex; gap: 14px; }
-.ask input {
-  flex: 1; font: inherit; font-size: 26px; padding: 20px 24px;
-  border: 2px solid var(--line); border-radius: 16px; background: var(--card); outline: none;
-}
-.ask input:focus { border-color: var(--accent); }
-.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-.chip { font: inherit; font-size: 16px; padding: 8px 16px; border-radius: 99px; border: 1px solid var(--line); background: var(--card); cursor: pointer; color: var(--muted); }
-.chip:hover { border-color: var(--accent); color: var(--ink); }
-
-.btn {
-  font: inherit; font-weight: 800; font-size: 22px; padding: 18px 30px;
-  border: none; border-radius: 16px; background: var(--accent); color: #fff; cursor: pointer;
-}
-.btn:hover { filter: brightness(1.05); }
-.btn.ghost { white-space: nowrap; background: transparent; color: var(--ink); border: 2px solid var(--line); font-size: 18px; padding: 12px 20px; }
-
-.tabs { display: inline-flex; background: #efede8; border-radius: 16px; padding: 6px; margin-bottom: 22px; }
-.tab { font: inherit; font-size: 19px; font-weight: 600; border: none; background: transparent; padding: 12px 22px; border-radius: 12px; cursor: pointer; color: var(--muted); }
-.tab.active { background: var(--card); color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,.08); }
-
-/* AI log */
-.working-title { font-size: 44px; }
-.log { list-style: none; padding: 0; margin: 0; }
-.log li {
-  display: flex; align-items: center; gap: 18px; font-size: 24px;
-  padding: 18px 0; border-bottom: 1px solid var(--line); animation: fade .3s ease;
-}
-.log .tick { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; font-size: 18px; }
-.log .spin { border: 4px solid var(--accent-soft); border-top-color: var(--accent); animation: spin .8s linear infinite; }
-.log .done { background: var(--accent); color: #fff; }
-.log .count { margin-left: auto; font-weight: 800; color: var(--accent); }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* Plan */
-.plan-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
-.plan-head h1 { font-size: 40px; }
-.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.kpi { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px 30px; }
-.kpi-label { color: var(--muted); font-size: 20px; }
-.kpi-num { font-size: 72px; font-weight: 800; letter-spacing: -2px; margin-top: 6px; }
-.kpi-num .was { color: #b9b6ae; text-decoration: line-through; text-decoration-thickness: 4px; }
-.kpi-num .now { color: var(--accent); }
-
-.levers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.lever {
-  background: var(--card); border: 3px solid var(--accent); border-radius: 18px; padding: 20px;
-  cursor: pointer; text-align: left; font: inherit; color: inherit; transition: all .2s;
-}
-.lever .icon { font-size: 40px; }
-.lever .t { font-weight: 800; font-size: 20px; margin: 8px 0 6px; }
-.lever .found { font-size: 16px; line-height: 1.35; }
-.lever .save { margin-top: 12px; font-weight: 800; color: var(--accent); font-size: 18px; }
-.lever.off { border-color: var(--line); opacity: .55; }
-.lever.off .save { color: var(--muted); text-decoration: line-through; }
-.lever.off .found::before { content: "Off: "; font-weight: 800; }
-
-.scale { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px 30px; }
-.scale-row { display: flex; align-items: center; gap: 20px; font-size: 22px; }
-.scale-row input { flex: 1; accent-color: var(--accent); height: 30px; }
-.big { font-size: 48px; min-width: 60px; text-align: right; }
-.verdict { margin-top: 14px; font-size: 26px; font-weight: 800; }
-.verdict.ok { color: var(--accent); }
-.verdict.bad { color: var(--bad); }
-
-.rules { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.rule { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; font-size: 19px; line-height: 1.4; }
-.rule > :first-child { font-size: 30px; }
-
-/* Nav */
-.nav { display: flex; gap: 10px; }
-.nav-btn { font: inherit; font-size: 17px; font-weight: 600; padding: 10px 18px; border-radius: 12px; border: 2px solid transparent; background: transparent; color: var(--muted); cursor: pointer; }
-.nav-btn.active { color: var(--ink); background: #f1f0ec; }
-.nav-btn.cta { border-color: var(--accent); color: var(--accent); }
-.nav-btn.cta.active { background: var(--accent); color: #fff; }
-
-/* Founder view */
-.sub { font-size: 22px; color: var(--muted); margin: -14px 0 32px; }
-.founder-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 28px; align-items: start; }
-.form { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; }
-.q { display: block; font-weight: 800; font-size: 20px; margin: 22px 0 10px; }
-.q:first-child { margin-top: 0; }
-.field { width: 100%; font: inherit; font-size: 20px; padding: 14px 16px; border: 2px solid var(--line); border-radius: 12px; outline: none; }
-.field:focus { border-color: var(--accent); }
-.pills { display: flex; flex-wrap: wrap; gap: 8px; }
-.pill { font: inherit; font-size: 16px; padding: 9px 14px; border-radius: 99px; border: 2px solid var(--line); background: var(--card); cursor: pointer; }
-.pill.on { border-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
-.btn.wide { width: 100%; margin-top: 26px; }
-
-.chart-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px 26px 18px; }
-.chart-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-.chart-title { font-weight: 800; font-size: 20px; }
-.legend { display: flex; gap: 16px; font-size: 15px; color: var(--muted); }
-.legend i { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
-.chart-kpi { font-size: 44px; font-weight: 800; letter-spacing: -1px; margin: 10px 0 4px; }
-.chart-kpi .own-num { color: var(--muted); }
-.chart-kpi .gx-num { color: var(--ink); }
-.chart { position: relative; }
-.chart svg { display: block; width: 100%; height: auto; }
-.chart .gridline { stroke: #ecebe7; stroke-width: 1; }
-.chart .axis-text { fill: var(--muted); font-size: 15px; font-family: inherit; }
-.chart .ms-text { fill: var(--ink); font-size: 15px; font-weight: 600; font-family: inherit; }
-.chart .end-label { font-size: 17px; font-weight: 800; fill: var(--ink); font-family: inherit; }
-.chart .line { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.chart .cross { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
-.tip { position: absolute; pointer-events: none; background: var(--ink); color: #fff; font-size: 14px; padding: 8px 12px; border-radius: 10px; white-space: nowrap; display: none; line-height: 1.5; }
-.tip i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-.note { font-size: 13px; color: var(--muted); margin-top: 6px; }
-
-.journey { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.step { background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 20px; position: relative; }
-.step .n { width: 34px; height: 34px; border-radius: 50%; background: #efede8; display: grid; place-items: center; font-weight: 800; }
-.step .t { font-weight: 800; font-size: 19px; margin: 12px 0 6px; }
-.step .h { font-size: 16px; line-height: 1.4; color: var(--muted); }
-.step.past { opacity: .45; }
-.step.here { border-color: var(--accent); }
-.step.here .n { background: var(--accent); color: #fff; }
-.step.here::after { content: "You are here"; position: absolute; top: 18px; right: 16px; font-size: 13px; font-weight: 800; color: var(--accent); }
-
-.sent { display: none; margin-top: 32px; gap: 20px; align-items: center; background: var(--accent-soft); border: 2px solid var(--accent); border-radius: 20px; padding: 24px 28px; animation: fade .4s ease; }
-.sent.show { display: flex; }
-.sent-icon { font-size: 48px; }
-.sent-title { font-size: 26px; font-weight: 800; }
-.sent-text { font-size: 18px; margin-top: 4px; }
-
-/* One-thing-per-screen steps */
-.wizard .panel { display: none; min-height: 52vh; }
-.wizard .panel.on { display: block; animation: fade .35s ease; }
-.wiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 36px; }
-.dots { display: flex; gap: 10px; }
-.dots span { width: 12px; height: 12px; border-radius: 50%; background: #dcd9d2; transition: all .2s; }
-.dots span.on { background: var(--accent); width: 32px; border-radius: 99px; }
-.quote { font-size: 40px; font-weight: 800; color: var(--muted); margin-top: 40px; text-align: center; }
-.big-cap { padding: 40px; }
-.big-cap .cap-label { font-size: 26px; }
-.big-cap .bar { height: 34px; }
-.big-cap .cap-note { font-size: 26px; }
-.mini { font-size: 24px; margin: -6px 0 18px; }
-.mini strong { color: var(--accent); font-size: 32px; }
-.restart { margin-top: 32px; }
-.big-q { font-size: 30px; margin-top: 10px; }
-.big-field { font-size: 28px; padding: 22px 24px; }
-.big-pills { gap: 14px; }
-.big-pills .pill { font-size: 24px; padding: 16px 24px; }
-.chart-card .chart-kpi { font-size: 56px; }
-.sent { display: flex; }
-.wizard .chart-card { max-width: 700px; margin: 0 auto; }
-
-/* Presentation slides */
-.slide { text-align: left; }
-.slide.center { text-align: center; }
-.kicker { font-size: 18px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
-.statement { font-size: 60px; line-height: 1.1; letter-spacing: -1.5px; }
-.hero-emoji { font-size: 120px; margin: 10px 0 20px; }
-.takeaway { font-size: 30px; font-weight: 800; margin-top: 36px; }
-.source { font-size: 15px; color: var(--muted); margin-top: 28px; }
-.muted { color: var(--muted); font-size: 18px; }
-
-.vs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.vs-card { background: var(--card); border: 3px solid var(--line); border-radius: 22px; padding: 28px 32px; }
-.vs-card.on { border-color: var(--accent); }
-.vs-card.dim { opacity: .55; }
-.vs-emoji { font-size: 64px; }
-.vs-t { font-size: 32px; font-weight: 800; margin: 8px 0 10px; }
-.vs-card ul { margin: 0; padding-left: 24px; font-size: 24px; line-height: 1.6; }
-
-.stat-row { display: flex; align-items: center; justify-content: center; gap: 40px; margin: 30px 0; }
-.stat { text-align: center; }
-.stat-n { font-size: 110px; font-weight: 800; letter-spacing: -3px; line-height: 1; }
-.stat-l { font-size: 24px; color: var(--muted); margin-top: 8px; }
-.stat-arrow { font-size: 80px; color: var(--muted); }
-.small-stats { gap: 80px; }
-.small-stats .stat-n { font-size: 64px; }
-
-.pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; font-size: 28px; line-height: 1.7; }
-.pc { background: var(--card); border: 3px solid var(--line); border-radius: 22px; padding: 28px 32px; }
-.pc.good { border-color: var(--accent); }
-.pc-h { font-weight: 800; font-size: 30px; margin-bottom: 6px; }
-
-.chain { display: flex; align-items: stretch; gap: 16px; margin-top: 20px; }
-.link { flex: 1; background: var(--card); border: 3px solid var(--accent); border-radius: 22px; padding: 28px; }
-.link-l { font-size: 20px; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; }
-.link-t { font-size: 30px; font-weight: 800; margin-top: 10px; line-height: 1.25; }
-.chain-arrow { font-size: 48px; align-self: center; color: var(--muted); }
-
-.heads { font-size: 56px; margin: 30px 0 10px; letter-spacing: 4px; }
-.heads-arrow { color: var(--muted); margin: 0 16px; }
-
-.pillars { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-.pillar { background: var(--card); border: 3px solid var(--accent); border-radius: 20px; padding: 22px 18px; }
-.p-e { font-size: 48px; }
-.p-t { font-size: 21px; font-weight: 800; margin: 10px 0 6px; }
-.p-d { font-size: 16px; color: var(--muted); line-height: 1.4; }
-
-.roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; position: relative; }
-.phase { background: var(--card); border: 1px solid var(--line); border-top: 8px solid var(--accent); border-radius: 20px; padding: 26px; }
-.ph-when { font-size: 28px; font-weight: 800; margin-bottom: 16px; }
-.ph-item { font-size: 22px; line-height: 1.4; padding: 12px 0; border-top: 1px solid var(--line); }
-
-.focus-num { font-size: 130px; font-weight: 800; letter-spacing: -4px; line-height: 1; margin-top: 10px; }
-.focus-num .was { color: #b9b6ae; text-decoration: line-through; text-decoration-thickness: 6px; }
-.focus-l { font-size: 26px; color: var(--muted); margin-top: 6px; }
-.risks { margin-top: 36px; font-size: 22px; line-height: 1.8; }
-
-.end-actions { display: flex; gap: 16px; justify-content: center; margin-top: 30px; }
-
-/* Vision + roadmap */
-.big-statement { font-size: 84px; letter-spacing: -2.5px; margin-top: 40px; }
-.tagline { font-size: 34px; color: var(--muted); font-weight: 600; margin-top: 10px; }
-.vision-row { display: flex; justify-content: center; gap: 22px; margin-top: 36px; }
-.vision { background: var(--card); border: 3px solid var(--accent); border-radius: 22px; padding: 24px 30px; font-size: 26px; font-weight: 800; min-width: 260px; }
-.v-e { font-size: 52px; margin-bottom: 8px; }
-
-.road { display: flex; justify-content: space-between; position: relative; margin: 10px 0 34px; }
-.road::before { content: ""; position: absolute; left: 6%; right: 6%; top: 34px; height: 6px; background: #e4e1da; border-radius: 3px; }
-.stop { position: relative; flex: 1; text-align: center; }
-.dot { width: 68px; height: 68px; margin: 0 auto; border-radius: 50%; background: #efede8; display: grid; place-items: center; font-size: 32px; filter: grayscale(1); opacity: .6; transition: all .3s; position: relative; }
-.stop-t { font-size: 15px; font-weight: 700; color: var(--muted); margin-top: 10px; padding: 0 4px; }
-.stop.done .dot { background: var(--accent-soft); filter: none; opacity: 1; }
-.stop.cur .dot { background: var(--accent); filter: none; opacity: 1; transform: scale(1.25); box-shadow: 0 0 0 8px var(--accent-soft); }
-.stop.cur .stop-t { color: var(--ink); font-size: 17px; margin-top: 16px; }
-
-.step-card { display: flex; gap: 28px; align-items: center; background: var(--card); border: 3px solid var(--accent); border-radius: 24px; padding: 32px 36px; animation: fade .4s ease; }
-.sc-emoji { font-size: 96px; }
-.sc-body { flex: 1; }
-.sc-title { font-size: 44px; font-weight: 800; letter-spacing: -1px; }
-.sc-detail { font-size: 24px; line-height: 1.4; margin-top: 8px; }
-.sc-gets { font-size: 21px; margin-top: 16px; color: var(--muted); }
-.sc-gets strong { color: var(--ink); }
-.sc-metric { font-size: 30px; font-weight: 800; color: var(--accent); white-space: nowrap; text-align: right; }
-
-/* Website opening */
-.mini-arch { width: 30px; height: 30px; vertical-align: -5px; margin-right: 4px; }
-.hero { padding-top: 0; }
-.logo-slot { height: 56px; display: flex; justify-content: center; align-items: center; }
-.logo-slot img { max-height: 56px; }
-.logo-slot.has-logo .wordmark { display: none; }
-.wordmark { font-size: 30px; font-weight: 800; letter-spacing: .25em; }
-.gw-svg { width: 100%; max-width: 640px; height: auto; display: block; margin: 0 auto; }
-.gw-arch { fill: none; stroke: var(--ink); stroke-width: 20; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.6s ease forwards; }
-.gw-ground { stroke: #d9d6cf; stroke-width: 3; }
-.gw-globe { transform-origin: 400px 250px; transform: scale(0); animation: open 1s cubic-bezier(.2,1.4,.4,1) 1.3s forwards; }
-.gw-link { fill: none; stroke: var(--own); stroke-width: 2.5; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .7; animation: draw 1.1s ease forwards; }
-.gw-city, .gw-pulse { opacity: 0; animation: fadein .5s ease forwards; }
-.gw-t { font-size: 18px; font-weight: 700; fill: var(--muted); font-family: inherit; }
-.hero-title { font-size: 58px; margin: 6px 0 0; opacity: 0; animation: fadein .8s ease 2.4s forwards; }
-.hero .tagline { opacity: 0; animation: fadein .8s ease 3s forwards; }
-.hero .tagline strong { color: var(--accent); }
-@keyframes draw { to { stroke-dashoffset: 0; } }
-@keyframes open { to { transform: scale(1); } }
-@keyframes fadein { to { opacity: 1; } }
-
-.pop { opacity: 0; animation: popin .5s cubic-bezier(.2,1.3,.4,1) forwards; }
-@keyframes popin { from { opacity: 0; transform: translateY(20px) scale(.96); } to { opacity: 1; transform: none; } }
-.bring { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.bring-c { background: var(--card); border: 3px solid var(--accent); border-radius: 22px; padding: 28px 22px; text-align: center; }
-.b-e { font-size: 64px; }
-.b-t { font-size: 30px; font-weight: 800; margin: 10px 0 8px; }
-.b-d { font-size: 19px; color: var(--muted); line-height: 1.4; }
-
-.grow-head { display: flex; justify-content: space-between; align-items: baseline; }
-.grow-title { font-size: 30px; font-weight: 800; }
-.grow-big { font-size: 56px; font-weight: 800; letter-spacing: -1.5px; }
-.grow-card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 18px 20px 6px; margin-top: 10px; }
-.grow-svg { width: 100%; height: auto; display: block; max-height: 48vh; }
-.grow-svg .gridline { stroke: #ecebe7; }
-.grow-svg .axis-text { fill: var(--muted); font-size: 16px; font-family: inherit; }
-.grow-line { fill: none; stroke: var(--gx); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 2.4s ease forwards; }
-.grow-mark { opacity: 0; animation: fadein .4s ease forwards; cursor: help; }
-.gm-t { font-size: 19px; font-weight: 800; fill: var(--ink); font-family: inherit; }
-.gm-d { font-size: 16px; fill: var(--muted); font-family: inherit; }
-
-.mw { display: grid; grid-template-columns: 1fr 1.1fr; gap: 24px; align-items: center; }
-.mw-title { font-size: 42px; }
-.mw-goal { font-size: 22px; color: var(--muted); margin-top: 28px; font-weight: 600; }
-.mw-item { font-size: 28px; margin-top: 12px; }
-.mw-svg { width: 100%; height: auto; }
-.mw-line { stroke: var(--accent); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .6; animation: draw .8s ease forwards; }
-.mw-t { font-size: 22px; font-weight: 700; fill: var(--muted); font-family: inherit; }
-.mw-hub { font-size: 24px; font-weight: 800; fill: var(--ink); font-family: inherit; }
-
-/* Events + colleges */
-.ev { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: start; }
-.ev-cards { display: grid; gap: 14px; }
-.ev-card { display: flex; gap: 18px; align-items: center; background: var(--card); border: 3px solid var(--accent); border-radius: 20px; padding: 18px 22px; }
-.ev-e { font-size: 48px; }
-.ev-t { font-size: 26px; font-weight: 800; }
-.ev-d { font-size: 18px; color: var(--muted); margin-top: 4px; line-height: 1.35; }
-.funnel { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px 24px; }
-.fn-h { font-size: 16px; color: var(--muted); font-weight: 700; margin-bottom: 12px; }
-.fn-row { margin-bottom: 14px; }
-.fn-l { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-.fn-bar { height: 40px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; min-width: 56px; }
-.fn-bar span { color: #fff; font-size: 22px; font-weight: 800; }
-
-.cols { display: flex; flex-wrap: wrap; gap: 12px; margin: 6px 0 26px; }
-.col-chip { font-size: 24px; font-weight: 800; padding: 12px 22px; border-radius: 99px; background: var(--card); border: 3px solid var(--own); }
-.col-path { display: flex; align-items: stretch; gap: 14px; }
-.cp { flex: 1; background: var(--card); border: 3px solid var(--accent); border-radius: 20px; padding: 22px; }
-.cp-e { font-size: 48px; }
-.cp-t { font-size: 26px; font-weight: 800; margin: 8px 0 4px; }
-.cp-d { font-size: 18px; color: var(--muted); line-height: 1.35; }
-.cp-arrow { font-size: 44px; color: var(--muted); align-self: center; }
-
-.f-error { color: var(--bad); font-size: 22px; font-weight: 700; margin-top: 14px; min-height: 28px; }
-
-.ph-t { font-size: 15px; font-weight: 800; fill: var(--muted); font-family: inherit; letter-spacing: .02em; }
-.cone { fill: var(--gx); opacity: 0; animation: fadein-cone .8s ease 2.4s forwards; }
-.cone-edge { fill: none; stroke: var(--gx); stroke-width: 2; stroke-dasharray: 6 6; opacity: 0; animation: fadein .8s ease 2.4s forwards; }
-.cone-q { font-size: 64px; font-weight: 800; fill: var(--gx); font-family: inherit; opacity: 0; animation: fadein .8s ease 2.8s forwards; }
-@keyframes fadein-cone { to { opacity: .14; } }
-.grow-line { animation-duration: 2.2s; }
-
-.scared { font-size: 26px; color: var(--muted); margin: 6px 0 28px; }
-.promise { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.pr { background: var(--card); border: 3px solid var(--accent); border-radius: 20px; padding: 22px 16px; }
-.pr-e { font-size: 52px; }
-.pr-t { font-size: 21px; font-weight: 800; margin-top: 10px; line-height: 1.3; }
-.win { font-size: 56px; margin-top: 34px; }
-
-.road-title { font-size: 44px; margin: -6px 0 18px; }
-
-/* Chapter strip */
-.chapters { display: flex; justify-content: center; gap: 8px; padding: 14px 24px 0; flex-wrap: wrap; }
-.ch { font-size: 15px; font-weight: 700; color: #b3afa6; padding: 6px 14px; border-radius: 99px; }
-.ch b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #e7e4dd; color: #fff; font-size: 13px; margin-right: 4px; }
-.ch.done { color: var(--muted); }
-.ch.done b { background: var(--accent-soft); color: var(--accent); }
-.ch.on { color: var(--ink); background: var(--card); box-shadow: 0 1px 4px rgba(0,0,0,.08); }
-.ch.on b { background: var(--accent); }
-.screen { padding-top: 22px; }
-
-/* Milestone capital */
-.tranches { display: grid; grid-template-columns: repeat(3, 1fr) 1fr; gap: 20px; align-items: end; margin-top: 10px; }
-.tr { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
-.tr-amt { font-size: 40px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
-.tr-bar { background: var(--accent); border-radius: 14px 14px 4px 4px; position: relative; min-height: 50px; max-height: 190px; }
-.tr-step { position: absolute; top: 10px; left: 12px; width: 32px; height: 32px; border-radius: 50%; background: #fff; color: var(--accent); font-weight: 800; display: grid; place-items: center; }
-.tr-name { font-size: 24px; font-weight: 800; margin-top: 12px; }
-.tr-when { font-size: 17px; color: var(--muted); line-height: 1.35; min-height: 46px; }
-.tr-total { align-self: center; text-align: center; background: var(--card); border: 3px solid var(--accent); border-radius: 22px; padding: 26px 16px; }
-.tt-n { font-size: 52px; font-weight: 800; color: var(--accent); }
-.tt-l { font-size: 18px; color: var(--muted); }
-
-/* Ways to work together */
-.opts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.opt { background: var(--card); border: 3px solid var(--line); border-radius: 22px; padding: 22px 20px; display: flex; flex-direction: column; }
-.opt-hi { border-color: var(--accent); }
-.opt-e { font-size: 50px; }
-.opt-t { font-size: 25px; font-weight: 800; margin-top: 8px; }
-.opt-price { font-size: 18px; font-weight: 800; color: var(--accent); margin-top: 4px; }
-.opt-d { font-size: 17px; color: var(--muted); line-height: 1.4; margin-top: 10px; flex: 1; }
-.opt-eq { margin-top: 14px; font-size: 16px; font-weight: 800; padding: 6px 12px; border-radius: 99px; background: #f1f0ec; align-self: flex-start; }
-.opt-hi .opt-eq { background: var(--accent-soft); color: var(--accent); }
-
-.stories { margin-top: 6px; }
-.trust { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 26px; font-size: 28px; font-weight: 800; }
-.trust b { color: var(--muted); }
-.trust span { background: var(--card); border: 3px solid var(--accent); border-radius: 99px; padding: 10px 22px; }
-
-/* Founder stories cadence */
-.cadence { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.cd { background: var(--card); border: 3px solid var(--line); border-radius: 20px; padding: 18px; }
-.cd-when { font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
-.cd-e { font-size: 44px; margin-top: 6px; }
-.cd-t { font-size: 22px; font-weight: 800; margin-top: 6px; }
-.cd-how { font-size: 16px; font-weight: 700; margin-top: 4px; }
-.cd-d { font-size: 16px; color: var(--muted); margin-top: 8px; line-height: 1.4; }
-.jesse { margin-top: 24px; font-size: 24px; background: var(--accent-soft); border-radius: 16px; padding: 16px 22px; }
-
-/* Portfolio growth race */
-.race-head { display: block; }
-.race-head .statement { margin-bottom: 10px; font-size: 48px; }
-.big-legend { font-size: 17px; margin: -4px 0 14px; justify-content: flex-start; }
-.big-legend span { white-space: nowrap; }
-.race-wrap { display: grid; grid-template-columns: 1fr 220px; gap: 18px; align-items: center; }
-.race-svg { width: 100%; height: auto; display: block; max-height: 46vh; }
-.race-svg .gridline { stroke: #ecebe7; }
-.race-svg .axis-text { fill: var(--muted); font-size: 16px; font-family: inherit; }
-.race-line { fill: none; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 2.6s linear forwards; }
-.race-end { opacity: 0; animation: fadein .4s ease forwards; }
-.re-t { font-size: 18px; font-weight: 800; fill: var(--ink); font-family: inherit; }
-.re-d { font-size: 15px; fill: var(--muted); font-family: inherit; }
-.aux { background: var(--card); border: 3px solid var(--accent); border-radius: 20px; padding: 22px; text-align: center; }
-.aux-n { font-size: 44px; font-weight: 800; color: var(--accent); }
-.aux-l { font-size: 17px; color: var(--muted); }
-
-/* 3-way comparison */
-.cmp { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; background: var(--card); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; margin-top: 10px; }
-.cmp > div { padding: 14px 18px; border-bottom: 1px solid var(--line); display: flex; align-items: center; }
-.cmp-h { font-size: 22px; font-weight: 800; justify-content: center; text-align: center; line-height: 1.3; }
-.cmp-l { font-size: 21px; font-weight: 700; }
-.cmp-c { justify-content: center; }
-.cmp .hi { background: var(--accent-soft); }
-.dots3 { display: inline-flex; gap: 6px; }
-.dots3 i { width: 18px; height: 18px; border-radius: 50%; background: #e4e1da; }
-.dots3 i.on { background: var(--ink); }
-.cmp .hi .dots3 i.on { background: var(--accent); }
-
-/* SWOT */
-.swot { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.sw { background: var(--card); border: 3px solid var(--line); border-radius: 20px; padding: 20px 24px; }
-.sw.s, .sw.o { border-color: var(--accent); }
-.sw-h { font-size: 26px; font-weight: 800; }
-.sw ul { margin: 8px 0 0; padding-left: 22px; font-size: 19px; line-height: 1.55; }
-.sw em { font-style: normal; font-size: 14px; font-weight: 800; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 99px; margin-left: 4px; }
-
-</style>
+    @media (max-width: 860px) {
+      .g3, .g4, .steps, .stats { grid-template-columns: 1fr 1fr; }
+      .links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--bg); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--line); }
+      .links.open { display: flex; }
+      .menu { display: block; }
+      section { padding: 64px 0; }
+    }
+    @media (max-width: 560px) {
+      .g2, .g3, .g4, .steps, .stats, .two, .strip { grid-template-columns: 1fr; }
+      .strip div + div { border-left: 0; border-top: 2px solid #fff; }
+    }
+  </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand"><svg class="mini-arch" viewBox="0 0 40 40"><path d="M6,38 C10,-4 30,-4 34,38" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/></svg> Gateway X</div>
-    <nav class="nav">
-      <button class="nav-btn active" data-view="story">Presentation</button>
-      <button class="nav-btn" data-view="studio">Herd OS (partners)</button>
-      <button class="nav-btn cta" data-view="founder">Bring your idea →</button>
-    </nav>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" id="brand">
+        <img src="logo.png" alt="Gateway X" onload="document.getElementById('brand').classList.add('has-logo')" onerror="this.remove()">
+        <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M6,38 C10,-4 30,-4 34,38" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/></svg>
+        <span class="wordmark">Gateway X</span>
+      </a>
+      <button class="menu" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+      <nav class="links" onclick="if(event.target.tagName==='A')this.classList.remove('open')">
+        <a href="#how">How it works</a>
+        <a href="#work">Work with us</a>
+        <a href="#results">Results</a>
+        <a href="#events">Events</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="#apply">Bring your idea</a>
+      </nav>
+    </div>
   </header>
-  <div id="chapters" class="chapters"></div>
 
-  <!-- Presentation: opens the video, then hands off to the demo -->
-  <section id="screen-story" class="screen active wizard">
-    <div data-chapter="0" class="panel slide center hero" data-next="Let's begin →">
-      <div class="logo-slot"><img src="logo.png" alt="Gateway X" onload="this.parentNode.classList.add('has-logo')" onerror="this.remove()"><span class="wordmark">GATEWAY <span class="accent">X</span></span></div>
-      <svg class="gw-svg" viewBox="0 0 800 460" role="img" aria-label="The Gateway Arch opening to a connected world"><path id="w0" class="gw-link" pathLength="1" d="M400,392 Q270.0,-50 140,70" style="animation-delay:2.30s"/><g class="gw-city" style="animation-delay:2.50s"><circle cx="140" cy="70" r="7" fill="var(--own)"/><text class="gw-t" x="140" y="56" text-anchor="middle">London</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.20s"><animateMotion dur="2.6s" repeatCount="indefinite" begin="3.20s"><mpath href="#w0"/></animateMotion></circle><path id="w1" class="gw-link" pathLength="1" d="M400,392 Q540.0,-40 680,80" style="animation-delay:2.45s"/><g class="gw-city" style="animation-delay:2.65s"><circle cx="680" cy="80" r="7" fill="var(--own)"/><text class="gw-t" x="680" y="66" text-anchor="middle">Tokyo</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.35s"><animateMotion dur="2.9s" repeatCount="indefinite" begin="3.35s"><mpath href="#w1"/></animateMotion></circle><path id="w2" class="gw-link" pathLength="1" d="M400,392 Q230.0,110 60,230" style="animation-delay:2.60s"/><g class="gw-city" style="animation-delay:2.80s"><circle cx="60" cy="230" r="7" fill="var(--own)"/><text class="gw-t" x="60" y="216" text-anchor="middle">Bay Area</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.50s"><animateMotion dur="3.2s" repeatCount="indefinite" begin="3.50s"><mpath href="#w2"/></animateMotion></circle><path id="w3" class="gw-link" pathLength="1" d="M400,392 Q275.0,272 150,420" style="animation-delay:2.75s"/><g class="gw-city" style="animation-delay:2.95s"><circle cx="150" cy="420" r="7" fill="var(--own)"/><text class="gw-t" x="150" y="406" text-anchor="middle">São Paulo</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.65s"><animateMotion dur="3.5s" repeatCount="indefinite" begin="3.65s"><mpath href="#w3"/></animateMotion></circle><path id="w4" class="gw-link" pathLength="1" d="M400,392 Q525.0,272 650,420" style="animation-delay:2.90s"/><g class="gw-city" style="animation-delay:3.10s"><circle cx="650" cy="420" r="7" fill="var(--own)"/><text class="gw-t" x="650" y="406" text-anchor="middle">Lagos</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.80s"><animateMotion dur="3.8s" repeatCount="indefinite" begin="3.80s"><mpath href="#w4"/></animateMotion></circle><path id="w5" class="gw-link" pathLength="1" d="M400,392 Q570.0,120 740,240" style="animation-delay:3.05s"/><g class="gw-city" style="animation-delay:3.25s"><circle cx="740" cy="240" r="7" fill="var(--own)"/><text class="gw-t" x="740" y="226" text-anchor="middle">Berlin</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.95s"><animateMotion dur="4.1s" repeatCount="indefinite" begin="3.95s"><mpath href="#w5"/></animateMotion></circle><g class="gw-globe"><circle cx="400" cy="250" r="100" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><ellipse cx="400" cy="250" rx="100" ry="34" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".55"/><line x1="300" y1="250" x2="500" y2="250" stroke="var(--accent)" stroke-width="2" opacity=".55"/><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-0.0s" repeatCount="indefinite"/></ellipse><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-2.0s" repeatCount="indefinite"/></ellipse><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-4.0s" repeatCount="indefinite"/></ellipse></g><path class="gw-arch" pathLength="1" d="M215,400 C270,-10 530,-10 585,400"/><line class="gw-ground" x1="170" y1="402" x2="630" y2="402"/><circle cx="400" cy="392" r="9" fill="var(--accent)"/></svg>
-      <h1 class="statement hero-title">Connecting the Midwest to the world.</h1>
-      <p class="tagline">Bring your ideas. <strong>Let's make it a reality.</strong></p>
-    </div>
-
-    <div data-chapter="1" class="panel slide center">
-      <div class="kicker">MGMT 7640 · Block Week · for Adam, Nak & Jesse</div>
-      <div class="hero-emoji">🐪</div>
-      <h1 class="statement">You've built the camel.<br><span class="accent">Here's how to build the herd.</span></h1>
-    </div>
-
-    <div data-chapter="1" class="panel slide">
-      <div class="kicker">The model · camels, not unicorns</div>
-      <h1 class="statement">Most founders only know two ways. <span class="accent">There's a third.</span></h1>
-      <div class="cmp"><div></div><div class="cmp-h">🧱<br>Bootstrap</div><div class="cmp-h hi">🐪<br>Seedstrap · Gateway X</div><div class="cmp-h">🦄<br>Venture capital</div><div class="cmp-l">💵 Money up front</div><div class="cmp-c"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-c hi"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span></div><div class="cmp-c"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-l">⚡ Speed</div><div class="cmp-c"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-c hi"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span></div><div class="cmp-c"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-l">🧑‍💼 You stay in control</div><div class="cmp-c"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-c hi"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-c"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-l">🧭 Hands-on help</div><div class="cmp-c"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-c hi"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-c"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span></div><div class="cmp-l">😰 Pressure to raise again</div><div class="cmp-c"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-c hi"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-c"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div></div>
-    </div>
-
-    <div data-chapter="1" class="panel slide">
-      <div class="kicker">It's working</div>
-      <div class="stat-row">
-        <div class="stat"><div class="stat-n">$3M</div><div class="stat-l">invested</div></div>
-        <div class="stat-arrow">→</div>
-        <div class="stat"><div class="stat-n accent">$100M+</div><div class="stat-l">value created</div></div>
-      </div>
-      <div class="stat-row small-stats">
-        <div class="stat"><div class="stat-n">$13M</div><div class="stat-l">distributed</div></div>
-        <div class="stat"><div class="stat-n">6</div><div class="stat-l">companies</div></div>
-        <div class="stat"><div class="stat-n">2</div><div class="stat-l">breakouts</div></div>
-      </div>
-      <div class="source">Source: GatewayX deck, Oct 14</div>
-    </div>
-
-    <div data-chapter="1" class="panel slide">
-      <div class="kicker">How fast the playbook works</div>
-      <div class="race-head">
-        <h1 class="statement">Real companies, real speed</h1>
-        <div class="legend big-legend"><span><i style="background:var(--gx)"></i>GrowthAssistant</span><span><i style="background:var(--own)"></i>Ampush v1</span><span><i style="background:var(--third)"></i>Ampush v2</span></div>
-      </div>
-      <div class="race-wrap">
-        <div class="grow-card"><svg class="race-svg" viewBox="0 0 810 380" role="img" aria-label="How fast companies grew using the same sales playbook"><line class="gridline" x1="70" x2="730" y1="330.0" y2="330.0"/><text class="axis-text" x="60" y="335.0" text-anchor="end">$0</text><line class="gridline" x1="70" x2="730" y1="268.0" y2="268.0"/><text class="axis-text" x="60" y="273.0" text-anchor="end">$5M</text><line class="gridline" x1="70" x2="730" y1="206.0" y2="206.0"/><text class="axis-text" x="60" y="211.0" text-anchor="end">$10M</text><line class="gridline" x1="70" x2="730" y1="144.0" y2="144.0"/><text class="axis-text" x="60" y="149.0" text-anchor="end">$15M</text><line class="gridline" x1="70" x2="730" y1="82.0" y2="82.0"/><text class="axis-text" x="60" y="87.0" text-anchor="end">$20M</text><line class="gridline" x1="70" x2="730" y1="20.0" y2="20.0"/><text class="axis-text" x="60" y="25.0" text-anchor="end">$25M</text><text class="axis-text" x="70.0" y="362" text-anchor="middle">Start</text><text class="axis-text" x="202.0" y="362" text-anchor="middle">6 mo</text><text class="axis-text" x="334.0" y="362" text-anchor="middle">12 mo</text><text class="axis-text" x="466.0" y="362" text-anchor="middle">18 mo</text><text class="axis-text" x="598.0" y="362" text-anchor="middle">24 mo</text><text class="axis-text" x="730.0" y="362" text-anchor="middle">30 mo</text><path class="race-line" pathLength="1" d="M70.0,330.0 L83.2,329.7 L96.4,329.0 L109.6,328.0 L122.8,326.9 L136.0,325.5 L149.2,324.0 L162.4,322.4 L175.6,320.6 L188.8,318.6 L202.0,316.5 L215.2,314.3 L228.4,311.9 L241.6,309.5 L254.8,306.9 L268.0,304.2 L281.2,301.4 L294.4,298.5 L307.6,295.4 L320.8,292.3 L334.0,289.1 L347.2,285.8 L360.4,282.4 L373.6,278.8 L386.8,275.2 L400.0,271.5 L413.2,267.8 L426.4,263.9 L439.6,259.9 L452.8,255.9 L466.0,251.7 L479.2,247.5 L492.4,243.2 L505.6,238.9 L518.8,234.4 L532.0,229.9 L545.2,225.2 L558.4,220.5 L571.6,215.8 L584.8,210.9 L598.0,206.0" stroke="var(--gx)" style="animation-delay:0.3s"/><g class="race-end" style="animation-delay:2.9s"><title>GrowthAssistant: $0 → $10M in 2 years (founder-reported)</title><circle cx="598.0" cy="206.0" r="9" fill="var(--gx)" stroke="#fff" stroke-width="3"/><text class="re-t" x="614.0" y="208.0" text-anchor="start">GrowthAssistant</text><text class="re-d" x="614.0" y="228.0" text-anchor="start">$0 → $10M in 2 years</text></g><path class="race-line" pathLength="1" d="M70.0,305.2 L79.9,304.6 L89.8,303.5 L99.7,301.9 L109.6,299.9 L119.5,297.6 L129.4,295.1 L139.3,292.2 L149.2,289.1 L159.1,285.8 L169.0,282.3 L178.9,278.5 L188.8,274.5 L198.7,270.3 L208.6,265.9 L218.5,261.3 L228.4,256.5 L238.3,251.6 L248.2,246.4 L258.1,241.1 L268.0,235.7 L277.9,230.0 L287.8,224.2 L297.7,218.2 L307.6,212.1 L317.5,205.8 L327.4,199.4 L337.3,192.8 L347.2,186.1 L357.1,179.2 L367.0,172.2 L376.9,165.0 L386.8,157.7 L396.7,150.2 L406.6,142.7 L416.5,135.0 L426.4,127.1 L436.3,119.1 L446.2,111.0 L456.1,102.8 L466.0,94.4" stroke="var(--own)" style="animation-delay:0.8s"/><g class="race-end" style="animation-delay:3.4s"><title>Ampush v1: $2M → $19M in 18 months (founder-reported)</title><circle cx="466.0" cy="94.4" r="9" fill="var(--own)" stroke="#fff" stroke-width="3"/><text class="re-t" x="480.0" y="78.4" text-anchor="start">Ampush v1</text><text class="re-d" x="480.0" y="98.4" text-anchor="start">$2M → $19M in 18 months</text></g><path class="race-line" pathLength="1" d="M70.0,292.8 L86.5,292.1 L103.0,290.7 L119.5,288.9 L136.0,286.6 L152.5,283.9 L169.0,280.9 L185.5,277.5 L202.0,273.9 L218.5,270.0 L235.0,265.8 L251.5,261.4 L268.0,256.7 L284.5,251.7 L301.0,246.6 L317.5,241.2 L334.0,235.6 L350.5,229.7 L367.0,223.7 L383.5,217.4 L400.0,211.0 L416.5,204.3 L433.0,197.5 L449.5,190.5 L466.0,183.3 L482.5,175.9 L499.0,168.3 L515.5,160.6 L532.0,152.6 L548.5,144.6 L565.0,136.3 L581.5,127.9 L598.0,119.3 L614.5,110.5 L631.0,101.6 L647.5,92.5 L664.0,83.3 L680.5,73.9 L697.0,64.3 L713.5,54.6 L730.0,44.8" stroke="var(--third)" style="animation-delay:1.3s"/><g class="race-end" style="animation-delay:3.9s"><title>Ampush v2: $3M → $23M in 2.5 years (founder-reported)</title><circle cx="730.0" cy="44.8" r="9" fill="var(--third)" stroke="#fff" stroke-width="3"/><text class="re-t" x="716.0" y="28.8" text-anchor="end">Ampush v2</text><text class="re-d" x="716.0" y="48.8" text-anchor="end">$3M → $23M in 2.5 years</text></g></svg></div>
-        <div class="aux pop" style="animation-delay:3.4s"><div class="aux-n">100 days</div><div class="aux-l">Aux Insights: from launch to profitable</div></div>
-      </div>
-      <div class="note">Founder-reported figures (Jesse Pujji, Bootstrapped Giants; STL AI Lab). Ampush was Jesse's company before Gateway X. Paths between start and end are smoothed.</div>
-    </div>
-
-    <div data-chapter="1" class="panel slide">
-      <div class="kicker">What worked, what didn't</div>
-      <div class="vs">
-        <div class="vs-card on"><div class="vs-emoji">🚀</div><div class="vs-t">GrowthAssistant</div><ul><li>$0 → $10M in 2 years</li><li>Meetings-first sales playbook</li><li>Warm intros from the network</li></ul></div>
-        <div class="vs-card dim"><div class="vs-emoji">📉</div><div class="vs-t">Unbloat</div><ul><li>Consumer brand, off-thesis</li><li>Too little room for more tries</li><li>2 years to admit it was wrong</li></ul></div>
-      </div>
-      <div class="source">Source: Jesse Pujji, Bootstrapped Giants (founder-reported)</div>
-    </div>
-
-    <div data-chapter="2" class="panel slide">
-      <div class="kicker">Q1 · Where work gets done</div>
-      <h1 class="statement">📍 St. Louis, not the Bay</h1>
-      <div class="pros-cons">
-        <div class="pc good"><div class="pc-h">✅ Helps</div><div>Cheap runway</div><div>Underserved capital</div><div>Little competition</div></div>
-        <div class="pc bad"><div class="pc-h">⚠️ Gap</div><div>Talent density</div><div class="muted">The studio has to rebuild the network the Bay gives for free</div></div>
-      </div>
-    </div>
-
-    <div data-chapter="2" class="panel slide">
-      <div class="kicker">Q2 · Perspective-taking</div>
-      <h1 class="statement">Terms built from both sides</h1>
-      <div class="vs">
-        <div class="vs-card on"><div class="vs-emoji">🧑‍💻</div><div class="vs-t">For founders</div><ul><li>One round</li><li>Keep 80%</li><li>Profit paid every year</li></ul></div>
-        <div class="vs-card on"><div class="vs-emoji">💼</div><div class="vs-t">For investors</div><ul><li>Series PROFIT: capital staged</li><li>Residency tests ideas first</li><li>Distributions to LPs</li></ul></div>
-      </div>
-      <p class="takeaway">Great terms attract founders, but terms can be copied.</p>
-    </div>
-
-    <div data-chapter="2" class="panel slide">
-      <div class="kicker">Q3 · Culture, strategy and purpose</div>
-      <div class="chain">
-        <div class="link"><div class="link-l">Purpose</div><div class="link-t">Founders "turn pro"</div></div>
-        <div class="chain-arrow">→</div>
-        <div class="link"><div class="link-l">Strategy</div><div class="link-t">AI-native B2B niches, distribution over product</div></div>
-        <div class="chain-arrow">→</div>
-        <div class="link"><div class="link-l">Culture</div><div class="link-t">Sell first, demo first, profit first</div></div>
-      </div>
-      <p class="takeaway">⚠️ All three run through partner time.</p>
-    </div>
-
-    <div data-chapter="2" class="panel slide">
-      <div class="kicker">SWOT · Gateway X vs. VC and bootstrapping</div>
-      <div class="swot">
-        <div class="sw s pop" style="animation-delay:.1s"><div class="sw-h">💪 Strengths</div><ul><li>Profitable fast, not raise after raise <em>vs. VC</em></li><li>Partners' network + selling playbook <em>vs. bootstrap</em></li><li>$3M in → $100M+ value</li></ul></div>
-        <div class="sw w pop" style="animation-delay:.3s"><div class="sw-h">⚠️ Weaknesses</div><ul><li>Everything runs through 3 partners</li><li>No studio-level moat yet</li><li>Thin talent pool in St. Louis</li></ul></div>
-        <div class="sw o pop" style="animation-delay:.5s"><div class="sw-h">🌱 Opportunities</div><ul><li>Midwest owners who don't know how to scale</li><li>Few founders even know seedstrapping exists</li><li>Colleges, events and online reach</li></ul></div>
-        <div class="sw t pop" style="animation-delay:.7s"><div class="sw-h">🌪️ Threats</div><ul><li>Terms are easy to copy</li><li>AI makes services a commodity</li><li>VC money competes for the best founders</li></ul></div>
-      </div>
-    </div>
-
-    <div data-chapter="2" class="panel slide center">
-      <div class="kicker">The gap</div>
-      <h1 class="statement">“There's no moat on day one.”</h1>
-      <div class="heads">🧠 🧠 🧠 <span class="heads-arrow">→</span> 🐪🐪🐪🐪🐪🐪🐪🐪🐪🐪</div>
-      <p class="takeaway">The edge lives in three partners. At 8–10 companies a year,<br>“we'd have to double ourselves.”</p>
-    </div>
-      <div data-chapter="3" class="panel slide">
-      <div class="kicker">Why the Midwest</div>
-      <div class="mw">
-        <div class="mw-text">
-          <h1 class="statement mw-title">The Valley knows the playbook.<br><span class="accent">The Midwest never got the exposure.</span></h1>
-          <div class="mw-goal">Gateway X: the Midwest's go-to place to</div>
-          <div class="mw-item">🏪 <strong>scale</strong> a business that already works</div>
-          <div class="mw-item">💡 <strong>learn and grow</strong> from an idea</div>
-        </div>
-        <svg class="mw-svg" viewBox="0 0 760 360" role="img" aria-label="St. Louis connected to Midwest cities"><line class="mw-line" pathLength="1" x1="390" y1="275" x2="330" y2="50" style="animation-delay:0.00s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="450" y2="95" style="animation-delay:0.15s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="470" y2="140" style="animation-delay:0.30s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="600" y2="110" style="animation-delay:0.45s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="200" y2="160" style="animation-delay:0.60s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="300" y2="150" style="animation-delay:0.75s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="520" y2="225" style="animation-delay:0.90s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="630" y2="215" style="animation-delay:1.05s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="210" y2="250" style="animation-delay:1.20s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="540" y2="300" style="animation-delay:1.35s"/><circle cx="330" cy="50" r="8" fill="var(--own)"/><text class="mw-t" x="330" y="34" text-anchor="middle">Minneapolis</text><circle cx="450" cy="95" r="8" fill="var(--own)"/><text class="mw-t" x="450" y="79" text-anchor="middle">Milwaukee</text><circle cx="470" cy="140" r="8" fill="var(--own)"/><text class="mw-t" x="470" y="124" text-anchor="middle">Chicago</text><circle cx="600" cy="110" r="8" fill="var(--own)"/><text class="mw-t" x="600" y="94" text-anchor="middle">Detroit</text><circle cx="200" cy="160" r="8" fill="var(--own)"/><text class="mw-t" x="200" y="144" text-anchor="middle">Omaha</text><circle cx="300" cy="150" r="8" fill="var(--own)"/><text class="mw-t" x="300" y="134" text-anchor="middle">Des Moines</text><circle cx="520" cy="225" r="8" fill="var(--own)"/><text class="mw-t" x="520" y="209" text-anchor="middle">Indianapolis</text><circle cx="630" cy="215" r="8" fill="var(--own)"/><text class="mw-t" x="630" y="199" text-anchor="middle">Columbus</text><circle cx="210" cy="250" r="8" fill="var(--own)"/><text class="mw-t" x="210" y="234" text-anchor="middle">Kansas City</text><circle cx="540" cy="300" r="8" fill="var(--own)"/><text class="mw-t" x="540" y="284" text-anchor="middle">Louisville</text><circle cx="390" cy="275" r="26" fill="var(--accent-soft)"/><circle cx="390" cy="275" r="14" fill="var(--accent)"/><text class="mw-hub" x="390" y="323" text-anchor="middle">St. Louis · Gateway X</text></svg>
-      </div>
-    </div>
-
-    <div data-chapter="3" class="panel slide center">
-      <div class="kicker">Gateway X's vision</div>
-      <h1 class="statement">The <span class="accent">Silicon Valley of St. Louis</span></h1>
-      <div class="vision-row">
-        <div class="vision"><div class="v-e">✨</div>Discover your potential</div>
-        <div class="vision"><div class="v-e">🤝</div>Find partners</div>
-        <div class="vision"><div class="v-e">🏛️</div>Build lasting businesses</div>
-      </div>
-      <p class="tagline">A place to start. People to build with.</p>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">You bring</div>
-      <h1 class="statement">Bring what you have</h1>
-      <div class="vs">
-        <div class="vs-card on pop" style="animation-delay:.1s"><div class="vs-emoji">💡</div><div class="vs-t">An idea</div><ul><li>Come learn how it's done</li><li>Test it with real buyers</li><li>Build it with us</li></ul></div>
-        <div class="vs-card on pop" style="animation-delay:.35s"><div class="vs-emoji">🏪</div><div class="vs-t">A business that works</div><ul><li>Real customers today</li><li>Stuck on how to scale</li><li>Ready to grow now</li></ul></div>
-      </div>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Gateway X brings</div>
-      <h1 class="statement">Everything around it</h1>
-      <div class="bring">
-        <div class="bring-c pop" style="animation-delay:.1s"><div class="b-e">🤖</div><div class="b-t">Technology</div><div class="b-d">AI-native tools and delivery</div></div>
-        <div class="bring-c pop" style="animation-delay:.3s"><div class="b-e">🎓</div><div class="b-t">Training</div><div class="b-d">The selling playbook, taught hands-on</div></div>
-        <div class="bring-c pop" style="animation-delay:.5s"><div class="b-e">🤝</div><div class="b-t">Network</div><div class="b-d">Warm intros to buyers and talent</div></div>
-        <div class="bring-c pop" style="animation-delay:.7s"><div class="b-e">📣</div><div class="b-t">Marketing</div><div class="b-d">Reach beyond St. Louis</div></div>
-      </div>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">We grow with you</div>
-      <div class="grow-head"><div class="grow-title">Your revenue</div><div class="grow-big">$0 → <span class="accent">$25M+</span> by Year 3</div></div>
-      <div class="grow-card"><svg class="grow-svg" viewBox="0 0 760 400" role="img" aria-label="Illustrative revenue: help in years 1 and 2, a jump in year 3, an open range in years 4 and 5"><rect x="70.0" y="20" width="264.0" height="330" fill="var(--accent-soft)" opacity=".55" rx="8"/><text class="ph-t" x="202.0" y="44" text-anchor="middle">Years 1–2 · we build it together</text><text class="ph-t" x="400.0" y="44" text-anchor="middle">Year 3 · scale</text><text class="ph-t" x="598.0" y="44" text-anchor="middle">Years 4–5 · ?</text><line class="gridline" x1="70" x2="730" y1="350.0" y2="350.0"/><text class="axis-text" x="60" y="355.0" text-anchor="end">$0</text><line class="gridline" x1="70" x2="730" y1="267.5" y2="267.5"/><text class="axis-text" x="60" y="272.5" text-anchor="end">$25M</text><line class="gridline" x1="70" x2="730" y1="185.0" y2="185.0"/><text class="axis-text" x="60" y="190.0" text-anchor="end">$50M</text><line class="gridline" x1="70" x2="730" y1="102.5" y2="102.5"/><text class="axis-text" x="60" y="107.5" text-anchor="end">$75M</text><line class="gridline" x1="70" x2="730" y1="20.0" y2="20.0"/><text class="axis-text" x="60" y="25.0" text-anchor="end">$100M</text><text class="axis-text" x="70.0" y="382" text-anchor="middle">Day 1</text><text class="axis-text" x="202.0" y="382" text-anchor="middle">Year 1</text><text class="axis-text" x="334.0" y="382" text-anchor="middle">Year 2</text><text class="axis-text" x="466.0" y="382" text-anchor="middle">Year 3</text><text class="axis-text" x="598.0" y="382" text-anchor="middle">Year 4</text><text class="axis-text" x="730.0" y="382" text-anchor="middle">Year 5</text><path class="cone" d="M466.0,265.4 L479.2,259.3 L492.4,252.7 L505.6,245.7 L518.8,238.1 L532.0,230.0 L545.2,221.3 L558.4,212.0 L571.6,202.0 L584.8,191.2 L598.0,179.7 L611.2,167.4 L624.4,154.1 L637.6,139.9 L650.8,124.7 L664.0,108.4 L677.2,90.8 L690.4,72.0 L703.6,51.9 L716.8,30.3 L730.0,7.1 L730.0,214.7 L716.8,217.2 L703.6,219.8 L690.4,222.3 L677.2,224.9 L664.0,227.4 L650.8,229.9 L637.6,232.5 L624.4,235.0 L611.2,237.5 L598.0,240.1 L584.8,242.6 L571.6,245.1 L558.4,247.7 L545.2,250.2 L532.0,252.8 L518.8,255.3 L505.6,257.8 L492.4,260.4 L479.2,262.9 L466.0,265.4 Z"/><path class="cone-edge" d="M466.0,265.4 L479.2,259.3 L492.4,252.7 L505.6,245.7 L518.8,238.1 L532.0,230.0 L545.2,221.3 L558.4,212.0 L571.6,202.0 L584.8,191.2 L598.0,179.7 L611.2,167.4 L624.4,154.1 L637.6,139.9 L650.8,124.7 L664.0,108.4 L677.2,90.8 L690.4,72.0 L703.6,51.9 L716.8,30.3 L730.0,7.1"/><path class="cone-edge" d="M466.0,265.4 L479.2,262.9 L492.4,260.4 L505.6,257.8 L518.8,255.3 L532.0,252.8 L545.2,250.2 L558.4,247.7 L571.6,245.1 L584.8,242.6 L598.0,240.1 L611.2,237.5 L624.4,235.0 L637.6,232.5 L650.8,229.9 L664.0,227.4 L677.2,224.9 L690.4,222.3 L703.6,219.8 L716.8,217.2 L730.0,214.7"/><text class="cone-q" x="650.0" y="215.0" text-anchor="middle">?</text><path class="grow-line" pathLength="1" d="M70.0,350.0 L76.6,350.0 L83.2,349.9 L89.8,349.9 L96.4,349.9 L103.0,349.8 L109.6,349.8 L116.2,349.7 L122.8,349.6 L129.4,349.6 L136.0,349.5 L142.6,349.4 L149.2,349.3 L155.8,349.2 L162.4,349.1 L169.0,349.0 L175.6,348.9 L182.2,348.7 L188.8,348.6 L195.4,348.4 L202.0,348.2 L208.6,348.0 L215.2,347.8 L221.8,347.6 L228.4,347.3 L235.0,347.0 L241.6,346.7 L248.2,346.3 L254.8,345.9 L261.4,345.5 L268.0,345.0 L274.6,344.5 L281.2,344.0 L287.8,343.3 L294.4,342.7 L301.0,341.9 L307.6,341.1 L314.2,340.2 L320.8,339.2 L327.4,338.2 L334.0,337.0 L340.6,335.7 L347.2,334.3 L353.8,332.7 L360.4,331.0 L367.0,329.1 L373.6,327.1 L380.2,324.8 L386.8,322.4 L393.4,319.6 L400.0,316.7 L406.6,313.4 L413.2,309.8 L419.8,305.9 L426.4,301.6 L433.0,296.9 L439.6,291.7 L446.2,286.0 L452.8,279.8 L459.4,272.9 L466.0,265.4"/><g class="grow-mark" style="animation-delay:2.4s"><circle cx="466.0" cy="265.4" r="10" fill="var(--gx)" stroke="#fff" stroke-width="3"/><text class="gm-t" x="450.0" y="251.4" text-anchor="end">$25M+</text></g><g class="grow-mark" style="animation-delay:0.5s"><title>Network: first customers</title><line x1="103.0" y1="339.8" x2="103.0" y2="280" stroke="var(--gx)" stroke-width="1.5" stroke-dasharray="3 4"/><circle cx="103.0" cy="349.8" r="8" fill="var(--gx)" stroke="#fff" stroke-width="3"/><text class="gm-t" x="95.0" y="250.0" text-anchor="start">🤝 Network</text><text class="gm-d" x="95.0" y="272.0" text-anchor="start">first customers</text></g><g class="grow-mark" style="animation-delay:0.9s"><title>Training: a real sales team</title><line x1="169.0" y1="339.0" x2="169.0" y2="235" stroke="var(--gx)" stroke-width="1.5" stroke-dasharray="3 4"/><circle cx="169.0" cy="349.0" r="8" fill="var(--gx)" stroke="#fff" stroke-width="3"/><text class="gm-t" x="161.0" y="205.0" text-anchor="start">🎓 Training</text><text class="gm-d" x="161.0" y="227.0" text-anchor="start">a real sales team</text></g><g class="grow-mark" style="animation-delay:1.3s"><title>Technology: AI delivery</title><line x1="235.0" y1="337.0" x2="235.0" y2="190" stroke="var(--gx)" stroke-width="1.5" stroke-dasharray="3 4"/><circle cx="235.0" cy="347.0" r="8" fill="var(--gx)" stroke="#fff" stroke-width="3"/><text class="gm-t" x="227.0" y="160.0" text-anchor="start">🤖 Technology</text><text class="gm-d" x="227.0" y="182.0" text-anchor="start">AI delivery</text></g><g class="grow-mark" style="animation-delay:1.7000000000000002s"><title>Marketing: reach beyond St. Louis</title><line x1="301.0" y1="331.9" x2="301.0" y2="145" stroke="var(--gx)" stroke-width="1.5" stroke-dasharray="3 4"/><circle cx="301.0" cy="341.9" r="8" fill="var(--gx)" stroke="#fff" stroke-width="3"/><text class="gm-t" x="293.0" y="115.0" text-anchor="start">📣 Marketing</text><text class="gm-d" x="293.0" y="137.0" text-anchor="start">reach beyond St. Louis</text></g></svg></div>
-      <div class="note">Illustrative path, not a forecast. Years 4–5 are an open range: nobody knows yet.</div>
-    </div>
-
-    <div data-chapter="4" class="panel slide center">
-      <div class="kicker">Invested and aligned</div>
-      <h1 class="statement big-statement">Your idea. Your company.</h1>
-      <p class="scared">Scared to share your idea, or to lose control? You don't have to.</p>
-      <div class="promise">
-        <div class="pr pop" style="animation-delay:.2s"><div class="pr-e">🔒</div><div class="pr-t">Your idea stays yours</div></div>
-        <div class="pr pop" style="animation-delay:.4s"><div class="pr-e">🧑‍💼</div><div class="pr-t">You're the boss: your company, your decisions</div></div>
-        <div class="pr pop" style="animation-delay:.6s"><div class="pr-e">🧭</div><div class="pr-t">Hands-on help, not a check and goodbye</div></div>
-        <div class="pr pop" style="animation-delay:.8s"><div class="pr-e">🌱</div><div class="pr-t">We only succeed if you grow</div></div>
-      </div>
-      <h1 class="statement win pop" style="animation-delay:1.1s">When you win, <span class="accent">we win.</span></h1>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Money that grows with you</div>
-      <h1 class="statement">Capital in steps, not all at once</h1>
-      <div class="tranches">
-        <div class="tr pop" style="animation-delay:0.20s">
-          <div class="tr-amt">$100K</div>
-          <div class="tr-bar" style="height:70px"><span class="tr-step">1</span></div>
-          <div class="tr-name">🩺 Start</div>
-          <div class="tr-when">After your Scale Check, when we agree it's a fit</div>
-        </div><div class="tr pop" style="animation-delay:0.65s">
-          <div class="tr-amt">$150K</div>
-          <div class="tr-bar" style="height:115px"><span class="tr-step">2</span></div>
-          <div class="tr-name">🧾 Traction</div>
-          <div class="tr-when">Your first 10 new paying clients</div>
-        </div><div class="tr pop" style="animation-delay:1.10s">
-          <div class="tr-amt">$250K</div>
-          <div class="tr-bar" style="height:160px"><span class="tr-step">3</span></div>
-          <div class="tr-name">📈 Scale</div>
-          <div class="tr-when">$100K monthly revenue, and profitable</div>
-        </div>
-        <div class="tr-total pop" style="animation-delay:1.6s"><div class="tt-n">$500K</div><div class="tt-l">over time, as you hit each milestone</div></div>
-      </div>
-      <p class="takeaway">Less risk for both of us. Never more than you need.</p>
-      <div class="note">Illustrative amounts and milestones.</div>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Choose how we work together</div>
-      <h1 class="statement">You don't have to give up equity to start</h1>
-      <div class="opts">
-        <div class="opt pop" style="animation-delay:0.15s">
-          <div class="opt-e">🎟️</div><div class="opt-t">Community</div><div class="opt-price">Free</div>
-          <div class="opt-d">Scale Nights, a free Scale Check, and meeting other owners</div><div class="opt-eq">No equity</div>
-        </div><div class="opt pop" style="animation-delay:0.40s">
-          <div class="opt-e">🧰</div><div class="opt-t">Service package</div><div class="opt-price">Flat fee</div>
-          <div class="opt-d">Sales playbook training, AI setup, a marketing sprint</div><div class="opt-eq">No equity</div>
-        </div><div class="opt pop" style="animation-delay:0.65s">
-          <div class="opt-e">🤝</div><div class="opt-t">Network partner</div><div class="opt-price">Success fee</div>
-          <div class="opt-d">Warm intros to buyers; you pay only on deals that close</div><div class="opt-eq">No equity</div>
-        </div><div class="opt pop opt-hi" style="animation-delay:0.90s">
-          <div class="opt-e">🚀</div><div class="opt-t">Full partnership</div><div class="opt-price">Milestone capital</div>
-          <div class="opt-d">Money in steps plus hands-on help, for the best fits</div><div class="opt-eq">Small stake</div>
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <svg class="gw" viewBox="0 0 800 460" role="img" aria-label="The Gateway Arch opening to a connected world"><path id="w0" class="link" pathLength="1" d="M400,392 Q270.0,-50 140,70" style="animation-delay:2.30s"/><g class="city" style="animation-delay:2.50s"><circle cx="140" cy="70" r="7" fill="var(--own)"/><text class="" x="140" y="56" text-anchor="middle">London</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.20s"><animateMotion dur="2.6s" repeatCount="indefinite" begin="3.20s"><mpath href="#w0"/></animateMotion></circle><path id="w1" class="link" pathLength="1" d="M400,392 Q540.0,-40 680,80" style="animation-delay:2.45s"/><g class="city" style="animation-delay:2.65s"><circle cx="680" cy="80" r="7" fill="var(--own)"/><text class="" x="680" y="66" text-anchor="middle">Tokyo</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.35s"><animateMotion dur="2.9s" repeatCount="indefinite" begin="3.35s"><mpath href="#w1"/></animateMotion></circle><path id="w2" class="link" pathLength="1" d="M400,392 Q230.0,110 60,230" style="animation-delay:2.60s"/><g class="city" style="animation-delay:2.80s"><circle cx="60" cy="230" r="7" fill="var(--own)"/><text class="" x="60" y="216" text-anchor="middle">Bay Area</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.50s"><animateMotion dur="3.2s" repeatCount="indefinite" begin="3.50s"><mpath href="#w2"/></animateMotion></circle><path id="w3" class="link" pathLength="1" d="M400,392 Q275.0,272 150,420" style="animation-delay:2.75s"/><g class="city" style="animation-delay:2.95s"><circle cx="150" cy="420" r="7" fill="var(--own)"/><text class="" x="150" y="406" text-anchor="middle">São Paulo</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.65s"><animateMotion dur="3.5s" repeatCount="indefinite" begin="3.65s"><mpath href="#w3"/></animateMotion></circle><path id="w4" class="link" pathLength="1" d="M400,392 Q525.0,272 650,420" style="animation-delay:2.90s"/><g class="city" style="animation-delay:3.10s"><circle cx="650" cy="420" r="7" fill="var(--own)"/><text class="" x="650" y="406" text-anchor="middle">Lagos</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.80s"><animateMotion dur="3.8s" repeatCount="indefinite" begin="3.80s"><mpath href="#w4"/></animateMotion></circle><path id="w5" class="link" pathLength="1" d="M400,392 Q570.0,120 740,240" style="animation-delay:3.05s"/><g class="city" style="animation-delay:3.25s"><circle cx="740" cy="240" r="7" fill="var(--own)"/><text class="" x="740" y="226" text-anchor="middle">Berlin</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.95s"><animateMotion dur="4.1s" repeatCount="indefinite" begin="3.95s"><mpath href="#w5"/></animateMotion></circle><g class="globe"><circle cx="400" cy="250" r="100" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><ellipse cx="400" cy="250" rx="100" ry="34" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".55"/><line x1="300" y1="250" x2="500" y2="250" stroke="var(--accent)" stroke-width="2" opacity=".55"/><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-0.0s" repeatCount="indefinite"/></ellipse><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-2.0s" repeatCount="indefinite"/></ellipse><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-4.0s" repeatCount="indefinite"/></ellipse></g><path class="arch" pathLength="1" d="M215,400 C270,-10 530,-10 585,400"/><line class="ground" stroke="#d9d6cf" stroke-width="3" x1="170" y1="402" x2="630" y2="402"/><circle cx="400" cy="392" r="9" fill="var(--accent)"/></svg>
+        <div class="kicker">A place to start. People to build with.</div>
+        <h1>Connecting the Midwest<br>to the world.</h1>
+        <p class="lead">Bring your idea, or the business you already run. We bring technology, training, network and marketing, and we grow with you.</p>
+        <div class="ctas">
+          <a class="btn" href="#apply">Bring your idea →</a>
+          <a class="btn ghost" href="#how">How it works</a>
         </div>
       </div>
-      <p class="takeaway">Start small. Go further only when it's working for you.</p>
-    </div>
+    </section>
 
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Your roadmap · step 1 of 6</div>
-      <h1 class="statement road-title">Your roadmap with Gateway X</h1>
-      <div class="road"><div class="stop cur"><div class="dot">📣</div><div class="stop-t">1. Come to a Scale Night</div></div><div class="stop "><div class="dot">🩺</div><div class="stop-t">2. Get your free Scale Check</div></div><div class="stop "><div class="dot">🎯</div><div class="stop-t">3. See if we're a fit</div></div><div class="stop "><div class="dot">🔌</div><div class="stop-t">4. Plug into the network</div></div><div class="stop "><div class="dot">🤝</div><div class="stop-t">5. Grow together</div></div><div class="stop "><div class="dot">🌍</div><div class="stop-t">6. Go beyond the Midwest</div></div></div>
-      <div class="step-card">
-        <div class="sc-emoji">📣</div>
-        <div class="sc-body">
-          <div class="sc-title">Come to a Scale Night</div>
-          <div class="sc-detail">Meet other Midwest owners who scaled. Free, every month.</div>
-          <div class="sc-gets">🎁 You get: <strong>Ideas you can use the next morning</strong></div>
-        </div>
-        <div class="sc-metric">Free</div>
-      </div>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Your roadmap · step 2 of 6</div>
-      <div class="road"><div class="stop done"><div class="dot">📣</div><div class="stop-t">1. Come to a Scale Night</div></div><div class="stop cur"><div class="dot">🩺</div><div class="stop-t">2. Get your free Scale Check</div></div><div class="stop "><div class="dot">🎯</div><div class="stop-t">3. See if we're a fit</div></div><div class="stop "><div class="dot">🔌</div><div class="stop-t">4. Plug into the network</div></div><div class="stop "><div class="dot">🤝</div><div class="stop-t">5. Grow together</div></div><div class="stop "><div class="dot">🌍</div><div class="stop-t">6. Go beyond the Midwest</div></div></div>
-      <div class="step-card">
-        <div class="sc-emoji">🩺</div>
-        <div class="sc-body">
-          <div class="sc-title">Get your free Scale Check</div>
-          <div class="sc-detail">30 minutes. We map where your hours and margin go.</div>
-          <div class="sc-gets">🎁 You get: <strong>A one-page plan for what's holding you back</strong></div>
-        </div>
-        <div class="sc-metric">30 min</div>
-      </div>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Your roadmap · step 3 of 6</div>
-      <div class="road"><div class="stop done"><div class="dot">📣</div><div class="stop-t">1. Come to a Scale Night</div></div><div class="stop done"><div class="dot">🩺</div><div class="stop-t">2. Get your free Scale Check</div></div><div class="stop cur"><div class="dot">🎯</div><div class="stop-t">3. See if we're a fit</div></div><div class="stop "><div class="dot">🔌</div><div class="stop-t">4. Plug into the network</div></div><div class="stop "><div class="dot">🤝</div><div class="stop-t">5. Grow together</div></div><div class="stop "><div class="dot">🌍</div><div class="stop-t">6. Go beyond the Midwest</div></div></div>
-      <div class="step-card">
-        <div class="sc-emoji">🎯</div>
-        <div class="sc-body">
-          <div class="sc-title">See if we're a fit</div>
-          <div class="sc-detail">We look at your customers, your market, and where you want to go.</div>
-          <div class="sc-gets">🎁 You get: <strong>A clear answer within a week</strong></div>
-        </div>
-        <div class="sc-metric">1 week</div>
-      </div>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Your roadmap · step 4 of 6</div>
-      <div class="road"><div class="stop done"><div class="dot">📣</div><div class="stop-t">1. Come to a Scale Night</div></div><div class="stop done"><div class="dot">🩺</div><div class="stop-t">2. Get your free Scale Check</div></div><div class="stop done"><div class="dot">🎯</div><div class="stop-t">3. See if we're a fit</div></div><div class="stop cur"><div class="dot">🔌</div><div class="stop-t">4. Plug into the network</div></div><div class="stop "><div class="dot">🤝</div><div class="stop-t">5. Grow together</div></div><div class="stop "><div class="dot">🌍</div><div class="stop-t">6. Go beyond the Midwest</div></div></div>
-      <div class="step-card">
-        <div class="sc-emoji">🔌</div>
-        <div class="sc-body">
-          <div class="sc-title">Plug into the network</div>
-          <div class="sc-detail">Warm buyers, a proven sales playbook, AI tools and talent.</div>
-          <div class="sc-gets">🎁 You get: <strong>New clients in your first 90 days</strong></div>
-        </div>
-        <div class="sc-metric">Day 1–90</div>
-      </div>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Your roadmap · step 5 of 6</div>
-      <div class="road"><div class="stop done"><div class="dot">📣</div><div class="stop-t">1. Come to a Scale Night</div></div><div class="stop done"><div class="dot">🩺</div><div class="stop-t">2. Get your free Scale Check</div></div><div class="stop done"><div class="dot">🎯</div><div class="stop-t">3. See if we're a fit</div></div><div class="stop done"><div class="dot">🔌</div><div class="stop-t">4. Plug into the network</div></div><div class="stop cur"><div class="dot">🤝</div><div class="stop-t">5. Grow together</div></div><div class="stop "><div class="dot">🌍</div><div class="stop-t">6. Go beyond the Midwest</div></div></div>
-      <div class="step-card">
-        <div class="sc-emoji">🤝</div>
-        <div class="sc-body">
-          <div class="sc-title">Grow together</div>
-          <div class="sc-detail">Pick a package, a network partnership, or milestone capital. You stay in charge.</div>
-          <div class="sc-gets">🎁 You get: <strong>Growth capital, and still your company</strong></div>
-        </div>
-        <div class="sc-metric">Together</div>
-      </div>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Your roadmap · step 6 of 6</div>
-      <div class="road"><div class="stop done"><div class="dot">📣</div><div class="stop-t">1. Come to a Scale Night</div></div><div class="stop done"><div class="dot">🩺</div><div class="stop-t">2. Get your free Scale Check</div></div><div class="stop done"><div class="dot">🎯</div><div class="stop-t">3. See if we're a fit</div></div><div class="stop done"><div class="dot">🔌</div><div class="stop-t">4. Plug into the network</div></div><div class="stop done"><div class="dot">🤝</div><div class="stop-t">5. Grow together</div></div><div class="stop cur"><div class="dot">🌍</div><div class="stop-t">6. Go beyond the Midwest</div></div></div>
-      <div class="step-card">
-        <div class="sc-emoji">🌍</div>
-        <div class="sc-body">
-          <div class="sc-title">Go beyond the Midwest</div>
-          <div class="sc-detail">National customers through our network. Then help the next owner.</div>
-          <div class="sc-gets">🎁 You get: <strong>A Midwest business with customers worldwide</strong></div>
-        </div>
-        <div class="sc-metric">Year 2+</div>
-      </div>
-    </div>
-
-    <div data-chapter="5" class="panel slide">
-      <div class="kicker">How we reach owners · Events</div>
-      <h1 class="statement">Invite them in</h1>
-      <div class="ev">
-        <div class="ev-cards">
-          <div class="ev-card pop" style="animation-delay:.1s"><div class="ev-e">🌆</div><div><div class="ev-t">Scale Night</div><div class="ev-d">Monthly in St. Louis. Owners of real businesses hear how others scaled.</div></div></div>
-          <div class="ev-card pop" style="animation-delay:.3s"><div class="ev-e">🚌</div><div><div class="ev-t">Midwest Scale Tour</div><div class="ev-d">Quarterly in Kansas City, Chicago, Indianapolis, Columbus.</div></div></div>
-          <div class="ev-card pop" style="animation-delay:.5s"><div class="ev-e">🩺</div><div><div class="ev-t">Scale Check on the spot</div><div class="ev-d">30 minutes with a partner and AI, at the event.</div></div></div>
-        </div>
-        <div class="funnel">
-          <div class="fn-h">One event, illustrative</div>
-          <div class="fn-row pop" style="animation-delay:0.15s"><div class="fn-l">🎟️ Owners attend</div><div class="fn-bar" style="width:100%"><span>120</span></div></div><div class="fn-row pop" style="animation-delay:0.40s"><div class="fn-l">🩺 Free Scale Checks</div><div class="fn-bar" style="width:62%"><span>40</span></div></div><div class="fn-row pop" style="animation-delay:0.65s"><div class="fn-l">🎯 Good fits</div><div class="fn-bar" style="width:36%"><span>12</span></div></div><div class="fn-row pop" style="animation-delay:0.90s"><div class="fn-l">🤝 New partnerships</div><div class="fn-bar" style="width:18%"><span>3</span></div></div>
+    <!-- Who it's for -->
+    <section class="alt">
+      <div class="wrap">
+        <div class="kicker">Who it's for</div>
+        <h2 class="reveal">Two ways in</h2>
+        <div class="grid g2" style="margin-top:32px">
+          <div class="card hi reveal"><div class="emoji">💡</div><h3>You have an idea</h3><p>Learn how it's done, test it with real buyers, and build it with people who have done it before.</p></div>
+          <div class="card hi reveal"><div class="emoji">🏪</div><h3>You run a business that works</h3><p>Real customers and revenue, but not sure how to scale. That's most of the Midwest, and it's exactly who we want to meet.</p></div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div data-chapter="5" class="panel slide">
-      <div class="kicker">How we grow talent · Colleges</div>
-      <h1 class="statement">Grow with local colleges</h1>
-      <div class="cols"><div class="col-chip pop" style="animation-delay:0.10s" title="Washington University in St. Louis">🎓 WashU</div><div class="col-chip pop" style="animation-delay:0.22s" title="Saint Louis University">🎓 SLU</div><div class="col-chip pop" style="animation-delay:0.34s" title="University of Missouri–St. Louis">🎓 UMSL</div><div class="col-chip pop" style="animation-delay:0.46s" title="Webster University">🎓 Webster</div><div class="col-chip pop" style="animation-delay:0.58s" title="Southern Illinois University Edwardsville">🎓 SIUE</div><div class="col-chip pop" style="animation-delay:0.70s" title="University of Missouri">🎓 Mizzou</div></div>
-      <div class="col-path">
-        <div class="cp pop" style="animation-delay:.9s"><div class="cp-e">📚</div><div class="cp-t">Class projects</div><div class="cp-d">Students work on real portfolio problems</div></div>
-        <div class="cp-arrow">→</div>
-        <div class="cp pop" style="animation-delay:1.1s"><div class="cp-e">🧑‍🎓</div><div class="cp-t">Fellows</div><div class="cp-d">Paid semesters inside Gateway X companies</div></div>
-        <div class="cp-arrow">→</div>
-        <div class="cp pop" style="animation-delay:1.3s"><div class="cp-e">🚀</div><div class="cp-t">Hire or found</div><div class="cp-d">Join the herd, or bring their own idea</div></div>
-      </div>
-      <p class="takeaway">Fixes the talent gap, and keeps graduates in St. Louis.</p>
-    </div>
-
-    <div data-chapter="5" class="panel slide" data-next="See Herd OS →" data-go="screen-herd">
-      <div class="kicker">How we build trust · Founder stories</div>
-      <h1 class="statement">Let founders tell the story</h1>
-      <div class="cadence">
-        <div class="cd pop" style="animation-delay:.1s"><div class="cd-when">Every 2 weeks</div><div class="cd-e">🪑</div><div class="cd-t">Pipeline session</div><div class="cd-how">💻 Online · 30 min</div><div class="cd-d">Small group of owners already talking with us. Q&amp;A with a founder who went through it.</div></div>
-        <div class="cd pop" style="animation-delay:.3s"><div class="cd-when">Monthly</div><div class="cd-e">🎤</div><div class="cd-t">Founder Stories Live</div><div class="cd-how">💻 Online · 45 min</div><div class="cd-d">10-min story · 20-min Q&amp;A · 15-min breakouts. Open to anyone.</div></div>
-        <div class="cd pop" style="animation-delay:.5s"><div class="cd-when">Quarterly</div><div class="cd-e">🎓</div><div class="cd-t">Campus night</div><div class="cd-how">📍 In person · rotates</div><div class="cd-d">WashU, SLU, UMSL, Webster, SIUE, Mizzou.</div></div>
-        <div class="cd pop" style="animation-delay:.7s"><div class="cd-when">Always</div><div class="cd-e">🎥</div><div class="cd-t">Story library</div><div class="cd-how">🌐 On the website</div><div class="cd-d">Every session is recorded and cut into short clips.</div></div>
-      </div>
-      <div class="jesse pop" style="animation-delay:1s">⏱️ <strong>Partner time: about 1 hour a quarter.</strong> Portfolio founders and alumni host the rest.</div>
-    </div>
-
-</section>
-
-  <!-- Screen 1: the herd (3 steps) -->
-  <section id="screen-herd" class="screen wizard">
-    <div data-chapter="5" class="panel">
-      <div class="hero-row">
-        <h1>Your herd</h1>
-        <div class="proof">
-          <div><strong>$3M</strong><span>invested</span></div>
-          <div><strong>$100M+</strong><span>value</span></div>
-          <div><strong>$13M</strong><span>distributed</span></div>
+    <!-- What we bring -->
+    <section>
+      <div class="wrap">
+        <div class="kicker">What we bring</div>
+        <h2 class="reveal">Everything around your idea</h2>
+        <div class="grid g4" style="margin-top:32px">
+          <div class="card reveal"><div class="emoji">🤖</div><h3>Technology</h3><p>AI-native tools and delivery, so a small team can serve big clients.</p></div>
+          <div class="card reveal"><div class="emoji">🎓</div><h3>Training</h3><p>A proven, meetings-first sales playbook, taught hands-on.</p></div>
+          <div class="card reveal"><div class="emoji">🤝</div><h3>Network</h3><p>Warm introductions to buyers, partners and talent.</p></div>
+          <div class="card reveal"><div class="emoji">📣</div><h3>Marketing</h3><p>Reach beyond your city, across the Midwest and the country.</p></div>
         </div>
       </div>
-      <div id="herd" class="herd"></div>
-    </div>
+    </section>
 
-    <div data-chapter="5" class="panel">
-      <h1>Partner time is full</h1>
-      <div class="capacity big-cap">
-        <div class="cap-label">
-          <span>Partner hours for new launches</span>
-          <strong id="cap-text">1,200 / 1,200 booked</strong>
-        </div>
-        <div class="bar"><div class="fill full" style="width:100%"></div></div>
-        <div class="cap-note">⛔ Next launch slot: <strong>Q3 2027</strong></div>
-      </div>
-      <p class="quote">“We'd have to double ourselves.”</p>
-    </div>
-
-    <div data-chapter="5" class="panel" data-next="">
-      <div class="ask">
-        <div class="tabs">
-          <button class="tab active" data-mode="build"></button>
-          <button class="tab" data-mode="scale"></button>
-        </div>
-        <label for="idea" id="ask-label">What's the next camel?</label>
-        <div class="ask-row">
-          <input id="idea" type="text" placeholder="e.g. AI bookkeeping for dental clinics" autocomplete="off">
-          <button id="go" class="btn">Build launch plan →</button>
-        </div>
-        <div id="chips" class="chips"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Screen 2: AI at work -->
-  <section id="screen-work" class="screen" data-chapter="5">
-    <h1 class="working-title"><span id="work-label">Building the launch plan for</span><br><span id="work-idea" class="accent"></span></h1>
-    <ul id="log" class="log"></ul>
-  </section>
-
-  <!-- Screen 3: launch plan (4 steps) -->
-  <section id="screen-plan" class="screen wizard">
-    <div class="plan-head"><h1 id="plan-title"></h1></div>
-
-    <div data-chapter="5" class="panel">
-      <div class="kpis">
-        <div class="kpi">
-          <div class="kpi-label" id="kpi1-label">Partner hours per launch</div>
-          <div class="kpi-num"><span id="w-hours" class="was">400</span> → <span id="k-hours" class="now">110</span></div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-label" id="kpi2-label">Months to profitable</div>
-          <div class="kpi-num"><span id="w-months" class="was">10</span> → <span id="k-months" class="now">4</span></div>
+    <!-- How it works -->
+    <section class="alt" id="how">
+      <div class="wrap">
+        <div class="kicker">How it works</div>
+        <h2 class="reveal">Your roadmap with Gateway X</h2>
+        <p class="lead reveal">Your idea stays yours. Your company stays yours. When you win, we win.</p>
+        <div class="steps">
+          <div class="card step reveal"><div class="emoji">📣</div><h3>Come to a Scale Night</h3><p>Meet owners who scaled. Free, online or in person.</p><div class="when">Free</div></div>
+          <div class="card step reveal"><div class="emoji">🩺</div><h3>Get a free Scale Check</h3><p>30 minutes to map where your time and margin go. You leave with a one-page plan.</p><div class="when">30 minutes</div></div>
+          <div class="card step reveal"><div class="emoji">🎯</div><h3>See if we're a fit</h3><p>We look at your customers, market and goals, and give you a clear answer.</p><div class="when">About 1 week</div></div>
+          <div class="card step reveal"><div class="emoji">🔌</div><h3>Plug into the network</h3><p>Warm buyers, the sales playbook, AI tools and talent.</p><div class="when">First 90 days</div></div>
+          <div class="card step reveal"><div class="emoji">🤝</div><h3>Grow together</h3><p>Pick the way of working that fits you. You stay in charge.</p><div class="when">Ongoing</div></div>
+          <div class="card step reveal"><div class="emoji">🌍</div><h3>Go beyond the Midwest</h3><p>National customers through our network. Then help the next owner.</p><div class="when">Year 2+</div></div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div data-chapter="5" class="panel">
-      <h2>What the studio brings <span class="hint">tap to turn off</span></h2>
-      <div class="mini">Partner hours: <strong id="k-hours2">110</strong></div>
-      <div id="levers" class="levers"></div>
-    </div>
-
-    <div data-chapter="5" class="panel">
-      <h2>How big can the herd get?</h2>
-      <div class="scale">
-        <div class="scale-row">
-          <span id="scale-label">Launches per year</span>
-          <input id="launches" type="range" min="1" max="12" value="8">
-          <strong id="launch-num" class="big">8</strong>
+    <!-- Work with us -->
+    <section id="work">
+      <div class="wrap">
+        <div class="kicker">Work with us</div>
+        <h2 class="reveal">You don't have to give up equity to start</h2>
+        <p class="lead reveal">Start small. Go further only when it's working for you.</p>
+        <div class="grid g4" style="margin-top:32px">
+          <div class="card reveal"><div class="emoji">🎟️</div><h3>Community</h3><p>Scale Nights, Founder Stories, and a free Scale Check.</p><span class="tag">Free · no equity</span></div>
+          <div class="card reveal"><div class="emoji">🧰</div><h3>Service package</h3><p>Sales playbook training, AI setup, or a marketing sprint for your team.</p><span class="tag">Flat fee · no equity</span></div>
+          <div class="card reveal"><div class="emoji">🤝</div><h3>Network partner</h3><p>Warm intros to buyers. You pay only on deals that close.</p><span class="tag">Success fee · no equity</span></div>
+          <div class="card hi reveal"><div class="emoji">🚀</div><h3>Full partnership</h3><p>Capital plus hands-on help, for companies ready to go all in.</p><span class="tag">Capital in steps</span></div>
         </div>
-        <div id="scale-herd" class="herd small"></div>
-        <div class="bar"><div id="scale-fill" class="fill"></div></div>
-        <div id="scale-verdict" class="verdict"></div>
+        <div class="strip reveal">
+          <div><b>1 · Start</b><span>After your Scale Check, when we agree it's a fit</span></div>
+          <div><b>2 · Traction</b><span>When you land your first new paying clients</span></div>
+          <div><b>3 · Scale</b><span>When revenue is growing and the business is profitable</span></div>
+        </div>
+        <p class="note">Full partnership capital is released in steps as you hit milestones, so you never take more than you need.</p>
       </div>
-    </div>
+    </section>
 
-    <div data-chapter="5" class="panel" data-next="Our recommendation →" data-go="screen-rec">
-      <h2>Day-1 rules <span class="hint">the Unbloat lesson, built in</span></h2>
-      <div class="rules">
-        <div class="rule go">🚀 <div id="rule-go"></div></div>
-        <div class="rule stop">🛑 <div id="rule-stop"></div></div>
+    <!-- Results -->
+    <section class="alt" id="results">
+      <div class="wrap">
+        <div class="kicker">Results</div>
+        <h2 class="reveal">Real companies, real speed</h2>
+        <div class="stats">
+          <div class="stat reveal"><div class="n">2 years</div><div class="l">GrowthAssistant: $0 to $10M</div></div>
+          <div class="stat reveal"><div class="n">100 days</div><div class="l">Aux Insights: launch to profitable</div></div>
+          <div class="stat reveal"><div class="n">6+</div><div class="l">companies built</div></div>
+        </div>
+        <div class="card chart-card reveal" id="chart">
+          <div class="legend"><span><i style="background:var(--c1)"></i>GrowthAssistant</span><span><i style="background:var(--c2)"></i>Ampush v1</span><span><i style="background:var(--c3)"></i>Ampush v2</span></div>
+          <svg class="race" viewBox="0 0 810 380" role="img" aria-label="Revenue growth of companies built with the Gateway X playbook"><line class="grid" x1="70" x2="780" y1="330.0" y2="330.0"/><text class="ax" x="60" y="335.0" text-anchor="end">$0</text><line class="grid" x1="70" x2="780" y1="268.0" y2="268.0"/><text class="ax" x="60" y="273.0" text-anchor="end">$5M</text><line class="grid" x1="70" x2="780" y1="206.0" y2="206.0"/><text class="ax" x="60" y="211.0" text-anchor="end">$10M</text><line class="grid" x1="70" x2="780" y1="144.0" y2="144.0"/><text class="ax" x="60" y="149.0" text-anchor="end">$15M</text><line class="grid" x1="70" x2="780" y1="82.0" y2="82.0"/><text class="ax" x="60" y="87.0" text-anchor="end">$20M</text><line class="grid" x1="70" x2="780" y1="20.0" y2="20.0"/><text class="ax" x="60" y="25.0" text-anchor="end">$25M</text><text class="ax" x="70.0" y="362" text-anchor="middle">Start</text><text class="ax" x="212.0" y="362" text-anchor="middle">6 mo</text><text class="ax" x="354.0" y="362" text-anchor="middle">12 mo</text><text class="ax" x="496.0" y="362" text-anchor="middle">18 mo</text><text class="ax" x="638.0" y="362" text-anchor="middle">24 mo</text><text class="ax" x="780.0" y="362" text-anchor="middle">30 mo</text><path class="rl" pathLength="1" d="M70.0,330.0 L84.2,329.7 L98.4,329.0 L112.6,328.0 L126.8,326.9 L141.0,325.5 L155.2,324.0 L169.4,322.4 L183.6,320.6 L197.8,318.6 L212.0,316.5 L226.2,314.3 L240.4,311.9 L254.6,309.5 L268.8,306.9 L283.0,304.2 L297.2,301.4 L311.4,298.5 L325.6,295.4 L339.8,292.3 L354.0,289.1 L368.2,285.8 L382.4,282.4 L396.6,278.8 L410.8,275.2 L425.0,271.5 L439.2,267.8 L453.4,263.9 L467.6,259.9 L481.8,255.9 L496.0,251.7 L510.2,247.5 L524.4,243.2 L538.6,238.9 L552.8,234.4 L567.0,229.9 L581.2,225.2 L595.4,220.5 L609.6,215.8 L623.8,210.9 L638.0,206.0" stroke="var(--c1)" style="animation-delay:0.2s"/><g class="re" style="animation-delay:2.8s"><title>GrowthAssistant: $0 → $10M in 2 years (founder-reported)</title><circle cx="638.0" cy="206.0" r="9" fill="var(--c1)" stroke="#fff" stroke-width="3"/><text class="ret" x="654.0" y="208.0" text-anchor="start">GrowthAssistant</text><text class="red" x="654.0" y="228.0" text-anchor="start">$0 → $10M in 2 years</text></g><path class="rl" pathLength="1" d="M70.0,305.2 L80.7,304.6 L91.3,303.5 L102.0,301.9 L112.6,299.9 L123.2,297.6 L133.9,295.1 L144.6,292.2 L155.2,289.1 L165.8,285.8 L176.5,282.3 L187.2,278.5 L197.8,274.5 L208.4,270.3 L219.1,265.9 L229.8,261.3 L240.4,256.5 L251.1,251.6 L261.7,246.4 L272.4,241.1 L283.0,235.7 L293.6,230.0 L304.3,224.2 L314.9,218.2 L325.6,212.1 L336.2,205.8 L346.9,199.4 L357.6,192.8 L368.2,186.1 L378.9,179.2 L389.5,172.2 L400.1,165.0 L410.8,157.7 L421.4,150.2 L432.1,142.7 L442.8,135.0 L453.4,127.1 L464.0,119.1 L474.7,111.0 L485.4,102.8 L496.0,94.4" stroke="var(--c2)" style="animation-delay:0.7s"/><g class="re" style="animation-delay:3.3s"><title>Ampush v1: $2M → $19M in 18 months (founder-reported)</title><circle cx="496.0" cy="94.4" r="9" fill="var(--c2)" stroke="#fff" stroke-width="3"/><text class="ret" x="510.0" y="78.4" text-anchor="start">Ampush v1</text><text class="red" x="510.0" y="98.4" text-anchor="start">$2M → $19M in 18 months</text></g><path class="rl" pathLength="1" d="M70.0,292.8 L87.8,292.1 L105.5,290.7 L123.2,288.9 L141.0,286.6 L158.8,283.9 L176.5,280.9 L194.2,277.5 L212.0,273.9 L229.8,270.0 L247.5,265.8 L265.2,261.4 L283.0,256.7 L300.8,251.7 L318.5,246.6 L336.2,241.2 L354.0,235.6 L371.8,229.7 L389.5,223.7 L407.2,217.4 L425.0,211.0 L442.8,204.3 L460.5,197.5 L478.2,190.5 L496.0,183.3 L513.8,175.9 L531.5,168.3 L549.2,160.6 L567.0,152.6 L584.8,144.6 L602.5,136.3 L620.2,127.9 L638.0,119.3 L655.8,110.5 L673.5,101.6 L691.2,92.5 L709.0,83.3 L726.8,73.9 L744.5,64.3 L762.2,54.6 L780.0,44.8" stroke="var(--c3)" style="animation-delay:1.2s"/><g class="re" style="animation-delay:3.8s"><title>Ampush v2: $3M → $23M in 2.5 years (founder-reported)</title><circle cx="780.0" cy="44.8" r="9" fill="var(--c3)" stroke="#fff" stroke-width="3"/><text class="ret" x="766.0" y="28.8" text-anchor="end">Ampush v2</text><text class="red" x="766.0" y="48.8" text-anchor="end">$3M → $23M in 2.5 years</text></g></svg>
+        </div>
+        <p class="note">Founder-reported figures. Ampush was founder Jesse Pujji's company before Gateway X, built with the same playbook. Lines between start and end are smoothed.</p>
       </div>
-      <button id="restart" class="btn ghost restart">↺ New idea</button>
-    </div>
-  </section>
+    </section>
 
-  <!-- Recommendation: closes the video -->
-  <section id="screen-rec" class="screen wizard">
-    <div data-chapter="6" class="panel slide">
-      <div class="kicker">Our recommendation</div>
-      <h1 class="statement">Build the moat at the studio level</h1>
-      <div class="pillars">
-        <div class="pillar"><div class="p-e">🤝</div><div class="p-t">Shared go-to-market</div><div class="p-d">Buyers, cross-selling, client logos</div></div>
-        <div class="pillar"><div class="p-e">📘</div><div class="p-t">Written playbook</div><div class="p-d">Selling + AI delivery, runs without partners</div></div>
-        <div class="pillar"><div class="p-e">🧑‍🤝‍🧑</div><div class="p-t">Talent network</div><div class="p-d">Cohort to cohort, alumni bench</div></div>
-        <div class="pillar"><div class="p-e">🧠</div><div class="p-t">Studio memory</div><div class="p-d">Lessons + data, with client consent</div></div>
-        <div class="pillar"><div class="p-e">🚦</div><div class="p-t">Milestone money</div><div class="p-d">Capital released in steps; double down or wind down</div></div>
+    <!-- Events + stories -->
+    <section id="events">
+      <div class="wrap">
+        <div class="kicker">Events & founder stories</div>
+        <h2 class="reveal">Hear it from founders first</h2>
+        <p class="lead reveal">Most sessions are online, so you can join from anywhere in the Midwest.</p>
+        <div class="grid g4" style="margin-top:32px">
+          <div class="card reveal"><div class="when">Every 2 weeks</div><div class="emoji" style="margin-top:8px">🪑</div><h3>Pipeline session</h3><div class="how">💻 Online · 30 min</div><p>A small group Q&amp;A with a founder who went through it.</p></div>
+          <div class="card reveal"><div class="when">Monthly</div><div class="emoji" style="margin-top:8px">🎤</div><h3>Founder Stories Live</h3><div class="how">💻 Online · 45 min</div><p>A 10-minute story, 20 minutes of Q&amp;A, then breakouts. Open to anyone.</p></div>
+          <div class="card reveal"><div class="when">Monthly</div><div class="emoji" style="margin-top:8px">🌆</div><h3>Scale Night</h3><div class="how">📍 St. Louis + Midwest tour</div><p>For owners of real businesses who want to grow.</p></div>
+          <div class="card reveal"><div class="when">Quarterly</div><div class="emoji" style="margin-top:8px">🎓</div><h3>Campus night</h3><div class="how">📍 In person · rotates</div><p>Founder stories and fellowships at local colleges.</p></div>
+        </div>
+        <div class="chips reveal"><span class="chip">🎓 WashU</span><span class="chip">🎓 SLU</span><span class="chip">🎓 UMSL</span><span class="chip">🎓 Webster</span><span class="chip">🎓 SIUE</span><span class="chip">🎓 Mizzou</span></div>
+        <form id="notify" class="signup reveal" style="padding:0;border:0;background:none;margin-top:28px" novalidate>
+          <input type="email" name="email" placeholder="Your email, to hear about the next session" required aria-label="Email for event updates">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+          <button class="btn" type="submit">Notify me</button>
+          <div class="status" style="width:100%"></div>
+        </form>
       </div>
-    </div>
+    </section>
 
-    <div data-chapter="6" class="panel slide">
-      <div class="kicker">What to implement, and when</div>
-      <div class="roadmap">
-        <div class="phase"><div class="ph-when">First 30 days</div>
-          <div class="ph-item">📘 Write down the meetings-first playbook</div>
-          <div class="ph-item">🚦 Set day-1 rules for all 6 companies</div></div>
-        <div class="phase"><div class="ph-when">By 90 days</div>
-          <div class="ph-item">🤝 One shared buyer list across the herd</div>
-          <div class="ph-item">🌆 First Scale Night for existing owners</div>
-          <div class="ph-item">🎓 Fellowship with 2 local colleges</div></div>
-        <div class="phase"><div class="ph-when">By 6 months</div>
-          <div class="ph-item">📨 Founder front door: "Pitch GatewayX"</div>
-          <div class="ph-item">🏢 Pilot with one existing services firm</div></div>
+    <!-- FAQ -->
+    <section class="alt" id="faq">
+      <div class="wrap">
+        <div class="kicker">FAQ</div>
+        <h2 class="reveal">Questions owners ask us</h2>
+        <div style="margin-top:32px">
+          <details class="reveal"><summary>Will you take my idea?</summary><p>No. Your idea stays yours. We're in this to build companies with founders, not around them.</p></details>
+          <details class="reveal"><summary>Do I have to give up equity?</summary><p>No. Community events, service packages and network partnerships involve no equity. A full partnership includes capital and a stake, and the capital comes in steps as you hit milestones.</p></details>
+          <details class="reveal"><summary>I already run a profitable business. Is this for me?</summary><p>Yes. Many of the owners we want to meet already have customers and revenue but aren't sure how to scale. Start with a free Scale Check.</p></details>
+          <details class="reveal"><summary>Do I need to be in St. Louis?</summary><p>No. We're based in St. Louis, but most sessions are online and we work with owners across the Midwest.</p></details>
+          <details class="reveal"><summary>What does it cost to start?</summary><p>Nothing. Scale Nights, Founder Stories and the Scale Check are free.</p></details>
+          <details class="reveal"><summary>What kinds of businesses fit best?</summary><p>B2B services where technology, a strong sales system and the right introductions can change how fast you grow.</p></details>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div data-chapter="6" class="panel slide">
-      <div class="kicker">Where to focus</div>
-      <h1 class="statement">Track one number</h1>
-      <div class="focus-num"><span class="was">400</span> → <span class="accent">110</span></div>
-      <div class="focus-l">partner hours per launch</div>
-      <div class="risks">
-        <div><strong>Risk:</strong> founders feel less independent → <strong>Fix:</strong> shared tools are opt-in</div>
-        <div><strong>Risk:</strong> more overhead → <strong>Fix:</strong> start with the playbook, it's free</div>
-      </div>
-    </div>
-
-    <div data-chapter="6" class="panel slide center" data-next="">
-      <div class="hero-emoji">🐪🐪🐪</div>
-      <h1 class="statement">The moat isn't any single camel.<br><span class="accent">It's the system that builds them.</span></h1>
-      <div class="end-actions">
-        <button class="btn" onclick="goScreen('screen-founder')">Try it as a founder →</button>
-        <button class="btn ghost" onclick="goScreen('screen-story')">↺ Start over</button>
-      </div>
-      <p class="takeaway">Thank you · Questions?</p>
-    </div>
-  </section>
-
-  <!-- Founder view: pitch GatewayX (6 steps) -->
-  <section id="screen-founder" class="screen wizard">
-    <div class="panel">
-      <h1>Pitch GatewayX</h1>
-      <label class="q big-q" for="f-idea">What are you building?</label>
-      <input id="f-idea" class="field big-field" type="text" placeholder="e.g. AI scheduling for home-care agencies" autocomplete="off">
-    </div>
-
-    <div class="panel">
-      <h1>Your stage</h1>
-      <div id="f-stages" class="pills big-pills"></div>
-    </div>
-
-    <div class="panel" data-next="See my path →">
-      <h1>Where could GatewayX help? <span class="hint">pick any</span></h1>
-      <div id="f-needs" class="pills big-pills"></div>
-    </div>
-
-    <div class="panel" data-enter="chart">
-      <div class="chart-card">
-        <div class="chart-head">
-          <div class="chart-title">Revenue run-rate, next 3 years</div>
-          <div class="legend">
-            <span><i style="background:var(--gx)"></i>With GatewayX</span>
-            <span><i style="background:var(--own)"></i>On your own</span>
+    <!-- Apply -->
+    <section id="apply">
+      <div class="wrap" style="max-width:820px">
+        <div class="kicker">Bring your idea</div>
+        <h2 class="reveal">Let's make it a reality</h2>
+        <p class="lead reveal">Tell us what you're building. We read every one and reply within a few business days.</p>
+        <form id="apply-form" novalidate>
+          <div class="two">
+            <div><label for="a-name">Your name *</label><input id="a-name" name="name" autocomplete="name" required></div>
+            <div><label for="a-email">Email *</label><input id="a-email" name="email" type="email" autocomplete="email" required></div>
           </div>
-        </div>
-        <div class="chart-kpi"><span id="c-own" class="own-num">$0</span> → <span id="c-gx" class="gx-num">$0</span> <span class="hint">in 36 months</span></div>
-        <div id="chart" class="chart"></div>
-        <div class="note">Illustrative projection for demo purposes, not a forecast.</div>
+          <div class="two">
+            <div><label for="a-company">Company (if you have one)</label><input id="a-company" name="company" autocomplete="organization"></div>
+            <div><label for="a-city">City and state</label><input id="a-city" name="city" placeholder="e.g. Kansas City, MO"></div>
+          </div>
+          <label for="a-idea">Your idea or business, in a sentence or two *</label>
+          <textarea id="a-idea" name="idea" required placeholder="e.g. We run a 20-person bookkeeping firm for dental practices and want to grow beyond Missouri."></textarea>
+          <label for="a-stage">Where are you today? *</label>
+          <select id="a-stage" name="stage" required>
+            <option value="">Choose one</option>
+            <option>💡 Idea</option>
+            <option>🛠️ Building, no revenue yet</option>
+            <option>🌱 First revenue (under $1M)</option>
+            <option>📈 $1–5M revenue</option>
+            <option>🚀 $5M+ revenue</option>
+          </select>
+          <label>Where could Gateway X help?</label>
+          <div class="checks">
+            <label><input type="checkbox" name="help" value="Customers and intros"> 🤝 Customers & intros</label>
+            <label><input type="checkbox" name="help" value="Sales playbook"> 📘 Sales playbook</label>
+            <label><input type="checkbox" name="help" value="AI and technology"> 🤖 AI & technology</label>
+            <label><input type="checkbox" name="help" value="Marketing"> 📣 Marketing</label>
+            <label><input type="checkbox" name="help" value="Hiring talent"> 🧑‍🤝‍🧑 Hiring</label>
+            <label><input type="checkbox" name="help" value="Capital"> 💰 Capital</label>
+          </div>
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+          <div style="margin-top:26px"><button class="btn" type="submit">Send to Gateway X →</button></div>
+          <div class="status" id="apply-status"></div>
+          <p class="privacy">We only use your details to reply to you. We never share your idea.</p>
+        </form>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="panel" data-enter="journey">
-      <h1>How GatewayX helps, step by step</h1>
-      <div id="journey" class="journey"></div>
+  <footer>
+    <div class="wrap">
+      <div><strong style="color:var(--ink)">Gateway X</strong> · St. Louis, Missouri · Connecting the Midwest to the world</div>
+      <div><a href="#apply">Bring your idea</a> · <a href="#events">Events</a> · <a href="presentation.html">Team presentation</a></div>
     </div>
-
-    <div class="panel" data-next="Send to Gateway X →" data-check="contact">
-      <h1>How can Gateway X reach you?</h1>
-      <label class="q big-q" for="f-name">Your name</label>
-      <input id="f-name" class="field big-field" type="text" placeholder="e.g. Jordan Lee" autocomplete="name">
-      <label class="q big-q" for="f-email">Email</label>
-      <input id="f-email" class="field big-field" type="email" placeholder="you@company.com" autocomplete="email">
-      <div id="f-error" class="f-error"></div>
-    </div>
-
-    <div class="panel" data-next="" data-enter="sent">
-      <div class="sent">
-        <div class="sent-icon">📨</div>
-        <div>
-          <div id="f-sent-title" class="sent-title">Sending…</div>
-          <div id="f-sent-text" class="sent-text"></div>
-        </div>
-      </div>
-      <button id="f-again" class="btn ghost restart">↺ Pitch another idea</button>
-    </div>
-  </section>
+  </footer>
 
   <script>
-// One thing per screen: every .wizard section shows one .panel at a time,
-// with progress dots and Back / Next buttons.
+    // Where submissions go. FormSubmit emails each one to this address.
+    var FORM_ENDPOINT = "https://formsubmit.co/ajax/wonshon@upenn.edu";
 
-var wizardHooks = {};
-var CHAPTERS = ["", "Today", "The challenge", "The big idea", "What owners see", "How it runs", "Next steps"];
+    // Fade sections in as they scroll into view (and start the chart).
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
 
-function renderChapter(ch) {
-  var bar = document.getElementById("chapters");
-  if (!bar) return;
-  if (!ch) { bar.style.visibility = "hidden"; return; }
-  bar.style.visibility = "visible";
-  bar.innerHTML = CHAPTERS.slice(1).map(function (name, i) {
-    var n = i + 1, cls = n < ch ? "done" : n === ch ? "on" : "";
-    return '<span class="ch ' + cls + '"><b>' + n + '</b> ' + name + '</span>';
-  }).join("");
-} // data-enter name → function, set by app.js / founder.js
-
-// Which top-nav button lights up for each screen.
-var navFor = { "screen-story": "story", "screen-rec": "story", "screen-founder": "founder" };
-
-function goScreen(id) {
-  show(id);
-  var el = document.getElementById(id);
-  if (!el.goTo) renderChapter(parseInt(el.getAttribute("data-chapter") || "0", 10));
-  if (document.getElementById(id).goTo) document.getElementById(id).goTo(0);
-  var view = navFor[id] || "studio";
-  var btns = document.querySelectorAll(".nav-btn");
-  for (var i = 0; i < btns.length; i++) btns[i].classList.toggle("active", btns[i].getAttribute("data-view") === view);
-}
-
-function setupWizard(section) {
-  var panels = section.querySelectorAll(".panel");
-  var nav = document.createElement("div");
-  nav.className = "wiz-nav";
-  nav.innerHTML = '<button class="btn ghost wiz-back">← Back</button><div class="dots"></div><button class="btn wiz-next">Next →</button>';
-  section.appendChild(nav);
-  var dots = nav.querySelector(".dots");
-  for (var i = 0; i < panels.length; i++) dots.appendChild(document.createElement("span"));
-
-  section.goTo = function (n) {
-    n = Math.max(0, Math.min(panels.length - 1, n));
-    section.step = n;
-    for (var i = 0; i < panels.length; i++) {
-      panels[i].classList.toggle("on", i === n);
-      dots.children[i].classList.toggle("on", i === n);
+    function send(data, statusEl, okText, form) {
+      statusEl.className = "status"; statusEl.textContent = "Sending…";
+      return fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        statusEl.className = "status ok"; statusEl.textContent = okText; form.reset();
+      }).catch(function () {
+        statusEl.className = "status err"; statusEl.textContent = "Couldn't send right now. Please check your connection and try again.";
+      });
     }
-    var label = panels[n].getAttribute("data-next");
-    var next = nav.querySelector(".wiz-next");
-    next.style.visibility = label === "" ? "hidden" : "visible";
-    next.textContent = label || "Next →";
-    nav.querySelector(".wiz-back").style.visibility = n === 0 ? "hidden" : "visible";
-    renderChapter(parseInt(panels[n].getAttribute("data-chapter") || "0", 10));
-    var hook = panels[n].getAttribute("data-enter");
-    if (hook && wizardHooks[hook]) wizardHooks[hook]();
-    window.scrollTo(0, 0);
-  };
-  nav.querySelector(".wiz-back").onclick = function () { section.goTo(section.step - 1); };
-  nav.querySelector(".wiz-next").onclick = function () {
-    var check = panels[section.step].getAttribute("data-check");
-    if (check && wizardHooks[check] && !wizardHooks[check]()) return;
-    var go = panels[section.step].getAttribute("data-go");
-    if (go) goScreen(go); else section.goTo(section.step + 1);
-  };
-  section.goTo(0);
-}
 
-(function () {
-  var ws = document.querySelectorAll(".wizard");
-  for (var i = 0; i < ws.length; i++) setupWizard(ws[i]);
-  document.addEventListener("keydown", function (e) {
-    if (e.key !== "ArrowRight" || document.activeElement.tagName === "INPUT") return;
-    var sec = document.querySelector(".screen.active.wizard");
-    if (sec) sec.querySelector(".wiz-next").click();
-  });
-})();
+    document.getElementById("apply-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = e.target, st = document.getElementById("apply-status");
+      if (f._honey.value) return;
+      var missing = ["name", "email", "idea", "stage"].filter(function (n) { return !f[n].value.trim(); });
+      if (missing.length) { st.className = "status err"; st.textContent = "Please fill in the required fields marked *."; f[missing[0]].focus(); return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())) { st.className = "status err"; st.textContent = "Please enter a valid email."; f.email.focus(); return; }
+      var help = Array.prototype.filter.call(f.querySelectorAll('input[name="help"]'), function (c) { return c.checked; }).map(function (c) { return c.value; });
+      send({
+        _subject: "New Gateway X application: " + (f.company.value.trim() || f.name.value.trim()),
+        _template: "table",
+        name: f.name.value.trim(), email: f.email.value.trim(), company: f.company.value.trim(),
+        city: f.city.value.trim(), idea: f.idea.value.trim(), stage: f.stage.value,
+        help_wanted: help.join(", ") || "not specified"
+      }, st, "✅ Thank you! We got it and will reply to " + f.email.value.trim() + ".", f);
+    });
 
-</script>
-  <script>
-// Demo data. Partner hours, buyers and alumni are fictional.
-// Where "Bring your idea" submissions go (FormSubmit emails them to this address).
-var FORM_ENDPOINT = "https://formsubmit.co/ajax/wonshon@upenn.edu";
-
-var DATA = {
-  partners: 3,
-  partnerHoursPerYear: 1200, // hours the 3 partners can spend on launches each year
-
-  portfolio: [
-    { name: "GrowthAssistant", tag: "AI growth talent", status: "breakout" },
-    { name: "Aux Insights", tag: "PE marketing", status: "breakout" },
-    { name: "Ledgerline", tag: "AI finance ops", status: "growing" },
-    { name: "Clauseworks", tag: "AI legal intake", status: "growing" },
-    { name: "Shiftwise", tag: "AI staffing", status: "growing" },
-    { name: "Unbloat", tag: "DTC supplements", status: "wound down" }
-  ],
-
-  // Each lever removes partner hours and months from a launch.
-  levers: [
-    { id: "gtm", icon: "🤝", title: "Shared buyers", savesHours: 120, savesMonths: 3,
-      was: "Partners dial their phones for intros" },
-    { id: "playbook", icon: "📘", title: "Codified playbook", savesHours: 85, savesMonths: 1.5,
-      was: "Partners coach every sales call" },
-    { id: "talent", icon: "🧑‍🤝‍🧑", title: "Talent network", savesHours: 55, savesMonths: 1,
-      was: "Partners recruit every hire" },
-    { id: "memory", icon: "🧠", title: "Studio memory", savesHours: 30, savesMonths: 0.5,
-      was: "Lessons live in three heads" }
-  ],
-
-  // Matched by keywords in the idea the viewer types.
-  sectors: [
-    { keys: ["dental", "dentist", "clinic", "health", "medical", "doctor", "vet"],
-      label: "healthcare practices",
-      buyers: ["Bright Smile Dental Group", "Midwest Pediatric Partners", "Gateway Ortho", "ClearView Vet Clinics"],
-      fromCos: ["Ledgerline", "Shiftwise", "GrowthAssistant"], buyerCount: 41 },
-    { keys: ["law", "legal", "attorney", "lawyer", "contract"],
-      label: "law firms",
-      buyers: ["Hartwell & Price LLP", "Riverbend Legal", "Arch City Law", "Monroe Injury Group"],
-      fromCos: ["Clauseworks", "Aux Insights", "Ledgerline"], buyerCount: 33 },
-    { keys: ["real estate", "property", "realtor", "home", "mortgage"],
-      label: "real estate firms",
-      buyers: ["Keystone Realty", "Lafayette Property Co.", "Brick & Beam Homes", "Northside Mortgage"],
-      fromCos: ["GrowthAssistant", "Shiftwise", "Ledgerline"], buyerCount: 37 },
-    { keys: ["ecommerce", "e-commerce", "shopify", "brand", "retail", "dtc"],
-      label: "consumer brands",
-      buyers: ["Kindred Coffee", "Northloop Apparel", "Paws & Co.", "Glow Theory"],
-      fromCos: ["GrowthAssistant", "Unbloat", "Aux Insights"], buyerCount: 52 },
-    { keys: ["private equity", "pe ", "fund", "investor", "portfolio"],
-      label: "private equity funds",
-      buyers: ["Clayton Street Capital", "Delmar Partners", "Mill Creek Equity", "Forest Park Growth"],
-      fromCos: ["Aux Insights", "Ledgerline", "GrowthAssistant"], buyerCount: 29 }
-  ],
-  defaultSector: {
-    label: "mid-market B2B companies",
-    buyers: ["Arch Logistics", "Summit HVAC Group", "Riverfront Insurance", "Lumen Manufacturing"],
-    fromCos: ["GrowthAssistant", "Aux Insights", "Shiftwise"], buyerCount: 38
-  },
-
-  alumni: ["Priya S. · ex-GrowthAssistant ops lead", "Marcus T. · ex-Ampush sales", "Dana K. · AI delivery engineer"],
-
-  // Two ways in: build a new company, or scale one that already operates.
-  modes: {
-    build: {
-      tab: "🐣 Build a new camel",
-      ask: "What's the next camel?",
-      placeholder: "e.g. AI bookkeeping for dental clinics",
-      examples: ["AI bookkeeping for dental clinics", "AI contract review for small law firms", "AI lead follow-up for real estate teams"],
-      working: "Building the launch plan for",
-      planTitle: "Launch plan",
-      firstStep: { text: "Scanning buyers across 6 portfolio companies", count: "1,284 accounts" },
-      baseHours: 400, hoursScale: 1,
-      kpi2: "Months to profitable", base2: 10, scale2: 1,
-      unit: "launches", kpi1: "Partner hours per launch", button: "Build launch plan →",
-      ruleGo: "<strong>Double down</strong> if ≥ 15 sales meetings / week by week 6 and $50K monthly revenue by day 100",
-      ruleStop: "<strong>Wind down</strong> if not profitable by month 6. Capital returns, lessons go to Studio memory."
-    },
-    scale: {
-      tab: "🤝 Scale an existing company",
-      ask: "Which company should the herd help?",
-      placeholder: "e.g. Midwest dental billing firm, $4M revenue",
-      examples: ["Midwest dental billing firm, $4M revenue", "St. Louis law-firm marketing agency, 30 people", "Real estate admin services, $2M revenue"],
-      working: "Building the scale plan for",
-      planTitle: "Scale plan",
-      firstStep: { text: "Reading the company's clients and workflows", count: "38% of hours AI can take" },
-      baseHours: 300, hoursScale: 0.75,
-      kpi2: "Months to 2× revenue", base2: 24, scale2: 2,
-      unit: "companies", kpi1: "Partner hours per company", button: "Build scale plan →",
-      ruleGo: "<strong>Double down</strong> if margin is up 10 points and ≥ 15 new sales meetings / week by month 3",
-      ruleStop: "<strong>Step back</strong> if margin hasn't moved by month 6. Founder keeps control, lessons go to Studio memory."
-    }
-  },
-
-  // ---------- Founder intake ("Pitch GatewayX") ----------
-  stages: [
-    { id: "idea", label: "💡 Idea", startArr: 0, ownDelay: 10, gxDelay: 4, ownGrowth: 0.07 },
-    { id: "building", label: "🛠️ Building, $0", startArr: 0, ownDelay: 6, gxDelay: 2, ownGrowth: 0.07 },
-    { id: "first", label: "🌱 First revenue (< $1M)", startArr: 0.4, ownDelay: 0, gxDelay: 0, ownGrowth: 0.05 },
-    { id: "growing", label: "📈 $1–5M revenue", startArr: 2.5, ownDelay: 0, gxDelay: 0, ownGrowth: 0.03 },
-    { id: "scaling", label: "🚀 $5M+ revenue", startArr: 6, ownDelay: 0, gxDelay: 0, ownGrowth: 0.02 }
-  ],
-
-  needs: [
-    { id: "customers", label: "🤝 First customers & intros", boost: 0.012 },
-    { id: "playbook", label: "📘 Sales playbook", boost: 0.010 },
-    { id: "talent", label: "🧑‍🤝‍🧑 Hiring talent", boost: 0.006 },
-    { id: "ai", label: "🤖 AI delivery", boost: 0.008 },
-    { id: "capital", label: "💰 Milestone-based capital", boost: 0.008 },
-    { id: "profit", label: "🏦 Path to profit", boost: 0.004 }
-  ],
-
-  // How GatewayX helps on the road from $0 to $10M+.
-  journey: [
-    { stage: ["idea"], title: "Idea → first buyers", help: "Residency: test the idea, book 10 buyer meetings" },
-    { stage: ["building"], title: "$0 → first revenue", help: "Warm intros from the herd + meetings-first playbook" },
-    { stage: ["first"], title: "First revenue → $1M", help: "Capital in steps as you hit milestones; you stay in charge" },
-    { stage: ["growing", "scaling"], title: "$1M → $10M+", help: "AI delivery, shared buyers, talent, profit distributions" }
-  ]
-};
-
-</script>
-  <script>
-// Herd OS demo: one path, herd → idea → AI at work → launch plan.
-
-var state = { mode: "build", idea: "", sector: null, on: { gtm: true, playbook: true, talent: true, memory: true } };
-
-function $(id) { return document.getElementById(id); }
-
-function show(id) {
-  var screens = document.querySelectorAll(".screen");
-  for (var i = 0; i < screens.length; i++) screens[i].classList.remove("active");
-  $(id).classList.add("active");
-  if (typeof renderChapter === "function" && !$(id).goTo) renderChapter(parseInt($(id).getAttribute("data-chapter") || "0", 10));
-  window.scrollTo(0, 0);
-}
-
-// ---------- Screen 1: herd ----------
-function renderHerd() {
-  $("herd").innerHTML = DATA.portfolio.map(function (c) {
-    var cls = c.status === "breakout" ? "breakout" : c.status === "wound down" ? "down" : "";
-    return '<div class="camel ' + cls + '"><div class="emoji">🐪</div>' +
-      '<div class="name">' + c.name + '</div><div class="tag">' + c.tag + '</div>' +
-      '<div class="status">' + c.status + '</div></div>';
-  }).join("");
-
-  var tabs = document.querySelectorAll(".tab");
-  for (var t = 0; t < tabs.length; t++) {
-    tabs[t].textContent = DATA.modes[tabs[t].getAttribute("data-mode")].tab;
-    tabs[t].onclick = function () { setMode(this.getAttribute("data-mode")); };
-  }
-  setMode(state.mode);
-}
-
-function mode() { return DATA.modes[state.mode]; }
-
-function setMode(m) {
-  state.mode = m;
-  var tabs = document.querySelectorAll(".tab");
-  for (var t = 0; t < tabs.length; t++) tabs[t].classList.toggle("active", tabs[t].getAttribute("data-mode") === m);
-  $("ask-label").textContent = mode().ask;
-  $("go").textContent = mode().button;
-  $("idea").placeholder = mode().placeholder;
-  $("idea").value = "";
-  $("chips").innerHTML = mode().examples.map(function (e) {
-    return '<button class="chip">' + e + '</button>';
-  }).join("");
-  var chips = document.querySelectorAll(".chip");
-  for (var i = 0; i < chips.length; i++) {
-    chips[i].onclick = function () { $("idea").value = this.textContent; $("idea").focus(); };
-  }
-}
-
-function saved(l) { return Math.round(l.savesHours * mode().hoursScale); }
-
-function findSector(idea) {
-  var text = " " + idea.toLowerCase() + " ";
-  for (var i = 0; i < DATA.sectors.length; i++) {
-    var s = DATA.sectors[i];
-    for (var k = 0; k < s.keys.length; k++) {
-      if (text.indexOf(s.keys[k]) !== -1) return s;
-    }
-  }
-  return DATA.defaultSector;
-}
-
-// ---------- Screen 2: AI at work ----------
-function runAI() {
-  var idea = $("idea").value.trim() || $("idea").placeholder.replace("e.g. ", "");
-  state.idea = idea;
-  state.sector = findSector(idea);
-  var s = state.sector;
-
-  $("work-label").textContent = mode().working;
-  $("work-idea").textContent = "“" + idea + "”";
-  $("log").innerHTML = "";
-  show("screen-work");
-
-  var steps = [
-    mode().firstStep,
-    { text: "Matching warm intros among " + s.label, count: s.buyerCount + " matches" },
-    { text: "Pulling the GrowthAssistant sales playbook (meetings per week)", count: "14 of 18 steps" },
-    { text: "Finding alumni and St. Louis talent ready to join", count: "6 people" },
-    { text: "Applying the Unbloat lesson: setting day-1 kill rules", count: "2 rules" },
-    { text: "Estimating partner hours and payoff", count: "done" }
-  ];
-
-  var i = 0;
-  function next() {
-    var prev = $("log").lastElementChild;
-    if (prev) {
-      prev.querySelector(".tick").className = "tick done";
-      prev.querySelector(".tick").textContent = "✓";
-      prev.querySelector(".count").style.visibility = "visible";
-    }
-    if (i >= steps.length) { setTimeout(showPlan, 600); return; }
-    var li = document.createElement("li");
-    li.innerHTML = '<span class="tick spin"></span><span>' + steps[i].text + '</span>' +
-      '<span class="count" style="visibility:hidden">' + steps[i].count + '</span>';
-    $("log").appendChild(li);
-    i++;
-    setTimeout(next, 1100);
-  }
-  next();
-}
-
-// ---------- Screen 3: launch plan ----------
-function showPlan() {
-  var s = state.sector;
-  var md = mode();
-  $("w-hours").textContent = md.baseHours;
-  $("w-months").textContent = md.base2;
-  $("kpi1-label").textContent = md.kpi1;
-  $("kpi2-label").textContent = md.kpi2;
-  $("scale-label").textContent = md.unit.charAt(0).toUpperCase() + md.unit.slice(1) + " per year";
-  $("rule-go").innerHTML = md.ruleGo;
-  $("rule-stop").innerHTML = md.ruleStop;
-  $("k-hours").textContent = md.baseHours;
-  $("plan-title").innerHTML = md.planTitle + ": <span class='accent'>" + state.idea + "</span>";
-
-  var found = {
-    gtm: s.buyerCount + " warm buyers from " + s.fromCos.length + " sister companies. First call: " + s.buyers[0],
-    playbook: "14 of 18 sales steps reused. Goal: 15 meetings a week",
-    talent: "6 alumni ready, incl. " + DATA.alumni[0].split(" · ")[0] + " (ex-GrowthAssistant)",
-    memory: "212 past AI deliveries + the Unbloat post-mortem"
-  };
-
-  $("levers").innerHTML = DATA.levers.map(function (l) {
-    return '<button class="lever" data-id="' + l.id + '">' +
-      '<div class="icon">' + l.icon + '</div><div class="t">' + l.title + '</div>' +
-      '<div class="found" data-on="' + escapeAttr(found[l.id]) + '" data-off="' + escapeAttr(l.was) + '">' + found[l.id] + '</div>' +
-      '<div class="save">−' + saved(l) + ' partner hrs</div></button>';
-  }).join("");
-
-  var levers = document.querySelectorAll(".lever");
-  for (var i = 0; i < levers.length; i++) {
-    levers[i].onclick = function () {
-      var id = this.getAttribute("data-id");
-      state.on[id] = !state.on[id];
-      update();
-    };
-  }
-
-  show("screen-plan");
-  $("screen-plan").goTo(0);
-  update();
-}
-
-function escapeAttr(t) { return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
-
-function currentHours() {
-  var md = mode(), h = md.baseHours, m = md.base2;
-  DATA.levers.forEach(function (l) {
-    if (state.on[l.id]) { h -= saved(l); m -= l.savesMonths * md.scale2; }
-  });
-  return { hours: h, months: m };
-}
-
-function update() {
-  var c = currentHours();
-  animateNum($("k-hours"), c.hours);
-  animateNum($("k-hours2"), c.hours);
-  $("k-months").textContent = Math.round(c.months * 10) / 10;
-
-  var levers = document.querySelectorAll(".lever");
-  for (var i = 0; i < levers.length; i++) {
-    var on = state.on[levers[i].getAttribute("data-id")];
-    levers[i].classList.toggle("off", !on);
-    var f = levers[i].querySelector(".found");
-    f.textContent = on ? f.getAttribute("data-on") : f.getAttribute("data-off");
-  }
-
-  // Scale: how many launches fit in 3 partners' hours?
-  var n = parseInt($("launches").value, 10);
-  $("launch-num").textContent = n;
-  var herd = "";
-  for (var k = 0; k < n; k++) herd += "<span>🐪</span>";
-  $("scale-herd").innerHTML = herd;
-
-  var needed = n * c.hours;
-  var pct = Math.min(100, needed / DATA.partnerHoursPerYear * 100);
-  var fill = $("scale-fill");
-  fill.style.width = pct + "%";
-  fill.classList.toggle("full", needed > DATA.partnerHoursPerYear);
-
-  var partnersNeeded = Math.ceil(needed / (DATA.partnerHoursPerYear / DATA.partners));
-  var v = $("scale-verdict");
-  if (partnersNeeded <= DATA.partners) {
-    v.className = "verdict ok";
-    v.textContent = "✅ " + n + " " + mode().unit + " a year fits in your 3 partners (" + needed.toLocaleString() + " of 1,200 hrs)";
-  } else {
-    v.className = "verdict bad";
-    v.textContent = "⛔ You'd need " + partnersNeeded + " partners. You'd have to double yourselves.";
-  }
-}
-
-function animateNum(el, to) {
-  var from = parseInt(el.textContent, 10) || to;
-  var start = null;
-  function step(t) {
-    if (!start) start = t;
-    var p = Math.min(1, (t - start) / 400);
-    el.textContent = Math.round(from + (to - from) * p);
-    if (p < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-
-// ---------- wiring ----------
-$("go").onclick = runAI;
-$("idea").addEventListener("keydown", function (e) { if (e.key === "Enter") runAI(); });
-$("launches").oninput = update;
-$("restart").onclick = function () {
-  state.on = { gtm: true, playbook: true, talent: true, memory: true };
-  setMode(state.mode);
-  show("screen-herd");
-  $("screen-herd").goTo(2);
-  $("idea").focus();
-};
-
-renderHerd();
-
-</script>
-  <script>
-// Founder view: pitch GatewayX, pick stage + needs, see the revenue path.
-
-var founder = { stage: "building", needs: { customers: true, playbook: true } };
-
-// ---------- top nav ----------
-function setView(view) {
-  goScreen({ story: "screen-story", studio: "screen-herd", founder: "screen-founder" }[view]);
-}
-(function () {
-  var btns = document.querySelectorAll(".nav-btn");
-  for (var i = 0; i < btns.length; i++) btns[i].onclick = function () { setView(this.getAttribute("data-view")); };
-})();
-
-// ---------- form ----------
-function renderFounderForm() {
-  $("f-stages").innerHTML = DATA.stages.map(function (s) {
-    return '<button class="pill" data-stage="' + s.id + '">' + s.label + '</button>';
-  }).join("");
-  $("f-needs").innerHTML = DATA.needs.map(function (n) {
-    return '<button class="pill" data-need="' + n.id + '">' + n.label + '</button>';
-  }).join("");
-
-  var sp = document.querySelectorAll("[data-stage]");
-  for (var i = 0; i < sp.length; i++) sp[i].onclick = function () { founder.stage = this.getAttribute("data-stage"); refreshFounder(); };
-  var np = document.querySelectorAll("[data-need]");
-  for (var j = 0; j < np.length; j++) np[j].onclick = function () {
-    var id = this.getAttribute("data-need"); founder.needs[id] = !founder.needs[id]; refreshFounder();
-  };
-  wizardHooks.chart = drawChart;
-  wizardHooks.journey = renderJourney;
-  wizardHooks.sent = sendPitch;
-  wizardHooks.contact = checkContact;
-  $("f-again").onclick = function () {
-    $("f-idea").value = ""; $("f-name").value = ""; $("f-email").value = "";
-    founder.stage = "building"; founder.needs = { customers: true, playbook: true };
-    refreshFounder();
-    $("screen-founder").goTo(0);
-  };
-  refreshFounder();
-}
-
-function refreshFounder() {
-  var sp = document.querySelectorAll("[data-stage]");
-  for (var i = 0; i < sp.length; i++) sp[i].classList.toggle("on", sp[i].getAttribute("data-stage") === founder.stage);
-  var np = document.querySelectorAll("[data-need]");
-  for (var j = 0; j < np.length; j++) np[j].classList.toggle("on", !!founder.needs[np[j].getAttribute("data-need")]);
-  renderJourney();
-  drawChart();
-}
-
-function renderJourney() {
-  var hereIdx = 0;
-  DATA.journey.forEach(function (j, i) { if (j.stage.indexOf(founder.stage) !== -1) hereIdx = i; });
-  $("journey").innerHTML = DATA.journey.map(function (j, i) {
-    var cls = i < hereIdx ? "past" : i === hereIdx ? "here" : "";
-    return '<div class="step ' + cls + '"><div class="n">' + (i + 1) + '</div>' +
-      '<div class="t">' + j.title + '</div><div class="h">' + j.help + '</div></div>';
-  }).join("");
-}
-
-// ---------- projection (illustrative) ----------
-function stageObj() {
-  for (var i = 0; i < DATA.stages.length; i++) if (DATA.stages[i].id === founder.stage) return DATA.stages[i];
-}
-
-function project() {
-  var s = stageObj(), boost = 0;
-  DATA.needs.forEach(function (n) { if (founder.needs[n.id]) boost += n.boost; });
-  function path(delay, base, g, cap) {
-    var out = [];
-    for (var t = 0; t <= 36; t++) {
-      if (t < delay) { out.push(s.startArr); continue; }
-      var x = t - delay;
-      out.push(cap / (1 + (cap / base - 1) * Math.exp(-g * x)));
-    }
-    return out;
-  }
-  return {
-    own: path(s.ownDelay, Math.max(s.startArr, 0.06), s.ownGrowth, 12),
-    gx: path(s.gxDelay, Math.max(s.startArr, 0.12), s.ownGrowth * 1.5 + boost, 30)
-  };
-}
-
-function money(m) {
-  if (m < 0.001) return "$0";
-  if (m < 1) return "$" + Math.round(m * 1000) + "K";
-  return "$" + (m < 10 ? m.toFixed(1) : Math.round(m)) + "M";
-}
-
-// ---------- chart (hand-built SVG, one axis) ----------
-function drawChart() {
-  var el = $("chart");
-  if (!el || !el.offsetParent) return; // not visible yet
-  var p = project();
-  var W = 520, H = 320, L = 52, R = 72, T = 16, B = 36;
-  var max = Math.max.apply(null, p.gx.concat(p.own));
-  var yMax = [1, 2, 5, 10, 15, 20, 30].filter(function (v) { return v >= max * 1.05; })[0] || 30;
-  function x(t) { return L + (W - L - R) * t / 36; }
-  function y(v) { return T + (H - T - B) * (1 - v / yMax); }
-
-  var ticks = (yMax <= 2 ? [0, 1, 2] : [0, 5, 10, 20, 30]).filter(function (v) { return v <= yMax; });
-  var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Revenue projection with and without GatewayX">';
-  ticks.forEach(function (v) {
-    svg += '<line class="gridline" x1="' + L + '" x2="' + (W - R) + '" y1="' + y(v) + '" y2="' + y(v) + '"/>';
-    svg += '<text class="axis-text" x="' + (L - 8) + '" y="' + (y(v) + 4) + '" text-anchor="end">' + (v === 0 ? "$0" : "$" + v + "M") + '</text>';
-  });
-  ["Now", "Year 1", "Year 2", "Year 3"].forEach(function (lab, i) {
-    svg += '<text class="axis-text" x="' + x(i * 12) + '" y="' + (H - 10) + '" text-anchor="middle">' + lab + '</text>';
-  });
-
-  function line(arr, color) {
-    return '<path class="line" stroke="' + color + '" d="' + arr.map(function (v, t) {
-      return (t ? "L" : "M") + x(t).toFixed(1) + "," + y(v).toFixed(1);
-    }).join("") + '"/>';
-  }
-  svg += line(p.own, "var(--own)") + line(p.gx, "var(--gx)");
-
-  // Mark the month each path first reaches $1M.
-  [["gx", "var(--gx)", -14, "end"], ["own", "var(--own)", 26, "start"]].forEach(function (k) {
-    var arr = p[k[0]];
-    for (var t = 0; t <= 36; t++) if (arr[t] >= 1 && (t === 0 || arr[t - 1] < 1)) {
-      if (t === 0) break;
-      svg += '<circle cx="' + x(t) + '" cy="' + y(arr[t]) + '" r="6" fill="' + k[1] + '" stroke="#fff" stroke-width="2"/>';
-      svg += '<text class="ms-text" x="' + (x(t) + (k[3] === "end" ? -8 : 8)) + '" y="' + (y(arr[t]) + k[2]) + '" text-anchor="' + k[3] + '">$1M · mo ' + t + '</text>';
-      break;
-    }
-  });
-
-  // Direct end labels (nudged apart if they collide).
-  var gy = y(p.gx[36]), oy = y(p.own[36]);
-  if (Math.abs(gy - oy) < 18) { if (gy <= oy) oy = gy + 18; else gy = oy + 18; }
-  svg += '<text class="end-label" x="' + (W - R + 8) + '" y="' + (gy + 5) + '">' + money(p.gx[36]) + '</text>';
-  svg += '<text class="end-label" x="' + (W - R + 8) + '" y="' + (oy + 5) + '">' + money(p.own[36]) + '</text>';
-
-  svg += '<line id="cross" class="cross" y1="' + T + '" y2="' + (H - B) + '" style="display:none"/>';
-  svg += '<rect id="hit" x="' + L + '" y="0" width="' + (W - L - R) + '" height="' + H + '" fill="transparent"/>';
-  svg += '</svg><div id="tip" class="tip"></div>';
-  el.innerHTML = svg;
-
-  $("c-own").textContent = money(p.own[36]);
-  $("c-gx").textContent = money(p.gx[36]);
-
-  // Hover: crosshair + tooltip.
-  var svgEl = el.querySelector("svg"), cross = $("cross"), tip = $("tip");
-  $("hit").onmousemove = function (e) {
-    var r = svgEl.getBoundingClientRect();
-    var sx = (e.clientX - r.left) * W / r.width;
-    var t = Math.max(0, Math.min(36, Math.round((sx - L) / (W - L - R) * 36)));
-    cross.setAttribute("x1", x(t)); cross.setAttribute("x2", x(t)); cross.style.display = "";
-    tip.innerHTML = "<strong>Month " + t + "</strong><br><i style='background:var(--gx)'></i>With GatewayX " + money(p.gx[t]) +
-      "<br><i style='background:var(--own)'></i>On your own " + money(p.own[t]);
-    tip.style.display = "block";
-    var px = x(t) * r.width / W;
-    tip.style.left = (px > r.width / 2 ? px - tip.offsetWidth - 12 : px + 12) + "px";
-    tip.style.top = "20px";
-  };
-  $("hit").onmouseleave = function () { cross.style.display = "none"; tip.style.display = "none"; };
-}
-
-// ---------- send ----------
-function checkContact() {
-  var email = $("f-email").value.trim();
-  if (!$("f-name").value.trim()) { $("f-error").textContent = "Please add your name."; return false; }
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { $("f-error").textContent = "Please add a valid email."; return false; }
-  $("f-error").textContent = "";
-  return true;
-}
-
-function sendPitch() {
-  var idea = $("f-idea").value.trim() || "(no idea typed)";
-  var needs = DATA.needs.filter(function (n) { return founder.needs[n.id]; }).map(function (n) { return n.label; });
-  var sector = findSector(idea);
-  $("f-sent-title").textContent = "Sending…";
-  $("f-sent-text").textContent = "";
-
-  fetch(FORM_ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body: JSON.stringify({
-      _subject: "New Gateway X pitch: " + idea,
-      _template: "table",
-      name: $("f-name").value.trim(),
-      email: $("f-email").value.trim(),
-      idea: idea,
-      stage: stageObj().label,
-      help_wanted: needs.join(", ") || "none picked"
-    })
-  }).then(function (r) {
-    if (!r.ok) throw new Error("status " + r.status);
-    $("f-sent-title").textContent = "Sent to the Gateway X team";
-    $("f-sent-text").innerHTML = "“" + escapeAttr(idea) + "” · " + stageObj().label + " · " + needs.length + " asks<br>" +
-      "We'll reply to " + escapeAttr($("f-email").value.trim()) + " within 48 hours.";
-  }).catch(function () {
-    $("f-sent-title").textContent = "Couldn't send right now";
-    $("f-sent-text").textContent = "Check your internet connection and try again.";
-  });
-}
-
-window.addEventListener("resize", drawChart);
-renderFounderForm();
-
-</script>
+    document.getElementById("notify").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = e.target, st = f.querySelector(".status");
+      if (f._honey.value) return;
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())) { st.className = "status err"; st.textContent = "Please enter a valid email."; return; }
+      send({ _subject: "Gateway X event signup", email: f.email.value.trim() }, st, "✅ You're on the list for the next session.", f);
+    });
+  </script>
 </body>
 </html>
