@@ -15,3 +15,5 @@
 - `SESSIONS`: the sessions offered at the end of "Bring your idea" (free and paid). Paste a Calendly or similar link into `bookingUrl` to send people there instead of the built-in time picker.
 - `ZOOM_LINK`: paste the real Zoom link and it appears after someone signs up for an online event. Left empty, the site says the link is coming by email.
 - `CAMPUSES` and `TOUR`: sample venues for in-person events. Replace them with confirmed locations.
+
+**Company logos:** upload `aux-insights-logo.png` and `growthassistant-logo.png` to this folder and they replace the AUX / GA badges in Results automatically.

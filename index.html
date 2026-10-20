@@ -342,6 +342,170 @@
       .wz-nav .btn { width: auto; flex: 1; }
       .wz-chip { font-size: 16px; }
     }
+
+    /* v4: results stacked with logos */
+    .journeys { grid-template-columns: 1fr !important; }
+    .co-logo { width: 56px; height: 56px; border-radius: 14px; background: var(--lc); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 20px; flex-shrink: 0; overflow: hidden; }
+    .co-logo img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+    .co-logo.img span { display: none; }
+    .j-top .co-logo span { color: #fff !important; font-size: 17px; letter-spacing: .02em; }
+    .co-logo:not(.img) img { display: none; }
+    .j-top { align-items: center !important; gap: 16px !important; }
+    .j-name { flex: 1; }
+    .j-name b { display: block; font-size: 22px; }
+    .j-name span { display: block; font-size: 15px; color: var(--muted); }
+    .launched { display: inline-block; font-style: normal; font-size: 13px; font-weight: 800; color: var(--accent-ink); background: var(--accent-soft); padding: 3px 10px; border-radius: 99px; margin-top: 6px; }
+
+    /* v4: rocket fuel */
+    .launch { display: grid; grid-template-columns: 260px 1fr; gap: 30px; align-items: center; margin-top: 32px; overflow: hidden; }
+    .pad { position: relative; height: 400px; display: grid; grid-template-columns: 1fr 64px; gap: 12px; align-items: end; }
+    .sky { position: relative; height: 100%; border-radius: 16px; background: linear-gradient(#eef3fb, #fdf6ee); overflow: hidden; }
+    .sky::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 18px; background: #d9d6cf; }
+    .rocket-wrap { position: absolute; left: 50%; bottom: 18px; transform: translate(-50%, 0); transition: transform 1.8s cubic-bezier(.45,0,.3,1); }
+    .sky .stars { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease 1s; background: radial-gradient(2px 2px at 20% 20%, #c9d3e6 50%, transparent 51%), radial-gradient(2px 2px at 70% 12%, #c9d3e6 50%, transparent 51%), radial-gradient(2px 2px at 40% 35%, #c9d3e6 50%, transparent 51%), radial-gradient(2px 2px at 85% 40%, #c9d3e6 50%, transparent 51%); }
+    .launch.go .sky .stars { opacity: 1; }
+    .rocket { font-size: 72px; line-height: 1; transform: rotate(-45deg); }
+    .flame { width: 26px; height: 0; margin: -6px auto 0; border-radius: 50% 50% 60% 60%; background: radial-gradient(circle at 50% 30%, #ffe08a, #ff8a3d 55%, rgba(255,90,40,0)); transition: height .3s ease; }
+    .launch.f4 .flame { height: 26px; animation: flick .15s infinite alternate; }
+    .launch.go .flame { height: 70px; }
+    .launch.go .rocket-wrap { transform: translate(-50%, -235px); }
+    @keyframes flick { to { transform: scaleY(.85) scaleX(1.1); } }
+    .tank { height: 100%; border: 3px solid var(--ink); border-radius: 14px; display: flex; flex-direction: column; overflow: hidden; background: #f5f3ef; }
+    .seg { flex: 1; position: relative; border-top: 2px solid #fff; }
+    .seg::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: var(--c1); transition: height .6s ease; }
+    .seg span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 22px; opacity: .25; transition: opacity .4s; z-index: 1; }
+    .launch.f1 .s1::before, .launch.f2 .s2::before, .launch.f3 .s3::before, .launch.f4 .s4::before { height: 100%; }
+    .launch.f1 .s1 span, .launch.f2 .s2 span, .launch.f3 .s3 span, .launch.f4 .s4 span { opacity: 1; }
+    .tank-l { position: absolute; right: 0; bottom: -26px; width: 64px; text-align: center; font-size: 13px; font-weight: 800; color: var(--muted); }
+    .fuel-start { display: flex; flex-direction: column; padding: 0 0 12px 50px; position: relative; }
+    .fuel-start::before { content: "🏪"; position: absolute; left: 0; top: 0; font-size: 30px; }
+    .fuel-start { font-size: 0; }
+    .fuel-start b { font-size: 19px; } .fuel-start span { font-size: 15px; color: var(--muted); }
+    .fuel { list-style: none; padding: 0; margin: 0; }
+    .fuel li { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border: 2px solid var(--line); border-radius: 14px; margin-top: 10px; opacity: .45; transition: all .4s ease; }
+    .fuel li.lit { opacity: 1; border-color: var(--accent); background: var(--accent-soft); }
+    .fuel .fe { font-size: 28px; }
+    .fuel li > div { flex: 1; }
+    .fuel b { display: block; font-size: 18px; } .fuel b em { font-style: normal; color: var(--accent-ink); }
+    .fuel li > div > span { font-size: 15px; color: var(--muted); }
+    .fuel .tick { width: 28px; height: 28px; border-radius: 50%; background: #e7e4dd; color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 15px; transition: background .3s; }
+    .fuel li.lit .tick { background: var(--c3); }
+    .liftoff { margin-top: 16px; font-size: 22px; opacity: 0; transform: translateY(8px); transition: all .6s ease .5s; }
+    .liftoff b { color: var(--accent-ink); font-size: 30px; }
+    .launch.go .liftoff { opacity: 1; transform: none; }
+
+    /* v4: roadmap as a road */
+    .road { position: relative; margin-top: 40px; padding: 10px 0 0; }
+    .road::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 22px; transform: translateX(-50%); background: #3b3e46; border-radius: 12px; }
+    .road::after { content: ""; position: absolute; top: 14px; bottom: 14px; left: 50%; width: 4px; transform: translateX(-50%); background: repeating-linear-gradient(#fff 0 18px, transparent 18px 34px); }
+    .sign { position: relative; z-index: 2; width: max-content; margin: 18px auto; background: var(--ink); color: #fff; border-radius: 12px; padding: 10px 18px; text-align: center; box-shadow: 0 4px 0 var(--accent); }
+    .sign span { display: block; font-weight: 800; font-size: 18px; }
+    .sign em { font-style: normal; font-size: 13px; opacity: .8; }
+    .stop { position: relative; display: flex; margin: 10px 0; }
+    .stop.left { justify-content: flex-start; padding-right: calc(50% + 40px); }
+    .stop.right { justify-content: flex-end; padding-left: calc(50% + 40px); }
+    .stop .stop-card { width: 100%; }
+    .stop.free .stop-card { border-color: var(--c3); }
+    .pin { position: absolute; left: 50%; top: 26px; transform: translateX(-50%); z-index: 2; width: 44px; height: 44px; border-radius: 50% 50% 50% 0; rotate: -45deg; background: var(--accent); border: 3px solid #fff; display: grid; place-items: center; box-shadow: 0 3px 8px rgba(0,0,0,.15); }
+    .stop.free .pin { background: var(--c3); }
+    .pin span { rotate: 45deg; color: #fff; font-weight: 800; font-size: 17px; }
+    .stop-top { display: flex; justify-content: space-between; align-items: center; }
+    .stop-card .when { margin: 0; }
+    .stop-card .btn.small, .btn.small { padding: 11px 16px; font-size: 15px; margin-top: 14px; }
+    .road-end { position: relative; z-index: 2; width: max-content; max-width: 90%; margin: 22px auto 0; background: var(--card); border: 3px solid var(--ink); border-radius: 14px; padding: 12px 18px; font-size: 18px; text-align: center; }
+
+    /* v4: event types */
+    .etypes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 30px; }
+    .etype { font: inherit; text-align: left; cursor: pointer; padding: 18px; display: flex; flex-direction: column; justify-content: flex-start; }
+    .etype .go { margin-top: auto !important; padding-top: 10px; }
+    .ev-more { display: block; margin: 14px auto 0; }
+    .etype h3 { font-size: 18px; margin-top: 8px; }
+    .etype p { font-size: 15px; }
+    .etype .emoji { font-size: 34px; margin-top: 6px; }
+    .etype .go { display: inline-block; margin-top: 10px; font-weight: 800; font-size: 14px; color: var(--accent-ink); }
+    .etype.on { border-color: var(--accent); background: var(--accent-soft); }
+    .etype:hover { border-color: var(--accent); }
+
+    @media (max-width: 860px) {
+      .etypes { grid-template-columns: 1fr 1fr; }
+      .launch { grid-template-columns: 1fr; }
+      .pad { height: 300px; max-width: 360px; margin: 0 auto 10px; width: 100%; }
+      .launch.go .rocket-wrap { transform: translate(-50%, -135px); }
+    }
+    @media (max-width: 680px) {
+      .road::before, .road::after { left: 22px; }
+      .stop.left, .stop.right { padding: 0 0 0 58px; }
+      .pin { left: 22px; }
+      .sign, .road-end { margin-left: 0; }
+    }
+    @media (max-width: 560px) {
+      .etypes { grid-template-columns: 1fr; }
+      .co-logo { width: 46px; height: 46px; font-size: 17px; }
+      .j-top { flex-wrap: wrap; }
+      .j-count { width: 100%; text-align: left !important; }
+      .stop-card .btn.small { width: 100%; }
+    }
+
+    /* ===== Unified design system (applies site-wide, overrides one-off styles) ===== */
+    :root { --r: 20px; --r-sm: 14px; --bd: 2px solid var(--line); --shadow: 0 1px 2px rgba(22,24,29,.04), 0 6px 20px rgba(22,24,29,.04); --gap: 16px; }
+    section { padding: 88px 0; }
+    .wrap > .kicker { margin-bottom: 10px; }
+    .wrap > h2 { max-width: 820px; }
+    .wrap > .lead { margin-top: 14px; margin-bottom: 0; }
+    .wrap > .lead + * , .wrap > h2 + .grid, .wrap > h2 + .journeys { margin-top: 36px !important; }
+    /* every card-like surface */
+    .card, .ev, .wz-sess, .wz-path, .wz-idea, .fuel li, details, .stop-card, .journey, .etype {
+      background: var(--card); border: var(--bd); border-radius: var(--r); box-shadow: var(--shadow);
+    }
+    .card { padding: 26px; }
+    .fuel li, .wz-idea, .ev { border-radius: var(--r-sm); }
+    .card.hi, .stop.free .stop-card { border-color: var(--line); }
+    .card.hi { border-top: 4px solid var(--accent); }
+    .stop.free .stop-card { border-top: 4px solid var(--c3); }
+    .stop.grow .stop-card { border-top: 4px solid var(--accent); }
+    a.card:hover, .etype:hover, .wz-path:hover, .wz-idea:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(22,24,29,.08); }
+    .etype.on, .wz-idea.on, .wz-sess.on, .wz-chip.on, .wz-slot.on, .ev-filter.on, .fuel li.lit { border-color: var(--accent); background: var(--accent-soft); }
+    /* one heading scale inside cards */
+    .card h3, .stop-card h3, .etype h3, .wz-sess b, .j-name b { font-size: 21px; line-height: 1.25; }
+    .card p, .stop-card p, .etype p { font-size: 16px; line-height: 1.5; color: var(--muted); }
+    /* one icon size inside cards */
+    .card .emoji, .stop-card .emoji, .etype .emoji { font-size: 38px; line-height: 1; }
+    .fuel .fe, .wz-sess-e { font-size: 30px; }
+    /* one pill style for labels */
+    .tag, .launched, .wz-price, .when, .cd-when, .ev-free {
+      display: inline-flex; align-items: center; font-style: normal; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent-ink); line-height: 1.4;
+    }
+    .ev-free, .wz-price.free { background: #e6f4ef; color: #1f7a5c; }
+    .wz-price.paid { background: #eef1fb; color: #3d5fae; }
+    .stop.free .when { background: #e6f4ef; color: #1f7a5c; }
+    .etype .when, .stop-card .when { margin: 0 0 4px; align-self: flex-start; }
+    /* buttons: two sizes only */
+    .btn { border-radius: var(--r-sm); font-size: 17px; padding: 14px 22px; line-height: 1.2; transition: filter .15s, transform .15s; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.small, .stop-card .btn.small, .ev-btn { font-size: 15px; padding: 10px 16px; }
+    .btn.ghost { background: var(--card); border: var(--bd); color: var(--ink); }
+    .btn.ghost:hover { border-color: var(--accent); }
+    .hero .ctas .btn { font-size: 19px; padding: 17px 28px; }
+    /* chips and filters share one style */
+    .wz-chip, .ev-filter, .wz-slot, .chip { border: var(--bd); border-radius: 99px; background: var(--card); font-weight: 700; }
+    .wz-slot { border-radius: 12px; }
+    /* inputs */
+    input, select, textarea { border: var(--bd); border-radius: 12px; }
+    /* consistent text links */
+    span.go, .step-link, .soft-link { color: var(--accent-ink); font-weight: 800; text-decoration: none; }
+    .step-link:hover, .soft-link:hover { text-decoration: underline; }
+    /* section backgrounds alternate cleanly */
+    section.alt { background: #fff; }
+    section.alt .card, section.alt .ev, section.alt .journey, section.alt details, section.alt .etype, section.alt .stop-card { background: var(--bg); box-shadow: none; }
+    section.alt .card.chart-card, section.alt .launch { background: var(--card); }
+    .note { font-size: 14px; color: var(--muted); margin-top: 14px; }
+    @media (max-width: 560px) {
+      section { padding: 56px 0; }
+      .card { padding: 20px; }
+      .btn { width: 100%; text-align: center; }
+      .wz-nav .btn, .ev-after .btn { width: auto; }
+    }
   </style>
 </head>
 <body>
@@ -384,16 +548,16 @@
       <div class="wrap">
         <div class="kicker">Results</div>
         <h2 class="reveal">Real companies, real speed</h2>
-        <p class="lead reveal">Gateway X companies hit their first big milestones fast.</p>
+        <p class="lead reveal">Companies launched with Gateway X hit their first big milestones fast.</p>
         <div class="journeys">
           <div class="card journey reveal" data-unit="Day" data-to="100" style="--c:var(--c1)">
-            <div class="j-top"><div><b>Aux Insights</b><span>Marketing for private equity</span></div><div class="j-count"><span class="j-unit">Day</span> <span class="j-n">0</span></div></div>
+            <div class="j-top"><div class="co-logo" style="--lc:var(--c1)"><img src="aux-insights-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>AUX</span></div><div class="j-name"><b>Aux Insights</b><span>Marketing for private equity</span><em class="launched">🚀 Launched with Gateway X</em></div><div class="j-count"><span class="j-unit">Day</span> <span class="j-n">0</span></div></div>
             <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
             <div class="j-ends"><span>🚀 Launch</span><span>✅ Profitable</span></div>
             <div class="j-done">Profitable in 100 days</div>
           </div>
           <div class="card journey reveal" data-unit="Month" data-to="24" style="--c:var(--c2)">
-            <div class="j-top"><div><b>GrowthAssistant</b><span>AI-powered growth talent</span></div><div class="j-count"><span class="j-unit">Month</span> <span class="j-n">0</span></div></div>
+            <div class="j-top"><div class="co-logo" style="--lc:var(--c2)"><img src="growthassistant-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>GA</span></div><div class="j-name"><b>GrowthAssistant</b><span>AI-powered growth talent</span><em class="launched">🚀 Launched with Gateway X</em></div><div class="j-count"><span class="j-unit">Month</span> <span class="j-n">0</span></div></div>
             <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
             <div class="j-ends"><span>🚀 Launch</span><span>🏆 8-figure business</span></div>
             <div class="j-done">An 8-figure business in 2 years</div>
@@ -404,42 +568,29 @@
       </div>
     </section>
 
+
     <!-- What we bring -->
     <section>
       <div class="wrap">
         <div class="kicker">What we bring</div>
-        <h2 class="reveal">Each tool adds to your growth</h2>
-        <p class="lead reveal">Technology, training, network and marketing, stacked on the business you already have.</p>
-        <div class="card value reveal" id="value">
-          <div class="vrow today">
-            <div class="vlab"><span class="ve">🏪</span><div><b>Your business today <strong class="vamt">1×</strong></b><span>A services firm with a few big clients</span></div></div>
-            <div class="vtrack"><div class="vbar" style="--l:0.0%;--w:25.0%;--d:0.20s"><em>1×</em></div></div>
+        <h2 class="reveal">Our tools add to your growth</h2>
+        <p class="lead reveal">You bring the business. We bring the fuel.</p>
+        <div class="card launch reveal" id="launch">
+          <div class="pad">
+            <div class="sky"><div class="stars"></div><div class="rocket-wrap"><div class="rocket">🚀</div><div class="flame"></div></div></div>
+            <div class="tank" aria-hidden="true"><div class="seg s4"><span>📣</span></div><div class="seg s3"><span>🤖</span></div><div class="seg s2"><span>🎓</span></div><div class="seg s1"><span>🤝</span></div></div>
+            <div class="tank-l">Fuel</div>
           </div>
-          <div class="vrow add">
-            <div class="vlab"><span class="ve">🤝</span><div><b>Network <strong class="vamt">+60%</strong></b><span>Warm intros: 4 → 15 sales meetings a week</span></div></div>
-            <div class="vtrack"><div class="vbar" style="--l:25.0%;--w:15.0%;--d:0.65s"><em>+60%</em></div></div>
+          <div class="fuel-side">
+            <div class="fuel-start">🏪 <b>Your business today</b><span>The rocket, ready on the pad</span></div>
+            <ol class="fuel"><li><span class="fe">🤝</span><div><b>Network <em>+60%</em></b><span>Warm intros: 4 → 15 sales meetings a week</span></div><span class="tick">✓</span></li><li><span class="fe">🎓</span><div><b>Training <em>+50%</em></b><span>Sales playbook: close rate 15% → 30%</span></div><span class="tick">✓</span></li><li><span class="fe">🤖</span><div><b>Technology <em>+80%</em></b><span>AI handles 40% of the client work</span></div><span class="tick">✓</span></li><li><span class="fe">📣</span><div><b>Marketing <em>+110%</em></b><span>Customers from beyond St. Louis</span></div><span class="tick">✓</span></li></ol>
+            <div class="liftoff">🔥 Lift-off: about <b>4×</b> the business</div>
           </div>
-          <div class="vrow add">
-            <div class="vlab"><span class="ve">🎓</span><div><b>Training <strong class="vamt">+50%</strong></b><span>Sales playbook: close rate 15% → 30%</span></div></div>
-            <div class="vtrack"><div class="vbar" style="--l:40.0%;--w:12.5%;--d:1.10s"><em>+50%</em></div></div>
-          </div>
-          <div class="vrow add">
-            <div class="vlab"><span class="ve">🤖</span><div><b>Technology <strong class="vamt">+80%</strong></b><span>AI handles 40% of delivery: more clients per person</span></div></div>
-            <div class="vtrack"><div class="vbar" style="--l:52.5%;--w:20.0%;--d:1.55s"><em>+80%</em></div></div>
-          </div>
-          <div class="vrow add">
-            <div class="vlab"><span class="ve">📣</span><div><b>Marketing <strong class="vamt">+110%</strong></b><span>Leads from beyond St. Louis</span></div></div>
-            <div class="vtrack"><div class="vbar" style="--l:72.5%;--w:27.5%;--d:2.00s"><em>+110%</em></div></div>
-          </div>
-          <div class="vrow total">
-            <div class="vlab"><span class="ve">🚀</span><div><b>With Gateway X <strong class="vamt">4×</strong></b><span>About 4× the business</span></div></div>
-            <div class="vtrack"><div class="vbar" style="--l:0.0%;--w:100.0%;--d:2.45s"><em>4×</em></div></div>
-          </div>
-          <div class="vaxis"><span>0</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span></div>
         </div>
-        <p class="note">Illustrative example: how much bigger a services business could grow, measured against its size today. Not a forecast.</p>
+        <p class="note">Illustrative example of how much bigger a services business could grow. Not a forecast.</p>
       </div>
     </section>
+
 
     <!-- Who it's for -->
     <section class="alt">
@@ -460,16 +611,20 @@
         <div class="kicker">How it works</div>
         <h2 class="reveal">Your roadmap with Gateway X</h2>
         <p class="lead reveal">Your idea stays yours. Your company stays yours. When you win, we win.</p>
-        <div class="steps">
-          <div class="card step reveal"><div class="emoji">📣</div><h3>Come to a Scale Night</h3><p>Meet owners who scaled. Free, online or in person.</p><div class="when">Free</div><a class="step-link" href="#schedule">See dates →</a></div>
-          <div class="card step reveal"><div class="emoji">🩺</div><h3>Get a free Scale Check</h3><p>30 minutes to map where your time and margin go. You leave with a one-page plan.</p><div class="when">30 minutes</div><a class="step-link" href="#apply" data-start="choose">Book a time →</a></div>
-          <div class="card step reveal"><div class="emoji">🎯</div><h3>See if we're a fit</h3><p>We look at your customers, market and goals, and give you a clear answer.</p><div class="when">About 1 week</div></div>
-          <div class="card step reveal"><div class="emoji">🔌</div><h3>Plug into the network</h3><p>Warm buyers, the sales playbook, AI tools and talent.</p><div class="when">First 90 days</div></div>
-          <div class="card step reveal"><div class="emoji">🤝</div><h3>Grow together</h3><p>Pick the way of working that fits you. You stay in charge.</p><div class="when">Ongoing</div></div>
-          <div class="card step reveal"><div class="emoji">🌍</div><h3>Go beyond the Midwest</h3><p>National customers through our network. Then help the next owner.</p><div class="when">Year 2+</div></div>
+        <div class="road">
+          <div class="sign reveal"><span>🟢 Get started</span><em>Free · no commitment</em></div>
+          <div class="stop left free reveal"><div class="pin"><span>1</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">📣</span><span class="when">Free</span></div><h3>Come to a Scale Night</h3><p>Meet owners who scaled. Free, online or in person.</p><a class="btn small" href="#schedule">See upcoming dates →</a></div></div>
+          <div class="stop right free reveal"><div class="pin"><span>2</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">🩺</span><span class="when">30 minutes · free</span></div><h3>Get a free Scale Check</h3><p>30 minutes to map where your time and margin go. You leave with a one-page plan.</p><a class="btn small" href="#apply" data-start="choose">Book my free Scale Check →</a></div></div>
+          <div class="stop left free reveal"><div class="pin"><span>3</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">🎯</span><span class="when">About 1 week</span></div><h3>See if we're a fit</h3><p>Answer a few questions. We look at your customers, market and goals, and give you a clear answer.</p><a class="btn small ghost" href="#apply" data-start="choose">Bring your idea →</a></div></div>
+          <div class="sign reveal"><span>🚀 Grow with us</span><em>When we agree it's a fit</em></div>
+          <div class="stop right grow reveal"><div class="pin"><span>4</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">🔌</span><span class="when">First 90 days</span></div><h3>Plug into the network</h3><p>Warm buyers, the sales playbook, AI tools and talent.</p></div></div>
+          <div class="stop left grow reveal"><div class="pin"><span>5</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">🤝</span><span class="when">Ongoing</span></div><h3>Grow together</h3><p>Pick the way of working that fits you. You stay in charge.</p><a class="step-link" href="#work">See ways to work together →</a></div></div>
+          <div class="stop right grow reveal"><div class="pin"><span>6</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">🌍</span><span class="when">Year 2+</span></div><h3>Go beyond the Midwest</h3><p>National customers through our network. Then help the next owner.</p></div></div>
+          <div class="road-end reveal">🏁 <b>Your company, bigger than you imagined</b></div>
         </div>
       </div>
     </section>
+
 
     <!-- Work with us -->
     <section class="alt" id="work">
@@ -497,23 +652,18 @@
       <div class="wrap">
         <div class="kicker">Events & founder stories</div>
         <h2 class="reveal">Hear it from founders first</h2>
-        <p class="lead reveal">Most sessions are online, so you can join from anywhere in the Midwest.</p>
-        <div class="grid g4" style="margin-top:32px">
-          <div class="card reveal"><div class="when">Every 2 weeks</div><div class="emoji" style="margin-top:8px">🪑</div><h3>Pipeline session</h3><div class="how">💻 Online · 30 min</div><p>A small group Q&amp;A with a founder who went through it.</p></div>
-          <div class="card reveal"><div class="when">Monthly</div><div class="emoji" style="margin-top:8px">🎤</div><h3>Founder Stories Live</h3><div class="how">💻 Online · 45 min</div><p>A 10-minute story, 20 minutes of Q&amp;A, then breakouts. Open to anyone.</p></div>
-          <div class="card reveal"><div class="when">Monthly</div><div class="emoji" style="margin-top:8px">🌆</div><h3>Scale Night</h3><div class="how">📍 St. Louis + Midwest tour</div><p>For owners of real businesses who want to grow.</p></div>
-          <div class="card reveal"><div class="when">Quarterly</div><div class="emoji" style="margin-top:8px">🎓</div><h3>Campus night</h3><div class="how">📍 In person · rotates</div><p>Founder stories and fellowships at local colleges.</p></div>
-        </div>
-        <div class="chips reveal"><span class="chip">🎓 WashU</span><span class="chip">🎓 SLU</span><span class="chip">🎓 UMSL</span><span class="chip">🎓 Webster</span><span class="chip">🎓 SIUE</span><span class="chip">🎓 Mizzou</span></div>
+        <p class="lead reveal">All free. Most are online, so you can join from anywhere in the Midwest. Tap a type to see its dates.</p>
+        <div class="etypes"><button type="button" class="card etype reveal" data-type="lab"><div class="when">Every 2 weeks</div><div class="emoji">🧪</div><h3>Idea Lab</h3><div class="how">💻 Online · 45 min</div><p>Still exploring? Find an idea worth testing.</p><span class="go">See dates →</span></button><button type="button" class="card etype reveal" data-type="pipe"><div class="when">Every 2 weeks</div><div class="emoji">🪑</div><h3>Pipeline session</h3><div class="how">💻 Online · 30 min</div><p>Small-group Q&amp;A with a founder who went through it.</p><span class="go">See dates →</span></button><button type="button" class="card etype reveal" data-type="fsl"><div class="when">Monthly</div><div class="emoji">🎤</div><h3>Founder Stories Live</h3><div class="how">💻 Online · 45 min</div><p>A 10-minute story, Q&amp;A, then breakouts. Open to anyone.</p><span class="go">See dates →</span></button><button type="button" class="card etype reveal" data-type="night tour"><div class="when">Monthly</div><div class="emoji">🌆</div><h3>Scale Night</h3><div class="how">📍 St. Louis + Midwest tour</div><p>For owners of real businesses who want to grow.</p><span class="go">See dates →</span></button><button type="button" class="card etype reveal" data-type="campus"><div class="when">Quarterly</div><div class="emoji">🎓</div><h3>Campus Night</h3><div class="how">📍 Local colleges, rotating</div><p>Founder stories and fellowships for students.</p><span class="go">See dates →</span></button></div>
         <div id="schedule" class="sched reveal">
-          <div class="sched-head"><h3>Upcoming dates</h3>
+          <div class="sched-head"><h3 id="sched-title">Upcoming dates</h3>
             <div class="sched-filters"><button type="button" class="ev-filter on" data-f="all">All</button><button type="button" class="ev-filter" data-f="online">💻 Online</button><button type="button" class="ev-filter" data-f="inperson">📍 In person</button></div>
           </div>
           <div id="ev-list"></div>
-          <p class="note">All events are free. Times are Central. Venues shown are examples and will be confirmed by email.</p>
+          <p class="note">Times are Central. In-person venues are examples and will be confirmed by email.</p>
         </div>
       </div>
     </section>
+
 
     <!-- FAQ -->
     <section class="alt" id="faq">
@@ -571,6 +721,15 @@
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
     }, { threshold: 0.15 });
     document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+
+    // Fuel the rocket one tool at a time, then lift off.
+    new IntersectionObserver(function (entries, obs) {
+      if (!entries[0].isIntersecting) return;
+      obs.disconnect();
+      var el = document.getElementById("launch"), lis = el.querySelectorAll(".fuel li");
+      [1, 2, 3, 4].forEach(function (n) { setTimeout(function () { el.classList.add("f" + n); lis[n - 1].classList.add("lit"); }, 400 + (n - 1) * 750); });
+      setTimeout(function () { el.classList.add("go"); }, 400 + 4 * 750 + 200);
+    }, { threshold: 0.45 }).observe(document.getElementById("launch"));
 
     // Walk each camel to its milestone while the day/month counter ticks up.
     var walkObs = new IntersectionObserver(function (entries) {
@@ -737,6 +896,7 @@
       document.getElementById("wz-back").style.visibility = wzState.step === 0 ? "hidden" : "visible";
       var nx = document.getElementById("wz-next");
       nx.style.display = st.type === "path" ? "none" : "";
+      document.querySelector(".wz-nav").style.display = st.type === "path" ? "none" : "";
       nx.textContent = st.type === "book" ? "Book & send →" : st.type === "contact" ? "See my next step →" : "Next →";
       wzWire(st);
     }
@@ -882,9 +1042,9 @@
       }
       ev = ev.filter(function (e) { return e.date > today; }).sort(function (a, b) { return a.date - b.date; });
       ev.forEach(function (e, i) { e.key = e.id + "-" + e.date.toISOString().slice(0, 10); });
-      return ev.slice(0, 10);
+      return ev.slice(0, 14);
     }
-    var EVENTS = buildEvents(), evFilter = "all", evOpen = null;
+    var EVENTS = buildEvents(), evFilter = "all", evType = null, evOpen = null, evAll = false;
 
     function icsFor(e) {
       var p = e.time.match(/(\d+):(\d+) (AM|PM)/), h = +p[1] % 12 + (p[3] === "PM" ? 12 : 0);
@@ -897,7 +1057,9 @@
     }
 
     function renderEvents() {
-      var list = EVENTS.filter(function (e) { return evFilter === "all" || (evFilter === "online") === e.online; });
+      var list = EVENTS.filter(function (e) { return (evFilter === "all" || (evFilter === "online") === e.online) && (!evType || evType.indexOf(e.id) !== -1); });
+      var more = list.length > 6 && !evAll && !evType;
+      if (more) list = list.slice(0, 6);
       document.getElementById("ev-list").innerHTML = list.map(function (e) {
         var open = evOpen === e.key, done = e.done;
         return '<div class="ev' + (open ? ' open' : '') + '">' +
@@ -911,7 +1073,8 @@
           (done ? '<div class="ev-after"><a class="btn ghost" href="' + icsFor(e) + '" download="gatewayx-' + e.key + '.ics">📅 Add to calendar</a>' +
             (e.online ? (ZOOM_LINK ? '<a class="btn" href="' + ZOOM_LINK + '" target="_blank" rel="noopener">🎥 Join on Zoom</a>' : '<span class="ev-zoom">🎥 Your Zoom link is on its way by email.</span>') : '<span class="ev-zoom">📍 We\'ll email directions before the event.</span>') + '</div>' : '') +
           '</div>';
-      }).join("") || '<p class="wz-sub">No events in this view yet.</p>';
+      }).join("") + (more ? '<button type="button" class="btn ghost ev-more" id="ev-more">Show more dates ↓</button>' : '') || '<p class="wz-sub">No events in this view yet.</p>';
+      var mb = document.getElementById("ev-more"); if (mb) mb.onclick = function () { evAll = true; renderEvents(); };
       document.querySelectorAll("#ev-list .ev-btn").forEach(function (b) {
         b.onclick = function () { evOpen = evOpen === b.getAttribute("data-ev") ? null : b.getAttribute("data-ev"); renderEvents(); var f = document.querySelector('.ev-form input[name="name"]'); if (f) f.focus(); };
       });
@@ -932,7 +1095,23 @@
       });
     }
     document.querySelectorAll(".ev-filter").forEach(function (b) {
-      b.onclick = function () { evFilter = b.getAttribute("data-f"); document.querySelectorAll(".ev-filter").forEach(function (c) { c.classList.toggle("on", c === b); }); renderEvents(); };
+      b.onclick = function () {
+        evFilter = b.getAttribute("data-f"); evType = null;
+        document.querySelectorAll(".etype").forEach(function (c) { c.classList.remove("on"); });
+        document.getElementById("sched-title").textContent = "Upcoming dates";
+        document.querySelectorAll(".ev-filter").forEach(function (c) { c.classList.toggle("on", c === b); }); renderEvents();
+      };
+    });
+    document.querySelectorAll(".etype").forEach(function (b) {
+      b.onclick = function () {
+        var on = !b.classList.contains("on");
+        document.querySelectorAll(".etype").forEach(function (c) { c.classList.toggle("on", on && c === b); });
+        evType = on ? b.getAttribute("data-type").split(" ") : null; evFilter = "all";
+        document.querySelectorAll(".ev-filter").forEach(function (c) { c.classList.toggle("on", c.getAttribute("data-f") === "all"); });
+        document.getElementById("sched-title").textContent = on ? "Upcoming: " + b.querySelector("h3").textContent : "Upcoming dates";
+        renderEvents();
+        document.getElementById("schedule").scrollIntoView({ behavior: "smooth", block: "start" });
+      };
     });
     renderEvents();
   </script>
