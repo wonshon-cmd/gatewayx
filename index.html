@@ -91,7 +91,7 @@
     .legend i { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
     .race { width: 100%; height: auto; display: block; }
     .race .grid { stroke: #ecebe7; }
-    .race .ax { fill: var(--muted); font-size: 16px; font-family: inherit; }
+    .race .ax { fill: var(--muted); font-size: var(--f, 16px); font-family: inherit; }
     .race .rl { fill: none; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
     .race .re { opacity: 0; }
     .race .ret { font-size: 18px; font-weight: 800; fill: var(--ink); font-family: inherit; }
@@ -147,6 +147,63 @@
       .g2, .g3, .g4, .steps, .stats, .two, .strip { grid-template-columns: 1fr; }
       .strip div + div { border-left: 0; border-top: 2px solid #fff; }
     }
+
+    /* Value build-up */
+    .value { margin-top: 32px; padding: 26px 26px 18px; }
+    .vrow { display: grid; grid-template-columns: 300px 1fr; gap: 18px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+    .vrow.total { border-bottom: 0; border-top: 2px solid var(--ink); margin-top: 6px; padding-top: 16px; }
+    .vlab { display: flex; gap: 12px; align-items: center; }
+    .ve { font-size: 32px; }
+    .vlab b { display: block; font-size: 19px; }
+    .vlab span { display: block; font-size: 15px; color: var(--muted); line-height: 1.35; }
+    .vtrack { position: relative; height: 40px; }
+    .vbar { position: absolute; top: 0; bottom: 0; left: var(--l); width: 0; border-radius: 8px; background: var(--c1); transition: width 1s cubic-bezier(.3,.9,.3,1) var(--d); display: flex; align-items: center; justify-content: flex-end; overflow: visible; }
+    .vrow.today .vbar { background: var(--c2); }
+    .vrow.total .vbar { background: var(--ink); }
+    .vbar em { font-style: normal; font-weight: 800; font-size: 16px; color: #fff; padding: 0 10px; white-space: nowrap; opacity: 0; transition: opacity .4s ease calc(var(--d) + .7s); }
+    .value.in .vbar { width: var(--w); }
+    .value.in .vbar em { opacity: 1; }
+    .vaxis { display: flex; justify-content: space-between; margin-left: 318px; font-size: 14px; color: var(--muted); padding-top: 8px; }
+
+    /* Results chart: desktop vs phone */
+    .only-phone { display: none; }
+    .race-list { list-style: none; padding: 0; margin: 14px 0 0; display: none; }
+    .race-list li { font-size: 17px; padding: 6px 0; }
+    .race-list i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+
+    .vamt { display: none; color: var(--c1); margin-left: 6px; }
+    .vrow.today .vamt { color: var(--c2); } .vrow.total .vamt { color: var(--ink); }
+    @media (max-width: 860px) {
+      .vrow { grid-template-columns: 1fr; gap: 8px; }
+      .vaxis { margin-left: 0; }
+    }
+    @media (max-width: 560px) {
+      body { font-size: 19px; }
+      .wrap { padding: 0 18px; }
+      section { padding: 52px 0; }
+      h2 { font-size: 34px; }
+      h3 { font-size: 23px; }
+      .lead { font-size: 19px; }
+      .card { padding: 22px; }
+      .card p { font-size: 18px; }
+      .btn { width: 100%; text-align: center; padding: 18px 22px; }
+      .hero .ctas { flex-direction: column; }
+      .hero h1 { font-size: 44px; }
+      .gw text { display: none; }
+      .only-desk { display: none; }
+      .only-phone { display: block; }
+      .race-list { display: block; }
+      .legend { display: none; }
+      .stat .n { font-size: 48px; }
+      .vbar em { display: none; }
+      .vamt { display: inline; }
+      .vtrack { height: 30px; }
+      input, select, textarea { font-size: 18px; padding: 15px; }
+      summary { font-size: 19px; }
+      .checks label { font-size: 16px; }
+      .links a { font-size: 20px; padding: 6px 0; }
+      .links .btn { width: auto; }
+    }
   </style>
 </head>
 <body>
@@ -184,6 +241,67 @@
       </div>
     </section>
 
+    <!-- Results -->
+    <section class="alt" id="results">
+      <div class="wrap">
+        <div class="kicker">Results</div>
+        <h2 class="reveal">Real companies, real speed</h2>
+        <div class="stats">
+          <div class="stat reveal"><div class="n">2 years</div><div class="l">GrowthAssistant: $0 to $10M</div></div>
+          <div class="stat reveal"><div class="n">100 days</div><div class="l">Aux Insights: launch to profitable</div></div>
+          <div class="stat reveal"><div class="n">6+</div><div class="l">companies built</div></div>
+        </div>
+        <div class="card chart-card reveal" id="chart">
+          <div class="legend"><span><i style="background:var(--c1)"></i>GrowthAssistant</span><span><i style="background:var(--c2)"></i>Ampush v1</span><span><i style="background:var(--c3)"></i>Ampush v2</span></div>
+          <div class="only-desk"><svg class="race" viewBox="0 0 810 380" role="img" aria-label="Revenue growth of companies built with the Gateway X playbook" style="--f:16px"><line class="grid" x1="70" x2="780" y1="330.0" y2="330.0"/><text class="ax" x="60" y="336.0" text-anchor="end">$0</text><line class="grid" x1="70" x2="780" y1="268.0" y2="268.0"/><text class="ax" x="60" y="274.0" text-anchor="end">$5M</text><line class="grid" x1="70" x2="780" y1="206.0" y2="206.0"/><text class="ax" x="60" y="212.0" text-anchor="end">$10M</text><line class="grid" x1="70" x2="780" y1="144.0" y2="144.0"/><text class="ax" x="60" y="150.0" text-anchor="end">$15M</text><line class="grid" x1="70" x2="780" y1="82.0" y2="82.0"/><text class="ax" x="60" y="88.0" text-anchor="end">$20M</text><line class="grid" x1="70" x2="780" y1="20.0" y2="20.0"/><text class="ax" x="60" y="26.0" text-anchor="end">$25M</text><text class="ax" x="70.0" y="366" text-anchor="middle">Start</text><text class="ax" x="212.0" y="366" text-anchor="middle">6 mo</text><text class="ax" x="354.0" y="366" text-anchor="middle">12 mo</text><text class="ax" x="496.0" y="366" text-anchor="middle">18 mo</text><text class="ax" x="638.0" y="366" text-anchor="middle">24 mo</text><text class="ax" x="780.0" y="366" text-anchor="middle">30 mo</text><path class="rl" pathLength="1" d="M70.0,330.0 L84.2,329.7 L98.4,329.0 L112.6,328.0 L126.8,326.9 L141.0,325.5 L155.2,324.0 L169.4,322.4 L183.6,320.6 L197.8,318.6 L212.0,316.5 L226.2,314.3 L240.4,311.9 L254.6,309.5 L268.8,306.9 L283.0,304.2 L297.2,301.4 L311.4,298.5 L325.6,295.4 L339.8,292.3 L354.0,289.1 L368.2,285.8 L382.4,282.4 L396.6,278.8 L410.8,275.2 L425.0,271.5 L439.2,267.8 L453.4,263.9 L467.6,259.9 L481.8,255.9 L496.0,251.7 L510.2,247.5 L524.4,243.2 L538.6,238.9 L552.8,234.4 L567.0,229.9 L581.2,225.2 L595.4,220.5 L609.6,215.8 L623.8,210.9 L638.0,206.0" stroke="var(--c1)" style="animation-delay:0.2s"/><g class="re" style="animation-delay:2.8s"><title>GrowthAssistant: $0 → $10M in 2 years (founder-reported)</title><circle cx="638.0" cy="206.0" r="9" fill="var(--c1)" stroke="#fff" stroke-width="3"/><text class="ret" x="654.0" y="208.0" text-anchor="start">GrowthAssistant</text><text class="red" x="654.0" y="228.0" text-anchor="start">$0 → $10M in 2 years</text></g><path class="rl" pathLength="1" d="M70.0,305.2 L80.7,304.6 L91.3,303.5 L102.0,301.9 L112.6,299.9 L123.2,297.6 L133.9,295.1 L144.6,292.2 L155.2,289.1 L165.8,285.8 L176.5,282.3 L187.2,278.5 L197.8,274.5 L208.4,270.3 L219.1,265.9 L229.8,261.3 L240.4,256.5 L251.1,251.6 L261.7,246.4 L272.4,241.1 L283.0,235.7 L293.6,230.0 L304.3,224.2 L314.9,218.2 L325.6,212.1 L336.2,205.8 L346.9,199.4 L357.6,192.8 L368.2,186.1 L378.9,179.2 L389.5,172.2 L400.1,165.0 L410.8,157.7 L421.4,150.2 L432.1,142.7 L442.8,135.0 L453.4,127.1 L464.0,119.1 L474.7,111.0 L485.4,102.8 L496.0,94.4" stroke="var(--c2)" style="animation-delay:0.7s"/><g class="re" style="animation-delay:3.3s"><title>Ampush v1: $2M → $19M in 18 months (founder-reported)</title><circle cx="496.0" cy="94.4" r="9" fill="var(--c2)" stroke="#fff" stroke-width="3"/><text class="ret" x="510.0" y="78.4" text-anchor="start">Ampush v1</text><text class="red" x="510.0" y="98.4" text-anchor="start">$2M → $19M in 18 months</text></g><path class="rl" pathLength="1" d="M70.0,292.8 L87.8,292.1 L105.5,290.7 L123.2,288.9 L141.0,286.6 L158.8,283.9 L176.5,280.9 L194.2,277.5 L212.0,273.9 L229.8,270.0 L247.5,265.8 L265.2,261.4 L283.0,256.7 L300.8,251.7 L318.5,246.6 L336.2,241.2 L354.0,235.6 L371.8,229.7 L389.5,223.7 L407.2,217.4 L425.0,211.0 L442.8,204.3 L460.5,197.5 L478.2,190.5 L496.0,183.3 L513.8,175.9 L531.5,168.3 L549.2,160.6 L567.0,152.6 L584.8,144.6 L602.5,136.3 L620.2,127.9 L638.0,119.3 L655.8,110.5 L673.5,101.6 L691.2,92.5 L709.0,83.3 L726.8,73.9 L744.5,64.3 L762.2,54.6 L780.0,44.8" stroke="var(--c3)" style="animation-delay:1.2s"/><g class="re" style="animation-delay:3.8s"><title>Ampush v2: $3M → $23M in 2.5 years (founder-reported)</title><circle cx="780.0" cy="44.8" r="9" fill="var(--c3)" stroke="#fff" stroke-width="3"/><text class="ret" x="766.0" y="28.8" text-anchor="end">Ampush v2</text><text class="red" x="766.0" y="48.8" text-anchor="end">$3M → $23M in 2.5 years</text></g></svg></div>
+          <div class="only-phone"><svg class="race" viewBox="0 0 400 420" role="img" aria-label="Revenue growth of companies built with the Gateway X playbook" style="--f:22px"><line class="grid" x1="84" x2="382" y1="376.0" y2="376.0"/><text class="ax" x="74" y="382.0" text-anchor="end">$0</text><line class="grid" x1="84" x2="382" y1="303.6" y2="303.6"/><text class="ax" x="74" y="309.6" text-anchor="end">$5M</text><line class="grid" x1="84" x2="382" y1="231.2" y2="231.2"/><text class="ax" x="74" y="237.2" text-anchor="end">$10M</text><line class="grid" x1="84" x2="382" y1="158.8" y2="158.8"/><text class="ax" x="74" y="164.8" text-anchor="end">$15M</text><line class="grid" x1="84" x2="382" y1="86.4" y2="86.4"/><text class="ax" x="74" y="92.4" text-anchor="end">$20M</text><line class="grid" x1="84" x2="382" y1="14.0" y2="14.0"/><text class="ax" x="74" y="20.0" text-anchor="end">$25M</text><text class="ax" x="84.0" y="406" text-anchor="middle">Start</text><text class="ax" x="203.2" y="406" text-anchor="middle">12 mo</text><text class="ax" x="322.4" y="406" text-anchor="middle">24 mo</text><path class="rl" pathLength="1" d="M84.0,376.0 L90.0,375.6 L95.9,374.8 L101.9,373.7 L107.8,372.4 L113.8,370.8 L119.8,369.0 L125.7,367.1 L131.7,365.0 L137.6,362.7 L143.6,360.2 L149.6,357.6 L155.5,354.9 L161.5,352.0 L167.4,349.0 L173.4,345.9 L179.4,342.6 L185.3,339.2 L191.3,335.6 L197.2,332.0 L203.2,328.2 L209.2,324.4 L215.1,320.4 L221.1,316.3 L227.0,312.1 L233.0,307.7 L239.0,303.3 L244.9,298.8 L250.9,294.2 L256.8,289.4 L262.8,284.6 L268.8,279.7 L274.7,274.7 L280.7,269.6 L286.6,264.4 L292.6,259.1 L298.6,253.7 L304.5,248.2 L310.5,242.6 L316.4,236.9 L322.4,231.2" stroke="var(--c1)" style="animation-delay:0.2s"/><g class="re" style="animation-delay:2.8s"><title>GrowthAssistant: $0 → $10M in 2 years (founder-reported)</title><circle cx="322.4" cy="231.2" r="9" fill="var(--c1)" stroke="#fff" stroke-width="3"/></g><path class="rl" pathLength="1" d="M84.0,347.0 L88.5,346.4 L92.9,345.0 L97.4,343.1 L101.9,340.9 L106.3,338.2 L110.8,335.2 L115.3,331.9 L119.8,328.3 L124.2,324.4 L128.7,320.3 L133.2,315.8 L137.6,311.2 L142.1,306.3 L146.6,301.1 L151.1,295.8 L155.5,290.2 L160.0,284.4 L164.5,278.4 L168.9,272.2 L173.4,265.8 L177.9,259.2 L182.3,252.5 L186.8,245.5 L191.3,238.3 L195.8,231.0 L200.2,223.5 L204.7,215.8 L209.2,207.9 L213.6,199.9 L218.1,191.7 L222.6,183.3 L227.0,174.8 L231.5,166.1 L236.0,157.2 L240.4,148.2 L244.9,139.1 L249.4,129.7 L253.9,120.3 L258.3,110.7 L262.8,100.9" stroke="var(--c2)" style="animation-delay:0.7s"/><g class="re" style="animation-delay:3.3s"><title>Ampush v1: $2M → $19M in 18 months (founder-reported)</title><circle cx="262.8" cy="100.9" r="9" fill="var(--c2)" stroke="#fff" stroke-width="3"/></g><path class="rl" pathLength="1" d="M84.0,332.6 L91.5,331.8 L98.9,330.2 L106.3,328.0 L113.8,325.3 L121.2,322.2 L128.7,318.6 L136.2,314.8 L143.6,310.5 L151.1,305.9 L158.5,301.0 L165.9,295.9 L173.4,290.4 L180.8,284.6 L188.3,278.6 L195.8,272.3 L203.2,265.7 L210.7,258.9 L218.1,251.8 L225.6,244.6 L233.0,237.0 L240.4,229.3 L247.9,221.3 L255.3,213.1 L262.8,204.7 L270.2,196.0 L277.7,187.2 L285.1,178.1 L292.6,168.9 L300.1,159.4 L307.5,149.8 L314.9,139.9 L322.4,129.9 L329.9,119.7 L337.3,109.3 L344.8,98.7 L352.2,87.9 L359.6,76.9 L367.1,65.8 L374.6,54.5 L382.0,43.0" stroke="var(--c3)" style="animation-delay:1.2s"/><g class="re" style="animation-delay:3.8s"><title>Ampush v2: $3M → $23M in 2.5 years (founder-reported)</title><circle cx="382.0" cy="43.0" r="9" fill="var(--c3)" stroke="#fff" stroke-width="3"/></g></svg></div>
+          <ul class="race-list">
+            <li><i style="background:var(--c1)"></i><b>GrowthAssistant</b> $0 → $10M in 2 years</li>
+            <li><i style="background:var(--c2)"></i><b>Ampush v1</b> $2M → $19M in 18 months</li>
+            <li><i style="background:var(--c3)"></i><b>Ampush v2</b> $3M → $23M in 2.5 years</li>
+          </ul>
+        </div>
+        <p class="note">Founder-reported figures. Ampush was founder Jesse Pujji's company before Gateway X, built with the same playbook. Lines between start and end are smoothed.</p>
+      </div>
+    </section>
+
+    <!-- What we bring -->
+    <section>
+      <div class="wrap">
+        <div class="kicker">What we bring</div>
+        <h2 class="reveal">Each tool adds to your growth</h2>
+        <p class="lead reveal">Technology, training, network and marketing, stacked on the business you already have.</p>
+        <div class="card value reveal" id="value">
+          <div class="vrow today">
+            <div class="vlab"><span class="ve">🏪</span><div><b>Your business today <strong class="vamt">$1.0M</strong></b><span>A $1M services firm with a few big clients</span></div></div>
+            <div class="vtrack"><div class="vbar" style="--l:0.0%;--w:25.0%;--d:0.20s"><em>$1.0M</em></div></div>
+          </div>
+          <div class="vrow add">
+            <div class="vlab"><span class="ve">🤝</span><div><b>Network <strong class="vamt">+$0.6M</strong></b><span>Warm intros: 4 → 15 sales meetings a week</span></div></div>
+            <div class="vtrack"><div class="vbar" style="--l:25.0%;--w:15.0%;--d:0.65s"><em>+$0.6M</em></div></div>
+          </div>
+          <div class="vrow add">
+            <div class="vlab"><span class="ve">🎓</span><div><b>Training <strong class="vamt">+$0.5M</strong></b><span>Sales playbook: close rate 15% → 30%</span></div></div>
+            <div class="vtrack"><div class="vbar" style="--l:40.0%;--w:12.5%;--d:1.10s"><em>+$0.5M</em></div></div>
+          </div>
+          <div class="vrow add">
+            <div class="vlab"><span class="ve">🤖</span><div><b>Technology <strong class="vamt">+$0.8M</strong></b><span>AI handles 40% of delivery: more clients per person</span></div></div>
+            <div class="vtrack"><div class="vbar" style="--l:52.5%;--w:20.0%;--d:1.55s"><em>+$0.8M</em></div></div>
+          </div>
+          <div class="vrow add">
+            <div class="vlab"><span class="ve">📣</span><div><b>Marketing <strong class="vamt">+$1.1M</strong></b><span>Leads from beyond St. Louis</span></div></div>
+            <div class="vtrack"><div class="vbar" style="--l:72.5%;--w:27.5%;--d:2.00s"><em>+$1.1M</em></div></div>
+          </div>
+          <div class="vrow total">
+            <div class="vlab"><span class="ve">🚀</span><div><b>With Gateway X <strong class="vamt">$4.0M</strong></b><span>About 4× the business</span></div></div>
+            <div class="vtrack"><div class="vbar" style="--l:0.0%;--w:100.0%;--d:2.45s"><em>$4.0M</em></div></div>
+          </div>
+          <div class="vaxis"><span>$0</span><span>$1M</span><span>$2M</span><span>$3M</span><span>$4M</span></div>
+        </div>
+        <p class="note">Illustrative example of yearly revenue for a $1M services business. Not a forecast.</p>
+      </div>
+    </section>
+
     <!-- Who it's for -->
     <section class="alt">
       <div class="wrap">
@@ -196,22 +314,8 @@
       </div>
     </section>
 
-    <!-- What we bring -->
-    <section>
-      <div class="wrap">
-        <div class="kicker">What we bring</div>
-        <h2 class="reveal">Everything around your idea</h2>
-        <div class="grid g4" style="margin-top:32px">
-          <div class="card reveal"><div class="emoji">🤖</div><h3>Technology</h3><p>AI-native tools and delivery, so a small team can serve big clients.</p></div>
-          <div class="card reveal"><div class="emoji">🎓</div><h3>Training</h3><p>A proven, meetings-first sales playbook, taught hands-on.</p></div>
-          <div class="card reveal"><div class="emoji">🤝</div><h3>Network</h3><p>Warm introductions to buyers, partners and talent.</p></div>
-          <div class="card reveal"><div class="emoji">📣</div><h3>Marketing</h3><p>Reach beyond your city, across the Midwest and the country.</p></div>
-        </div>
-      </div>
-    </section>
-
     <!-- How it works -->
-    <section class="alt" id="how">
+    <section id="how">
       <div class="wrap">
         <div class="kicker">How it works</div>
         <h2 class="reveal">Your roadmap with Gateway X</h2>
@@ -228,7 +332,7 @@
     </section>
 
     <!-- Work with us -->
-    <section id="work">
+    <section class="alt" id="work">
       <div class="wrap">
         <div class="kicker">Work with us</div>
         <h2 class="reveal">You don't have to give up equity to start</h2>
@@ -245,24 +349,6 @@
           <div><b>3 · Scale</b><span>When revenue is growing and the business is profitable</span></div>
         </div>
         <p class="note">Full partnership capital is released in steps as you hit milestones, so you never take more than you need.</p>
-      </div>
-    </section>
-
-    <!-- Results -->
-    <section class="alt" id="results">
-      <div class="wrap">
-        <div class="kicker">Results</div>
-        <h2 class="reveal">Real companies, real speed</h2>
-        <div class="stats">
-          <div class="stat reveal"><div class="n">2 years</div><div class="l">GrowthAssistant: $0 to $10M</div></div>
-          <div class="stat reveal"><div class="n">100 days</div><div class="l">Aux Insights: launch to profitable</div></div>
-          <div class="stat reveal"><div class="n">6+</div><div class="l">companies built</div></div>
-        </div>
-        <div class="card chart-card reveal" id="chart">
-          <div class="legend"><span><i style="background:var(--c1)"></i>GrowthAssistant</span><span><i style="background:var(--c2)"></i>Ampush v1</span><span><i style="background:var(--c3)"></i>Ampush v2</span></div>
-          <svg class="race" viewBox="0 0 810 380" role="img" aria-label="Revenue growth of companies built with the Gateway X playbook"><line class="grid" x1="70" x2="780" y1="330.0" y2="330.0"/><text class="ax" x="60" y="335.0" text-anchor="end">$0</text><line class="grid" x1="70" x2="780" y1="268.0" y2="268.0"/><text class="ax" x="60" y="273.0" text-anchor="end">$5M</text><line class="grid" x1="70" x2="780" y1="206.0" y2="206.0"/><text class="ax" x="60" y="211.0" text-anchor="end">$10M</text><line class="grid" x1="70" x2="780" y1="144.0" y2="144.0"/><text class="ax" x="60" y="149.0" text-anchor="end">$15M</text><line class="grid" x1="70" x2="780" y1="82.0" y2="82.0"/><text class="ax" x="60" y="87.0" text-anchor="end">$20M</text><line class="grid" x1="70" x2="780" y1="20.0" y2="20.0"/><text class="ax" x="60" y="25.0" text-anchor="end">$25M</text><text class="ax" x="70.0" y="362" text-anchor="middle">Start</text><text class="ax" x="212.0" y="362" text-anchor="middle">6 mo</text><text class="ax" x="354.0" y="362" text-anchor="middle">12 mo</text><text class="ax" x="496.0" y="362" text-anchor="middle">18 mo</text><text class="ax" x="638.0" y="362" text-anchor="middle">24 mo</text><text class="ax" x="780.0" y="362" text-anchor="middle">30 mo</text><path class="rl" pathLength="1" d="M70.0,330.0 L84.2,329.7 L98.4,329.0 L112.6,328.0 L126.8,326.9 L141.0,325.5 L155.2,324.0 L169.4,322.4 L183.6,320.6 L197.8,318.6 L212.0,316.5 L226.2,314.3 L240.4,311.9 L254.6,309.5 L268.8,306.9 L283.0,304.2 L297.2,301.4 L311.4,298.5 L325.6,295.4 L339.8,292.3 L354.0,289.1 L368.2,285.8 L382.4,282.4 L396.6,278.8 L410.8,275.2 L425.0,271.5 L439.2,267.8 L453.4,263.9 L467.6,259.9 L481.8,255.9 L496.0,251.7 L510.2,247.5 L524.4,243.2 L538.6,238.9 L552.8,234.4 L567.0,229.9 L581.2,225.2 L595.4,220.5 L609.6,215.8 L623.8,210.9 L638.0,206.0" stroke="var(--c1)" style="animation-delay:0.2s"/><g class="re" style="animation-delay:2.8s"><title>GrowthAssistant: $0 → $10M in 2 years (founder-reported)</title><circle cx="638.0" cy="206.0" r="9" fill="var(--c1)" stroke="#fff" stroke-width="3"/><text class="ret" x="654.0" y="208.0" text-anchor="start">GrowthAssistant</text><text class="red" x="654.0" y="228.0" text-anchor="start">$0 → $10M in 2 years</text></g><path class="rl" pathLength="1" d="M70.0,305.2 L80.7,304.6 L91.3,303.5 L102.0,301.9 L112.6,299.9 L123.2,297.6 L133.9,295.1 L144.6,292.2 L155.2,289.1 L165.8,285.8 L176.5,282.3 L187.2,278.5 L197.8,274.5 L208.4,270.3 L219.1,265.9 L229.8,261.3 L240.4,256.5 L251.1,251.6 L261.7,246.4 L272.4,241.1 L283.0,235.7 L293.6,230.0 L304.3,224.2 L314.9,218.2 L325.6,212.1 L336.2,205.8 L346.9,199.4 L357.6,192.8 L368.2,186.1 L378.9,179.2 L389.5,172.2 L400.1,165.0 L410.8,157.7 L421.4,150.2 L432.1,142.7 L442.8,135.0 L453.4,127.1 L464.0,119.1 L474.7,111.0 L485.4,102.8 L496.0,94.4" stroke="var(--c2)" style="animation-delay:0.7s"/><g class="re" style="animation-delay:3.3s"><title>Ampush v1: $2M → $19M in 18 months (founder-reported)</title><circle cx="496.0" cy="94.4" r="9" fill="var(--c2)" stroke="#fff" stroke-width="3"/><text class="ret" x="510.0" y="78.4" text-anchor="start">Ampush v1</text><text class="red" x="510.0" y="98.4" text-anchor="start">$2M → $19M in 18 months</text></g><path class="rl" pathLength="1" d="M70.0,292.8 L87.8,292.1 L105.5,290.7 L123.2,288.9 L141.0,286.6 L158.8,283.9 L176.5,280.9 L194.2,277.5 L212.0,273.9 L229.8,270.0 L247.5,265.8 L265.2,261.4 L283.0,256.7 L300.8,251.7 L318.5,246.6 L336.2,241.2 L354.0,235.6 L371.8,229.7 L389.5,223.7 L407.2,217.4 L425.0,211.0 L442.8,204.3 L460.5,197.5 L478.2,190.5 L496.0,183.3 L513.8,175.9 L531.5,168.3 L549.2,160.6 L567.0,152.6 L584.8,144.6 L602.5,136.3 L620.2,127.9 L638.0,119.3 L655.8,110.5 L673.5,101.6 L691.2,92.5 L709.0,83.3 L726.8,73.9 L744.5,64.3 L762.2,54.6 L780.0,44.8" stroke="var(--c3)" style="animation-delay:1.2s"/><g class="re" style="animation-delay:3.8s"><title>Ampush v2: $3M → $23M in 2.5 years (founder-reported)</title><circle cx="780.0" cy="44.8" r="9" fill="var(--c3)" stroke="#fff" stroke-width="3"/><text class="ret" x="766.0" y="28.8" text-anchor="end">Ampush v2</text><text class="red" x="766.0" y="48.8" text-anchor="end">$3M → $23M in 2.5 years</text></g></svg>
-        </div>
-        <p class="note">Founder-reported figures. Ampush was founder Jesse Pujji's company before Gateway X, built with the same playbook. Lines between start and end are smoothed.</p>
       </div>
     </section>
 
