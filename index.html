@@ -251,6 +251,97 @@
     .herd.in .herd-camels span:nth-child(6) { transition-delay: .6s; }
     .herd-t { font-size: 20px; }
     @media (max-width: 760px) { .journeys { grid-template-columns: 1fr; } }
+
+    /* Clickable paths */
+    a.card { text-decoration: none; color: inherit; display: block; transition: transform .15s ease, box-shadow .15s ease; }
+    a.card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+    .pathcard .go, .step-link { display: inline-block; margin-top: 14px; font-weight: 800; color: var(--accent-ink); text-decoration: none; }
+    .soft-link { display: inline-block; margin-top: 22px; font-weight: 700; font-size: 18px; color: var(--accent-ink); text-decoration: none; }
+
+    /* Schedule */
+    .sched { margin-top: 36px; }
+    .sched-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+    .sched-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .ev-filter { font: inherit; font-size: 15px; font-weight: 700; padding: 8px 14px; border-radius: 99px; border: 2px solid var(--line); background: var(--card); cursor: pointer; }
+    .ev-filter.on { border-color: var(--accent); background: var(--accent-soft); }
+    .ev { display: grid; grid-template-columns: 72px 1fr auto; gap: 16px; align-items: center; background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 16px 18px; }
+    .ev + .ev { margin-top: 10px; }
+    .ev.open { border-color: var(--accent); }
+    .ev-date { text-align: center; background: var(--accent-soft); border-radius: 14px; padding: 8px 0; }
+    .ev-date b { display: block; font-size: 28px; line-height: 1; color: var(--accent-ink); }
+    .ev-date span { font-size: 14px; font-weight: 800; text-transform: uppercase; color: var(--accent-ink); }
+    .ev-name { font-weight: 800; font-size: 19px; }
+    .ev-meta { font-size: 15px; color: var(--muted); }
+    .ev-free { color: var(--c3); font-weight: 800; }
+    .ev-who { font-size: 14px; font-weight: 700; margin-top: 2px; }
+    .ev-btn { padding: 10px 18px; font-size: 16px; }
+    .ev-ok { font-weight: 800; color: var(--c3); }
+    .ev-form, .ev-after { grid-column: 1 / -1; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .ev-form input { flex: 1; min-width: 180px; }
+    .ev-form .status { width: 100%; margin-top: 0; }
+    .ev-zoom { font-weight: 700; font-size: 15px; }
+
+    /* Guided application */
+    .wz { margin-top: 30px; padding: 28px; }
+    .wz-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .wz-step { font-size: 14px; font-weight: 800; color: var(--accent-ink); white-space: nowrap; }
+    .wz-bar { flex: 1; height: 8px; background: #f1f0ec; border-radius: 99px; overflow: hidden; }
+    .wz-fill { height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width .4s ease; }
+    .wz-q { font-size: 26px; margin-bottom: 16px; }
+    .wz-hint { font-size: 15px; font-weight: 600; color: var(--muted); }
+    .wz-sub { color: var(--muted); margin: 0 0 14px; }
+    .wz-paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .wz-path, .wz-idea { font: inherit; text-align: left; background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 20px; cursor: pointer; }
+    .wz-path:hover, .wz-idea:hover { border-color: var(--accent); }
+    .wz-path span { font-size: 40px; display: block; }
+    .wz-path b { display: block; font-size: 20px; margin-top: 8px; }
+    .wz-path em { font-style: normal; color: var(--muted); font-size: 15px; }
+    .wz-path.soft, .wz-idea.soft { border-style: dashed; }
+    .wz-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .wz-chip { font: inherit; font-size: 17px; font-weight: 600; padding: 12px 18px; border-radius: 99px; border: 2px solid var(--line); background: var(--card); cursor: pointer; }
+    .wz-chip.on, .wz-idea.on, .wz-sess.on, .wz-slot.on { border-color: var(--accent); background: var(--accent-soft); }
+    .wz-ideas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .wz-idea b { display: block; font-size: 18px; }
+    .wz-idea span { display: block; color: var(--muted); font-size: 15px; margin-top: 4px; }
+    .wz-here { background: var(--accent-soft); border-radius: 16px; padding: 16px 18px; margin-bottom: 18px; }
+    .wz-here-t { font-size: 20px; }
+    .wz-line { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+    .wz-line span { font-size: 14px; font-weight: 700; padding: 6px 12px; border-radius: 99px; background: #fff; color: var(--muted); }
+    .wz-line span.past { color: var(--ink); }
+    .wz-line span.now { background: var(--accent); color: #fff; }
+    .wz-here .wz-sub { margin: 0; color: var(--ink); }
+    .wz-sessions { display: grid; gap: 12px; }
+    .wz-sess { border: 2px solid var(--line); border-radius: 18px; padding: 16px 18px; }
+    .wz-sess-top { display: flex; align-items: center; gap: 12px; }
+    .wz-sess-top > div { flex: 1; }
+    .wz-sess-e { font-size: 32px; }
+    .wz-sess b { font-size: 19px; }
+    .wz-how { font-size: 14px; color: var(--muted); }
+    .wz-sess p { color: var(--muted); font-size: 16px; margin: 8px 0 10px; }
+    .wz-sess p em { font-style: normal; font-weight: 700; color: var(--ink); }
+    .wz-price { font-size: 13px; font-weight: 800; padding: 4px 10px; border-radius: 99px; }
+    .wz-price.free { background: #e6f4ef; color: #1f7a5c; }
+    .wz-price.paid { background: #eef1fb; color: #3d5fae; }
+    .wz-slots { display: flex; gap: 8px; flex-wrap: wrap; }
+    .wz-slot { font: inherit; font-size: 15px; font-weight: 700; padding: 9px 14px; border-radius: 12px; border: 2px solid var(--line); background: #fff; cursor: pointer; }
+    .wz-skip { font: inherit; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; margin-top: 14px; font-size: 15px; }
+    .wz-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; }
+    .wz-nav .btn[disabled] { opacity: .6; }
+    .wz-done { text-align: center; padding: 10px 0; }
+    .wz-done-e { font-size: 56px; }
+    .wz-done h3 { font-size: 26px; margin: 8px 0 10px; }
+    @media (max-width: 760px) {
+      .wz-paths, .wz-ideas { grid-template-columns: 1fr; }
+      .ev { grid-template-columns: 60px 1fr; }
+      .ev-act { grid-column: 1 / -1; }
+      .ev-act .btn { width: 100%; }
+    }
+    @media (max-width: 560px) {
+      .wz { padding: 20px; }
+      .wz-q { font-size: 23px; }
+      .wz-nav .btn { width: auto; flex: 1; }
+      .wz-chip { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -356,9 +447,10 @@
         <div class="kicker">Who it's for</div>
         <h2 class="reveal">Two ways in</h2>
         <div class="grid g2" style="margin-top:32px">
-          <div class="card hi reveal"><div class="emoji">💡</div><h3>You have an idea</h3><p>Learn how it's done, test it with real buyers, and build it with people who have done it before.</p></div>
-          <div class="card hi reveal"><div class="emoji">🏪</div><h3>You run a business that works</h3><p>Real customers and revenue, but not sure how to scale. That's most of the Midwest, and it's exactly who we want to meet.</p></div>
+          <a href="#apply" class="card hi reveal pathcard" data-start="idea"><div class="emoji">💡</div><h3>You have an idea</h3><p>Learn how it's done, test it with real buyers, and build it with people who have done it before.</p><span class="go">Start here →</span></a>
+          <a href="#apply" class="card hi reveal pathcard" data-start="biz"><div class="emoji">🏪</div><h3>You run a business that works</h3><p>Real customers and revenue, but not sure how to scale. That's most of the Midwest, and it's exactly who we want to meet.</p><span class="go">Start here →</span></a>
         </div>
+        <a href="#apply" class="soft-link reveal" data-start="explore">🧭 Not sure what to build yet? We'd love to help you find an idea →</a>
       </div>
     </section>
 
@@ -369,8 +461,8 @@
         <h2 class="reveal">Your roadmap with Gateway X</h2>
         <p class="lead reveal">Your idea stays yours. Your company stays yours. When you win, we win.</p>
         <div class="steps">
-          <div class="card step reveal"><div class="emoji">📣</div><h3>Come to a Scale Night</h3><p>Meet owners who scaled. Free, online or in person.</p><div class="when">Free</div></div>
-          <div class="card step reveal"><div class="emoji">🩺</div><h3>Get a free Scale Check</h3><p>30 minutes to map where your time and margin go. You leave with a one-page plan.</p><div class="when">30 minutes</div></div>
+          <div class="card step reveal"><div class="emoji">📣</div><h3>Come to a Scale Night</h3><p>Meet owners who scaled. Free, online or in person.</p><div class="when">Free</div><a class="step-link" href="#schedule">See dates →</a></div>
+          <div class="card step reveal"><div class="emoji">🩺</div><h3>Get a free Scale Check</h3><p>30 minutes to map where your time and margin go. You leave with a one-page plan.</p><div class="when">30 minutes</div><a class="step-link" href="#apply" data-start="choose">Book a time →</a></div>
           <div class="card step reveal"><div class="emoji">🎯</div><h3>See if we're a fit</h3><p>We look at your customers, market and goals, and give you a clear answer.</p><div class="when">About 1 week</div></div>
           <div class="card step reveal"><div class="emoji">🔌</div><h3>Plug into the network</h3><p>Warm buyers, the sales playbook, AI tools and talent.</p><div class="when">First 90 days</div></div>
           <div class="card step reveal"><div class="emoji">🤝</div><h3>Grow together</h3><p>Pick the way of working that fits you. You stay in charge.</p><div class="when">Ongoing</div></div>
@@ -413,12 +505,13 @@
           <div class="card reveal"><div class="when">Quarterly</div><div class="emoji" style="margin-top:8px">🎓</div><h3>Campus night</h3><div class="how">📍 In person · rotates</div><p>Founder stories and fellowships at local colleges.</p></div>
         </div>
         <div class="chips reveal"><span class="chip">🎓 WashU</span><span class="chip">🎓 SLU</span><span class="chip">🎓 UMSL</span><span class="chip">🎓 Webster</span><span class="chip">🎓 SIUE</span><span class="chip">🎓 Mizzou</span></div>
-        <form id="notify" class="signup reveal" style="padding:0;border:0;background:none;margin-top:28px" novalidate>
-          <input type="email" name="email" placeholder="Your email, to hear about the next session" required aria-label="Email for event updates">
-          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
-          <button class="btn" type="submit">Notify me</button>
-          <div class="status" style="width:100%"></div>
-        </form>
+        <div id="schedule" class="sched reveal">
+          <div class="sched-head"><h3>Upcoming dates</h3>
+            <div class="sched-filters"><button type="button" class="ev-filter on" data-f="all">All</button><button type="button" class="ev-filter" data-f="online">💻 Online</button><button type="button" class="ev-filter" data-f="inperson">📍 In person</button></div>
+          </div>
+          <div id="ev-list"></div>
+          <p class="note">All events are free. Times are Central. Venues shown are examples and will be confirmed by email.</p>
+        </div>
       </div>
     </section>
 
@@ -440,44 +533,24 @@
 
     <!-- Apply -->
     <section id="apply">
-      <div class="wrap" style="max-width:820px">
+      <div class="wrap" style="max-width:860px">
         <div class="kicker">Bring your idea</div>
         <h2 class="reveal">Let's make it a reality</h2>
-        <p class="lead reveal">Tell us what you're building. We read every one and reply within a few business days.</p>
-        <form id="apply-form" novalidate>
-          <div class="two">
-            <div><label for="a-name">Your name *</label><input id="a-name" name="name" autocomplete="name" required></div>
-            <div><label for="a-email">Email *</label><input id="a-email" name="email" type="email" autocomplete="email" required></div>
+        <p class="lead reveal">A few quick questions, then pick a time to talk. It takes about 2 minutes.</p>
+
+        <div class="wz card" id="wz">
+          <div class="wz-head">
+            <div class="wz-step" id="wz-step">Step 1</div>
+            <div class="wz-bar"><div class="wz-fill" id="wz-fill"></div></div>
           </div>
-          <div class="two">
-            <div><label for="a-company">Company (if you have one)</label><input id="a-company" name="company" autocomplete="organization"></div>
-            <div><label for="a-city">City and state</label><input id="a-city" name="city" placeholder="e.g. Kansas City, MO"></div>
+          <div id="wz-body"></div>
+          <div class="wz-nav">
+            <button type="button" class="btn ghost" id="wz-back">← Back</button>
+            <button type="button" class="btn" id="wz-next">Next →</button>
           </div>
-          <label for="a-idea">Your idea or business, in a sentence or two *</label>
-          <textarea id="a-idea" name="idea" required placeholder="e.g. We run a 20-person bookkeeping firm for dental practices and want to grow beyond Missouri."></textarea>
-          <label for="a-stage">Where are you today? *</label>
-          <select id="a-stage" name="stage" required>
-            <option value="">Choose one</option>
-            <option>💡 Idea</option>
-            <option>🛠️ Building, no revenue yet</option>
-            <option>🌱 First revenue (under $1M)</option>
-            <option>📈 $1–5M revenue</option>
-            <option>🚀 $5M+ revenue</option>
-          </select>
-          <label>Where could Gateway X help?</label>
-          <div class="checks">
-            <label><input type="checkbox" name="help" value="Customers and intros"> 🤝 Customers & intros</label>
-            <label><input type="checkbox" name="help" value="Sales playbook"> 📘 Sales playbook</label>
-            <label><input type="checkbox" name="help" value="AI and technology"> 🤖 AI & technology</label>
-            <label><input type="checkbox" name="help" value="Marketing"> 📣 Marketing</label>
-            <label><input type="checkbox" name="help" value="Hiring talent"> 🧑‍🤝‍🧑 Hiring</label>
-            <label><input type="checkbox" name="help" value="Capital"> 💰 Capital</label>
-          </div>
-          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
-          <div style="margin-top:26px"><button class="btn" type="submit">Send to Gateway X →</button></div>
-          <div class="status" id="apply-status"></div>
-          <p class="privacy">We only use your details to reply to you. We never share your idea.</p>
-        </form>
+          <div class="status" id="wz-status"></div>
+        </div>
+        <p class="privacy">We only use your answers to help you and reply to you. We never share your idea.</p>
       </div>
     </section>
   </main>
@@ -517,44 +590,351 @@
     }, { threshold: 0.5 });
     document.querySelectorAll(".journey").forEach(function (el) { walkObs.observe(el); });
 
-    function send(data, statusEl, okText, form) {
-      statusEl.className = "status"; statusEl.textContent = "Sending…";
-      return fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(data)
-      }).then(function (r) {
-        if (!r.ok) throw new Error(r.status);
-        statusEl.className = "status ok"; statusEl.textContent = okText; form.reset();
-      }).catch(function () {
-        statusEl.className = "status err"; statusEl.textContent = "Couldn't send right now. Please check your connection and try again.";
-      });
+    // ---------- "Bring your idea": a guided, step-by-step application ----------
+    // Sessions people can book at the end. Set bookingUrl to a Calendly (or similar) link to send people there instead.
+    var SESSIONS = {
+      check:   { name: "Free Scale Check", icon: "🩺", paid: false, how: "💻 Online · 30 min", what: "Map where your time and margin go. Leave with a one-page plan.", slots: { days: [2, 4], times: ["10:00 AM", "2:00 PM"] }, bookingUrl: "" },
+      lab:     { name: "Idea Lab", icon: "🧪", paid: false, how: "💻 Online · 45 min · small group", what: "Talk through ideas with founders and find one worth testing.", slots: { days: [1], times: ["12:00 PM"] }, bookingUrl: "" },
+      stories: { name: "Founder Stories Live", icon: "🎤", paid: false, how: "💻 Online · 45 min", what: "Hear how Gateway X founders got started. Ask anything.", slots: { days: [3], times: ["6:00 PM"] }, bookingUrl: "" },
+      night:   { name: "Scale Night", icon: "🌆", paid: false, how: "📍 St. Louis · evening", what: "Meet owners who have scaled real businesses.", slots: { days: [4], times: ["6:00 PM"] }, bookingUrl: "" },
+      sales:   { name: "Sales Playbook Workshop", icon: "📘", paid: true, how: "💻 Online · half day", what: "Learn the meetings-first sales system, hands-on with your team.", slots: { weeks: true }, bookingUrl: "" },
+      ai:      { name: "AI Setup Sprint", icon: "🤖", paid: true, how: "2 weeks · with your team", what: "Set up AI tools so your team serves more clients.", slots: { weeks: true }, bookingUrl: "" },
+      mkt:     { name: "Marketing Sprint", icon: "📣", paid: true, how: "4 weeks", what: "Reach customers beyond your city.", slots: { weeks: true }, bookingUrl: "" }
+    };
+
+    // Starter ideas for people still exploring, by the area they know best.
+    var IDEAS = {
+      "Healthcare": [["AI front desk for dental and vet clinics", "Clinics miss calls every day; AI answers and books."], ["Medical billing follow-up", "Practices leave money in unpaid claims."]],
+      "Real estate": [["Lead follow-up for real estate teams", "Most leads never get a second call."], ["Transaction coordination as a service", "Agents hate paperwork; you take it off their plate."]],
+      "Legal": [["Client intake for small law firms", "Every missed inquiry is a lost case."], ["Contract review support for small businesses", "Fast, affordable first reads with AI."]],
+      "Finance & accounting": [["Bookkeeping for local trades businesses", "Contractors need clean books and rarely have them."], ["Collections follow-up service", "Small firms are owed money they never chase."]],
+      "Marketing": [["Content engine for B2B companies", "Steady posts and newsletters without hiring a team."], ["Reviews and reputation for local services", "More 5-star reviews means more calls."]],
+      "Trades & logistics": [["Dispatch and scheduling for HVAC and plumbing", "Phones ring all day; jobs fall through cracks."], ["Quote follow-up for contractors", "Half of quotes are never followed up."]],
+      "Education": [["Enrollment follow-up for training schools", "Interested students go cold without a call."], ["Corporate training content service", "Companies need training, not a new department."]]
+    };
+
+    var wzState = { path: null, step: 0, a: { help: [], know: [], enjoy: [] }, idea: null, pick: null };
+
+    // Questions for each path. Every path ends with "about you" and "book a time".
+    function wzSteps() {
+      var common = [
+        { id: "where", q: "Where are you based?", hint: "Optional", type: "text", key: "city", ph: "e.g. St. Louis, MO" },
+        { id: "contact", q: "How can we reach you?", type: "contact" },
+        { id: "book", q: "Your next step", type: "book" }
+      ];
+      var start = [{ id: "path", q: "What brings you here?", type: "path" }];
+      if (wzState.path === "idea") return start.concat([
+        { id: "idea", q: "Tell us your idea in a sentence or two.", type: "area", key: "idea", ph: "e.g. An AI front desk that answers calls for dental clinics.", req: true },
+        { id: "far", q: "How far along are you?", type: "one", key: "far", opts: ["💭 Just an idea", "🗣️ Talking to customers", "🧾 First paying customers"], req: true },
+        { id: "help", q: "Where could we help most?", hint: "Pick any", type: "many", key: "help", opts: ["🤝 Finding customers", "📘 Learning to sell", "🤖 Building with AI", "📣 Marketing", "🧑‍🤝‍🧑 Finding a co-founder or team", "💰 Funding"] }
+      ], common);
+      if (wzState.path === "biz") return start.concat([
+        { id: "biz", q: "What does your business do?", type: "area", key: "idea", ph: "e.g. We do bookkeeping for 40 dental practices in Missouri.", req: true },
+        { id: "company", q: "What's it called?", hint: "Optional", type: "text", key: "company", ph: "Company name" },
+        { id: "size", q: "How big is your team today?", type: "one", key: "size", opts: ["👤 Just me", "👥 2–10 people", "🏢 11–50 people", "🏙️ 50+ people"], req: true },
+        { id: "help", q: "What's holding you back?", hint: "Pick any", type: "many", key: "help", opts: ["🤝 Finding customers", "📘 Sales", "🧑‍🤝‍🧑 Hiring", "⏳ Too much manual work", "📣 Reaching beyond my city", "💰 Capital to grow"] }
+      ], common);
+      if (wzState.path === "explore") return start.concat([
+        { id: "know", q: "What do you know best?", hint: "Pick any. Your work or life experience counts.", type: "many", key: "know", opts: Object.keys(IDEAS) },
+        { id: "enjoy", q: "What do you enjoy most?", hint: "Pick any", type: "many", key: "enjoy", opts: ["🗣️ Talking with people", "🧩 Building systems", "📊 Working with numbers", "🎨 Creating things"] },
+        { id: "ideas", q: "A few ideas you could start with", type: "ideas" }
+      ], common);
+      return start;
     }
 
-    document.getElementById("apply-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var f = e.target, st = document.getElementById("apply-status");
-      if (f._honey.value) return;
-      var missing = ["name", "email", "idea", "stage"].filter(function (n) { return !f[n].value.trim(); });
-      if (missing.length) { st.className = "status err"; st.textContent = "Please fill in the required fields marked *."; f[missing[0]].focus(); return; }
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())) { st.className = "status err"; st.textContent = "Please enter a valid email."; f.email.focus(); return; }
-      var help = Array.prototype.filter.call(f.querySelectorAll('input[name="help"]'), function (c) { return c.checked; }).map(function (c) { return c.value; });
-      send({
-        _subject: "New Gateway X application: " + (f.company.value.trim() || f.name.value.trim()),
-        _template: "table",
-        name: f.name.value.trim(), email: f.email.value.trim(), company: f.company.value.trim(),
-        city: f.city.value.trim(), idea: f.idea.value.trim(), stage: f.stage.value,
-        help_wanted: help.join(", ") || "not specified"
-      }, st, "✅ Thank you! We got it and will reply to " + f.email.value.trim() + ".", f);
-    });
+    function wzEsc(t) { return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
 
-    document.getElementById("notify").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var f = e.target, st = f.querySelector(".status");
-      if (f._honey.value) return;
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())) { st.className = "status err"; st.textContent = "Please enter a valid email."; return; }
-      send({ _subject: "Gateway X event signup", email: f.email.value.trim() }, st, "✅ You're on the list for the next session.", f);
+    // Next few dates for a session: weekday-based times, or "week of" start dates for paid programs.
+    function wzSlots(s) {
+      var out = [], d = new Date(); d.setHours(0, 0, 0, 0);
+      var fmt = { weekday: "short", month: "short", day: "numeric" };
+      if (s.slots.weeks) {
+        d.setDate(d.getDate() + ((8 - d.getDay()) % 7 || 7)); // next Monday
+        for (var w = 0; w < 3; w++) { out.push("Week of " + d.toLocaleDateString("en-US", { month: "short", day: "numeric" })); d.setDate(d.getDate() + 7); }
+        return out;
+      }
+      for (var i = 1; out.length < 3 && i < 30; i++) {
+        var x = new Date(d); x.setDate(d.getDate() + i);
+        if (s.slots.days.indexOf(x.getDay()) === -1) continue;
+        s.slots.times.forEach(function (t) { if (out.length < 3) out.push(x.toLocaleDateString("en-US", fmt) + " · " + t + " CT"); });
+      }
+      return out;
+    }
+
+    // Which sessions to suggest, based on the path and answers.
+    function wzRecommend() {
+      var a = wzState.a, help = a.help.join(" ");
+      if (wzState.path === "explore") return ["lab", "stories"];
+      if (wzState.path === "idea") return ["check", "stories", "sales"];
+      var rec = ["check", "night"];
+      if (/manual|Hiring/.test(help)) rec.push("ai");
+      if (/beyond|customers/.test(help)) rec.push("mkt");
+      if (/Sales/.test(help)) rec.push("sales");
+      if (rec.length === 2) rec.push("ai");
+      return rec.slice(0, 4);
+    }
+
+    function wzStage() {
+      if (wzState.path === "explore") return { i: 0, name: "Exploring", line: "You're looking for the right idea. That's a great place to start." };
+      if (wzState.path === "idea") return /paying/.test(wzState.a.far || "") ? { i: 2, name: "First customers", line: "You have early traction. Let's turn it into a repeatable business." } : { i: 1, name: "Idea", line: "You have an idea. Next is testing it with real buyers." };
+      return { i: 3, name: "Growing a business", line: "You've built something real. Let's help it scale." };
+    }
+
+    function wzRender() {
+      var steps = wzSteps(), st = steps[wzState.step], a = wzState.a, h = "";
+      var total = wzState.path ? steps.length : 6;
+      document.getElementById("wz-step").textContent = st.type === "book" ? "Last step" : "Step " + (wzState.step + 1) + " of " + total;
+      document.getElementById("wz-fill").style.width = ((wzState.step + 1) / total * 100) + "%";
+      document.getElementById("wz-status").textContent = "";
+      h += '<h3 class="wz-q">' + st.q + (st.hint ? ' <span class="wz-hint">' + st.hint + '</span>' : '') + '</h3>';
+
+      if (st.type === "path") {
+        h += '<div class="wz-paths">' +
+          '<button type="button" class="wz-path" data-path="idea"><span>💡</span><b>I have an idea</b><em>Test it and build it with us</em></button>' +
+          '<button type="button" class="wz-path" data-path="biz"><span>🏪</span><b>I run a business</b><em>Grow what already works</em></button>' +
+          '<button type="button" class="wz-path soft" data-path="explore"><span>🧭</span><b>I’m still exploring</b><em>I’d love some ideas to start from</em></button></div>';
+      } else if (st.type === "area") {
+        h += '<textarea class="wz-in" data-key="' + st.key + '" placeholder="' + st.ph + '">' + wzEsc(a[st.key] || "") + '</textarea>';
+      } else if (st.type === "text") {
+        h += '<input class="wz-in" data-key="' + st.key + '" placeholder="' + st.ph + '" value="' + wzEsc(a[st.key] || "") + '">';
+      } else if (st.type === "one" || st.type === "many") {
+        h += '<div class="wz-chips">' + st.opts.map(function (o) {
+          var on = st.type === "one" ? a[st.key] === o : (a[st.key] || []).indexOf(o) !== -1;
+          return '<button type="button" class="wz-chip' + (on ? ' on' : '') + '" data-key="' + st.key + '" data-multi="' + (st.type === "many") + '">' + o + '</button>';
+        }).join("") + '</div>';
+      } else if (st.type === "ideas") {
+        var picks = a.know.length ? a.know : ["Trades & logistics", "Healthcare", "Marketing"], list = [];
+        picks.forEach(function (k) { (IDEAS[k] || []).forEach(function (x) { if (list.length < 4) list.push(x); }); });
+        if (list.length < 3) IDEAS["Marketing"].concat(IDEAS["Trades & logistics"]).forEach(function (x) { if (list.length < 3) list.push(x); });
+        h += '<p class="wz-sub">Based on what you know, these are AI-powered service businesses people in the Midwest need. Pick one you like, or keep exploring with us.</p>';
+        h += '<div class="wz-ideas">' + list.map(function (x) {
+          return '<button type="button" class="wz-idea' + (wzState.idea === x[0] ? ' on' : '') + '" data-idea="' + wzEsc(x[0]) + '"><b>' + x[0] + '</b><span>' + x[1] + '</span></button>';
+        }).join("") + '<button type="button" class="wz-idea soft' + (wzState.idea === "Keep exploring" ? ' on' : '') + '" data-idea="Keep exploring"><b>🧭 None yet, let’s keep exploring</b><span>We’ll brainstorm with you at an Idea Lab.</span></button></div>';
+      } else if (st.type === "contact") {
+        h += '<div class="two"><div><label for="wz-name">Your name *</label><input id="wz-name" class="wz-in" data-key="name" autocomplete="name" value="' + wzEsc(a.name || "") + '"></div>' +
+             '<div><label for="wz-email">Email *</label><input id="wz-email" class="wz-in" data-key="email" type="email" autocomplete="email" value="' + wzEsc(a.email || "") + '"></div></div>' +
+             '<input type="text" class="hp" id="wz-honey" tabindex="-1" autocomplete="off">';
+      } else if (st.type === "book") {
+        var sg = wzStage(), stages = ["🧭 Exploring", "💡 Idea", "🧾 First customers", "📈 Growing"];
+        h += '<div class="wz-here"><div class="wz-here-t">📍 You are here: <b>' + sg.name + '</b></div><div class="wz-line">' +
+          stages.map(function (s, i) { return '<span class="' + (i < sg.i ? 'past' : i === sg.i ? 'now' : '') + '">' + s + '</span>'; }).join("") +
+          '</div><p class="wz-sub">' + sg.line + '</p></div>';
+        h += '<p class="wz-sub"><b>Pick a session and a time.</b> We\'ll confirm by email.</p><div class="wz-sessions">';
+        wzRecommend().forEach(function (id) {
+          var s = SESSIONS[id];
+          h += '<div class="wz-sess' + (wzState.pick && wzState.pick.id === id ? ' on' : '') + '"><div class="wz-sess-top"><span class="wz-sess-e">' + s.icon + '</span><div><b>' + s.name + '</b><div class="wz-how">' + s.how + '</div></div>' +
+            '<span class="wz-price ' + (s.paid ? 'paid' : 'free') + '">' + (s.paid ? 'Paid' : 'Free') + '</span></div><p>' + s.what + (s.paid ? ' <em>We share pricing before you commit.</em>' : '') + '</p>';
+          if (s.bookingUrl) h += '<a class="btn ghost" target="_blank" rel="noopener" href="' + s.bookingUrl + '">See times →</a>';
+          else h += '<div class="wz-slots">' + wzSlots(s).map(function (t) {
+            var on = wzState.pick && wzState.pick.id === id && wzState.pick.slot === t;
+            return '<button type="button" class="wz-slot' + (on ? ' on' : '') + '" data-sess="' + id + '" data-slot="' + t + '">' + t + '</button>';
+          }).join("") + '</div>';
+          h += '</div>';
+        });
+        h += '</div><button type="button" class="wz-skip" id="wz-skip">No time yet, just send my answers</button>';
+      }
+      document.getElementById("wz-body").innerHTML = h;
+      document.getElementById("wz-back").style.visibility = wzState.step === 0 ? "hidden" : "visible";
+      var nx = document.getElementById("wz-next");
+      nx.style.display = st.type === "path" ? "none" : "";
+      nx.textContent = st.type === "book" ? "Book & send →" : st.type === "contact" ? "See my next step →" : "Next →";
+      wzWire(st);
+    }
+
+    function wzSave() {
+      document.querySelectorAll("#wz-body .wz-in").forEach(function (el) { wzState.a[el.getAttribute("data-key")] = el.value.trim(); });
+    }
+
+    function wzWire(st) {
+      var body = document.getElementById("wz-body");
+      body.querySelectorAll(".wz-path").forEach(function (b) { b.onclick = function () { wzStart(b.getAttribute("data-path")); }; });
+      body.querySelectorAll(".wz-chip").forEach(function (b) {
+        b.onclick = function () {
+          var k = b.getAttribute("data-key"), v = b.textContent;
+          if (b.getAttribute("data-multi") === "true") {
+            var arr = wzState.a[k] || (wzState.a[k] = []), i = arr.indexOf(v);
+            if (i === -1) arr.push(v); else arr.splice(i, 1);
+            b.classList.toggle("on");
+          } else {
+            wzState.a[k] = v;
+            body.querySelectorAll(".wz-chip").forEach(function (c) { c.classList.toggle("on", c === b); });
+            setTimeout(wzNext, 250); // single choice moves on by itself
+          }
+        };
+      });
+      body.querySelectorAll(".wz-idea").forEach(function (b) {
+        b.onclick = function () { wzState.idea = b.getAttribute("data-idea"); body.querySelectorAll(".wz-idea").forEach(function (c) { c.classList.toggle("on", c === b); }); };
+      });
+      body.querySelectorAll(".wz-slot").forEach(function (b) {
+        b.onclick = function () {
+          wzState.pick = { id: b.getAttribute("data-sess"), slot: b.getAttribute("data-slot") };
+          body.querySelectorAll(".wz-slot").forEach(function (c) { c.classList.toggle("on", c === b); });
+          body.querySelectorAll(".wz-sess").forEach(function (c) { c.classList.toggle("on", c.contains(b)); });
+        };
+      });
+      var skip = document.getElementById("wz-skip");
+      if (skip) skip.onclick = function () { wzState.pick = null; wzSubmit(); };
+      body.querySelectorAll("input.wz-in").forEach(function (el) { el.onkeydown = function (e) { if (e.key === "Enter") wzNext(); }; });
+      var first = body.querySelector(".wz-in");
+      if (first && window.innerWidth > 560) first.focus({ preventScroll: true });
+    }
+
+    function wzError(msg) { var s = document.getElementById("wz-status"); s.className = "status err"; s.textContent = msg; }
+
+    function wzNext() {
+      var steps = wzSteps(), st = steps[wzState.step];
+      wzSave();
+      if (st.req && st.type === "area" && !wzState.a[st.key]) return wzError("Please write a sentence or two.");
+      if (st.req && st.type === "one" && !wzState.a[st.key]) return wzError("Please pick one.");
+      if (st.type === "contact") {
+        if (!wzState.a.name) return wzError("Please add your name.");
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(wzState.a.email || "")) return wzError("Please enter a valid email.");
+      }
+      if (st.type === "book") {
+        if (!wzState.pick) return wzError("Pick a time, or tap “No time yet” below.");
+        return wzSubmit();
+      }
+      wzState.step++; wzRender(); wzScroll();
+    }
+
+    function wzScroll() {
+      var top = document.getElementById("wz").getBoundingClientRect().top;
+      if (top < 70 || top > window.innerHeight * 0.6) window.scrollTo({ top: window.scrollY + top - 90, behavior: "smooth" });
+    }
+
+    function wzStart(path) {
+      wzState.path = path; wzState.step = 1; wzRender(); wzScroll();
+    }
+
+    function wzSubmit() {
+      var a = wzState.a, s = wzState.pick ? SESSIONS[wzState.pick.id] : null, st = document.getElementById("wz-status");
+      if (document.getElementById("wz-honey") && document.getElementById("wz-honey").value) return;
+      var label = { idea: "Has an idea", biz: "Runs a business", explore: "Still exploring" }[wzState.path];
+      var data = {
+        _subject: "New Gateway X request: " + (a.company || a.name) + " (" + label + ")",
+        _template: "table",
+        name: a.name, email: a.email, city: a.city || "", path: label, stage: wzStage().name,
+        idea_or_business: a.idea || wzState.idea || "", company: a.company || "",
+        how_far: a.far || "", team_size: a.size || "",
+        wants_help_with: a.help.join(", "), knows_best: a.know.join(", "), enjoys: a.enjoy.join(", "),
+        session: s ? s.name + (s.paid ? " (paid)" : " (free)") : "No time picked yet",
+        requested_time: wzState.pick ? wzState.pick.slot : ""
+      };
+      st.className = "status"; st.textContent = "Sending…";
+      document.getElementById("wz-next").disabled = true;
+      fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          document.getElementById("wz-step").textContent = "Done";
+          document.getElementById("wz-fill").style.width = "100%";
+          document.getElementById("wz-body").innerHTML = '<div class="wz-done"><div class="wz-done-e">🎉</div><h3>' + (s ? "You're on the list for " + s.name + "." : "Thanks, we got your answers.") + '</h3>' +
+            (s ? '<p class="wz-sub"><b>' + wzState.pick.slot + '</b>. We\'ll email ' + wzEsc(a.email) + ' to confirm' + (s.paid ? ', with pricing,' : '') + ' within 2 business days.</p>' : '<p class="wz-sub">We\'ll reply to ' + wzEsc(a.email) + ' within 2 business days.</p>') +
+            '<p class="wz-sub">Your idea stays yours. When you win, we win.</p></div>';
+          document.getElementById("wz-back").style.visibility = "hidden";
+          document.getElementById("wz-next").style.display = "none";
+          st.textContent = "";
+        })
+        .catch(function () { wzError("Couldn't send right now. Please check your connection and try again."); })
+        .then(function () { document.getElementById("wz-next").disabled = false; });
+    }
+
+    document.getElementById("wz-next").onclick = wzNext;
+    document.getElementById("wz-back").onclick = function () {
+      wzSave();
+      if (wzState.step === 1) { wzState.path = null; wzState.step = 0; } else wzState.step--;
+      wzRender();
+    };
+    // "Two ways in" cards and the hero button open the flow on the right path.
+    document.querySelectorAll("[data-start]").forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        e.preventDefault();
+        var p = el.getAttribute("data-start");
+        if (p === "choose") { wzState.path = null; wzState.step = 0; wzRender(); } else wzStart(p);
+        document.getElementById("apply").scrollIntoView({ behavior: "smooth" });
+      });
     });
+    wzRender();
+
+    // ---------- Upcoming events: a dated schedule with sign-up ----------
+    // Online events: put the real Zoom link here and it shows after sign-up. Leave "" to email it instead.
+    var ZOOM_LINK = "";
+    // Sample venues. Replace with confirmed locations before launch.
+    var CAMPUSES = ["WashU · Danforth Campus", "Saint Louis University · Chaifetz School of Business", "UMSL · North Campus", "Webster University · Webster Groves", "SIUE · Edwardsville, IL", "Mizzou · Columbia, MO"];
+    var TOUR = ["Kansas City, MO", "Chicago, IL", "Indianapolis, IN", "Columbus, OH"];
+
+    // Recurring rules → real dates from today forward.
+    function nthWeekday(y, m, dow, n) { var d = new Date(y, m, 1); d.setDate(1 + ((dow - d.getDay() + 7) % 7) + (n - 1) * 7); return d; }
+    function buildEvents() {
+      var now = new Date(), ev = [], today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      for (var k = 0; k < 3; k++) {
+        var y = now.getFullYear(), m = now.getMonth() + k;
+        ev.push({ id: "fsl", name: "Founder Stories Live", icon: "🎤", date: nthWeekday(y, m, 3, 1), time: "6:00 PM", mins: 45, online: true, where: "Online · Zoom", who: "Open to anyone" });
+        ev.push({ id: "night", name: "Scale Night St. Louis", icon: "🌆", date: nthWeekday(y, m, 4, 3), time: "6:00 PM", mins: 120, online: false, where: "Cortex Innovation District · St. Louis", who: "For business owners" });
+        var mi = (new Date(y, m, 1)).getMonth();
+        ev.push({ id: "tour", name: "Scale Night on tour", icon: "🚌", date: nthWeekday(y, m, 2, 4), time: "6:00 PM", mins: 120, online: false, where: TOUR[mi % TOUR.length] + " · venue TBA", who: "For business owners" });
+        if (mi % 3 === 1) ev.push({ id: "campus", name: "Campus Night", icon: "🎓", date: nthWeekday(y, m, 4, 2), time: "5:30 PM", mins: 90, online: false, where: CAMPUSES[Math.floor(mi / 3) % CAMPUSES.length], who: "Students, alumni and founders" });
+      }
+      // Idea Lab every Monday, pipeline sessions every other Tuesday
+      for (var i = 1; i <= 42; i++) {
+        var d = new Date(today); d.setDate(today.getDate() + i);
+        if (d.getDay() === 1 && Math.floor(d.getTime() / 6048e5) % 2 === 1) ev.push({ id: "lab", name: "Idea Lab", icon: "🧪", date: d, time: "12:00 PM", mins: 45, online: true, where: "Online · Zoom", who: "Still exploring? Start here" });
+        if (d.getDay() === 2 && Math.floor(d.getTime() / 6048e5) % 2 === 0) ev.push({ id: "pipe", name: "Pipeline Session", icon: "🪑", date: d, time: "12:00 PM", mins: 30, online: true, where: "Online · Zoom", who: "For people who've applied" });
+      }
+      ev = ev.filter(function (e) { return e.date > today; }).sort(function (a, b) { return a.date - b.date; });
+      ev.forEach(function (e, i) { e.key = e.id + "-" + e.date.toISOString().slice(0, 10); });
+      return ev.slice(0, 10);
+    }
+    var EVENTS = buildEvents(), evFilter = "all", evOpen = null;
+
+    function icsFor(e) {
+      var p = e.time.match(/(\d+):(\d+) (AM|PM)/), h = +p[1] % 12 + (p[3] === "PM" ? 12 : 0);
+      var s = new Date(e.date); s.setHours(h, +p[2]);
+      var f = function (d) { return d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0") + "T" + String(d.getHours()).padStart(2, "0") + String(d.getMinutes()).padStart(2, "0") + "00"; };
+      var end = new Date(s.getTime() + e.mins * 60000);
+      var ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Gateway X//Events//EN", "BEGIN:VEVENT", "UID:" + e.key + "@gatewayx", "DTSTAMP:" + f(new Date()), "DTSTART:" + f(s), "DTEND:" + f(end),
+        "SUMMARY:Gateway X · " + e.name, "LOCATION:" + (e.online ? (ZOOM_LINK || "Online (Zoom link by email)") : e.where), "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+      return "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+    }
+
+    function renderEvents() {
+      var list = EVENTS.filter(function (e) { return evFilter === "all" || (evFilter === "online") === e.online; });
+      document.getElementById("ev-list").innerHTML = list.map(function (e) {
+        var open = evOpen === e.key, done = e.done;
+        return '<div class="ev' + (open ? ' open' : '') + '">' +
+          '<div class="ev-date"><b>' + e.date.toLocaleDateString("en-US", { day: "numeric" }) + '</b><span>' + e.date.toLocaleDateString("en-US", { month: "short" }) + '</span></div>' +
+          '<div class="ev-main"><div class="ev-name">' + e.icon + ' ' + e.name + '</div>' +
+          '<div class="ev-meta">' + e.date.toLocaleDateString("en-US", { weekday: "short" }) + ' · ' + e.time + ' CT · ' + e.mins + ' min</div>' +
+          '<div class="ev-meta">' + (e.online ? '💻 ' : '📍 ') + e.where + ' · <span class="ev-free">Free</span></div>' +
+          '<div class="ev-who">' + e.who + '</div></div>' +
+          '<div class="ev-act">' + (done ? '<span class="ev-ok">✅ Signed up</span>' : '<button type="button" class="btn ev-btn" data-ev="' + e.key + '">' + (open ? 'Close' : 'Sign up') + '</button>') + '</div>' +
+          (open && !done ? '<form class="ev-form" data-ev="' + e.key + '" novalidate><input name="name" placeholder="Your name" aria-label="Your name" autocomplete="name"><input name="email" type="email" placeholder="Email" aria-label="Email" autocomplete="email"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off"><button class="btn" type="submit">Reserve my spot</button><div class="status"></div></form>' : '') +
+          (done ? '<div class="ev-after"><a class="btn ghost" href="' + icsFor(e) + '" download="gatewayx-' + e.key + '.ics">📅 Add to calendar</a>' +
+            (e.online ? (ZOOM_LINK ? '<a class="btn" href="' + ZOOM_LINK + '" target="_blank" rel="noopener">🎥 Join on Zoom</a>' : '<span class="ev-zoom">🎥 Your Zoom link is on its way by email.</span>') : '<span class="ev-zoom">📍 We\'ll email directions before the event.</span>') + '</div>' : '') +
+          '</div>';
+      }).join("") || '<p class="wz-sub">No events in this view yet.</p>';
+      document.querySelectorAll("#ev-list .ev-btn").forEach(function (b) {
+        b.onclick = function () { evOpen = evOpen === b.getAttribute("data-ev") ? null : b.getAttribute("data-ev"); renderEvents(); var f = document.querySelector('.ev-form input[name="name"]'); if (f) f.focus(); };
+      });
+      document.querySelectorAll("#ev-list .ev-form").forEach(function (f) {
+        f.onsubmit = function (ev) {
+          ev.preventDefault();
+          var e = EVENTS.filter(function (x) { return x.key === f.getAttribute("data-ev"); })[0], st = f.querySelector(".status");
+          if (f._honey.value) return;
+          if (!f.name.value.trim()) { st.className = "status err"; st.textContent = "Please add your name."; return; }
+          if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())) { st.className = "status err"; st.textContent = "Please enter a valid email."; return; }
+          st.className = "status"; st.textContent = "Saving your spot…";
+          fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify({ _subject: "Event sign-up: " + e.name + " (" + e.date.toDateString() + ")", _template: "table", name: f.name.value.trim(), email: f.email.value.trim(),
+              event: e.name, date: e.date.toDateString() + " · " + e.time + " CT", location: e.where }) })
+            .then(function (r) { if (!r.ok) throw new Error(r.status); e.done = true; evOpen = null; renderEvents(); })
+            .catch(function () { st.className = "status err"; st.textContent = "Couldn't save right now. Please try again."; });
+        };
+      });
+    }
+    document.querySelectorAll(".ev-filter").forEach(function (b) {
+      b.onclick = function () { evFilter = b.getAttribute("data-f"); document.querySelectorAll(".ev-filter").forEach(function (c) { c.classList.toggle("on", c === b); }); renderEvents(); };
+    });
+    renderEvents();
   </script>
 </body>
 </html>
