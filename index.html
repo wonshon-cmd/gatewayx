@@ -224,6 +224,33 @@
       .gr-top { flex-direction: column; align-items: flex-start; gap: 4px; text-align: left; }
       .gr-num, .gr-num .count { font-size: 28px; }
     }
+
+    /* Results: camel journeys */
+    .journeys { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 32px; }
+    .j-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .j-top b { display: block; font-size: 22px; }
+    .j-top span { font-size: 15px; color: var(--muted); }
+    .j-count { text-align: right; white-space: nowrap; }
+    .j-count .j-unit { font-size: 16px; font-weight: 700; color: var(--muted); }
+    .j-count .j-n { font-size: 44px; font-weight: 800; color: var(--c); letter-spacing: -.02em; }
+    .j-track { position: relative; height: 64px; margin-top: 18px; }
+    .j-track::before { content: ""; position: absolute; left: 0; right: 0; top: 46px; height: 8px; border-radius: 99px; background: #f1f0ec; }
+    .j-fill { position: absolute; left: 0; top: 46px; height: 8px; width: 0; border-radius: 99px; background: var(--c); transition: width 2.6s linear .3s; }
+    .j-walker { position: absolute; left: 0; top: 0; font-size: 40px; line-height: 1; transform: scaleX(-1); transition: left 2.6s linear .3s; }
+    .j-flag { position: absolute; right: -4px; top: 6px; font-size: 32px; }
+    .journey.go .j-fill { width: 100%; }
+    .journey.go .j-walker { left: calc(100% - 96px); }
+    .j-ends { display: flex; justify-content: space-between; font-size: 15px; font-weight: 700; margin-top: 10px; }
+    .j-done { margin-top: 14px; font-size: 20px; font-weight: 800; color: var(--c); opacity: 0; transform: translateY(6px); transition: all .5s ease; }
+    .journey.done .j-done { opacity: 1; transform: none; }
+    .herd { display: flex; align-items: center; gap: 18px; margin-top: 22px; flex-wrap: wrap; }
+    .herd-camels span { font-size: 34px; display: inline-block; opacity: 0; transform: translateY(10px); transition: all .4s ease; }
+    .herd.in .herd-camels span { opacity: 1; transform: none; }
+    .herd.in .herd-camels span:nth-child(2) { transition-delay: .12s; } .herd.in .herd-camels span:nth-child(3) { transition-delay: .24s; }
+    .herd.in .herd-camels span:nth-child(4) { transition-delay: .36s; } .herd.in .herd-camels span:nth-child(5) { transition-delay: .48s; }
+    .herd.in .herd-camels span:nth-child(6) { transition-delay: .6s; }
+    .herd-t { font-size: 20px; }
+    @media (max-width: 760px) { .journeys { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -266,31 +293,23 @@
       <div class="wrap">
         <div class="kicker">Results</div>
         <h2 class="reveal">Real companies, real speed</h2>
-        <div class="stats">
-          <div class="stat reveal"><div class="n">2 years</div><div class="l">GrowthAssistant: $0 to $10M</div></div>
-          <div class="stat reveal"><div class="n">100 days</div><div class="l">Aux Insights: launch to profitable</div></div>
-          <div class="stat reveal"><div class="n">6+</div><div class="l">companies built</div></div>
+        <p class="lead reveal">Gateway X companies hit their first big milestones fast.</p>
+        <div class="journeys">
+          <div class="card journey reveal" data-unit="Day" data-to="100" style="--c:var(--c1)">
+            <div class="j-top"><div><b>Aux Insights</b><span>Marketing for private equity</span></div><div class="j-count"><span class="j-unit">Day</span> <span class="j-n">0</span></div></div>
+            <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
+            <div class="j-ends"><span>🚀 Launch</span><span>✅ Profitable</span></div>
+            <div class="j-done">Profitable in 100 days</div>
+          </div>
+          <div class="card journey reveal" data-unit="Month" data-to="24" style="--c:var(--c2)">
+            <div class="j-top"><div><b>GrowthAssistant</b><span>AI-powered growth talent</span></div><div class="j-count"><span class="j-unit">Month</span> <span class="j-n">0</span></div></div>
+            <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
+            <div class="j-ends"><span>🚀 Launch</span><span>🏆 8-figure business</span></div>
+            <div class="j-done">An 8-figure business in 2 years</div>
+          </div>
         </div>
-        <div class="card chart-card reveal" id="chart">
-          <div class="gh">Revenue growth, start → end</div>
-          <div class="grow-row" style="--c:var(--c1);--s:0.0%;--e:40.0%;--d:0.2s">
-            <div class="gr-top"><div><b>GrowthAssistant</b><span>A Gateway X company</span></div><div class="gr-num"><span class="gr-from">$0 →</span> <span class="count" data-to="10">$0</span>M</div></div>
-            <div class="gr-track"><div class="gr-start"></div><div class="gr-bar"></div></div>
-            <div class="gr-when">⏱️ in 2 years</div>
-          </div>
-          <div class="grow-row" style="--c:var(--c2);--s:8.0%;--e:68.0%;--d:0.7s">
-            <div class="gr-top"><div><b>Ampush v1</b><span>Jesse's earlier company</span></div><div class="gr-num"><span class="gr-from">$2M →</span> <span class="count" data-to="19">$2</span>M</div></div>
-            <div class="gr-track"><div class="gr-start"></div><div class="gr-bar"></div></div>
-            <div class="gr-when">⏱️ in 18 months</div>
-          </div>
-          <div class="grow-row" style="--c:var(--c3);--s:12.0%;--e:80.0%;--d:1.2s">
-            <div class="gr-top"><div><b>Ampush v2</b><span>Jesse's earlier company</span></div><div class="gr-num"><span class="gr-from">$3M →</span> <span class="count" data-to="23">$3</span>M</div></div>
-            <div class="gr-track"><div class="gr-start"></div><div class="gr-bar"></div></div>
-            <div class="gr-when">⏱️ in 2.5 years</div>
-          </div>
-          <div class="gr-axis"><span>$0</span><span>$5M</span><span>$10M</span><span>$15M</span><span>$20M</span><span>$25M</span></div>
-        </div>
-        <p class="note">Founder-reported annual revenue. Ampush was founder Jesse Pujji's company before Gateway X, built with the same sales playbook.</p>
+        <div class="herd reveal"><div class="herd-camels"><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span></div><div class="herd-t"><b>6+ companies</b> built with the same playbook</div></div>
+        <p class="note">Founder-reported milestones for Gateway X companies.</p>
       </div>
     </section>
 
@@ -480,24 +499,23 @@
     }, { threshold: 0.15 });
     document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
 
-    // Count the growth numbers up when the results chart appears.
-    var counted = false;
-    new IntersectionObserver(function (entries, obs) {
-      if (!entries[0].isIntersecting || counted) return;
-      counted = true; obs.disconnect();
-      document.querySelectorAll("#chart .count").forEach(function (el, i) {
-        var from = parseFloat(el.textContent.replace("$", "")), to = parseFloat(el.getAttribute("data-to"));
-        var start = null, delay = 200 + i * 500;
+    // Walk each camel to its milestone while the day/month counter ticks up.
+    var walkObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        walkObs.unobserve(e.target);
+        var card = e.target, n = card.querySelector(".j-n"), to = +card.getAttribute("data-to"), start = null;
+        card.classList.add("go");
         function step(ts) {
-          if (!start) start = ts + delay;
-          var p = Math.max(0, Math.min(1, (ts - start) / 2000));
-          p = 1 - Math.pow(1 - p, 3);
-          el.textContent = "$" + Math.round(from + (to - from) * p);
-          if (p < 1) requestAnimationFrame(step);
+          if (!start) start = ts + 300;
+          var p = Math.max(0, Math.min(1, (ts - start) / 2600));
+          n.textContent = Math.round(to * p);
+          if (p < 1) requestAnimationFrame(step); else card.classList.add("done");
         }
         requestAnimationFrame(step);
       });
-    }, { threshold: 0.3 }).observe(document.getElementById("chart"));
+    }, { threshold: 0.5 });
+    document.querySelectorAll(".journey").forEach(function (el) { walkObs.observe(el); });
 
     function send(data, statusEl, okText, form) {
       statusEl.className = "status"; statusEl.textContent = "Sending…";

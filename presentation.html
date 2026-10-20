@@ -495,6 +495,28 @@ h2 { font-size: 28px; margin: 48px 0 18px; }
 .sw ul { margin: 8px 0 0; padding-left: 22px; font-size: 19px; line-height: 1.55; }
 .sw em { font-style: normal; font-size: 14px; font-weight: 800; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 99px; margin-left: 4px; }
 
+/* Camel journeys (results) */
+.jys { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px; }
+.jy { background: var(--card); border: 3px solid var(--line); border-radius: 22px; padding: 26px 28px; }
+.j-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.j-top b { display: block; font-size: 28px; }
+.j-top span { font-size: 18px; color: var(--muted); }
+.j-count { white-space: nowrap; }
+.j-count .j-unit { font-size: 20px; font-weight: 700; color: var(--muted); }
+.j-count .j-n { font-size: 56px; font-weight: 800; color: var(--c); }
+.j-track { position: relative; height: 72px; margin-top: 18px; }
+.j-track::before { content: ""; position: absolute; left: 0; right: 0; top: 52px; height: 10px; border-radius: 99px; background: #f1f0ec; }
+.j-fill { position: absolute; left: 0; top: 52px; height: 10px; width: 0; border-radius: 99px; background: var(--c); }
+.j-walker { position: absolute; left: 0; top: 0; font-size: 46px; line-height: 1; transform: scaleX(-1); }
+.j-flag { position: absolute; right: -4px; top: 8px; font-size: 38px; }
+.jy.go .j-fill { width: 100%; transition: width 2.6s linear .3s; }
+.jy.go .j-walker { left: calc(100% - 104px); transition: left 2.6s linear .3s; }
+.j-ends { display: flex; justify-content: space-between; font-size: 18px; font-weight: 700; margin-top: 10px; }
+.j-done { margin-top: 14px; font-size: 24px; font-weight: 800; color: var(--c); opacity: 0; transition: opacity .5s ease; }
+.jy.done .j-done { opacity: 1; }
+.herd6 { margin-top: 22px; font-size: 24px; }
+.herd6 span { font-size: 34px; margin-right: 8px; }
+
 </style>
 </head>
 <body>
@@ -544,17 +566,25 @@ h2 { font-size: 28px; margin: 48px 0 18px; }
       <div class="source">Source: GatewayX deck, Oct 14</div>
     </div>
 
-    <div data-chapter="1" class="panel slide">
+    <div data-chapter="1" class="panel slide" data-enter="journeys">
       <div class="kicker">How fast the playbook works</div>
-      <div class="race-head">
-        <h1 class="statement">Real companies, real speed</h1>
-        <div class="legend big-legend"><span><i style="background:var(--gx)"></i>GrowthAssistant</span><span><i style="background:var(--own)"></i>Ampush v1</span><span><i style="background:var(--third)"></i>Ampush v2</span></div>
+      <h1 class="statement">Real companies, real speed</h1>
+      <div class="jys">
+        <div class="jy" data-to="100" style="--c:var(--gx)">
+          <div class="j-top"><div><b>Aux Insights</b><span>Marketing for private equity</span></div><div class="j-count"><span class="j-unit">Day</span> <span class="j-n">0</span></div></div>
+          <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
+          <div class="j-ends"><span>🚀 Launch</span><span>✅ Profitable</span></div>
+          <div class="j-done">Profitable in 100 days</div>
+        </div>
+        <div class="jy" data-to="24" style="--c:var(--own)">
+          <div class="j-top"><div><b>GrowthAssistant</b><span>AI-powered growth talent</span></div><div class="j-count"><span class="j-unit">Month</span> <span class="j-n">0</span></div></div>
+          <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
+          <div class="j-ends"><span>🚀 Launch</span><span>🏆 8-figure business</span></div>
+          <div class="j-done">An 8-figure business in 2 years</div>
+        </div>
       </div>
-      <div class="race-wrap">
-        <div class="grow-card"><svg class="race-svg" viewBox="0 0 810 380" role="img" aria-label="How fast companies grew using the same sales playbook"><line class="gridline" x1="70" x2="730" y1="330.0" y2="330.0"/><text class="axis-text" x="60" y="335.0" text-anchor="end">$0</text><line class="gridline" x1="70" x2="730" y1="268.0" y2="268.0"/><text class="axis-text" x="60" y="273.0" text-anchor="end">$5M</text><line class="gridline" x1="70" x2="730" y1="206.0" y2="206.0"/><text class="axis-text" x="60" y="211.0" text-anchor="end">$10M</text><line class="gridline" x1="70" x2="730" y1="144.0" y2="144.0"/><text class="axis-text" x="60" y="149.0" text-anchor="end">$15M</text><line class="gridline" x1="70" x2="730" y1="82.0" y2="82.0"/><text class="axis-text" x="60" y="87.0" text-anchor="end">$20M</text><line class="gridline" x1="70" x2="730" y1="20.0" y2="20.0"/><text class="axis-text" x="60" y="25.0" text-anchor="end">$25M</text><text class="axis-text" x="70.0" y="362" text-anchor="middle">Start</text><text class="axis-text" x="202.0" y="362" text-anchor="middle">6 mo</text><text class="axis-text" x="334.0" y="362" text-anchor="middle">12 mo</text><text class="axis-text" x="466.0" y="362" text-anchor="middle">18 mo</text><text class="axis-text" x="598.0" y="362" text-anchor="middle">24 mo</text><text class="axis-text" x="730.0" y="362" text-anchor="middle">30 mo</text><path class="race-line" pathLength="1" d="M70.0,330.0 L83.2,329.7 L96.4,329.0 L109.6,328.0 L122.8,326.9 L136.0,325.5 L149.2,324.0 L162.4,322.4 L175.6,320.6 L188.8,318.6 L202.0,316.5 L215.2,314.3 L228.4,311.9 L241.6,309.5 L254.8,306.9 L268.0,304.2 L281.2,301.4 L294.4,298.5 L307.6,295.4 L320.8,292.3 L334.0,289.1 L347.2,285.8 L360.4,282.4 L373.6,278.8 L386.8,275.2 L400.0,271.5 L413.2,267.8 L426.4,263.9 L439.6,259.9 L452.8,255.9 L466.0,251.7 L479.2,247.5 L492.4,243.2 L505.6,238.9 L518.8,234.4 L532.0,229.9 L545.2,225.2 L558.4,220.5 L571.6,215.8 L584.8,210.9 L598.0,206.0" stroke="var(--gx)" style="animation-delay:0.3s"/><g class="race-end" style="animation-delay:2.9s"><title>GrowthAssistant: $0 → $10M in 2 years (founder-reported)</title><circle cx="598.0" cy="206.0" r="9" fill="var(--gx)" stroke="#fff" stroke-width="3"/><text class="re-t" x="614.0" y="208.0" text-anchor="start">GrowthAssistant</text><text class="re-d" x="614.0" y="228.0" text-anchor="start">$0 → $10M in 2 years</text></g><path class="race-line" pathLength="1" d="M70.0,305.2 L79.9,304.6 L89.8,303.5 L99.7,301.9 L109.6,299.9 L119.5,297.6 L129.4,295.1 L139.3,292.2 L149.2,289.1 L159.1,285.8 L169.0,282.3 L178.9,278.5 L188.8,274.5 L198.7,270.3 L208.6,265.9 L218.5,261.3 L228.4,256.5 L238.3,251.6 L248.2,246.4 L258.1,241.1 L268.0,235.7 L277.9,230.0 L287.8,224.2 L297.7,218.2 L307.6,212.1 L317.5,205.8 L327.4,199.4 L337.3,192.8 L347.2,186.1 L357.1,179.2 L367.0,172.2 L376.9,165.0 L386.8,157.7 L396.7,150.2 L406.6,142.7 L416.5,135.0 L426.4,127.1 L436.3,119.1 L446.2,111.0 L456.1,102.8 L466.0,94.4" stroke="var(--own)" style="animation-delay:0.8s"/><g class="race-end" style="animation-delay:3.4s"><title>Ampush v1: $2M → $19M in 18 months (founder-reported)</title><circle cx="466.0" cy="94.4" r="9" fill="var(--own)" stroke="#fff" stroke-width="3"/><text class="re-t" x="480.0" y="78.4" text-anchor="start">Ampush v1</text><text class="re-d" x="480.0" y="98.4" text-anchor="start">$2M → $19M in 18 months</text></g><path class="race-line" pathLength="1" d="M70.0,292.8 L86.5,292.1 L103.0,290.7 L119.5,288.9 L136.0,286.6 L152.5,283.9 L169.0,280.9 L185.5,277.5 L202.0,273.9 L218.5,270.0 L235.0,265.8 L251.5,261.4 L268.0,256.7 L284.5,251.7 L301.0,246.6 L317.5,241.2 L334.0,235.6 L350.5,229.7 L367.0,223.7 L383.5,217.4 L400.0,211.0 L416.5,204.3 L433.0,197.5 L449.5,190.5 L466.0,183.3 L482.5,175.9 L499.0,168.3 L515.5,160.6 L532.0,152.6 L548.5,144.6 L565.0,136.3 L581.5,127.9 L598.0,119.3 L614.5,110.5 L631.0,101.6 L647.5,92.5 L664.0,83.3 L680.5,73.9 L697.0,64.3 L713.5,54.6 L730.0,44.8" stroke="var(--third)" style="animation-delay:1.3s"/><g class="race-end" style="animation-delay:3.9s"><title>Ampush v2: $3M → $23M in 2.5 years (founder-reported)</title><circle cx="730.0" cy="44.8" r="9" fill="var(--third)" stroke="#fff" stroke-width="3"/><text class="re-t" x="716.0" y="28.8" text-anchor="end">Ampush v2</text><text class="re-d" x="716.0" y="48.8" text-anchor="end">$3M → $23M in 2.5 years</text></g></svg></div>
-        <div class="aux pop" style="animation-delay:3.4s"><div class="aux-n">100 days</div><div class="aux-l">Aux Insights: from launch to profitable</div></div>
-      </div>
-      <div class="note">Founder-reported figures (Jesse Pujji, Bootstrapped Giants; STL AI Lab). Ampush was Jesse's company before Gateway X. Paths between start and end are smoothed.</div>
+      <div class="herd6"><span>🐪🐪🐪🐪🐪🐪</span> <b>6+ companies</b> built with the same playbook</div>
+      <div class="note">Founder-reported milestones for Gateway X companies.</div>
     </div>
 
     <div data-chapter="1" class="panel slide">
@@ -1197,7 +1227,7 @@ var DATA = {
     fromCos: ["GrowthAssistant", "Aux Insights", "Shiftwise"], buyerCount: 38
   },
 
-  alumni: ["Priya S. · ex-GrowthAssistant ops lead", "Marcus T. · ex-Ampush sales", "Dana K. · AI delivery engineer"],
+  alumni: ["Priya S. · ex-GrowthAssistant ops lead", "Marcus T. · sales lead, Aux Insights", "Dana K. · AI delivery engineer"],
 
   // Two ways in: build a new company, or scale one that already operates.
   modes: {
@@ -1478,6 +1508,24 @@ $("restart").onclick = function () {
 };
 
 renderHerd();
+
+// Results slide: walk each camel to its milestone while the counter ticks up.
+wizardHooks.journeys = function () {
+  var cards = document.querySelectorAll("#screen-story .jy");
+  for (var i = 0; i < cards.length; i++) (function (card) {
+    card.classList.remove("go", "done");
+    void card.offsetWidth; // restart the walk every time the slide is shown
+    card.classList.add("go");
+    var n = card.querySelector(".j-n"), to = +card.getAttribute("data-to"), start = null;
+    function step(ts) {
+      if (!start) start = ts + 300;
+      var p = Math.max(0, Math.min(1, (ts - start) / 2600));
+      n.textContent = Math.round(to * p);
+      if (p < 1) requestAnimationFrame(step); else card.classList.add("done");
+    }
+    requestAnimationFrame(step);
+  })(cards[i]);
+};
 
 </script>
   <script>
