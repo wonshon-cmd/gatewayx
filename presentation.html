@@ -772,6 +772,23 @@ a.btn { text-decoration: none; display: inline-block; }
 #screen-story .bn-c { padding: 18px 20px; } #screen-story .bn-c span { font-size: 16px; }
 @media (max-width: 860px) { .bn.bn4, .roots { grid-template-columns: 1fr 1fr; } .eng { grid-template-columns: 1fr; } }
 
+/* v17: bottlenecks and recommendations */
+.br { display: grid; gap: 12px; margin-top: 10px; }
+.br-row { display: grid; grid-template-columns: 1.05fr 1.5fr 40px 1.6fr; align-items: center; gap: 14px; background: var(--card); border: 3px solid var(--line); border-radius: 18px; padding: 14px 20px; }
+.br-name { font-size: 21px; font-weight: 800; display: flex; align-items: center; gap: 12px; line-height: 1.2; }
+.br-name span { font-size: 34px; }
+.br-b, .br-r { font-size: 17px; line-height: 1.4; }
+.br-b { color: var(--muted); }
+.br-r { font-weight: 700; color: var(--ink); background: var(--accent-soft); border-radius: 12px; padding: 8px 12px; }
+.br em { display: block; font-style: normal; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.br-r em { color: var(--accent); }
+.br-arrow { font-size: 28px; color: var(--accent); font-weight: 800; text-align: center; }
+@media (max-width: 860px) { .br-row { grid-template-columns: 1fr; } .br-arrow { display: none; } }
+#screen-rec .br { gap: 10px; margin-top: 4px; }
+#screen-rec .br-row { grid-template-columns: 1.3fr 1.45fr 30px 1.6fr; padding: 10px 18px; gap: 12px; }
+#screen-rec .br-name { font-size: 19px; } #screen-rec .br-name span { font-size: 30px; }
+#screen-rec .br-b, #screen-rec .br-r { font-size: 16px; } #screen-rec .br-r { padding: 6px 12px; }
+
 </style>
 </head>
 <body>
@@ -1274,6 +1291,16 @@ a.btn { text-decoration: none; display: inline-block; }
     </div>
 
     <div data-chapter="6" class="panel slide">
+      <div class="kicker">Bottlenecks and recommendations · 1 of 2</div>
+      <div class="br"><div class="br-row pop" style="animation-delay:0.1s"><div class="br-name"><span>🧠</span>Partner dependency</div><div class="br-b"><em>Bottleneck</em>Sales, distribution, and decision-making depend heavily on the partners.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Document the sales playbook and build shared systems that founders can use independently.</div></div><div class="br-row pop" style="animation-delay:0.3s"><div class="br-name"><span>🚪</span>No standardized selection process</div><div class="br-b"><em>Bottleneck</em>Each opportunity requires a custom conversation and evaluation.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Create one application, Scale Check, and clear acceptance criteria.</div></div><div class="br-row pop" style="animation-delay:0.5s"><div class="br-name"><span>🧑‍🏫</span>Limited industry expertise</div><div class="br-b"><em>Bottleneck</em>GatewayX’s current strengths are concentrated in marketing and growth.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Recruit operating partners in healthcare, logistics, finance, and manufacturing.</div></div><div class="br-row pop" style="animation-delay:0.7s"><div class="br-name"><span>🤝</span>Weak portfolio collaboration</div><div class="br-b"><em>Bottleneck</em>Portfolio companies do not yet systematically support one another.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Enable shared customers, referrals, cross-selling, and common resources.</div></div></div>
+    </div>
+
+    <div data-chapter="6" class="panel slide">
+      <div class="kicker">Bottlenecks and recommendations · 2 of 2</div>
+      <div class="br"><div class="br-row pop" style="animation-delay:0.1s"><div class="br-name"><span>🌱</span>Limited founder pipeline</div><div class="br-b"><em>Bottleneck</em>Many local founders lack access to startup knowledge and networks.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Use university partnerships, free events, and founder stories to expand awareness.</div></div><div class="br-row pop" style="animation-delay:0.3s"><div class="br-name"><span>⏳</span>Limited partner capacity</div><div class="br-b"><em>Bottleneck</em>Growth may require doubling the number of partners.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Automate intake, standardize evaluation, and use experts to support founders.</div></div><div class="br-row pop" style="animation-delay:0.5s"><div class="br-name"><span>🧭</span>Founder independence concerns</div><div class="br-b"><em>Bottleneck</em>Shared systems may feel restrictive to founders.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Make participation optional and protect client data through consent-based sharing.</div></div><div class="br-row pop" style="animation-delay:0.7s"><div class="br-name"><span>⚖️</span>Equity dilution</div><div class="br-b"><em>Bottleneck</em>Giving equity to experts may reduce founder ownership.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Use GatewayX’s own equity for expert incentives.</div></div></div>
+    </div>
+
+    <div data-chapter="6" class="panel slide">
       <div class="kicker">What to implement, and when</div>
       <div class="roadmap">
         <div class="phase"><div class="ph-when">First 30 days</div>
@@ -1281,7 +1308,7 @@ a.btn { text-decoration: none; display: inline-block; }
           <div class="ph-item">🚦 Set day-1 rules for all 6 companies</div></div>
         <div class="phase"><div class="ph-when">By 90 days</div>
           <div class="ph-item">🤝 One shared buyer list across the herd</div>
-          <div class="ph-item">🌆 First Scale Night for existing owners</div>
+          <div class="ph-item">🌆 First free online event for existing owners</div>
           <div class="ph-item">🎓 Fellowship with 2 local colleges</div>
           <div class="ph-item">🧑‍🏫 First 5 industry operating partners</div></div>
         <div class="phase"><div class="ph-when">By 6 months</div>
