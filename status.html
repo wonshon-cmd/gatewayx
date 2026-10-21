@@ -575,9 +575,9 @@
     .rm { margin-top: 30px; }
     .rm-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; font-weight: 800; margin-bottom: 14px; }
     .rm-legend .free { color: #1f7a5c; } .rm-legend .grow { color: var(--accent-ink); }
-    .rm-road { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); padding: 8px 0 0; }
+    .rm-road { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); padding: 8px 0 0; }
     .rm-road::before { content: ""; position: absolute; left: 4%; right: 4%; top: 34px; height: 14px; border-radius: 99px;
-      background: linear-gradient(90deg, var(--c3) 0 50%, var(--accent) 50% 100%); }
+      background: linear-gradient(90deg, var(--c3) 0 40%, var(--accent) 40% 100%); }
     .rm-road::after { content: ""; position: absolute; left: 5%; right: 5%; top: 40px; height: 2px; background: repeating-linear-gradient(90deg, #fff 0 14px, transparent 14px 26px); opacity: .9; }
     .rm-stop { position: relative; z-index: 1; font: inherit; background: none; border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 0 4px; color: var(--ink); }
     .rm-pin { width: 58px; height: 58px; border-radius: 50%; background: #fff; border: 4px solid var(--c3); display: grid; place-items: center; font-size: 26px; transition: transform .2s, box-shadow .2s; }
@@ -616,7 +616,7 @@
     }
 
     /* v7: Scale Night optional label */
-    .rm-short small { display: block; font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .rm-short small { display: none; font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
     .rm-panel .btn.small + .btn.small { margin-left: 8px; }
 
     /* v7: business model ladder */
@@ -724,13 +724,13 @@
       var KEY = "gx_queue_v1", EKEY = "gx_events_v1";
       // Same stops as the roadmap on the home page. "stop" = which roadmap stop this stage lights up.
       var STAGES = [
-        { id: "received", label: "Request received", icon: "📥", stop: 2 },
-        { id: "review", label: "In review", icon: "👀", stop: 2 },
-        { id: "scheduled", label: "Scale Check booked", icon: "🩺", stop: 2 },
-        { id: "decision", label: "Fit decision", icon: "🎯", stop: 3 },
-        { id: "plugged", label: "Plugged into the network", icon: "🔌", stop: 4 },
-        { id: "growing", label: "Growing together", icon: "🤝", stop: 5 },
-        { id: "beyond", label: "Beyond the Midwest", icon: "🌍", stop: 6 }
+        { id: "received", label: "Request received", icon: "📥", stop: 1 },
+        { id: "review", label: "In review", icon: "👀", stop: 1 },
+        { id: "scheduled", label: "Scale Check booked", icon: "🩺", stop: 1 },
+        { id: "decision", label: "Fit decision", icon: "🎯", stop: 2 },
+        { id: "plugged", label: "Plugged into the network", icon: "🔌", stop: 3 },
+        { id: "growing", label: "Growing together", icon: "🤝", stop: 4 },
+        { id: "beyond", label: "Beyond the Midwest", icon: "🌍", stop: 5 }
       ];
       var DECISIONS = {
         fit: { label: "A fit", icon: "✅", tone: "ok", line: "Let's talk about working together." },
