@@ -718,6 +718,14 @@
     .gopro .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
     @media (max-width: 860px) { .bels { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 560px) { .bels { grid-template-columns: 1fr; } }
+
+    .fits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; text-align: left; }
+    .fit-c { background: var(--card); border: 3px solid #e7e5e0; border-radius: 20px; padding: 20px 22px; border-top-width: 8px; }
+    .fit-c.ok { border-top-color: #2f9e7a; } .fit-c.mid { border-top-color: #d29a1e; } .fit-c.no { border-top-color: #9aa1ad; }
+    .fit-h { font-size: 24px; font-weight: 800; } .fit-s { color: var(--muted); font-size: 15px; margin-top: 2px; }
+    .fit-c ul { margin: 10px 0 0; padding-left: 20px; font-size: 17px; line-height: 1.5; }
+@media (max-width: 860px) { .fits { grid-template-columns: 1fr; } }
+    .fit-title { margin-top: 34px; font-size: 24px; } .fits { margin-top: 12px; }
   
     /* Team dashboard */
     .tm-wrap { max-width: 1200px; }
@@ -758,6 +766,7 @@
     .evs th, .evs td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
     @media (max-width: 960px) { .tm-grid { grid-template-columns: 1fr; } .counts { grid-template-columns: repeat(4, 1fr); } }
     @media (max-width: 560px) { .counts { grid-template-columns: repeat(2, 1fr); } .det dl { grid-template-columns: 1fr; } }
+    .crit { font-size: 13px; color: #6b7280; margin: 4px 0 10px; line-height: 1.45; }
   </style>
 </head>
 <body>
@@ -905,7 +914,7 @@
       h += '<div class="act"><h4>1 · Move along the roadmap</h4><div class="stage-btns">' + GXQ.STAGES.map(function (s) {
         return '<button type="button" class="sb' + (r.status === s.id ? ' on' : '') + '" data-stage="' + s.id + '">' + s.icon + ' ' + s.label + '</button>'; }).join("") + '</div></div>';
       h += '<div class="act"><h4>2 · Schedule the Scale Check</h4><div class="sched-row"><input id="when" placeholder="e.g. Thu, Nov 5 · 10:00 AM CT" value="' + esc(r.scheduled || r.slot) + '"><button type="button" class="btn small" id="book">Book & email</button></div></div>';
-      h += '<div class="act"><h4>3 · Fit decision & feedback</h4><div class="dec-btns">' + Object.keys(GXQ.DECISIONS).map(function (k) {
+      h += '<div class="act"><h4>3 · Fit decision & feedback</h4><p class="crit">✅ Fit = paying customers (or close) · we can clearly help · founder can commit the time · path to profit in ~1 year. 🌱 Not yet = one missing. 🙏 Not a fit = big money before revenue, off-focus consumer, or quick flip.</p><div class="dec-btns">' + Object.keys(GXQ.DECISIONS).map(function (k) {
         var d = GXQ.DECISIONS[k]; return '<button type="button" class="sb' + (r.decision === k ? ' on' : '') + '" data-dec="' + k + '">' + d.icon + ' ' + d.label + '</button>'; }).join("") +
         '</div><textarea id="fb" placeholder="Feedback the applicant will see, e.g. what to work on next.">' + esc(r.feedback) + '</textarea><button type="button" class="btn small" id="sendfb">Save & email feedback</button></div>';
       h += '<div class="sent" id="sent"></div><div class="log"><b>Mock emails sent</b>' + r.emails.slice().reverse().map(function (m) { return '<div><span>' + when(m.at) + '</span> · ' + esc(m.subject) + '</div>'; }).join("") + '</div>';

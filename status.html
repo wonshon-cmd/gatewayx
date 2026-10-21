@@ -718,6 +718,14 @@
     .gopro .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
     @media (max-width: 860px) { .bels { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 560px) { .bels { grid-template-columns: 1fr; } }
+
+    .fits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; text-align: left; }
+    .fit-c { background: var(--card); border: 3px solid #e7e5e0; border-radius: 20px; padding: 20px 22px; border-top-width: 8px; }
+    .fit-c.ok { border-top-color: #2f9e7a; } .fit-c.mid { border-top-color: #d29a1e; } .fit-c.no { border-top-color: #9aa1ad; }
+    .fit-h { font-size: 24px; font-weight: 800; } .fit-s { color: var(--muted); font-size: 15px; margin-top: 2px; }
+    .fit-c ul { margin: 10px 0 0; padding-left: 20px; font-size: 17px; line-height: 1.5; }
+@media (max-width: 860px) { .fits { grid-template-columns: 1fr; } }
+    .fit-title { margin-top: 34px; font-size: 24px; } .fits { margin-top: 12px; }
   
     /* Status page */
     .st-wrap { max-width: 860px; }
