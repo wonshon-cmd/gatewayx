@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gateway X · Connecting St. Louis to the world</title>
+  <title>Gateway X · The go-to place in the Midwest to start a company</title>
   <meta name="description" content="Gateway X is a St. Louis venture studio. Bring your idea or the business you already run. We bring technology, training, network and marketing, and we grow with you.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #16181d; --muted: #6b7280; --line: #e7e5e0; --bg: #faf8f4; --card: #fff;
-      --accent: #e8833a; --accent-ink: #b85a17; --accent-soft: #fdf0e6;
-      --c1: #d4691f; --c2: #5a7fd0; --c3: #2f9e7a; --own: #5a7fd0; --gx: #d4691f;
+      --ink: #16213a; --muted: #6b7280; --line: #e7e5e0; --bg: #faf8f4; --card: #fff;
+      --accent: #c0442d; --accent-ink: #9a3220; --accent-soft: #fbe9e5;
+      --c1: #c0442d; --c2: #3c6bb0; --c3: #2f9e7a; --own: #3c6bb0; --gx: #c0442d;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -447,7 +447,7 @@
     }
 
     /* ===== Unified design system (applies site-wide, overrides one-off styles) ===== */
-    :root { --r: 20px; --r-sm: 14px; --bd: 2px solid var(--line); --shadow: 0 1px 2px rgba(22,24,29,.04), 0 6px 20px rgba(22,24,29,.04); --gap: 16px; }
+    :root { --r: 20px; --r-sm: 14px; --bd: 2px solid var(--line); --shadow: 0 1px 2px rgba(22,33,58,.04), 0 6px 20px rgba(22,33,58,.04); --gap: 16px; }
     section { padding: 88px 0; }
     .wrap > .kicker { margin-bottom: 10px; }
     .wrap > h2 { max-width: 820px; }
@@ -463,7 +463,7 @@
     .card.hi { border-top: 4px solid var(--accent); }
     .stop.free .stop-card { border-top: 4px solid var(--c3); }
     .stop.grow .stop-card { border-top: 4px solid var(--accent); }
-    a.card:hover, .etype:hover, .wz-path:hover, .wz-idea:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(22,24,29,.08); }
+    a.card:hover, .etype:hover, .wz-path:hover, .wz-idea:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(22,33,58,.08); }
     .etype.on, .wz-idea.on, .wz-sess.on, .wz-chip.on, .wz-slot.on, .ev-filter.on, .fuel li.lit { border-color: var(--accent); background: var(--accent-soft); }
     /* one heading scale inside cards */
     .card h3, .stop-card h3, .etype h3, .wz-sess b, .j-name b { font-size: 21px; line-height: 1.25; }
@@ -583,7 +583,7 @@
     .rm-pin { width: 58px; height: 58px; border-radius: 50%; background: #fff; border: 4px solid var(--c3); display: grid; place-items: center; font-size: 26px; transition: transform .2s, box-shadow .2s; }
     .rm-stop.grow .rm-pin { border-color: var(--accent); }
     .rm-stop:hover .rm-pin { transform: translateY(-3px); }
-    .rm-stop.on .rm-pin { transform: scale(1.12); box-shadow: 0 0 0 6px rgba(232,131,58,.18); }
+    .rm-stop.on .rm-pin { transform: scale(1.12); box-shadow: 0 0 0 6px rgba(192,68,45,.18); }
     .rm-stop.free.on .rm-pin { box-shadow: 0 0 0 6px rgba(47,158,122,.18); }
     .rm-n { font-size: 12px; font-weight: 800; color: var(--muted); }
     .rm-short { font-size: 15px; font-weight: 800; text-align: center; }
@@ -623,7 +623,7 @@
     .ladder { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; align-items: end; margin-top: 36px; }
     .lad-step { background: var(--card); border: var(--bd); border-radius: var(--r); box-shadow: var(--shadow); padding: 20px; border-top: 6px solid var(--c3);
       margin-top: calc(var(--h) * 28px); }
-    .lad-step:nth-child(2) { border-top-color: #8fbf6a; } .lad-step:nth-child(3) { border-top-color: #e9a24f; } .lad-step:nth-child(4) { border-top-color: var(--accent); }
+    .lad-step:nth-child(2) { border-top-color: #5aa88a; } .lad-step:nth-child(3) { border-top-color: #d77a5f; } .lad-step:nth-child(4) { border-top-color: var(--accent); }
     .lad-tag { display: inline-flex; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; padding: 4px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent-ink); }
     .lad-step:first-child .lad-tag { background: #e6f4ef; color: #1f7a5c; }
     .lad-e { font-size: 36px; margin-top: 10px; }
@@ -657,6 +657,67 @@
       .ms-n { margin-top: 2px; }
     }
     @media (max-width: 560px) { .ladder, .promises { grid-template-columns: 1fr; } .rm-panel .btn.small + .btn.small { margin-left: 0; margin-top: 8px; } }
+
+    /* proposed equity per milestone */
+    .ms-sub { color: var(--muted); margin: 10px 0 0; max-width: 820px; }
+    .eq { margin-top: 12px; }
+    .eq-bar { display: flex; height: 26px; border-radius: 8px; overflow: hidden; font-size: 12px; font-weight: 800; color: #fff; }
+    .eq-you { background: var(--c2, #3c6bb0); display: flex; align-items: center; padding-left: 8px; white-space: nowrap; transition: width .6s ease; }
+    .eq-gx { background: var(--accent); display: flex; align-items: center; justify-content: center; }
+    .eq-l { font-size: 13px; color: var(--muted); margin-top: 6px; } .eq-l b { color: var(--ink); }
+    .ms-note { font-size: 13px; color: var(--muted); margin: 18px 0 0; }
+    .msbox .ms-row { grid-template-columns: repeat(5, 1fr); }
+    @media (max-width: 680px) { .msbox .ms-row { grid-template-columns: 1fr; } }
+
+    /* St. Louis brand touches */
+    .x { color: var(--accent); }
+    .gw .arch, .gw-arch { stroke: #7f8a96 !important; }
+    .river { display: block; width: 100%; height: 46px; margin-top: -1px; }
+    .made { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
+    .made .fdl { color: #c9962b; font-size: 18px; }
+    .wz-head { flex-wrap: wrap; }
+    .wz-demo { order: 3; width: 100%; font-size: 13px; font-weight: 700; color: #1f7a5c; background: #e6f4ef; border-radius: 99px; padding: 4px 12px; width: max-content; }
+
+    .fair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    .fair-c { border-radius: 14px; padding: 12px 16px; }
+    .fair-c.you { background: #eaf0f8; } .fair-c.gx { background: #fbe9e5; }
+    .fair-c b { display: block; font-size: 16px; } .fair-c span { font-size: 14px; color: var(--muted); line-height: 1.4; }
+    @media (max-width: 680px) { .fair { grid-template-columns: 1fr; } }
+    .ms .eq-l b { display: inline; font-size: 13px; margin: 0; }
+
+    .ms-tabs { display: inline-flex; gap: 6px; background: #f1efea; border-radius: 99px; padding: 4px; margin-top: 14px; }
+    .ms-tab { font: inherit; font-size: 15px; font-weight: 700; border: 0; background: none; padding: 8px 16px; border-radius: 99px; cursor: pointer; color: var(--muted); }
+    .ms-tab.on { background: #fff; color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    .msbox[data-mode="new"] .only-ex, .msbox[data-mode="ex"] .only-new { display: none; }
+    .ms-row.ms-ex { grid-template-columns: repeat(4, 1fr) !important; }
+    @media (max-width: 680px) { .ms-row.ms-ex { grid-template-columns: 1fr !important; } }
+    .friendly { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 18px; margin-top: 22px; font-size: 16px; font-weight: 700; color: var(--muted); }
+    .friendly span { background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: 6px 14px; }
+
+    /* partner network */
+    .inds { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .ind { font-weight: 800; font-size: 17px; padding: 10px 16px; border-radius: 99px; background: var(--card); border: var(--bd); }
+    .ptypes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
+    .ptype { background: var(--card); border: var(--bd); border-radius: var(--r); box-shadow: var(--shadow); padding: 20px; border-top: 4px solid var(--c2); }
+    .pt-e { font-size: 34px; } .ptype b { display: block; font-size: 19px; margin-top: 8px; } .ptype span { font-size: 15px; color: var(--muted); line-height: 1.45; display: block; margin-top: 6px; }
+    .pjoin { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+    .pjoin > div b { display: block; font-size: 19px; } .pjoin > div span { color: var(--muted); }
+    .pform { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .pform input, .pform select { width: auto; min-width: 160px; padding: 10px 12px; font-size: 15px; }
+    .pform .status { width: 100%; margin-top: 4px; }
+    @media (max-width: 860px) { .ptypes { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .ptypes { grid-template-columns: 1fr; } .pform input, .pform select { width: 100%; } }
+    .unstop { font-size: clamp(22px, 2.6vw, 30px); font-weight: 800; margin: 10px 0 0; letter-spacing: -.01em; }
+    .unstop span { color: var(--accent); }
+    .bels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 32px; }
+    .bel { background: var(--card); border: var(--bd); border-radius: var(--r); box-shadow: var(--shadow); padding: 20px; }
+    .bel-e { font-size: 34px; } .bel b { display: block; font-size: 19px; margin-top: 8px; } .bel span { display: block; color: var(--muted); font-size: 15px; margin-top: 6px; line-height: 1.45; }
+    .gopro { background: var(--ink); color: #fff; text-align: center; }
+    .gopro h2 { color: #fff; } .gopro .lead { color: #c9cfdb; margin: 14px auto 0; }
+    .gopro .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
+    .gopro .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
+    @media (max-width: 860px) { .bels { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .bels { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -665,13 +726,14 @@
       <a class="brand" href="#top" id="brand">
         <img src="logo.png" alt="Gateway X" onload="document.getElementById('brand').classList.add('has-logo')" onerror="this.remove()">
         <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M6,38 C10,-4 30,-4 34,38" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/></svg>
-        <span class="wordmark">Gateway X</span>
+        <span class="wordmark">Gateway <span class="x">X</span></span>
       </a>
       <button class="menu" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
       <nav class="links" onclick="if(event.target.tagName==='A')this.classList.remove('open')">
         <a href="#how">How it works</a>
         <a href="#work">Work with us</a>
         <a href="#results">Results</a>
+        <a href="#partners">Partners</a>
         <a href="#events">Events</a>
         <a href="#faq">FAQ</a>
         <a href="status.html">Track request</a>
@@ -687,39 +749,59 @@
         <svg class="gw" viewBox="0 0 800 460" role="img" aria-label="The Gateway Arch opening to a connected world"><path id="w0" class="link" pathLength="1" d="M400,392 Q270.0,-50 140,70" style="animation-delay:2.30s"/><g class="city" style="animation-delay:2.50s"><circle cx="140" cy="70" r="7" fill="var(--own)"/><text class="" x="140" y="56" text-anchor="middle">London</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.20s"><animateMotion dur="2.6s" repeatCount="indefinite" begin="3.20s"><mpath href="#w0"/></animateMotion></circle><path id="w1" class="link" pathLength="1" d="M400,392 Q540.0,-40 680,80" style="animation-delay:2.45s"/><g class="city" style="animation-delay:2.65s"><circle cx="680" cy="80" r="7" fill="var(--own)"/><text class="" x="680" y="66" text-anchor="middle">Tokyo</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.35s"><animateMotion dur="2.9s" repeatCount="indefinite" begin="3.35s"><mpath href="#w1"/></animateMotion></circle><path id="w2" class="link" pathLength="1" d="M400,392 Q230.0,110 60,230" style="animation-delay:2.60s"/><g class="city" style="animation-delay:2.80s"><circle cx="60" cy="230" r="7" fill="var(--own)"/><text class="" x="60" y="216" text-anchor="middle">Bay Area</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.50s"><animateMotion dur="3.2s" repeatCount="indefinite" begin="3.50s"><mpath href="#w2"/></animateMotion></circle><path id="w3" class="link" pathLength="1" d="M400,392 Q275.0,272 150,420" style="animation-delay:2.75s"/><g class="city" style="animation-delay:2.95s"><circle cx="150" cy="420" r="7" fill="var(--own)"/><text class="" x="150" y="406" text-anchor="middle">São Paulo</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.65s"><animateMotion dur="3.5s" repeatCount="indefinite" begin="3.65s"><mpath href="#w3"/></animateMotion></circle><path id="w4" class="link" pathLength="1" d="M400,392 Q525.0,272 650,420" style="animation-delay:2.90s"/><g class="city" style="animation-delay:3.10s"><circle cx="650" cy="420" r="7" fill="var(--own)"/><text class="" x="650" y="406" text-anchor="middle">Lagos</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.80s"><animateMotion dur="3.8s" repeatCount="indefinite" begin="3.80s"><mpath href="#w4"/></animateMotion></circle><path id="w5" class="link" pathLength="1" d="M400,392 Q570.0,120 740,240" style="animation-delay:3.05s"/><g class="city" style="animation-delay:3.25s"><circle cx="740" cy="240" r="7" fill="var(--own)"/><text class="" x="740" y="226" text-anchor="middle">Berlin</text></g><circle r="5" fill="var(--accent)" class="city" style="animation-delay:3.95s"><animateMotion dur="4.1s" repeatCount="indefinite" begin="3.95s"><mpath href="#w5"/></animateMotion></circle><g class="globe"><circle cx="400" cy="250" r="100" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><ellipse cx="400" cy="250" rx="100" ry="34" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".55"/><line x1="300" y1="250" x2="500" y2="250" stroke="var(--accent)" stroke-width="2" opacity=".55"/><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-0.0s" repeatCount="indefinite"/></ellipse><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-2.0s" repeatCount="indefinite"/></ellipse><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-4.0s" repeatCount="indefinite"/></ellipse></g><path class="arch" pathLength="1" d="M215,400 C270,-10 530,-10 585,400"/><line class="ground" stroke="#d9d6cf" stroke-width="3" x1="170" y1="402" x2="630" y2="402"/><circle cx="400" cy="392" r="9" fill="var(--accent)"/></svg>
         <div class="kicker">A place to start. People to build with.</div>
         <h1>Connecting St. Louis<br>to the world.</h1>
-        <p class="lead">Bring your idea, or the business you already run. We bring technology, training, network and marketing, and we grow with you.</p>
+        <p class="unstop">We take entrepreneurs from aspiring to <span>unstoppable.</span></p>
+        <p class="lead"><b>The go-to place in the Midwest to start a company.</b> No pitch deck, no Silicon Valley connections needed. Bring your idea, or the business you already run, and build it with people right here.</p>
         <div class="ctas">
           <a class="btn" href="#apply">Bring your idea →</a>
           <a class="btn ghost" href="#how">How it works</a>
         </div>
+        <div class="friendly"><span>☕ No pitch deck needed</span><span>🤝 Real people in St. Louis</span><span>💬 Talk to a founder this week</span></div>
       </div>
     </section>
+    <svg class="river" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0,22 C240,46 480,0 720,22 C960,44 1200,2 1440,22 V46 H0 Z" fill="#3c6bb0" opacity=".14"/><path d="M0,32 C260,12 520,48 760,30 C1000,12 1220,44 1440,30 V46 H0 Z" fill="#3c6bb0" opacity=".22"/></svg>
+
 
     <!-- Results -->
     <section class="alt" id="results">
       <div class="wrap">
         <div class="kicker">Results</div>
         <h2 class="reveal">Real companies, real speed</h2>
-        <p class="lead reveal">Companies launched with Gateway X hit their first big milestones fast.</p>
+        <p class="lead reveal">Companies co-created with Gateway X hit their first big milestones fast.</p>
         <div class="journeys">
           <div class="card journey reveal" data-unit="Day" data-to="100" style="--c:var(--c1)">
-            <div class="j-top"><div class="co-logo" style="--lc:var(--c1)"><img src="aux-insights-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>AUX</span></div><div class="j-name"><b>Aux Insights</b><span>Marketing for private equity</span><em class="launched">🚀 Launched with Gateway X</em></div><div class="j-count"><span class="j-unit">Day</span> <span class="j-n">0</span></div></div>
+            <div class="j-top"><div class="co-logo" style="--lc:var(--c1)"><img src="aux-insights-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>AUX</span></div><div class="j-name"><b>Aux Insights</b><span>Kasey Grelle · CEO & co-founder</span><em class="launched">🤝 Co-created with Gateway X</em></div><div class="j-count"><span class="j-unit">Day</span> <span class="j-n">0</span></div></div>
             <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
             <div class="j-ends"><span>🚀 Launch · <b>$0 revenue</b></span><span>✅ Profitable</span></div>
-            <div class="j-done">From $0 to profitable in 100 days</div>
+            <div class="j-done">Zero to profitable in 100 days</div>
           </div>
           <div class="card journey reveal" data-unit="Month" data-to="24" style="--c:var(--c2)">
-            <div class="j-top"><div class="co-logo" style="--lc:var(--c2)"><img src="growthassistant-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>GA</span></div><div class="j-name"><b>GrowthAssistant</b><span>AI-powered growth talent</span><em class="launched">🥾 Bootstrapped with Gateway X</em></div><div class="j-count"><span class="j-unit">Month</span> <span class="j-n">0</span></div></div>
+            <div class="j-top"><div class="co-logo" style="--lc:var(--c2)"><img src="growthassistant-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>GA</span></div><div class="j-name"><b>GrowthAssistant</b><span>Adriane Schwager · CEO & co-founder</span><em class="launched">🤝 Co-created with Gateway X</em></div><div class="j-count"><span class="j-unit">Month</span> <span class="j-n">0</span></div></div>
             <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
-            <div class="j-ends"><span>🚀 Launch · <b>$0 revenue</b></span><span>🏆 8-figure revenue</span></div>
-            <div class="j-done">From $0 to 8-figure revenue in 2 years</div>
+            <div class="j-ends"><span>🚀 Launch · <b>$0 revenue</b></span><span>🏆 $10M ARR</span></div>
+            <div class="j-done">$10M ARR in 2 years, scaling profitably</div>
           </div>
-        </div>
-        <div class="herd reveal"><div class="herd-camels"><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span></div><div class="herd-t"><b>6+ companies</b> built with the same playbook</div></div>
-        <p class="note">Founder-reported milestones for Gateway X companies.</p>
+          <div class="card journey reveal" data-unit="Day" data-to="1" style="--c:var(--c3)">
+            <div class="j-top"><div class="co-logo" style="--lc:var(--c3)"><img src="bootstrapped-giants-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>BG</span></div><div class="j-name"><b>Bootstrapped Giants</b><span>Andrew Warner · CEO & co-founder</span><em class="launched">🤝 Co-created with Gateway X</em></div><div class="j-count"><span class="j-unit">Day</span> <span class="j-n">0</span></div></div>
+            <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
+            <div class="j-ends"><span>🚀 Launch day</span><span>🎙️ $40K/month sponsors</span></div>
+            <div class="j-done">$40K a month in sponsorship revenue on day one</div>
+          </div>
+          </div>
+        <div class="herd reveal"><div class="herd-camels"><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span></div><div class="herd-t"><b>6 companies</b> built with the same playbook</div></div>
+        <p class="note">Results as published by Gateway X (gateway.xyz). Founder names are each company's CEO and co-founder.</p>
       </div>
     </section>
 
+
+    <!-- Beliefs -->
+    <section>
+      <div class="wrap">
+        <div class="kicker">Why Gateway X</div>
+        <h2 class="reveal">Grow a business. Grow yourself.</h2>
+        <p class="lead reveal">Gateway X is where aspiring entrepreneurs go pro. We co-create and partner with founders to find traction and profitability over funding.</p>
+        <div class="bels reveal"><div class="bel"><div class="bel-e">💰</div><b>Grow with profits, not funding</b><span>Businesses can be bootstrapped, profitable and ambitious at the same time.</span></div><div class="bel"><div class="bel-e">🧑‍🤝‍🧑</div><b>People over capital</b><span>Founders, team and customers are the most important stakeholders.</span></div><div class="bel"><div class="bel-e">🎯</div><b>Start with your advantages</b><span>Use your unique skills, network and knowledge to pick the right game.</span></div><div class="bel"><div class="bel-e">🛠️</div><b>Entrepreneurship is a craft</b><span>Being an entrepreneur and CEO is a skill set, and anyone can learn it.</span></div></div>
+      </div>
+    </section>
 
     <!-- What we bring -->
     <section>
@@ -737,13 +819,13 @@
               <line x1="20" y1="262" x2="880" y2="262" stroke="#d9d6cf" stroke-width="3"/>
               <g class="rk-ship">
                 <path class="rk-part pt-net rk-flame" d="M150,122 C110,126 80,140 40,140 C80,140 110,154 150,158 Z" fill="url(#rkflame)"/>
-                <path class="rk-part pt-net" d="M178,120 L150,114 L150,166 L178,160 Z" fill="#6b6f78" stroke="#16181d" stroke-width="4" stroke-linejoin="round"/>
-                <path class="rk-part pt-mkt" d="M210,106 L170,58 L262,106 Z" fill="#e8833a" stroke="#16181d" stroke-width="4" stroke-linejoin="round"/>
-                <path class="rk-part pt-mkt" d="M210,174 L170,222 L262,174 Z" fill="#e8833a" stroke="#16181d" stroke-width="4" stroke-linejoin="round"/>
-                <rect x="176" y="104" width="214" height="72" rx="36" fill="#fff" stroke="#16181d" stroke-width="4"/>
+                <path class="rk-part pt-net" d="M178,120 L150,114 L150,166 L178,160 Z" fill="#6b6f78" stroke="#16213a" stroke-width="4" stroke-linejoin="round"/>
+                <path class="rk-part pt-mkt" d="M210,106 L170,58 L262,106 Z" fill="#c0442d" stroke="#16213a" stroke-width="4" stroke-linejoin="round"/>
+                <path class="rk-part pt-mkt" d="M210,174 L170,222 L262,174 Z" fill="#c0442d" stroke="#16213a" stroke-width="4" stroke-linejoin="round"/>
+                <rect x="176" y="104" width="214" height="72" rx="36" fill="#fff" stroke="#16213a" stroke-width="4"/>
                 <text class="rk-base" x="262" y="147" text-anchor="middle">Your business</text>
-                <path class="rk-part pt-tech" d="M376,104 C436,108 474,128 492,140 C474,152 436,172 376,176 Z" fill="#5a7fd0" stroke="#16181d" stroke-width="4" stroke-linejoin="round"/>
-                <g class="rk-part pt-train"><circle cx="338" cy="140" r="21" fill="#cfe3ff" stroke="#16181d" stroke-width="4"/><circle cx="331" cy="133" r="6" fill="#fff"/></g>
+                <path class="rk-part pt-tech" d="M376,104 C436,108 474,128 492,140 C474,152 436,172 376,176 Z" fill="#3c6bb0" stroke="#16213a" stroke-width="4" stroke-linejoin="round"/>
+                <g class="rk-part pt-train"><circle cx="338" cy="140" r="21" fill="#cfe3ff" stroke="#16213a" stroke-width="4"/><circle cx="331" cy="133" r="6" fill="#fff"/></g>
               </g>
               <g class="rk-callouts">
                 <text class="rk-c c-tech" x="470" y="88">🤖 Technology</text>
@@ -761,13 +843,35 @@
 
 
 
+    <!-- Partners -->
+    <section id="partners">
+      <div class="wrap">
+        <div class="kicker">Our partner network</div>
+        <h2 class="reveal">Experts beyond marketing</h2>
+        <p class="lead reveal">Gateway X's own wins are in marketing and growth. So we're building a bench of experts in the industries Midwest businesses actually run on, people who work with our companies, side by side.</p>
+        <div class="inds reveal"><span class="ind">🏥 Healthcare</span><span class="ind">🚚 Logistics & trades</span><span class="ind">🏦 Finance & accounting</span><span class="ind">⚖️ Legal</span><span class="ind">🏭 Manufacturing</span><span class="ind">🏠 Real estate</span></div>
+        <div class="ptypes reveal"><div class="ptype"><div class="pt-e">🧑‍🏫</div><b>Operating partners</b><span>Industry veterans who have scaled a business like yours. They coach a company a few hours a week.</span></div><div class="ptype"><div class="pt-e">🏦</div><b>Service partners</b><span>St. Louis-area banks, accountants and law firms with founder-friendly packages.</span></div><div class="ptype"><div class="pt-e">🎓</div><b>Talent partners</b><span>Local colleges sending fellows, interns and future hires.</span></div><div class="ptype"><div class="pt-e">🤝</div><b>Community partners</b><span>Chambers of commerce and the Small Business Development Center, sending owners our way.</span></div></div>
+        <div class="card pjoin reveal">
+          <div><b>Know an industry inside out?</b><span>Become a Gateway X partner and help the next Midwest company grow.</span></div>
+          <form id="pform" class="pform" novalidate>
+            <input name="name" placeholder="Your name" aria-label="Your name" value="Sam Patel">
+            <input name="email" type="email" placeholder="Email" aria-label="Email" value="sam.patel@example.com">
+            <select name="field" aria-label="Your industry"><option>Healthcare</option><option>Logistics & trades</option><option>Finance & accounting</option><option>Legal</option><option>Manufacturing</option><option>Real estate</option><option>Other</option></select>
+            <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+            <button class="btn small" type="submit">Become a partner →</button>
+            <div class="status" id="pstatus"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <!-- Who it's for -->
     <section class="alt">
       <div class="wrap">
         <div class="kicker">Who it's for</div>
         <h2 class="reveal">Two ways in</h2>
         <div class="grid g2" style="margin-top:32px">
-          <a href="#apply" class="card hi reveal pathcard" data-start="idea"><div class="emoji">💡</div><h3>You have an idea</h3><p>Learn how it's done, test it with real buyers, and build it with people who have done it before.</p><span class="go">Start here →</span></a>
+          <a href="#apply" class="card hi reveal pathcard" data-start="idea"><div class="emoji">💡</div><h3>You have an idea</h3><p>Even an unconventional one. Learn how it's done, test it with real buyers, and build it with people who have done it before.</p><span class="go">Start here →</span></a>
           <a href="#apply" class="card hi reveal pathcard" data-start="biz"><div class="emoji">🏪</div><h3>You run a business that works</h3><p>Real customers and revenue, but not sure how to scale. That's most of the Midwest, and it's exactly who we want to meet.</p><span class="go">Start here →</span></a>
         </div>
         <a href="#apply" class="soft-link reveal" data-start="explore">🧭 Not sure what to build yet? We'd love to help you find an idea →</a>
@@ -804,17 +908,23 @@
             <dl><dt>You get</dt><dd>Scale Nights, Founder Stories, Idea Lab and a free Scale Check.</dd><dt>We earn</dt><dd>Nothing. This is how we meet.</dd><dt>You commit</dt><dd>None. Come once or every month.</dd></dl>
           </div><div class="lad-step reveal" style="--h:1">
             <div class="lad-tag">Flat fee</div><div class="lad-e">🧰</div><h3>Service sprint</h3>
-            <dl><dt>You get</dt><dd>A defined project: sales playbook training, AI setup or a marketing sprint.</dd><dt>We earn</dt><dd>A flat fee, agreed before you start.</dd><dt>You commit</dt><dd>One project. You own everything we build.</dd></dl>
+            <dl><dt>You get</dt><dd>A defined project: sales playbook training, AI setup or a marketing sprint.</dd><dt>We earn</dt><dd>A flat fee, agreed before you start.</dd><dt>You commit</dt><dd>One project. You own everything we build. The fee is credited if you move to a partnership.</dd></dl>
           </div><div class="lad-step reveal" style="--h:2">
             <div class="lad-tag">Success fee</div><div class="lad-e">🤝</div><h3>Network partner</h3>
             <dl><dt>You get</dt><dd>Warm intros to buyers and partners from our network.</dd><dt>We earn</dt><dd>A share of revenue only from deals we introduce.</dd><dt>You commit</dt><dd>Only when a deal closes. No deal, no fee.</dd></dl>
           </div><div class="lad-step reveal" style="--h:3">
             <div class="lad-tag">Partnership</div><div class="lad-e">🚀</div><h3>Full partnership</h3>
-            <dl><dt>You get</dt><dd>Capital in steps, hands-on help, and the full network and playbook.</dd><dt>We earn</dt><dd>A minority stake and a share of profits.</dd><dt>You commit</dt><dd>Milestones you agree to, step by step.</dd></dl>
+            <dl><dt>You get</dt><dd>Capital in steps, hands-on help, and the full network and playbook.</dd><dt>We earn</dt><dd>A small stake at the start, stepping up to 20% at the scale trigger, plus a share of profits.</dd><dt>You commit</dt><dd>Milestones you agree to, step by step.</dd></dl>
           </div></div>
-        <div class="card msbox reveal">
-          <div class="ms-head"><div><div class="kicker" style="margin:0">Full partnership</div><h3>Capital in steps, tied to milestones you agree on</h3></div><span class="lad-tag">You stay in charge</span></div>
-          <div class="ms-row"><div class="ms reveal"><div class="ms-dot">🤝</div><div class="ms-n">Milestone 1</div><b>Agree the plan</b><p>We agree on goals and milestones together, in writing.</p><span class="ms-then">→ First capital to start</span></div><div class="ms reveal"><div class="ms-dot">🧾</div><div class="ms-n">Milestone 2</div><b>First new clients</b><p>The network and playbook bring in new paying clients.</p><span class="ms-then">→ Next step of capital</span></div><div class="ms reveal"><div class="ms-dot">✅</div><div class="ms-n">Milestone 3</div><b>Profitable</b><p>The business pays for itself.</p><span class="ms-then">→ Capital to scale</span></div><div class="ms reveal"><div class="ms-dot">📈</div><div class="ms-n">Milestone 4</div><b>Grow and share</b><p>You keep growing and stay in charge.</p><span class="ms-then">→ Profits shared each year; no pressure to sell</span></div></div>
+        <div class="card msbox reveal" data-mode="new">
+          <div class="ms-head"><div><div class="kicker" style="margin:0">Full partnership · proposed terms</div><h3 class="only-new">Help first. Gateway X earns up to 20% as you scale.</h3><h3 class="only-ex">Already running a business? We only share in the growth.</h3></div><span class="lad-tag only-new">You keep 80%+</span><span class="lad-tag only-ex">You keep 90%+</span></div>
+          <div class="ms-tabs" role="tablist"><button type="button" class="ms-tab on" data-m="new">💡 New company</button><button type="button" class="ms-tab" data-m="ex">🏪 Existing business</button></div>
+          <p class="ms-sub only-new">We start with a paid pilot, then invest a little at a time. Gateway X's stake steps up as the business hits each milestone, reaching the full 20% at the scale trigger you agree on together.</p>
+          <p class="ms-sub only-ex">You keep 100% of what you've already built. Gateway X earns a share of the profit <b>above your baseline</b>, and a stake of up to 10% only if it invests capital and you hit the growth you agreed on.</p>
+          <div class="ms-row ms-ex"><div class="ms"><div class="ms-dot">📏</div><div class="ms-n">Milestone 1</div><b>Set the baseline</b><p>At your Scale Check we write down today's numbers: your current reality.</p><span class="ms-then">→ Your starting line</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:100%">You 100%</span></div><div class="eq-l">Gateway X: <b>none</b></div></div></div><div class="ms"><div class="ms-dot">🧪</div><div class="ms-n">Milestone 2</div><b>Pilot together</b><p>A 90-day paid sprint. The fee is credited if you continue.</p><span class="ms-then">→ Both sides see if it works</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:100%">You 100%</span></div><div class="eq-l">Gateway X: <b>none</b></div></div></div><div class="ms"><div class="ms-dot">📈</div><div class="ms-n">Milestone 3</div><b>1.5× your baseline</b><p>Growth from the network, sales playbook and AI tools.</p><span class="ms-then">→ Growth share starts</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:95%">You 95%</span><span class="eq-gx" style="width:5%"></span></div><div class="eq-l">Gateway X: <b>growth share + 5% if we invested</b></div></div></div><div class="ms"><div class="ms-dot">🚀</div><div class="ms-n">Milestone 4</div><b>2×: the scale trigger</b><p>The growth target you agreed on together.</p><span class="ms-then">→ Capital to scale, if you want it</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:90%">You 90%</span><span class="eq-gx" style="width:10%">GX</span></div><div class="eq-l">Gateway X: <b>growth share + up to 10%</b></div></div></div></div>
+          <div class="ms-row only-new"><div class="ms"><div class="ms-dot">🧪</div><div class="ms-n">Milestone 1</div><b>Pilot together</b><p>A 90-day paid service sprint. The fee is credited if you go on to a partnership.</p><span class="ms-then">→ Both sides see if it works</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:100%">You 100%</span></div><div class="eq-l">Gateway X stake: <b>none yet</b></div></div></div><div class="ms"><div class="ms-dot">🤝</div><div class="ms-n">Milestone 2</div><b>Partnership starts</b><p>Goals and milestones agreed in writing. Gateway X writes a small first check.</p><span class="ms-then">→ First capital + full network</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:95%">You 95%</span><span class="eq-gx" style="width:5%"></span></div><div class="eq-l">Gateway X stake: <b>+5% → 5% total</b></div></div></div><div class="ms"><div class="ms-dot">🧾</div><div class="ms-n">Milestone 3</div><b>First new clients</b><p>The network and playbook bring in new paying clients.</p><span class="ms-then">→ Next step of capital</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:90%">You 90%</span><span class="eq-gx" style="width:10%">GX</span></div><div class="eq-l">Gateway X stake: <b>+5% → 10% total</b></div></div></div><div class="ms"><div class="ms-dot">✅</div><div class="ms-n">Milestone 4</div><b>Profitable: the scale trigger</b><p>The business pays for itself and hits the scale you agreed on.</p><span class="ms-then">→ Capital to scale</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:80%">You 80%</span><span class="eq-gx" style="width:20%">GX</span></div><div class="eq-l">Gateway X stake: <b>+10% → 20% total</b></div></div></div><div class="ms"><div class="ms-dot">📈</div><div class="ms-n">Milestone 5</div><b>Grow and share</b><p>You keep growing and stay in charge.</p><span class="ms-then">→ Profits shared by ownership, no pressure to sell</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:80%">You 80%</span><span class="eq-gx" style="width:20%">GX</span></div><div class="eq-l">Gateway X stake: <b>stays at 20%</b></div></div></div></div>
+          <div class="fair"><div class="fair-c you"><b>🛡️ Protects you</b><span>If Gateway X doesn't deliver the help, its stake doesn't step up. You never give up more than the help you got.</span></div><div class="fair-c gx"><b>🛡️ Protects Gateway X</b><span>Pilot time is paid. Each check comes with equity, and what Gateway X has earned stays earned, even if a founder walks away.</span></div></div>
+          <p class="ms-note">Proposal for discussion, based on the ~20% stake in Gateway X's current terms (Series PROFIT). Final terms are agreed together, in writing. Community, service sprints and network partnerships involve no equity.</p>
         </div>
         <div class="promises reveal"><div class="pm"><span>💬</span><div><b>No surprises</b><p>Pricing is shared before you commit.</p></div></div><div class="pm"><span>🔒</span><div><b>Your idea stays yours</b><p>And so does everything we build together.</p></div></div><div class="pm"><span>🧑‍💼</span><div><b>You stay in charge</b><p>Partners keep majority ownership and control.</p></div></div><div class="pm"><span>🌱</span><div><b>We win only if you win</b><p>We make money when your business does.</p></div></div></div>
         <div class="work-cta reveal"><a class="btn" href="#apply" data-start="choose">Start with a free Scale Check →</a><span>No event, no commitment, no equity.</span></div>
@@ -845,12 +955,15 @@
         <div class="kicker">FAQ</div>
         <h2 class="reveal">Questions owners ask us</h2>
         <div style="margin-top:32px">
+          <details class="reveal"><summary>Do I need a pitch deck or investor connections?</summary><p>No. Most owners we talk to have never pitched an investor. Come as you are: tell us what you're building in plain words, and we'll take it from there.</p></details>
           <details class="reveal"><summary>Will you take my idea?</summary><p>No. Your idea stays yours. We're in this to build companies with founders, not around them.</p></details>
           <details class="reveal"><summary>Do I have to give up equity?</summary><p>No. Community events, service packages and network partnerships involve no equity. A full partnership includes capital and a stake, and the capital comes in steps as you hit milestones.</p></details>
-          <details class="reveal"><summary>I already run a profitable business. Is this for me?</summary><p>Yes. Many of the owners we want to meet already have customers and revenue but aren't sure how to scale. Start with a free Scale Check.</p></details>
+          <details class="reveal"><summary>I already run a profitable business. Is this for me?</summary><p>Yes. Many of the owners we want to meet already have customers and revenue but aren't sure how to scale. You keep 100% of what you've built: Gateway X only shares in the growth above your starting point. Start with a free Scale Check.</p></details>
           <details class="reveal"><summary>Do I need to be in St. Louis?</summary><p>No. We're based in St. Louis, but most sessions are online and we work with owners across the Midwest.</p></details>
-          <details class="reveal"><summary>How does Gateway X make money?</summary><p>Free events and the Scale Check cost nothing. Service sprints have a flat fee agreed upfront. Network partners pay a share of revenue only from deals we introduce. Full partners give a minority stake and share profits, so we make money only when your business does.</p></details>
+          <details class="reveal"><summary>What if my idea is unconventional?</summary><p>Good. Different ideas are welcome. We'll help you learn fast: test it with real buyers at an Idea Lab, see what works, and grow from there.</p></details>
+          <details class="reveal"><summary>How does Gateway X make money?</summary><p>Free events and the Scale Check cost nothing. Service sprints have a flat fee agreed upfront. Network partners pay a share of revenue only from deals we introduce. Full partners start with a paid pilot, then Gateway X takes a small stake that steps up to 20% as the business hits agreed milestones, plus a share of profits. We make money only when your business does.</p></details>
           <details class="reveal"><summary>Do I have to go to an event first?</summary><p>No. Events like Scale Night are optional. You can book a free Scale Check directly from “Bring your idea.”</p></details>
+          <details class="reveal"><summary>What happens in a Scale Check?</summary><p>We use Gateway X's Desired Future State exercise. You describe where you want to be (in 3 months, 1 year, 3 years) and where you are today, just the facts. Then we map the gap and leave you with a one-page plan. <a href="https://dfs.gateway.xyz/" target="_blank" rel="noopener">See the worksheet ↗</a></p></details>
           <details class="reveal"><summary>What does it cost to start?</summary><p>Nothing. Scale Nights, Founder Stories and the Scale Check are free.</p></details>
           <details class="reveal"><summary>What kinds of businesses fit best?</summary><p>B2B services where technology, a strong sales system and the right introductions can change how fast you grow.</p></details>
         </div>
@@ -867,6 +980,7 @@
         <div class="wz card" id="wz">
           <div class="wz-head">
             <div class="wz-step" id="wz-step">Step 1</div>
+            <div class="wz-demo">Demo · answers are pre-filled, just click Next</div>
             <div class="wz-bar"><div class="wz-fill" id="wz-fill"></div></div>
           </div>
           <div id="wz-body"></div>
@@ -879,11 +993,18 @@
         <p class="privacy">We only use your answers to help you and reply to you. We never share your idea.</p>
       </div>
     </section>
+    <section class="gopro">
+      <div class="wrap">
+        <h2>Ready to go pro?</h2>
+        <p class="lead">We're looking for entrepreneurs, team members and partners to build with us.</p>
+        <div class="ctas"><a class="btn" href="#apply" data-start="choose">Bootstrap with us →</a><a class="btn ghost" href="#partners">Become a partner</a></div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <div><strong style="color:var(--ink)">Gateway X</strong> · St. Louis, Missouri · Connecting St. Louis to the world</div>
+      <div><strong style="color:var(--ink)">Gateway <span class="x">X</span></strong> · <span class="made"><span class="fdl">⚜️</span> Made in St. Louis</span> · Connecting St. Louis to the world</div>
       <div><a href="#apply">Bring your idea</a> · <a href="status.html">Track a request</a> · <a href="#events">Events</a> · <a href="team.html">Gateway X team (demo)</a> · <a href="presentation.html">Team presentation</a></div>
     </div>
   </footer>
@@ -916,7 +1037,7 @@
       function seed() {
         return [
           { id: "GX-1001", name: "Maria Lopez", email: "maria@example.com", city: "St. Louis, MO", path: "Runs a business", stage: "Growing a business",
-            idea: "Bookkeeping firm for 40 dental practices in Missouri.", company: "Lopez Ledger Co.", team: "11–50 people", help: "Too much manual work, Reaching beyond my city",
+            idea: "Bookkeeping firm for 40 dental practices in Missouri.", company: "Lopez Ledger Co.", team: "11–50 people", help: "Too much manual work, Reaching beyond my city", future: "200 dental practices across the Midwest, a team of 25.", today: "40 clients, 6 people, profitable, I do all the sales.",
             session: "Free Scale Check", slot: "", status: "scheduled", decision: "", scheduled: "Thu · 10:00 AM CT", feedback: "",
             created: daysAgo(6), emails: [mail(daysAgo(6), "We got your request (GX-1001)", "Thanks Maria! A Gateway X partner will review your answers within 2 business days."),
               mail(daysAgo(4), "Your free Scale Check is booked", "You're confirmed for Thursday at 10:00 AM CT on Zoom. Bring last quarter's numbers if you can.")] },
@@ -988,9 +1109,28 @@
     new IntersectionObserver(function (entries, obs) { if (entries[0].isIntersecting) { obs.disconnect(); buildRocket(); } }, { threshold: 0.4 }).observe(document.getElementById("rocket"));
     document.getElementById("rk-replay").onclick = buildRocket;
 
+    // Partnership terms: switch between a new company and an existing business.
+    document.querySelectorAll(".ms-tab").forEach(function (b) {
+      b.onclick = function () {
+        var box = b.closest(".msbox"); box.setAttribute("data-mode", b.getAttribute("data-m"));
+        box.querySelectorAll(".ms-tab").forEach(function (c) { c.classList.toggle("on", c === b); });
+      };
+    });
+
+
+    // Partner sign-up (demo): saved in this browser and shown on the team dashboard.
+    document.getElementById("pform").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = e.target, st = document.getElementById("pstatus");
+      if (f._honey.value) return;
+      if (!f.name.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())) { st.className = "status err"; st.textContent = "Please add your name and a valid email."; return; }
+      GXQ.addEvent({ name: f.name.value.trim(), email: f.email.value.trim(), event: "Partner interest: " + f.field.value, date: new Date().toDateString(), location: "Partner network" });
+      st.className = "status ok"; st.textContent = "✅ Thanks! The Gateway X team will reach out about joining the partner network.";
+    });
+
     // Compact roadmap: one road, tap a stop to see its details in one panel.
     var RM = [
-      { ph: "free", e: "🩺", h: "Get a free Scale Check", p: "Book it directly. 30 minutes to map where your time and margin go. You leave with a one-page plan.", w: "30 min · free", c: '<a class="btn small" href="#apply" data-start="choose">Book my free Scale Check →</a>' },
+      { ph: "free", e: "🩺", h: "Get a free Scale Check", p: "Book it directly. In 30 minutes we use Gateway X's Desired Future State exercise: where you want to be, and where you are today (just the facts). You leave with a one-page plan.", w: "30 min · free", c: '<a class="btn small" href="#apply" data-start="choose">Book my free Scale Check →</a> <a class="btn small ghost" href="https://dfs.gateway.xyz/" target="_blank" rel="noopener">See the DFS worksheet ↗</a>' },
       { ph: "free", e: "🎯", h: "See if we're a fit", p: "We look at your customers, market and goals, and give you a clear answer.", w: "About 1 week", c: '<a class="btn small ghost" href="#apply" data-start="choose">Bring your idea →</a>' },
       { ph: "grow", e: "🔌", h: "Plug into the network", p: "Warm buyers, the sales playbook, AI tools and talent.", w: "First 90 days", c: '' },
       { ph: "grow", e: "🤝", h: "Grow together", p: "Pick the way of working that fits you. You stay in charge.", w: "Ongoing", c: '<a class="step-link" href="#work">See ways to work together →</a>' },
@@ -1001,7 +1141,7 @@
       document.querySelectorAll(".rm-stop").forEach(function (b) { b.classList.toggle("on", +b.getAttribute("data-stop") === n); });
       var mine = here && +here.getAttribute("data-stop") === n;
       document.getElementById("rm-panel").innerHTML = '<div class="rm-p-top"><span class="rm-p-e">' + s.e + '</span><div><div class="rm-p-k">Stop ' + n + ' of ' + RM.length + ' · ' + (s.ph === "free" ? "Get started" : "Grow with us") + (mine ? " · 📍 You are here" : "") + '</div><h3>' + s.h + '</h3></div><span class="when">' + s.w + '</span></div><p>' + s.p + '</p>' + s.c +
-        '<div class="rm-p-nav">' + (n > 1 ? '<button type="button" class="rm-prev">← ' + RM[n - 2].h + '</button>' : '<span></span>') + (n < RM.length ? '<button type="button" class="rm-next">' + RM[n].h + ' →</button>' : '<span class="rm-end">🏁 Your company, bigger than you imagined</span>') + '</div>';
+        '<div class="rm-p-nav">' + (n > 1 ? '<button type="button" class="rm-prev">← ' + RM[n - 2].h + '</button>' : '<span></span>') + (n < RM.length ? '<button type="button" class="rm-next">' + RM[n].h + ' →</button>' : '<span class="rm-end">🏁 From aspiring to unstoppable</span>') + '</div>';
       var p = document.querySelector(".rm-prev"), x = document.querySelector(".rm-next");
       if (p) p.onclick = function () { rmSelect(n - 1); }; if (x) x.onclick = function () { rmSelect(n + 1); };
       document.querySelectorAll("#rm-panel [data-start]").forEach(function (el) {
@@ -1033,6 +1173,7 @@
         if (!e.isIntersecting) return;
         walkObs.unobserve(e.target);
         var card = e.target, n = card.querySelector(".j-n"), to = +card.getAttribute("data-to"), start = null;
+        if (!to) { card.classList.add("go"); setTimeout(function () { card.classList.add("done"); }, 2900); return; }
         card.classList.add("go");
         function step(ts) {
           if (!start) start = ts + 300;
@@ -1073,25 +1214,33 @@
     // Questions for each path. Every path ends with "about you" and "book a time".
     function wzSteps() {
       var common = [
+        { id: "talk", q: "What kind of conversation would help most?", hint: "Pick one. We'll suggest a time next", type: "one", key: "talk", opts: ["🩺 A free Scale Check", "🧪 Brainstorm ideas (Idea Lab)", "🪑 Q&A with a founder", "📘 Sales help (paid workshop)", "🤖 AI and tech setup (paid)", "📣 Marketing help (paid)"] },
         { id: "where", q: "Where are you based?", hint: "Optional", type: "text", key: "city", ph: "e.g. St. Louis, MO" },
         { id: "contact", q: "How can we reach you?", type: "contact" },
         { id: "book", q: "Your next step", type: "book" }
       ];
       var start = [{ id: "path", q: "What brings you here?", type: "path" }];
       if (wzState.path === "idea") return start.concat([
-        { id: "idea", q: "Tell us your idea in a sentence or two.", type: "area", key: "idea", ph: "e.g. An AI front desk that answers calls for dental clinics.", req: true },
+        { id: "idea", q: "Tell us your idea in a sentence or two.", hint: "Unconventional ideas welcome", type: "area", key: "idea", ph: "e.g. An AI front desk that answers calls for dental clinics.", req: true },
+        { id: "special", q: "What's special about your idea?", hint: "One sentence: why you, why now, why it's different", type: "area", key: "special", ph: "e.g. I ran a vet clinic for 8 years, so I know exactly which calls get missed." },
         { id: "far", q: "How far along are you?", type: "one", key: "far", opts: ["💭 Just an idea", "🗣️ Talking to customers", "🧾 First paying customers"], req: true },
+        { id: "future", q: "Where do you want to be in 3 years?", hint: "Dream big and be specific: customers, team, what you're best at", type: "area", key: "future", ph: "e.g. 200 dental practices across the Midwest, a team of 25, known as the easiest bookkeeper to work with." },
+        { id: "today", q: "Where are you today?", hint: "Just the facts, no spin", type: "area", key: "today", ph: "e.g. 40 clients, 6 people, profitable but I do all the sales myself." },
         { id: "help", q: "Where could we help most?", hint: "Pick any", type: "many", key: "help", opts: ["🤝 Finding customers", "📘 Learning to sell", "🤖 Building with AI", "📣 Marketing", "🧑‍🤝‍🧑 Finding a co-founder or team", "💰 Funding"] }
       ], common);
       if (wzState.path === "biz") return start.concat([
         { id: "biz", q: "What does your business do?", type: "area", key: "idea", ph: "e.g. We do bookkeeping for 40 dental practices in Missouri.", req: true },
+        { id: "special", q: "What's special about your business?", hint: "One sentence: what customers love, what you do better", type: "area", key: "special", ph: "e.g. Clients stay 6+ years because we answer the phone in under an hour." },
         { id: "company", q: "What's it called?", hint: "Optional", type: "text", key: "company", ph: "Company name" },
         { id: "size", q: "How big is your team today?", type: "one", key: "size", opts: ["👤 Just me", "👥 2–10 people", "🏢 11–50 people", "🏙️ 50+ people"], req: true },
+        { id: "future", q: "Where do you want to be in 3 years?", hint: "Dream big and be specific: customers, team, what you're best at", type: "area", key: "future", ph: "e.g. 200 dental practices across the Midwest, a team of 25, known as the easiest bookkeeper to work with." },
+        { id: "today", q: "Where are you today?", hint: "Just the facts, no spin", type: "area", key: "today", ph: "e.g. 40 clients, 6 people, profitable but I do all the sales myself." },
         { id: "help", q: "What's holding you back?", hint: "Pick any", type: "many", key: "help", opts: ["🤝 Finding customers", "📘 Sales", "🧑‍🤝‍🧑 Hiring", "⏳ Too much manual work", "📣 Reaching beyond my city", "💰 Capital to grow"] }
       ], common);
       if (wzState.path === "explore") return start.concat([
         { id: "know", q: "What do you know best?", hint: "Pick any. Your work or life experience counts.", type: "many", key: "know", opts: Object.keys(IDEAS) },
         { id: "enjoy", q: "What do you enjoy most?", hint: "Pick any", type: "many", key: "enjoy", opts: ["🗣️ Talking with people", "🧩 Building systems", "📊 Working with numbers", "🎨 Creating things"] },
+        { id: "future", q: "In 3 years, what would you love to be building?", hint: "Dream big, no roadblocks", type: "area", key: "future", ph: "e.g. A company that helps clinics in my hometown never miss a patient call." },
         { id: "ideas", q: "A few ideas you could start with", type: "ideas" }
       ], common);
       return start;
@@ -1117,7 +1266,13 @@
     }
 
     // Which sessions to suggest, based on the path and answers.
+    var TALK_TO = { "🩺 A free Scale Check": "check", "🧪 Brainstorm ideas (Idea Lab)": "lab", "🪑 Q&A with a founder": "stories", "📘 Sales help (paid workshop)": "sales", "🤖 AI and tech setup (paid)": "ai", "📣 Marketing help (paid)": "mkt" };
     function wzRecommend() {
+      var base = wzRecommendBase(), first = TALK_TO[wzState.a.talk];
+      if (!first) return base;
+      return [first].concat(base.filter(function (x) { return x !== first; })).slice(0, 4);
+    }
+    function wzRecommendBase() {
       var a = wzState.a, help = a.help.join(" ");
       if (wzState.path === "explore") return ["lab", "stories"];
       if (wzState.path === "idea") return ["check", "stories", "sales"];
@@ -1161,6 +1316,7 @@
         var picks = a.know.length ? a.know : ["Trades & logistics", "Healthcare", "Marketing"], list = [];
         picks.forEach(function (k) { (IDEAS[k] || []).forEach(function (x) { if (list.length < 4) list.push(x); }); });
         if (list.length < 3) IDEAS["Marketing"].concat(IDEAS["Trades & logistics"]).forEach(function (x) { if (list.length < 3) list.push(x); });
+        if (!wzState.idea) wzState.idea = list[0][0];
         h += '<p class="wz-sub">Based on what you know, these are AI-powered service businesses people in the Midwest need. Pick one you like, or keep exploring with us.</p>';
         h += '<div class="wz-ideas">' + list.map(function (x) {
           return '<button type="button" class="wz-idea' + (wzState.idea === x[0] ? ' on' : '') + '" data-idea="' + wzEsc(x[0]) + '"><b>' + x[0] + '</b><span>' + x[1] + '</span></button>';
@@ -1174,6 +1330,7 @@
         h += '<div class="wz-here"><div class="wz-here-t">📍 You are here: <b>' + sg.name + '</b></div><div class="wz-line">' +
           stages.map(function (s, i) { return '<span class="' + (i < sg.i ? 'past' : i === sg.i ? 'now' : '') + '">' + s + '</span>'; }).join("") +
           '</div><p class="wz-sub">' + sg.line + '</p></div>';
+        if (!wzState.pick) { var r0 = wzRecommend()[0]; wzState.pick = { id: r0, slot: wzSlots(SESSIONS[r0])[0] }; }
         h += '<p class="wz-sub"><b>Pick a session and a time.</b> We\'ll confirm by email.</p><div class="wz-sessions">';
         wzRecommend().forEach(function (id) {
           var s = SESSIONS[id];
@@ -1258,8 +1415,21 @@
       if (top < 70 || top > window.innerHeight * 0.6) window.scrollTo({ top: window.scrollY + top - 90, behavior: "smooth" });
     }
 
+    // Demo mode: every answer is pre-filled so the flow can be clicked straight through.
+    var DEMO = {
+      idea: { idea: "An AI front desk that answers calls and books appointments for vet clinics.", far: "🗣️ Talking to customers", help: ["🤝 Finding customers", "🤖 Building with AI"], special: "I ran a vet clinic for 8 years, so I know exactly which calls get missed.", talk: "🩺 A free Scale Check",
+              future: "In 3 years: 300 vet clinics across the Midwest use us, a team of 15, known for never missing a call.", today: "5 clinics testing it for free, just me and one engineer, no revenue yet." },
+      biz: { idea: "We do bookkeeping for 40 dental practices in Missouri.", company: "Show-Me Ledger Co.", size: "👥 2–10 people", help: ["🤝 Finding customers", "⏳ Too much manual work"], special: "Clients stay 6+ years because we answer within an hour, every time.", talk: "🩺 A free Scale Check",
+             future: "In 3 years: 200 practices across the Midwest, a team of 25, the easiest bookkeeper to work with.", today: "40 clients, 6 people, profitable, and I still do all the sales myself." },
+      explore: { know: ["Healthcare", "Trades & logistics"], enjoy: ["🗣️ Talking with people"], talk: "🧪 Brainstorm ideas (Idea Lab)", future: "A company that helps businesses in my hometown never miss a customer call." },
+      common: { city: "St. Louis, MO", name: "Jordan Rivera", email: "jordan.rivera@example.com" }
+    };
     function wzStart(path) {
-      wzState.path = path; wzState.step = 1; wzRender(); wzScroll();
+      wzState = { path: path, step: 1, a: { help: [], know: [], enjoy: [] }, idea: null, pick: null };
+      var d = DEMO[path], c = DEMO.common;
+      for (var k in d) wzState.a[k] = Array.isArray(d[k]) ? d[k].slice() : d[k];
+      for (var j in c) wzState.a[j] = c[j];
+      wzRender(); wzScroll();
     }
 
     function wzSubmit() {
@@ -1271,7 +1441,8 @@
         name: a.name, email: a.email, city: a.city || "", path: label, stage: wzStage().name,
         idea: a.idea || (wzState.idea ? "Picked: " + wzState.idea : ""), company: a.company || "",
         team: a.size || a.far || "", help: a.help.concat(a.know).join(", "),
-        session: s ? s.name + (s.paid ? " (paid)" : "") : "No time picked yet", slot: wzState.pick ? wzState.pick.slot : ""
+        session: s ? s.name + (s.paid ? " (paid)" : "") : "No time picked yet", slot: wzState.pick ? wzState.pick.slot : "",
+        future: a.future || "", today: a.today || "", special: a.special || "", talk: a.talk || ""
       });
       try { localStorage.setItem("gx_my_request", r.id); } catch (e) {}
       document.getElementById("wz-step").textContent = "Done";
