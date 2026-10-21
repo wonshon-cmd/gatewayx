@@ -1,6 +1,8 @@
 # Gateway X website
 
 - `index.html` — the Gateway X website: who it's for, what we bring, how it works, ways to work together, results, events, FAQ, and a working "Bring your idea" application form.
+- `status.html` — applicants track their request (enter GX-#### or email).
+- `team.html` — Gateway X team dashboard (demo): move requests along the roadmap, schedule, give feedback, decide fit / not yet / not a fit.
 - `presentation.html` — the MGMT 7640 Block Week team presentation and Herd OS demo (used for the video).
 
 **Go live:** Settings → Pages → Deploy from branch `main`, folder `/(root)`. Site: https://wonshon-cmd.github.io/gatewayx/
@@ -17,3 +19,5 @@
 - `CAMPUSES` and `TOUR`: sample venues for in-person events. Replace them with confirmed locations.
 
 **Company logos:** upload `aux-insights-logo.png` and `growthassistant-logo.png` to this folder and they replace the AUX / GA badges in Results automatically.
+
+**Request queue (demo mode):** "Bring your idea" submissions, event sign-ups and status updates are stored in the visitor's browser (localStorage) and every email is a mock message shown on the status page. Nothing is sent anywhere. To go live, connect the queue to a real backend (e.g. Airtable, Google Sheets or a CRM) and a real email service.

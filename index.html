@@ -506,6 +506,68 @@
       .btn { width: 100%; text-align: center; }
       .wz-nav .btn, .ev-after .btn { width: auto; }
     }
+
+    /* v5: horizontal rocket build */
+    .rkt { margin-top: 32px; padding: 24px; }
+    .rk-stage { position: relative; background: linear-gradient(#eef3fb, #fdf6ee); border-radius: var(--r-sm); overflow: hidden; }
+    .rk-svg { display: block; width: 100%; height: auto; }
+    .rk-meter { position: absolute; left: 18px; top: 14px; z-index: 2; background: #fff; border: var(--bd); border-radius: 14px; padding: 8px 14px; }
+    .rk-meter span { display: block; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .rk-meter b { font-size: 30px; color: var(--accent-ink); }
+    .rk-lift { position: absolute; right: 18px; top: 18px; z-index: 2; font-size: 20px; font-weight: 700; background: #fff; border-radius: 14px; padding: 10px 14px; border: var(--bd); opacity: 0; transform: translateY(-6px); transition: all .5s ease 1.2s; }
+    .rk-lift b { color: var(--accent-ink); }
+    .rkt.go .rk-lift { opacity: 1; transform: none; }
+    .rk-base { font: 800 19px Inter, sans-serif; fill: var(--muted); transition: opacity .4s; }
+    .rkt.p-train .rk-base { opacity: 0; }
+    .rk-part { opacity: 0; transform: translate(0, 70px); transition: opacity .35s ease, transform .6s cubic-bezier(.3,1.5,.5,1); }
+    .rkt.p-tech .pt-tech, .rkt.p-train .pt-train, .rkt.p-mkt .pt-mkt, .rkt.p-net .pt-net { opacity: 1; transform: none; }
+    .rk-flame { transform-box: fill-box; transform-origin: right center; }
+    .rkt.p-net .rk-flame { animation: rkflick .14s infinite alternate; }
+    .rkt.go .rk-flame { animation: rkbig .14s infinite alternate; }
+    @keyframes rkflick { from { transform: scaleX(.8); } to { transform: scaleX(1); } }
+    @keyframes rkbig { from { transform: scaleX(1.5); } to { transform: scaleX(1.9) scaleY(1.1); } }
+    .rk-ship { transition: transform 1.8s cubic-bezier(.45,0,.3,1); }
+    .rkt.go .rk-ship { transform: translate(360px, -36px); }
+    .rk-trail { fill: none; stroke: #c9cfdb; stroke-width: 4; stroke-dasharray: 2 14; stroke-linecap: round; opacity: 0; transition: opacity .6s ease .6s; }
+    .rkt.go .rk-trail { opacity: 1; }
+    .rk-c { font: 800 20px Inter, sans-serif; fill: var(--ink); opacity: 0; transition: opacity .4s ease .3s; }
+    .rkt.p-tech .c-tech, .rkt.p-train .c-train, .rkt.p-mkt .c-mkt, .rkt.p-net .c-net { opacity: 1; }
+    .rkt.go .rk-c { opacity: 0; transition-delay: 0s; }
+    .rk-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+    .rk-card { border: var(--bd); border-radius: var(--r-sm); padding: 14px 16px; opacity: .45; transition: all .4s ease; background: var(--card); }
+    .rk-card.on { opacity: 1; border-color: var(--accent); background: var(--accent-soft); transform: translateY(-3px); }
+    .rk-card-top { display: flex; justify-content: space-between; align-items: center; }
+    .rk-e { font-size: 30px; }
+    .rk-n { width: 26px; height: 26px; border-radius: 50%; background: #e7e4dd; color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 13px; }
+    .rk-card.on .rk-n { background: var(--accent); }
+    .rk-card b { display: block; font-size: 18px; margin-top: 6px; } .rk-card b em { font-style: normal; color: var(--accent-ink); }
+    .rk-card > span { display: block; font-size: 15px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+    .rk-x { margin-top: 8px; font-size: 13px; font-weight: 800; color: #1f7a5c; opacity: 0; transition: opacity .3s; }
+    .rk-card.on .rk-x { opacity: 1; }
+    .rk-replay { margin-top: 14px; }
+
+    /* v5: roadmap "you are here" + tracking box */
+    .mytrack { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 26px; padding: 16px 20px; }
+    .mytrack.has { border-color: var(--accent); background: var(--accent-soft); }
+    .mytrack b { display: block; } .mytrack span { font-size: 15px; color: var(--muted); }
+    .here { display: none; position: absolute; left: 50%; top: -6px; transform: translate(-50%, -100%); z-index: 3; background: var(--ink); color: #fff; font-weight: 800; font-size: 14px; padding: 6px 12px; border-radius: 99px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,.2); }
+    .here.show { display: block; animation: bob 1.2s ease-in-out infinite alternate; }
+    @keyframes bob { to { transform: translate(-50%, calc(-100% - 6px)); } }
+    .here.show + * , .stop:has(.here.show) .stop-card { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+
+    /* v5: confirmation ticket */
+    .wz-ticket { display: inline-block; margin: 6px 0 12px; border: 2px dashed var(--accent); border-radius: 14px; padding: 10px 18px; font-size: 14px; color: var(--muted); }
+    .wz-ticket b { display: block; font-size: 30px; color: var(--ink); letter-spacing: .04em; }
+    .wz-done-ctas { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+
+    @media (max-width: 860px) { .rk-cards { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 680px) { .here { left: 22px; transform: translate(-20%, -100%); } }
+    @media (max-width: 560px) {
+      .rk-c { display: none; }
+      .rk-meter { left: 10px; top: 8px; padding: 6px 10px; } .rk-meter b { font-size: 22px; }
+      .rk-lift { right: 8px; top: auto; bottom: 8px; font-size: 14px; padding: 6px 10px; }
+      .rkt { padding: 14px; }
+    }
   </style>
 </head>
 <body>
@@ -523,6 +585,7 @@
         <a href="#results">Results</a>
         <a href="#events">Events</a>
         <a href="#faq">FAQ</a>
+        <a href="status.html">Track request</a>
         <a class="btn" href="#apply">Bring your idea</a>
       </nav>
     </div>
@@ -553,14 +616,14 @@
           <div class="card journey reveal" data-unit="Day" data-to="100" style="--c:var(--c1)">
             <div class="j-top"><div class="co-logo" style="--lc:var(--c1)"><img src="aux-insights-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>AUX</span></div><div class="j-name"><b>Aux Insights</b><span>Marketing for private equity</span><em class="launched">🚀 Launched with Gateway X</em></div><div class="j-count"><span class="j-unit">Day</span> <span class="j-n">0</span></div></div>
             <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
-            <div class="j-ends"><span>🚀 Launch</span><span>✅ Profitable</span></div>
-            <div class="j-done">Profitable in 100 days</div>
+            <div class="j-ends"><span>🚀 Launch · <b>$0 revenue</b></span><span>✅ Profitable</span></div>
+            <div class="j-done">From $0 to profitable in 100 days</div>
           </div>
           <div class="card journey reveal" data-unit="Month" data-to="24" style="--c:var(--c2)">
-            <div class="j-top"><div class="co-logo" style="--lc:var(--c2)"><img src="growthassistant-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>GA</span></div><div class="j-name"><b>GrowthAssistant</b><span>AI-powered growth talent</span><em class="launched">🚀 Launched with Gateway X</em></div><div class="j-count"><span class="j-unit">Month</span> <span class="j-n">0</span></div></div>
+            <div class="j-top"><div class="co-logo" style="--lc:var(--c2)"><img src="growthassistant-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>GA</span></div><div class="j-name"><b>GrowthAssistant</b><span>AI-powered growth talent</span><em class="launched">🥾 Bootstrapped with Gateway X</em></div><div class="j-count"><span class="j-unit">Month</span> <span class="j-n">0</span></div></div>
             <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
-            <div class="j-ends"><span>🚀 Launch</span><span>🏆 8-figure business</span></div>
-            <div class="j-done">An 8-figure business in 2 years</div>
+            <div class="j-ends"><span>🚀 Launch · <b>$0 revenue</b></span><span>🏆 8-figure revenue</span></div>
+            <div class="j-done">From $0 to 8-figure revenue in 2 years</div>
           </div>
         </div>
         <div class="herd reveal"><div class="herd-camels"><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span><span>🐪</span></div><div class="herd-t"><b>6+ companies</b> built with the same playbook</div></div>
@@ -574,22 +637,39 @@
       <div class="wrap">
         <div class="kicker">What we bring</div>
         <h2 class="reveal">Our tools add to your growth</h2>
-        <p class="lead reveal">You bring the business. We bring the fuel.</p>
-        <div class="card launch reveal" id="launch">
-          <div class="pad">
-            <div class="sky"><div class="stars"></div><div class="rocket-wrap"><div class="rocket">🚀</div><div class="flame"></div></div></div>
-            <div class="tank" aria-hidden="true"><div class="seg s4"><span>📣</span></div><div class="seg s3"><span>🤖</span></div><div class="seg s2"><span>🎓</span></div><div class="seg s1"><span>🤝</span></div></div>
-            <div class="tank-l">Fuel</div>
+        <p class="lead reveal">Your business is the rocket. Each Gateway X tool adds a part. Then it launches.</p>
+        <div class="card rkt reveal" id="rocket">
+          <div class="rk-stage">
+            <div class="rk-meter"><span>Rocket parts</span><b id="rk-mult">0 / 4</b></div>
+            <div class="rk-lift">🔥 <b>Lift-off!</b> Your business, ready to grow</div>
+            <svg class="rk-svg" viewBox="0 0 900 300" role="img" aria-label="Each Gateway X tool adds a part to your rocket, then it launches">
+              <defs><linearGradient id="rkflame" x1="1" x2="0"><stop offset="0" stop-color="#ffe08a"/><stop offset=".5" stop-color="#ff8a3d"/><stop offset="1" stop-color="#ff5a28" stop-opacity="0"/></linearGradient></defs>
+              <path class="rk-trail" d="M60,150 C220,150 300,150 470,135" />
+              <line x1="20" y1="262" x2="880" y2="262" stroke="#d9d6cf" stroke-width="3"/>
+              <g class="rk-ship">
+                <path class="rk-part pt-net rk-flame" d="M150,122 C110,126 80,140 40,140 C80,140 110,154 150,158 Z" fill="url(#rkflame)"/>
+                <path class="rk-part pt-net" d="M178,120 L150,114 L150,166 L178,160 Z" fill="#6b6f78" stroke="#16181d" stroke-width="4" stroke-linejoin="round"/>
+                <path class="rk-part pt-mkt" d="M210,106 L170,58 L262,106 Z" fill="#e8833a" stroke="#16181d" stroke-width="4" stroke-linejoin="round"/>
+                <path class="rk-part pt-mkt" d="M210,174 L170,222 L262,174 Z" fill="#e8833a" stroke="#16181d" stroke-width="4" stroke-linejoin="round"/>
+                <rect x="176" y="104" width="214" height="72" rx="36" fill="#fff" stroke="#16181d" stroke-width="4"/>
+                <text class="rk-base" x="262" y="147" text-anchor="middle">Your business</text>
+                <path class="rk-part pt-tech" d="M376,104 C436,108 474,128 492,140 C474,152 436,172 376,176 Z" fill="#5a7fd0" stroke="#16181d" stroke-width="4" stroke-linejoin="round"/>
+                <g class="rk-part pt-train"><circle cx="338" cy="140" r="21" fill="#cfe3ff" stroke="#16181d" stroke-width="4"/><circle cx="331" cy="133" r="6" fill="#fff"/></g>
+              </g>
+              <g class="rk-callouts">
+                <text class="rk-c c-tech" x="470" y="88">🤖 Technology</text>
+                <text class="rk-c c-train" x="300" y="70">🎓 Training</text>
+                <text class="rk-c c-mkt" x="96" y="44">📣 Marketing</text>
+                <text class="rk-c c-net" x="30" y="196">🤝 Network = fuel</text>
+              </g>
+            </svg>
           </div>
-          <div class="fuel-side">
-            <div class="fuel-start">🏪 <b>Your business today</b><span>The rocket, ready on the pad</span></div>
-            <ol class="fuel"><li><span class="fe">🤝</span><div><b>Network <em>+60%</em></b><span>Warm intros: 4 → 15 sales meetings a week</span></div><span class="tick">✓</span></li><li><span class="fe">🎓</span><div><b>Training <em>+50%</em></b><span>Sales playbook: close rate 15% → 30%</span></div><span class="tick">✓</span></li><li><span class="fe">🤖</span><div><b>Technology <em>+80%</em></b><span>AI handles 40% of the client work</span></div><span class="tick">✓</span></li><li><span class="fe">📣</span><div><b>Marketing <em>+110%</em></b><span>Customers from beyond St. Louis</span></div><span class="tick">✓</span></li></ol>
-            <div class="liftoff">🔥 Lift-off: about <b>4×</b> the business</div>
-          </div>
+          <div class="rk-cards"><div class="rk-card" data-p="tech"><div class="rk-card-top"><span class="rk-e">🤖</span><span class="rk-n">1</span></div><b>Technology</b><span>The nose cone: AI tools and delivery, so a small team can serve big clients.</span><div class="rk-x">✓ Part added</div></div><div class="rk-card" data-p="train"><div class="rk-card-top"><span class="rk-e">🎓</span><span class="rk-n">2</span></div><b>Training</b><span>The cockpit: a trained crew running a proven, meetings-first sales playbook.</span><div class="rk-x">✓ Part added</div></div><div class="rk-card" data-p="mkt"><div class="rk-card-top"><span class="rk-e">📣</span><span class="rk-n">3</span></div><b>Marketing</b><span>The fins: steer toward customers beyond St. Louis.</span><div class="rk-x">✓ Part added</div></div><div class="rk-card" data-p="net"><div class="rk-card-top"><span class="rk-e">🤝</span><span class="rk-n">4</span></div><b>Network</b><span>The fuel: warm introductions to buyers, partners and talent.</span><div class="rk-x">✓ Part added</div></div></div>
+          <button type="button" class="btn ghost small rk-replay" id="rk-replay">↺ Build it again</button>
         </div>
-        <p class="note">Illustrative example of how much bigger a services business could grow. Not a forecast.</p>
       </div>
     </section>
+
 
 
     <!-- Who it's for -->
@@ -611,15 +691,19 @@
         <div class="kicker">How it works</div>
         <h2 class="reveal">Your roadmap with Gateway X</h2>
         <p class="lead reveal">Your idea stays yours. Your company stays yours. When you win, we win.</p>
+        <div class="card mytrack reveal" id="mytrack">
+          <div><b>Already applied?</b> Track your request and see where you are on the road.</div>
+          <a class="btn small" href="status.html">Track my request →</a>
+        </div>
         <div class="road">
           <div class="sign reveal"><span>🟢 Get started</span><em>Free · no commitment</em></div>
-          <div class="stop left free reveal"><div class="pin"><span>1</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">📣</span><span class="when">Free</span></div><h3>Come to a Scale Night</h3><p>Meet owners who scaled. Free, online or in person.</p><a class="btn small" href="#schedule">See upcoming dates →</a></div></div>
-          <div class="stop right free reveal"><div class="pin"><span>2</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">🩺</span><span class="when">30 minutes · free</span></div><h3>Get a free Scale Check</h3><p>30 minutes to map where your time and margin go. You leave with a one-page plan.</p><a class="btn small" href="#apply" data-start="choose">Book my free Scale Check →</a></div></div>
-          <div class="stop left free reveal"><div class="pin"><span>3</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">🎯</span><span class="when">About 1 week</span></div><h3>See if we're a fit</h3><p>Answer a few questions. We look at your customers, market and goals, and give you a clear answer.</p><a class="btn small ghost" href="#apply" data-start="choose">Bring your idea →</a></div></div>
+          <div class="stop left free reveal"><div class="pin" data-stop="1"><span>1</span></div><div class="here" data-stop="1">📍 You are here</div><div class="card stop-card"><div class="stop-top"><span class="emoji">📣</span><span class="when">Free</span></div><h3>Come to a Scale Night</h3><p>Meet owners who scaled. Free, online or in person.</p><a class="btn small" href="#schedule">See upcoming dates →</a></div></div>
+          <div class="stop right free reveal"><div class="pin" data-stop="2"><span>2</span></div><div class="here" data-stop="2">📍 You are here</div><div class="card stop-card"><div class="stop-top"><span class="emoji">🩺</span><span class="when">30 minutes · free</span></div><h3>Get a free Scale Check</h3><p>30 minutes to map where your time and margin go. You leave with a one-page plan.</p><a class="btn small" href="#apply" data-start="choose">Book my free Scale Check →</a></div></div>
+          <div class="stop left free reveal"><div class="pin" data-stop="3"><span>3</span></div><div class="here" data-stop="3">📍 You are here</div><div class="card stop-card"><div class="stop-top"><span class="emoji">🎯</span><span class="when">About 1 week</span></div><h3>See if we're a fit</h3><p>Answer a few questions. We look at your customers, market and goals, and give you a clear answer.</p><a class="btn small ghost" href="#apply" data-start="choose">Bring your idea →</a></div></div>
           <div class="sign reveal"><span>🚀 Grow with us</span><em>When we agree it's a fit</em></div>
-          <div class="stop right grow reveal"><div class="pin"><span>4</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">🔌</span><span class="when">First 90 days</span></div><h3>Plug into the network</h3><p>Warm buyers, the sales playbook, AI tools and talent.</p></div></div>
-          <div class="stop left grow reveal"><div class="pin"><span>5</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">🤝</span><span class="when">Ongoing</span></div><h3>Grow together</h3><p>Pick the way of working that fits you. You stay in charge.</p><a class="step-link" href="#work">See ways to work together →</a></div></div>
-          <div class="stop right grow reveal"><div class="pin"><span>6</span></div><div class="card stop-card"><div class="stop-top"><span class="emoji">🌍</span><span class="when">Year 2+</span></div><h3>Go beyond the Midwest</h3><p>National customers through our network. Then help the next owner.</p></div></div>
+          <div class="stop right grow reveal"><div class="pin" data-stop="4"><span>4</span></div><div class="here" data-stop="4">📍 You are here</div><div class="card stop-card"><div class="stop-top"><span class="emoji">🔌</span><span class="when">First 90 days</span></div><h3>Plug into the network</h3><p>Warm buyers, the sales playbook, AI tools and talent.</p></div></div>
+          <div class="stop left grow reveal"><div class="pin" data-stop="5"><span>5</span></div><div class="here" data-stop="5">📍 You are here</div><div class="card stop-card"><div class="stop-top"><span class="emoji">🤝</span><span class="when">Ongoing</span></div><h3>Grow together</h3><p>Pick the way of working that fits you. You stay in charge.</p><a class="step-link" href="#work">See ways to work together →</a></div></div>
+          <div class="stop right grow reveal"><div class="pin" data-stop="6"><span>6</span></div><div class="here" data-stop="6">📍 You are here</div><div class="card stop-card"><div class="stop-top"><span class="emoji">🌍</span><span class="when">Year 2+</span></div><h3>Go beyond the Midwest</h3><p>National customers through our network. Then help the next owner.</p></div></div>
           <div class="road-end reveal">🏁 <b>Your company, bigger than you imagined</b></div>
         </div>
       </div>
@@ -708,13 +792,89 @@
   <footer>
     <div class="wrap">
       <div><strong style="color:var(--ink)">Gateway X</strong> · St. Louis, Missouri · Connecting St. Louis to the world</div>
-      <div><a href="#apply">Bring your idea</a> · <a href="#events">Events</a> · <a href="presentation.html">Team presentation</a></div>
+      <div><a href="#apply">Bring your idea</a> · <a href="status.html">Track a request</a> · <a href="#events">Events</a> · <a href="team.html">Gateway X team (demo)</a> · <a href="presentation.html">Team presentation</a></div>
     </div>
   </footer>
 
   <script>
-    // Where submissions go. FormSubmit emails each one to this address.
-    var FORM_ENDPOINT = "https://formsubmit.co/ajax/wonshon@upenn.edu";
+    // ---------- Mock request queue (demo) ----------
+    // Everything is stored in this browser only (localStorage). No real emails are sent:
+    // "emails" are mock messages saved with each request and shown on the status page.
+    var GXQ = (function () {
+      var KEY = "gx_queue_v1", EKEY = "gx_events_v1";
+      // Same stops as the roadmap on the home page. "stop" = which roadmap stop this stage lights up.
+      var STAGES = [
+        { id: "received", label: "Request received", icon: "📥", stop: 2 },
+        { id: "review", label: "In review", icon: "👀", stop: 2 },
+        { id: "scheduled", label: "Scale Check booked", icon: "🩺", stop: 2 },
+        { id: "decision", label: "Fit decision", icon: "🎯", stop: 3 },
+        { id: "plugged", label: "Plugged into the network", icon: "🔌", stop: 4 },
+        { id: "growing", label: "Growing together", icon: "🤝", stop: 5 },
+        { id: "beyond", label: "Beyond the Midwest", icon: "🌍", stop: 6 }
+      ];
+      var DECISIONS = {
+        fit: { label: "A fit", icon: "✅", tone: "ok", line: "Let's talk about working together." },
+        notyet: { label: "Not yet", icon: "🌱", tone: "mid", line: "Not the right time yet. We'll help you get there." },
+        notfit: { label: "Not a fit", icon: "🙏", tone: "no", line: "Not a match for Gateway X right now." }
+      };
+      function now() { return new Date().toISOString(); }
+      function daysAgo(n, h) { var d = new Date(); d.setDate(d.getDate() - n); d.setHours(h || 10, 15, 0, 0); return d.toISOString(); }
+      function mail(at, subject, body) { return { at: at, subject: subject, body: body }; }
+
+      function seed() {
+        return [
+          { id: "GX-1001", name: "Maria Lopez", email: "maria@example.com", city: "St. Louis, MO", path: "Runs a business", stage: "Growing a business",
+            idea: "Bookkeeping firm for 40 dental practices in Missouri.", company: "Lopez Ledger Co.", team: "11–50 people", help: "Too much manual work, Reaching beyond my city",
+            session: "Free Scale Check", slot: "", status: "scheduled", decision: "", scheduled: "Thu · 10:00 AM CT", feedback: "",
+            created: daysAgo(6), emails: [mail(daysAgo(6), "We got your request (GX-1001)", "Thanks Maria! A Gateway X partner will review your answers within 2 business days."),
+              mail(daysAgo(4), "Your free Scale Check is booked", "You're confirmed for Thursday at 10:00 AM CT on Zoom. Bring last quarter's numbers if you can.")] },
+          { id: "GX-1002", name: "Devon Carter", email: "devon@example.com", city: "Kansas City, MO", path: "Has an idea", stage: "Idea",
+            idea: "AI front desk that answers calls and books appointments for vet clinics.", company: "", team: "", help: "Finding customers, Building with AI",
+            session: "Free Scale Check", slot: "", status: "review", decision: "", scheduled: "", feedback: "",
+            created: daysAgo(2), emails: [mail(daysAgo(2), "We got your request (GX-1002)", "Thanks Devon! A Gateway X partner will review your answers within 2 business days.")] },
+          { id: "GX-1003", name: "Priya Nair", email: "priya@example.com", city: "Chicago, IL", path: "Still exploring", stage: "Exploring",
+            idea: "Picked: Lead follow-up for real estate teams", company: "", team: "", help: "",
+            session: "Idea Lab", slot: "", status: "decision", decision: "notyet", scheduled: "", feedback: "Love the energy! Come to the next Idea Lab and talk to 10 real estate teams first. Then reapply.",
+            created: daysAgo(9), emails: [mail(daysAgo(9), "We got your request (GX-1003)", "Thanks Priya! We'll be in touch soon."),
+              mail(daysAgo(5), "Update on your request", "Not the right time yet. Love the energy! Come to the next Idea Lab and talk to 10 real estate teams first. Then reapply.")] },
+          { id: "GX-1004", name: "Sam Whitfield", email: "sam@example.com", city: "Indianapolis, IN", path: "Runs a business", stage: "Growing a business",
+            idea: "HVAC dispatch and scheduling service for 25 contractors.", company: "Whitfield Dispatch", team: "2–10 people", help: "Sales, Finding customers",
+            session: "Scale Night", slot: "", status: "plugged", decision: "fit", scheduled: "", feedback: "Strong fit. You're plugged in: 12 warm buyer intros this month and a seat in the next sales playbook cohort.",
+            created: daysAgo(30), emails: [mail(daysAgo(30), "We got your request (GX-1004)", "Thanks Sam!"), mail(daysAgo(20), "Great news from Gateway X", "We think you're a fit. Let's set up a partnership conversation with Adam and Nak."),
+              mail(daysAgo(6), "You're plugged into the network", "Welcome in! 12 warm buyer intros are lined up this month, and you have a seat in the next sales playbook cohort.")] },
+          { id: "GX-1005", name: "Jordan Lee", email: "jordan@example.com", city: "Columbus, OH", path: "Has an idea", stage: "First customers",
+            idea: "Collections follow-up for small medical practices; 3 paying clients.", company: "", team: "", help: "Learning to sell, Funding",
+            session: "Sales Playbook Workshop (paid)", slot: "", status: "received", decision: "", scheduled: "", feedback: "",
+            created: daysAgo(0, 9), emails: [mail(daysAgo(0, 9), "We got your request (GX-1005)", "Thanks Jordan! A Gateway X partner will review your answers within 2 business days.")] }
+        ];
+      }
+      function load() {
+        try { var q = JSON.parse(localStorage.getItem(KEY)); if (q && q.length) return q; } catch (e) {}
+        var s = seed(); save(s); return s;
+      }
+      function save(q) { try { localStorage.setItem(KEY, JSON.stringify(q)); } catch (e) {} }
+      function get(idOrEmail) {
+        var k = String(idOrEmail || "").trim().toLowerCase();
+        return load().filter(function (r) { return r.id.toLowerCase() === k || r.email.toLowerCase() === k; }).pop() || null;
+      }
+      function add(r) {
+        var q = load(), n = q.reduce(function (m, x) { return Math.max(m, +x.id.split("-")[1]); }, 1000) + 1;
+        r.id = "GX-" + n; r.created = now(); r.status = "received"; r.decision = ""; r.scheduled = ""; r.feedback = "";
+        r.emails = [mail(now(), "We got your request (" + r.id + ")", "Thanks " + r.name.split(" ")[0] + "! A Gateway X partner will review your answers within 2 business days. Track your status any time with " + r.id + ".")];
+        q.push(r); save(q); return r;
+      }
+      function update(id, patch, email) {
+        var q = load();
+        q.forEach(function (r) { if (r.id === id) { for (var k in patch) r[k] = patch[k]; if (email) r.emails.push(mail(now(), email.subject, email.body)); } });
+        save(q);
+      }
+      function addEvent(e) { var l = events(); l.push(e); try { localStorage.setItem(EKEY, JSON.stringify(l)); } catch (x) {} }
+      function events() { try { return JSON.parse(localStorage.getItem(EKEY)) || []; } catch (e) { return []; } }
+      function reset() { localStorage.removeItem(KEY); localStorage.removeItem(EKEY); }
+      function stageIndex(r) { for (var i = 0; i < STAGES.length; i++) if (STAGES[i].id === r.status) return i; return 0; }
+      return { STAGES: STAGES, DECISIONS: DECISIONS, load: load, save: save, get: get, add: add, update: update, addEvent: addEvent, events: events, reset: reset, stageIndex: stageIndex };
+    })();
+
 
     // Fade sections in as they scroll into view (and start the chart).
     var io = new IntersectionObserver(function (entries) {
@@ -722,14 +882,34 @@
     }, { threshold: 0.15 });
     document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
 
-    // Fuel the rocket one tool at a time, then lift off.
-    new IntersectionObserver(function (entries, obs) {
-      if (!entries[0].isIntersecting) return;
-      obs.disconnect();
-      var el = document.getElementById("launch"), lis = el.querySelectorAll(".fuel li");
-      [1, 2, 3, 4].forEach(function (n) { setTimeout(function () { el.classList.add("f" + n); lis[n - 1].classList.add("lit"); }, 400 + (n - 1) * 750); });
-      setTimeout(function () { el.classList.add("go"); }, 400 + 4 * 750 + 200);
-    }, { threshold: 0.45 }).observe(document.getElementById("launch"));
+    // Build the rocket one tool at a time, then lift off.
+    function buildRocket() {
+      var el = document.getElementById("rocket"), mult = document.getElementById("rk-mult");
+      var order = ["tech", "train", "mkt", "net"], xs = ["1 / 4", "2 / 4", "3 / 4", "4 / 4"];
+      el.className = el.className.replace(/\s?(p-\w+|go)/g, ""); mult.textContent = "0 / 4";
+      el.querySelectorAll(".rk-card").forEach(function (c) { c.classList.remove("on"); });
+      order.forEach(function (p, i) {
+        setTimeout(function () { el.classList.add("p-" + p); el.querySelector('.rk-card[data-p="' + p + '"]').classList.add("on"); mult.textContent = xs[i]; }, 500 + i * 900);
+      });
+      setTimeout(function () { el.classList.add("go"); }, 500 + 4 * 900 + 300);
+    }
+    new IntersectionObserver(function (entries, obs) { if (entries[0].isIntersecting) { obs.disconnect(); buildRocket(); } }, { threshold: 0.4 }).observe(document.getElementById("rocket"));
+    document.getElementById("rk-replay").onclick = buildRocket;
+
+    // Show "You are here" on the roadmap for anyone who has applied in this browser.
+    function markRoad() {
+      var id = null; try { id = localStorage.getItem("gx_my_request"); } catch (e) {}
+      var r = id && GXQ.get(id), box = document.getElementById("mytrack");
+      document.querySelectorAll(".here").forEach(function (h) { h.classList.remove("show"); });
+      if (!r) return;
+      var s = GXQ.STAGES[GXQ.stageIndex(r)], dec = r.decision && GXQ.DECISIONS[r.decision];
+      var stop = (r.decision === "notyet" || r.decision === "notfit") ? 3 : s.stop;
+      document.querySelectorAll('.here[data-stop="' + stop + '"]').forEach(function (h) { h.classList.add("show"); });
+      box.classList.add("has");
+      box.innerHTML = '<div><b>📍 ' + r.id + ' · ' + s.icon + ' ' + s.label + (dec ? ' · ' + dec.icon + ' ' + dec.label : '') + '</b><span>Hi ' + wzEsc(r.name.split(" ")[0]) + '! Here\'s where you are on the road.</span></div><a class="btn small" href="status.html#' + r.id + '">See my status →</a>';
+    }
+    markRoad();
+
 
     // Walk each camel to its milestone while the day/month counter ticks up.
     var walkObs = new IntersectionObserver(function (entries) {
@@ -970,32 +1150,26 @@
       var a = wzState.a, s = wzState.pick ? SESSIONS[wzState.pick.id] : null, st = document.getElementById("wz-status");
       if (document.getElementById("wz-honey") && document.getElementById("wz-honey").value) return;
       var label = { idea: "Has an idea", biz: "Runs a business", explore: "Still exploring" }[wzState.path];
-      var data = {
-        _subject: "New Gateway X request: " + (a.company || a.name) + " (" + label + ")",
-        _template: "table",
+      // Demo: the request goes into the mock queue in this browser. No real email is sent.
+      var r = GXQ.add({
         name: a.name, email: a.email, city: a.city || "", path: label, stage: wzStage().name,
-        idea_or_business: a.idea || wzState.idea || "", company: a.company || "",
-        how_far: a.far || "", team_size: a.size || "",
-        wants_help_with: a.help.join(", "), knows_best: a.know.join(", "), enjoys: a.enjoy.join(", "),
-        session: s ? s.name + (s.paid ? " (paid)" : " (free)") : "No time picked yet",
-        requested_time: wzState.pick ? wzState.pick.slot : ""
-      };
-      st.className = "status"; st.textContent = "Sending…";
-      document.getElementById("wz-next").disabled = true;
-      fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
-        .then(function (r) {
-          if (!r.ok) throw new Error(r.status);
-          document.getElementById("wz-step").textContent = "Done";
-          document.getElementById("wz-fill").style.width = "100%";
-          document.getElementById("wz-body").innerHTML = '<div class="wz-done"><div class="wz-done-e">🎉</div><h3>' + (s ? "You're on the list for " + s.name + "." : "Thanks, we got your answers.") + '</h3>' +
-            (s ? '<p class="wz-sub"><b>' + wzState.pick.slot + '</b>. We\'ll email ' + wzEsc(a.email) + ' to confirm' + (s.paid ? ', with pricing,' : '') + ' within 2 business days.</p>' : '<p class="wz-sub">We\'ll reply to ' + wzEsc(a.email) + ' within 2 business days.</p>') +
-            '<p class="wz-sub">Your idea stays yours. When you win, we win.</p></div>';
-          document.getElementById("wz-back").style.visibility = "hidden";
-          document.getElementById("wz-next").style.display = "none";
-          st.textContent = "";
-        })
-        .catch(function () { wzError("Couldn't send right now. Please check your connection and try again."); })
-        .then(function () { document.getElementById("wz-next").disabled = false; });
+        idea: a.idea || (wzState.idea ? "Picked: " + wzState.idea : ""), company: a.company || "",
+        team: a.size || a.far || "", help: a.help.concat(a.know).join(", "),
+        session: s ? s.name + (s.paid ? " (paid)" : "") : "No time picked yet", slot: wzState.pick ? wzState.pick.slot : ""
+      });
+      try { localStorage.setItem("gx_my_request", r.id); } catch (e) {}
+      document.getElementById("wz-step").textContent = "Done";
+      document.getElementById("wz-fill").style.width = "100%";
+      document.getElementById("wz-body").innerHTML = '<div class="wz-done"><div class="wz-done-e">🎉</div><h3>You\'re in the queue!</h3>' +
+        '<div class="wz-ticket">Your request number<b>' + r.id + '</b></div>' +
+        (s ? '<p class="wz-sub">Requested: <b>' + s.name + '</b> · ' + wzState.pick.slot + '</p>' : '') +
+        '<p class="wz-sub">✉️ We sent a confirmation to <b>' + wzEsc(a.email) + '</b> (mock email). A partner reviews every request within 2 business days.</p>' +
+        '<div class="wz-done-ctas"><a class="btn" href="status.html#' + r.id + '">Track my request →</a><a class="btn ghost" href="#how" id="wz-see-road">See me on the roadmap</a></div>' +
+        '<p class="wz-sub" style="margin-top:14px">Your idea stays yours. When you win, we win.</p></div>';
+      document.getElementById("wz-back").style.visibility = "hidden";
+      document.getElementById("wz-next").style.display = "none";
+      st.textContent = "";
+      markRoad();
     }
 
     document.getElementById("wz-next").onclick = wzNext;
@@ -1071,7 +1245,7 @@
           '<div class="ev-act">' + (done ? '<span class="ev-ok">✅ Signed up</span>' : '<button type="button" class="btn ev-btn" data-ev="' + e.key + '">' + (open ? 'Close' : 'Sign up') + '</button>') + '</div>' +
           (open && !done ? '<form class="ev-form" data-ev="' + e.key + '" novalidate><input name="name" placeholder="Your name" aria-label="Your name" autocomplete="name"><input name="email" type="email" placeholder="Email" aria-label="Email" autocomplete="email"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off"><button class="btn" type="submit">Reserve my spot</button><div class="status"></div></form>' : '') +
           (done ? '<div class="ev-after"><a class="btn ghost" href="' + icsFor(e) + '" download="gatewayx-' + e.key + '.ics">📅 Add to calendar</a>' +
-            (e.online ? (ZOOM_LINK ? '<a class="btn" href="' + ZOOM_LINK + '" target="_blank" rel="noopener">🎥 Join on Zoom</a>' : '<span class="ev-zoom">🎥 Your Zoom link is on its way by email.</span>') : '<span class="ev-zoom">📍 We\'ll email directions before the event.</span>') + '</div>' : '') +
+            (e.online ? (ZOOM_LINK ? '<a class="btn" href="' + ZOOM_LINK + '" target="_blank" rel="noopener">🎥 Join on Zoom</a>' : '<span class="ev-zoom">🎥 Zoom link sent to your email (mock).</span>') : '<span class="ev-zoom">📍 We\'ll email directions before the event.</span>') + '</div>' : '') +
           '</div>';
       }).join("") + (more ? '<button type="button" class="btn ghost ev-more" id="ev-more">Show more dates ↓</button>' : '') || '<p class="wz-sub">No events in this view yet.</p>';
       var mb = document.getElementById("ev-more"); if (mb) mb.onclick = function () { evAll = true; renderEvents(); };
@@ -1085,12 +1259,9 @@
           if (f._honey.value) return;
           if (!f.name.value.trim()) { st.className = "status err"; st.textContent = "Please add your name."; return; }
           if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())) { st.className = "status err"; st.textContent = "Please enter a valid email."; return; }
-          st.className = "status"; st.textContent = "Saving your spot…";
-          fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            body: JSON.stringify({ _subject: "Event sign-up: " + e.name + " (" + e.date.toDateString() + ")", _template: "table", name: f.name.value.trim(), email: f.email.value.trim(),
-              event: e.name, date: e.date.toDateString() + " · " + e.time + " CT", location: e.where }) })
-            .then(function (r) { if (!r.ok) throw new Error(r.status); e.done = true; evOpen = null; renderEvents(); })
-            .catch(function () { st.className = "status err"; st.textContent = "Couldn't save right now. Please try again."; });
+          // Demo: saved to this browser (shows on the team dashboard). No real email is sent.
+          GXQ.addEvent({ name: f.name.value.trim(), email: f.email.value.trim(), event: e.name, date: e.date.toDateString() + " · " + e.time + " CT", location: e.where });
+          e.done = true; evOpen = null; renderEvents();
         };
       });
     }
