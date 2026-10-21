@@ -614,6 +614,49 @@
       .rm-p-nav button { font-size: 14px; }
       .rm-panel .btn.small { width: 100%; }
     }
+
+    /* v7: Scale Night optional label */
+    .rm-short small { display: block; font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .rm-panel .btn.small + .btn.small { margin-left: 8px; }
+
+    /* v7: business model ladder */
+    .ladder { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; align-items: end; margin-top: 36px; }
+    .lad-step { background: var(--card); border: var(--bd); border-radius: var(--r); box-shadow: var(--shadow); padding: 20px; border-top: 6px solid var(--c3);
+      margin-top: calc(var(--h) * 28px); }
+    .lad-step:nth-child(2) { border-top-color: #8fbf6a; } .lad-step:nth-child(3) { border-top-color: #e9a24f; } .lad-step:nth-child(4) { border-top-color: var(--accent); }
+    .lad-tag { display: inline-flex; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; padding: 4px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent-ink); }
+    .lad-step:first-child .lad-tag { background: #e6f4ef; color: #1f7a5c; }
+    .lad-e { font-size: 36px; margin-top: 10px; }
+    .lad-step h3 { font-size: 21px; margin-top: 6px; }
+    .lad-step dl { margin: 12px 0 0; }
+    .lad-step dt { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-top: 10px; }
+    .lad-step dd { margin: 2px 0 0; font-size: 15px; line-height: 1.45; }
+    .msbox { margin-top: 22px; }
+    .ms-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+    .ms-head h3 { font-size: 22px; margin-top: 4px; }
+    .ms-row { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 22px; }
+    .ms-row::before { content: ""; position: absolute; left: 24px; right: 24px; top: 23px; height: 4px; background: linear-gradient(90deg, var(--c3), var(--accent)); border-radius: 4px; }
+    .ms { position: relative; }
+    .ms-dot { position: relative; z-index: 1; width: 50px; height: 50px; border-radius: 50%; background: #fff; border: 3px solid var(--accent); display: grid; place-items: center; font-size: 22px; }
+    .ms-n { font-size: 12px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-top: 10px; }
+    .ms b { display: block; font-size: 18px; margin-top: 2px; }
+    .ms p { margin: 4px 0 0; font-size: 15px; color: var(--muted); }
+    .ms-then { display: inline-block; margin-top: 8px; font-size: 14px; font-weight: 800; color: var(--accent-ink); }
+    .promises { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+    .pm { display: flex; gap: 12px; align-items: flex-start; background: #e6f4ef; border-radius: var(--r-sm); padding: 14px 16px; }
+    .pm > span { font-size: 26px; }
+    .pm b { display: block; font-size: 16px; } .pm p { margin: 2px 0 0; font-size: 14px; color: #335c4f; }
+    .work-cta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+    .work-cta span { color: var(--muted); font-weight: 600; }
+    @media (max-width: 960px) { .ladder, .promises { grid-template-columns: 1fr 1fr; } .lad-step { margin-top: 0; } }
+    @media (max-width: 680px) {
+      .ms-row { grid-template-columns: 1fr; gap: 0; }
+      .ms-row::before { left: 23px; right: auto; top: 24px; bottom: 24px; width: 4px; height: auto; background: linear-gradient(var(--c3), var(--accent)); }
+      .ms { display: grid; grid-template-columns: 50px 1fr; column-gap: 14px; padding-bottom: 16px; }
+      .ms-dot { grid-row: span 4; }
+      .ms-n { margin-top: 2px; }
+    }
+    @media (max-width: 560px) { .ladder, .promises { grid-template-columns: 1fr; } .rm-panel .btn.small + .btn.small { margin-left: 0; margin-top: 8px; } }
   </style>
 </head>
 <body>
@@ -739,7 +782,7 @@
         <p class="lead reveal">Your idea stays yours. Your company stays yours. When you win, we win.</p>
 <div class="rm reveal">
           <div class="rm-legend"><span class="free">🟢 Get started · free</span><span class="grow">🚀 Grow with us · when we're a fit</span></div>
-          <div class="rm-road"><button type="button" class="rm-stop free" data-stop="1" aria-label="Stop 1: Come to a Scale Night"><span class="rm-pin">📣</span><span class="rm-n">1</span><span class="rm-short">Scale Night</span><span class="rm-here">📍 You</span></button><button type="button" class="rm-stop free" data-stop="2" aria-label="Stop 2: Get a free Scale Check"><span class="rm-pin">🩺</span><span class="rm-n">2</span><span class="rm-short">Scale Check</span><span class="rm-here">📍 You</span></button><button type="button" class="rm-stop free" data-stop="3" aria-label="Stop 3: See if we're a fit"><span class="rm-pin">🎯</span><span class="rm-n">3</span><span class="rm-short">Fit</span><span class="rm-here">📍 You</span></button><button type="button" class="rm-stop grow" data-stop="4" aria-label="Stop 4: Plug into the network"><span class="rm-pin">🔌</span><span class="rm-n">4</span><span class="rm-short">Network</span><span class="rm-here">📍 You</span></button><button type="button" class="rm-stop grow" data-stop="5" aria-label="Stop 5: Grow together"><span class="rm-pin">🤝</span><span class="rm-n">5</span><span class="rm-short">Grow</span><span class="rm-here">📍 You</span></button><button type="button" class="rm-stop grow" data-stop="6" aria-label="Stop 6: Go beyond the Midwest"><span class="rm-pin">🌍</span><span class="rm-n">6</span><span class="rm-short">Beyond</span><span class="rm-here">📍 You</span></button></div>
+          <div class="rm-road"><button type="button" class="rm-stop free" data-stop="1" aria-label="Stop 1: Come to a Scale Night"><span class="rm-pin">📣</span><span class="rm-n">1</span><span class="rm-short">Scale Night<small>optional</small></span><span class="rm-here">📍 You</span></button><button type="button" class="rm-stop free" data-stop="2" aria-label="Stop 2: Get a free Scale Check"><span class="rm-pin">🩺</span><span class="rm-n">2</span><span class="rm-short">Scale Check</span><span class="rm-here">📍 You</span></button><button type="button" class="rm-stop free" data-stop="3" aria-label="Stop 3: See if we're a fit"><span class="rm-pin">🎯</span><span class="rm-n">3</span><span class="rm-short">Fit</span><span class="rm-here">📍 You</span></button><button type="button" class="rm-stop grow" data-stop="4" aria-label="Stop 4: Plug into the network"><span class="rm-pin">🔌</span><span class="rm-n">4</span><span class="rm-short">Network</span><span class="rm-here">📍 You</span></button><button type="button" class="rm-stop grow" data-stop="5" aria-label="Stop 5: Grow together"><span class="rm-pin">🤝</span><span class="rm-n">5</span><span class="rm-short">Grow</span><span class="rm-here">📍 You</span></button><button type="button" class="rm-stop grow" data-stop="6" aria-label="Stop 6: Go beyond the Midwest"><span class="rm-pin">🌍</span><span class="rm-n">6</span><span class="rm-short">Beyond</span><span class="rm-here">📍 You</span></button></div>
           <div class="card rm-panel" id="rm-panel"></div>
         </div>
         <div class="mytrack reveal" id="mytrack">
@@ -751,23 +794,30 @@
 
 
     <!-- Work with us -->
-    <section class="alt" id="work">
+    <section id="work" class="alt">
       <div class="wrap">
         <div class="kicker">Work with us</div>
-        <h2 class="reveal">You don't have to give up equity to start</h2>
-        <p class="lead reveal">Start small. Go further only when it's working for you.</p>
-        <div class="grid g4" style="margin-top:32px">
-          <div class="card reveal"><div class="emoji">🎟️</div><h3>Community</h3><p>Scale Nights, Founder Stories, and a free Scale Check.</p><span class="tag">Free · no equity</span></div>
-          <div class="card reveal"><div class="emoji">🧰</div><h3>Service package</h3><p>Sales playbook training, AI setup, or a marketing sprint for your team.</p><span class="tag">Flat fee · no equity</span></div>
-          <div class="card reveal"><div class="emoji">🤝</div><h3>Network partner</h3><p>Warm intros to buyers. You pay only on deals that close.</p><span class="tag">Success fee · no equity</span></div>
-          <div class="card hi reveal"><div class="emoji">🚀</div><h3>Full partnership</h3><p>Capital plus hands-on help, for companies ready to go all in.</p><span class="tag">Capital in steps</span></div>
+        <h2 class="reveal">Start free. Go further only when it's working.</h2>
+        <p class="lead reveal">Here's exactly how we work together, and how Gateway X makes money. You never have to give up equity to start.</p>
+        <div class="ladder"><div class="lad-step reveal" style="--h:0">
+            <div class="lad-tag">Free</div><div class="lad-e">🎟️</div><h3>Community</h3>
+            <dl><dt>You get</dt><dd>Scale Nights, Founder Stories, Idea Lab and a free Scale Check.</dd><dt>We earn</dt><dd>Nothing. This is how we meet.</dd><dt>You commit</dt><dd>None. Come once or every month.</dd></dl>
+          </div><div class="lad-step reveal" style="--h:1">
+            <div class="lad-tag">Flat fee</div><div class="lad-e">🧰</div><h3>Service sprint</h3>
+            <dl><dt>You get</dt><dd>A defined project: sales playbook training, AI setup or a marketing sprint.</dd><dt>We earn</dt><dd>A flat fee, agreed before you start.</dd><dt>You commit</dt><dd>One project. You own everything we build.</dd></dl>
+          </div><div class="lad-step reveal" style="--h:2">
+            <div class="lad-tag">Success fee</div><div class="lad-e">🤝</div><h3>Network partner</h3>
+            <dl><dt>You get</dt><dd>Warm intros to buyers and partners from our network.</dd><dt>We earn</dt><dd>A share of revenue only from deals we introduce.</dd><dt>You commit</dt><dd>Only when a deal closes. No deal, no fee.</dd></dl>
+          </div><div class="lad-step reveal" style="--h:3">
+            <div class="lad-tag">Partnership</div><div class="lad-e">🚀</div><h3>Full partnership</h3>
+            <dl><dt>You get</dt><dd>Capital in steps, hands-on help, and the full network and playbook.</dd><dt>We earn</dt><dd>A minority stake and a share of profits.</dd><dt>You commit</dt><dd>Milestones you agree to, step by step.</dd></dl>
+          </div></div>
+        <div class="card msbox reveal">
+          <div class="ms-head"><div><div class="kicker" style="margin:0">Full partnership</div><h3>Capital in steps, tied to milestones you agree on</h3></div><span class="lad-tag">You stay in charge</span></div>
+          <div class="ms-row"><div class="ms reveal"><div class="ms-dot">🤝</div><div class="ms-n">Milestone 1</div><b>Agree the plan</b><p>We agree on goals and milestones together, in writing.</p><span class="ms-then">→ First capital to start</span></div><div class="ms reveal"><div class="ms-dot">🧾</div><div class="ms-n">Milestone 2</div><b>First new clients</b><p>The network and playbook bring in new paying clients.</p><span class="ms-then">→ Next step of capital</span></div><div class="ms reveal"><div class="ms-dot">✅</div><div class="ms-n">Milestone 3</div><b>Profitable</b><p>The business pays for itself.</p><span class="ms-then">→ Capital to scale</span></div><div class="ms reveal"><div class="ms-dot">📈</div><div class="ms-n">Milestone 4</div><b>Grow and share</b><p>You keep growing and stay in charge.</p><span class="ms-then">→ Profits shared each year; no pressure to sell</span></div></div>
         </div>
-        <div class="strip reveal">
-          <div><b>1 · Start</b><span>After your Scale Check, when we agree it's a fit</span></div>
-          <div><b>2 · Traction</b><span>When you land your first new paying clients</span></div>
-          <div><b>3 · Scale</b><span>When revenue is growing and the business is profitable</span></div>
-        </div>
-        <p class="note">Full partnership capital is released in steps as you hit milestones, so you never take more than you need.</p>
+        <div class="promises reveal"><div class="pm"><span>💬</span><div><b>No surprises</b><p>Pricing is shared before you commit.</p></div></div><div class="pm"><span>🔒</span><div><b>Your idea stays yours</b><p>And so does everything we build together.</p></div></div><div class="pm"><span>🧑‍💼</span><div><b>You stay in charge</b><p>Partners keep majority ownership and control.</p></div></div><div class="pm"><span>🌱</span><div><b>We win only if you win</b><p>We make money when your business does.</p></div></div></div>
+        <div class="work-cta reveal"><a class="btn" href="#apply" data-start="choose">Start with a free Scale Check →</a><span>No event, no commitment, no equity.</span></div>
       </div>
     </section>
 
@@ -799,6 +849,8 @@
           <details class="reveal"><summary>Do I have to give up equity?</summary><p>No. Community events, service packages and network partnerships involve no equity. A full partnership includes capital and a stake, and the capital comes in steps as you hit milestones.</p></details>
           <details class="reveal"><summary>I already run a profitable business. Is this for me?</summary><p>Yes. Many of the owners we want to meet already have customers and revenue but aren't sure how to scale. Start with a free Scale Check.</p></details>
           <details class="reveal"><summary>Do I need to be in St. Louis?</summary><p>No. We're based in St. Louis, but most sessions are online and we work with owners across the Midwest.</p></details>
+          <details class="reveal"><summary>How does Gateway X make money?</summary><p>Free events and the Scale Check cost nothing. Service sprints have a flat fee agreed upfront. Network partners pay a share of revenue only from deals we introduce. Full partners give a minority stake and share profits, so we make money only when your business does.</p></details>
+          <details class="reveal"><summary>Do I have to go to a Scale Night first?</summary><p>No. Scale Nights are optional. You can book a free Scale Check directly from “Bring your idea.”</p></details>
           <details class="reveal"><summary>What does it cost to start?</summary><p>Nothing. Scale Nights, Founder Stories and the Scale Check are free.</p></details>
           <details class="reveal"><summary>What kinds of businesses fit best?</summary><p>B2B services where technology, a strong sales system and the right introductions can change how fast you grow.</p></details>
         </div>
@@ -938,8 +990,8 @@
 
     // Compact roadmap: one road, tap a stop to see its details in one panel.
     var RM = [
-      { ph: "free", e: "📣", h: "Come to a Scale Night", p: "Meet owners who scaled. Free, online or in person.", w: "Free", c: '<a class="btn small" href="#schedule">See upcoming dates →</a>' },
-      { ph: "free", e: "🩺", h: "Get a free Scale Check", p: "30 minutes to map where your time and margin go. You leave with a one-page plan.", w: "30 min · free", c: '<a class="btn small" href="#apply" data-start="choose">Book my free Scale Check →</a>' },
+      { ph: "free", e: "📣", h: "Come to a Scale Night (optional)", p: "Meet owners who scaled, free, online or in person. Totally optional: you can go straight to a free Scale Check.", w: "Free · optional", c: '<a class="btn small" href="#schedule">See upcoming dates →</a> <a class="btn small ghost" href="#apply" data-start="choose">Skip to a free Scale Check →</a>' },
+      { ph: "free", e: "🩺", h: "Get a free Scale Check", p: "Book it directly, no event needed. 30 minutes to map where your time and margin go. You leave with a one-page plan.", w: "30 min · free", c: '<a class="btn small" href="#apply" data-start="choose">Book my free Scale Check →</a>' },
       { ph: "free", e: "🎯", h: "See if we're a fit", p: "Answer a few questions. We look at your customers, market and goals, and give you a clear answer.", w: "About 1 week", c: '<a class="btn small" href="#apply" data-start="choose">Bring your idea →</a>' },
       { ph: "grow", e: "🔌", h: "Plug into the network", p: "Warm buyers, the sales playbook, AI tools and talent.", w: "First 90 days", c: '' },
       { ph: "grow", e: "🤝", h: "Grow together", p: "Pick the way of working that fits you. You stay in charge.", w: "Ongoing", c: '<a class="step-link" href="#work">See ways to work together →</a>' },
