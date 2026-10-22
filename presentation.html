@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Herd OS · GatewayX</title>
+  <title>GatewayX · Team presentation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
@@ -789,6 +789,55 @@ a.btn { text-decoration: none; display: inline-block; }
 #screen-rec .br-name { font-size: 19px; } #screen-rec .br-name span { font-size: 30px; }
 #screen-rec .br-b, #screen-rec .br-r { font-size: 16px; } #screen-rec .br-r { padding: 6px 12px; }
 
+/* v18: presentation aligned with the paper */
+.who { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+.who-c { background: var(--card); border: 3px solid var(--line); border-left: 8px solid var(--accent); border-radius: 18px; padding: 16px 20px; }
+.who-c b { display: block; font-size: 23px; } .who-c span { font-size: 17px; color: var(--muted); line-height: 1.45; display: block; margin-top: 4px; }
+.facts { margin-top: 22px !important; justify-content: space-between; }
+.facts .stat-n { font-size: clamp(34px, 3.6vw, 50px); }
+.paths { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 18px; margin-top: 26px; align-items: center; }
+.path { background: var(--card); border: 3px solid var(--line); border-radius: 22px; padding: 22px; opacity: .7; }
+.path.on { border-color: var(--accent); opacity: 1; padding: 30px 22px; }
+.path .p-e { font-size: 54px; } .path b { display: block; font-size: 26px; margin-top: 6px; } .path span { font-size: 17px; color: var(--muted); }
+.scale { display: grid; gap: 14px; margin: 26px auto 0; max-width: 1000px; text-align: left; }
+.sc-row { display: grid; grid-template-columns: 150px auto 36px auto 1fr; align-items: center; gap: 12px; background: var(--card); border: 3px solid var(--line); border-radius: 18px; padding: 14px 20px; }
+.sc-row.warn { border-color: var(--accent); }
+.sc-l { font-weight: 800; font-size: 18px; } .sc-h { font-size: 30px; } .sc-a { font-size: 28px; color: var(--accent); font-weight: 800; } .sc-c { font-size: 26px; } .sc-n { font-size: 16px; color: var(--muted); }
+.bundle { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 26px; }
+.bd { font-size: 46px; background: var(--card); border: 3px solid var(--line); border-radius: 20px; padding: 18px 14px; }
+.bd.gap { border-color: var(--accent); }
+.bd b { display: block; font-size: 21px; margin-top: 6px; } .bd span { display: block; font-size: 15px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+.eqs { display: grid; gap: 10px; margin: 18px 0 18px; }
+.eqs-row { display: grid; grid-template-columns: 360px 1fr 70px; align-items: center; gap: 14px; font-size: 18px; }
+.eqs-l { color: var(--muted); }
+.eqs-bar { height: 22px; background: #eef0f3; border-radius: 4px; overflow: hidden; }
+.eqs-bar i { display: block; height: 100%; background: var(--accent); border-radius: 0 4px 4px 0; }
+.eqs-row b { font-size: 24px; }
+.fb { display: grid; gap: 12px; margin-top: 20px; max-width: 1000px; }
+.fb-row { display: grid; grid-template-columns: 330px 1fr 64px; align-items: center; gap: 14px; }
+.fb-l { font-size: 19px; font-weight: 700; color: var(--ink); }
+.fb-track { height: 30px; position: relative; border-left: 2px solid #d9dce1; }
+.fb-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--accent); border-radius: 0 4px 4px 0; animation: fbgrow 1s ease-out forwards; }
+.fb-row:hover .fb-bar { filter: brightness(1.12); }
+@keyframes fbgrow { to { width: var(--w); } }
+.fb-v { font-size: 22px; color: var(--ink); }
+.mvs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 22px; }
+.mv { background: var(--card); border: 3px solid var(--line); border-top: 6px solid var(--accent); border-radius: 20px; padding: 18px; }
+.mv-top { display: flex; justify-content: space-between; align-items: center; }
+.mv-e { font-size: 38px; } .mv-p { font-size: 28px; font-weight: 800; color: var(--accent); text-align: right; line-height: 1; } .mv-p em { display: block; font-style: normal; font-size: 12px; color: var(--muted); font-weight: 700; }
+.mv b { display: block; font-size: 20px; margin: 12px 0 6px; line-height: 1.25; } .mv > span { font-size: 15px; color: var(--muted); line-height: 1.45; }
+.moat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 30px auto 0; max-width: 900px; }
+.mo { font-size: 56px; background: var(--card); border: 3px solid var(--line); border-bottom: 8px solid var(--accent); border-radius: 22px; padding: 22px 12px; }
+.mo b { display: block; font-size: 22px; margin-top: 8px; }
+.refs { font-size: 17px; line-height: 1.55; columns: 2; column-gap: 36px; padding-left: 20px; margin-top: 14px; }
+.refs li { break-inside: avoid; margin-bottom: 6px; }
+@media (max-width: 860px) { .who, .paths, .bundle, .mvs, .moat { grid-template-columns: 1fr 1fr; } .fb-row, .eqs-row { grid-template-columns: 1fr; } .sc-row { grid-template-columns: 1fr; } .refs { columns: 1; } }
+
+.who-c b { color: var(--ink); }
+.chain.sm .link-t { font-size: 23px; line-height: 1.3; }
+.fb-row { grid-template-columns: 400px 1fr; }
+.fb-v { position: absolute; top: 50%; transform: translateY(-50%); }
+
 </style>
 </head>
 <body>
@@ -796,7 +845,6 @@ a.btn { text-decoration: none; display: inline-block; }
     <div class="brand"><svg class="mini-arch" viewBox="0 0 40 40"><path d="M6,38 C10,-4 30,-4 34,38" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/></svg> Gateway <span class="x">X</span></div>
     <nav class="nav">
       <button class="nav-btn active" data-view="story">Presentation</button>
-      <button class="nav-btn" data-view="studio">Herd OS (partners)</button>
       <a class="nav-btn cta" href="https://wonshon-cmd.github.io/gatewayx/" target="_blank" rel="noopener" style="text-decoration:none">Website →</a>
     </nav>
   </header>
@@ -808,377 +856,106 @@ a.btn { text-decoration: none; display: inline-block; }
       <div class="logo-slot"><img src="logo.png" alt="Gateway X" onload="this.parentNode.classList.add('has-logo')" onerror="this.remove()"><span class="wordmark">GATEWAY <span class="accent">X</span></span></div>
       <svg class="gw-svg" viewBox="0 0 800 460" role="img" aria-label="The Gateway Arch opening to a connected world"><path id="w0" class="gw-link" pathLength="1" d="M400,392 Q270.0,-50 140,70" style="animation-delay:2.30s"/><g class="gw-city" style="animation-delay:2.50s"><circle cx="140" cy="70" r="7" fill="var(--own)"/><text class="gw-t" x="140" y="56" text-anchor="middle">London</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.20s"><animateMotion dur="2.6s" repeatCount="indefinite" begin="3.20s"><mpath href="#w0"/></animateMotion></circle><path id="w1" class="gw-link" pathLength="1" d="M400,392 Q540.0,-40 680,80" style="animation-delay:2.45s"/><g class="gw-city" style="animation-delay:2.65s"><circle cx="680" cy="80" r="7" fill="var(--own)"/><text class="gw-t" x="680" y="66" text-anchor="middle">Tokyo</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.35s"><animateMotion dur="2.9s" repeatCount="indefinite" begin="3.35s"><mpath href="#w1"/></animateMotion></circle><path id="w2" class="gw-link" pathLength="1" d="M400,392 Q230.0,110 60,230" style="animation-delay:2.60s"/><g class="gw-city" style="animation-delay:2.80s"><circle cx="60" cy="230" r="7" fill="var(--own)"/><text class="gw-t" x="60" y="216" text-anchor="middle">Bay Area</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.50s"><animateMotion dur="3.2s" repeatCount="indefinite" begin="3.50s"><mpath href="#w2"/></animateMotion></circle><path id="w3" class="gw-link" pathLength="1" d="M400,392 Q275.0,272 150,420" style="animation-delay:2.75s"/><g class="gw-city" style="animation-delay:2.95s"><circle cx="150" cy="420" r="7" fill="var(--own)"/><text class="gw-t" x="150" y="406" text-anchor="middle">São Paulo</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.65s"><animateMotion dur="3.5s" repeatCount="indefinite" begin="3.65s"><mpath href="#w3"/></animateMotion></circle><path id="w4" class="gw-link" pathLength="1" d="M400,392 Q525.0,272 650,420" style="animation-delay:2.90s"/><g class="gw-city" style="animation-delay:3.10s"><circle cx="650" cy="420" r="7" fill="var(--own)"/><text class="gw-t" x="650" y="406" text-anchor="middle">Lagos</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.80s"><animateMotion dur="3.8s" repeatCount="indefinite" begin="3.80s"><mpath href="#w4"/></animateMotion></circle><path id="w5" class="gw-link" pathLength="1" d="M400,392 Q570.0,120 740,240" style="animation-delay:3.05s"/><g class="gw-city" style="animation-delay:3.25s"><circle cx="740" cy="240" r="7" fill="var(--own)"/><text class="gw-t" x="740" y="226" text-anchor="middle">Berlin</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.95s"><animateMotion dur="4.1s" repeatCount="indefinite" begin="3.95s"><mpath href="#w5"/></animateMotion></circle><g class="gw-globe"><circle cx="400" cy="250" r="100" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><ellipse cx="400" cy="250" rx="100" ry="34" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".55"/><line x1="300" y1="250" x2="500" y2="250" stroke="var(--accent)" stroke-width="2" opacity=".55"/><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-0.0s" repeatCount="indefinite"/></ellipse><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-2.0s" repeatCount="indefinite"/></ellipse><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-4.0s" repeatCount="indefinite"/></ellipse></g><path class="gw-arch" pathLength="1" d="M215,400 C270,-10 530,-10 585,400"/><line class="gw-ground" x1="170" y1="402" x2="630" y2="402"/><circle cx="400" cy="392" r="9" fill="var(--accent)"/></svg>
       <h1 class="statement hero-title">Connecting St. Louis to the world.</h1>
-      <p class="unstop">We take entrepreneurs from aspiring to <span>unstoppable.</span></p>
-      <p class="tagline">The go-to place in the Midwest to start a company. <strong>Let's make it a reality.</strong></p>
+      <p class="unstop">GatewayX: <span>camels, not unicorns.</span></p>
+      <p class="tagline">MGMT 7640 · Tech in the SF Bay Area · Team project for Adam, Shonak &amp; Jesse</p>
+    </div>
+
+    <div data-chapter="1" class="panel slide">
+      <div class="kicker">Introduction · who GatewayX is</div>
+      <h1 class="statement">A venture studio and fund <span class="accent">in St. Louis</span></h1><div class="who"><div class="who-c pop" style="animation-delay:.1s"><b>Jesse Pujji</b><span>Founder. St. Louis native and Wharton graduate. Co-founded Ampush in San Francisco, then moved his family back home after selling it.</span></div><div class="who-c pop" style="animation-delay:.3s"><b>Adam Brakhane &amp; Shonak Patel</b><span>Partners. Together they build and back AI-native services companies.</span></div></div><div class="stat-row small-stats facts"><div class="stat"><div class="stat-n">&lt;$250K</div><div class="stat-l">to start a company</div></div><div class="stat"><div class="stat-n">~$47M</div><div class="stat-l">first fund</div></div><div class="stat"><div class="stat-n">~90</div><div class="stat-l">investors, ⅓ St. Louis families</div></div><div class="stat"><div class="stat-n accent">8–10</div><div class="stat-l">companies a year, up from 1</div></div></div><div class="source">Source: interview with Adam Brakhane and Shonak Patel, Oct 14, 2026</div>
     </div>
 
     <div data-chapter="1" class="panel slide center">
-      <div class="kicker">MGMT 7640 · Block Week · for Adam, Nak & Jesse</div>
-      <div class="hero-emoji">🐪</div>
-      <h1 class="statement">You've built the camel.<br><span class="accent">Here's how to build the herd.</span></h1>
+      <div class="kicker">Introduction · the mission</div>
+      <h1 class="statement">“We want camels, <span class="accent">not unicorns.”</span></h1><div class="paths"><div class="path pop" style="animation-delay:.1s"><div class="p-e">🧱</div><b>Bootstrap</b><span>a small business</span></div><div class="path on pop" style="animation-delay:.3s"><div class="p-e">🐪</div><b>Seedstrap</b><span>profit and long-term growth: more upside for founders</span></div><div class="path pop" style="animation-delay:.5s"><div class="p-e">🦄</div><b>Raise to hyperscale</b><span>the venture path</span></div></div><p class="takeaway">Camels stay profitable through a funding drought. They don't lose their value when the money dries up.</p>
     </div>
 
-    <div data-chapter="1" class="panel slide">
-      <div class="kicker">The model · camels, not unicorns</div>
-      <h1 class="statement">Most founders only know two ways. <span class="accent">There's a third.</span></h1>
-      <div class="cmp-key">●●● = better for you, the founder</div>
-      <div class="cmp"><div></div><div class="cmp-h">🧱<br>Bootstrap</div><div class="cmp-h hi">🐪<br>Seedstrap · Gateway X</div><div class="cmp-h">🦄<br>Venture capital</div><div class="cmp-l">💵 Money to get started</div><div class="cmp-c"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-c hi"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span></div><div class="cmp-c"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-l">🧭 Hands-on help</div><div class="cmp-c"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-c hi"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-c"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span></div><div class="cmp-l">🧑‍💼 You keep control</div><div class="cmp-c"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-c hi"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-c"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-l">🏦 Profitable early</div><div class="cmp-c"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-c hi"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-c"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-l">😌 No pressure to keep raising</div><div class="cmp-c"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-c hi"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div><div class="cmp-c"><span class="dots3"><i class="on"></i><i></i><i></i></span></div><div class="cmp-l cmp-tot">Total for you</div><div class="cmp-c cmp-tot">11 / 15</div><div class="cmp-c hi cmp-tot">14 / 15</div><div class="cmp-c cmp-tot">8 / 15</div></div>
-      <div class="cmp-src">Our assessment, checked against: Carta data (founders give up ~20% per VC round); a 2025 study showing founding teams own a median ~36% after Series A and ~16% by Series C; Zapier, which raised one $1.3M seed in 2012 and then grew on revenue. VC fits moonshots that need huge money fast.</div>
-    </div>
-
-    <div data-chapter="1" class="panel slide">
-      <div class="kicker">It's working</div>
-      <div class="stat-row">
-        <div class="stat"><div class="stat-n">$3M</div><div class="stat-l">invested</div></div>
-        <div class="stat-arrow">→</div>
-        <div class="stat"><div class="stat-n accent">$100M+</div><div class="stat-l">value created</div></div>
-      </div>
-      <div class="stat-row small-stats">
-        <div class="stat"><div class="stat-n">$13M</div><div class="stat-l">distributed</div></div>
-        <div class="stat"><div class="stat-n">6</div><div class="stat-l">companies</div></div>
-        <div class="stat"><div class="stat-n">2</div><div class="stat-l">breakouts</div></div>
-      </div>
-      <div class="source">Source: GatewayX deck, Oct 14</div>
-    </div>
-
-    <div data-chapter="1" class="panel slide" data-enter="journeys">
-      <div class="kicker">How fast the playbook works</div>
-      <h1 class="statement">Real companies, real speed</h1>
-      <div class="jys">
-        <div class="jy" data-unit="Day" data-to="100" style="--c:var(--gx)">
-            <div class="j-top"><div class="co-logo" style="--lc:var(--gx)"><img src="aux-insights-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>AUX</span></div><div class="j-name"><b>Aux Insights</b><span>Kasey Grelle · CEO & co-founder</span><em class="launched">🤝 Co-created with Gateway X</em></div><div class="j-count"><span class="j-unit">Day</span> <span class="j-n">0</span></div></div>
-            <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
-            <div class="j-ends"><span>🚀 Launch · <b>$0 revenue</b></span><span>✅ Profitable</span></div>
-            <div class="j-done">Zero to profitable in 100 days</div>
-          </div>
-          <div class="jy" data-unit="Month" data-to="24" style="--c:var(--own)">
-            <div class="j-top"><div class="co-logo" style="--lc:var(--own)"><img src="growthassistant-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>GA</span></div><div class="j-name"><b>GrowthAssistant</b><span>Adriane Schwager · CEO & co-founder</span><em class="launched">🤝 Co-created with Gateway X</em></div><div class="j-count"><span class="j-unit">Month</span> <span class="j-n">0</span></div></div>
-            <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
-            <div class="j-ends"><span>🚀 Launch · <b>$0 revenue</b></span><span>🏆 $10M ARR</span></div>
-            <div class="j-done">$10M ARR in 2 years, scaling profitably</div>
-          </div>
-          <div class="jy" data-unit="Day" data-to="1" style="--c:var(--third)">
-            <div class="j-top"><div class="co-logo" style="--lc:var(--third)"><img src="bootstrapped-giants-logo.png" alt="" onload="this.parentNode.classList.add('img')" onerror="this.remove()"><span>BG</span></div><div class="j-name"><b>Bootstrapped Giants</b><span>Andrew Warner · CEO & co-founder</span><em class="launched">🤝 Co-created with Gateway X</em></div><div class="j-count"><span class="j-unit">Day</span> <span class="j-n">0</span></div></div>
-            <div class="j-track"><div class="j-fill"></div><div class="j-walker">🐪</div><div class="j-flag">🏁</div></div>
-            <div class="j-ends"><span>🚀 Launch day</span><span>🎙️ $40K/month sponsors</span></div>
-            <div class="j-done">$40K a month in sponsorship revenue on day one</div>
-          </div>
-          </div>
-      <div class="note">Results as published by Gateway X (gateway.xyz). Founder names are each company's CEO and co-founder.</div>
-    </div>
-
-    <div data-chapter="1" class="panel slide">
-      <div class="kicker">What worked, what didn't</div>
-      <div class="vs">
-        <div class="vs-card on"><div class="vs-emoji">🚀</div><div class="vs-t">GrowthAssistant</div><ul><li>$0 → $10M in 2 years</li><li>Meetings-first sales playbook</li><li>Warm intros from the network</li></ul></div>
-        <div class="vs-card dim"><div class="vs-emoji">📉</div><div class="vs-t">Unbloat</div><ul><li>Consumer brand, off-thesis</li><li>Too little room for more tries</li><li>2 years to admit it was wrong; wound down</li></ul></div>
-      </div>
-      <div class="source">Source: Jesse Pujji, Bootstrapped Giants (founder-reported)</div>
-    </div>
-
-    <div data-chapter="1" class="panel slide">
-      <div class="kicker">Q2 · Perspective-taking</div>
-      <h1 class="statement">Terms built from both sides</h1>
-      <div class="vs">
-        <div class="vs-card on"><div class="vs-emoji">🧑‍💻</div><div class="vs-t">For founders</div><ul><li>One round</li><li>Keep 80%</li><li>Profit paid every year</li></ul></div>
-        <div class="vs-card on"><div class="vs-emoji">💼</div><div class="vs-t">For investors</div><ul><li>Series PROFIT: capital staged</li><li>Residency tests ideas first</li><li>Distributions to LPs</li></ul></div>
-      </div>
-      <p class="takeaway">Great terms attract founders, but terms can be copied.</p>
-    </div>
-
-    <div data-chapter="1" class="panel slide">
-      <div class="kicker">Q3 · Culture, strategy and purpose</div>
-      <div class="chain">
-        <div class="link"><div class="link-l">Purpose</div><div class="link-t">Founders "turn pro"</div></div>
-        <div class="chain-arrow">→</div>
-        <div class="link"><div class="link-l">Strategy</div><div class="link-t">AI-native B2B niches, distribution over product</div></div>
-        <div class="chain-arrow">→</div>
-        <div class="link"><div class="link-l">Culture</div><div class="link-t">Sell first, demo first, profit first</div></div>
-      </div>
-      <p class="takeaway">⚠️ All three run through partner time.</p>
+    <div data-chapter="1" class="panel slide center">
+      <div class="kicker">Introduction · our argument</div>
+      <h1 class="statement">The choices <span class="accent">work together</span></h1><div class="chain"><div class="link"><div class="link-l">Place</div><div class="link-t">🏙️ A low-cost city</div></div><div class="chain-arrow">+</div><div class="link"><div class="link-l">Team</div><div class="link-t">🧑‍🤝‍🧑 Small and in person</div></div><div class="chain-arrow">+</div><div class="link"><div class="link-l">Model</div><div class="link-t">💵 Profit first</div></div></div><p class="takeaway">⚠️ The hands-on model that makes GatewayX strong today<br>is also its biggest risk as it scales.</p>
     </div>
 
     <div data-chapter="2" class="panel slide">
-      <div class="kicker">The problem · access</div>
-      <h1 class="statement">People who already know <span class="accent">go to Silicon Valley.</span></h1>
-      <svg class="far-svg" viewBox="0 0 800 150" role="img" aria-label="St. Louis is far from Silicon Valley"><line x1="110" y1="70" x2="690" y2="70" stroke="#9aa1ad" stroke-width="4" stroke-dasharray="10 12"/><circle cx="690" cy="70" r="16" fill="#9aa1ad"/><text x="690" y="120" text-anchor="middle" class="far-t">Silicon Valley</text><circle cx="110" cy="70" r="20" fill="var(--accent)"/><text x="110" y="120" text-anchor="middle" class="far-t" fill="var(--accent)">St. Louis</text><text x="400" y="30" text-anchor="middle" class="far-m">~1,700 miles away</text><text class="far-run" y="80" font-size="34">🧳<animate attributeName="x" values="140;640" dur="3s" repeatCount="indefinite"/></text></svg>
-      <div class="vs">
-        <div class="vs-card dim"><div class="vs-emoji">🧭</div><div class="vs-t">Those who know</div><ul><li>Know the playbook</li><li>Know the investors</li><li>Leave for the Valley</li></ul></div>
-        <div class="vs-card on"><div class="vs-emoji">🌾</div><div class="vs-t">Most of the Midwest</div><ul><li>No access, no exposure</li><li>The Valley feels far away</li><li>Never sees how it's done</li></ul></div>
-      </div>
-    </div>
-
-    <div data-chapter="2" class="panel slide center">
-      <div class="kicker">The opportunity · St. Louis</div>
-      <h1 class="statement">St. Louis is full of <span class="accent">passionate, aspiring</span> entrepreneurs</h1>
-      <div class="ripple"><span class="rp r1"></span><span class="rp r2"></span><span class="rp r3"></span><span class="rp-c">💡</span></div>
-      <div class="bn">
-        <div class="bn-c pop" style="animation-delay:0.1s"><div class="bn-e">🎓</div><b>Young founders</b><span>An idea and the drive, but no one to show them the path.</span></div>
-        <div class="bn-c pop" style="animation-delay:0.3s"><div class="bn-e">🏪</div><b>Owners who already run a business</b><span>Real customers, but not yet digital and unsure how to scale.</span></div>
-        <div class="bn-c pop" style="animation-delay:0.5s"><div class="bn-e">🔭</div><b>A little exposure goes far</b><span>Seeing one local win widens the vision, and the dream.</span></div>
-      </div>
+      <div class="kicker">Where and how work gets done · why St. Louis</div>
+      <h1 class="statement">St. Louis, <span class="accent">not the Bay</span></h1><div class="bn"><div class="bn-c pop" style="animation-delay:0.1s"><div class="bn-e">🛣️</div><b>Runway</b><span>Low costs let founders “get off the hamster wheel” and take a risk.</span></div><div class="bn-c pop" style="animation-delay:0.3s"><div class="bn-e">🎯</div><b>Underserved market</b><span>Less competition: “even pretty good at AI, you're going to win.” And closer to the mass market.</span></div><div class="bn-c pop" style="animation-delay:0.5s"><div class="bn-e">💰</div><b>Local capital</b><span>St. Louis investors who would “give up some returns in order to see the city thrive.”</span></div></div><p class="takeaway">The Bay's biggest asset, capital, matters less to companies that grow from profit.</p>
     </div>
 
     <div data-chapter="2" class="panel slide">
-      <div class="kicker">SWOT · Gateway X in St. Louis</div>
-      <div class="swot">
-        <div class="sw s pop" style="animation-delay:.1s"><div class="sw-h">💪 Strengths</div><ul><li>Deeply rooted in St. Louis</li><li>Proven playbook: GrowthAssistant, Aux Insights</li><li>Digital marketing network + AI tools</li><li>Profitable fast, not raise after raise</li></ul></div>
-        <div class="sw w pop" style="animation-delay:.3s"><div class="sw-h">⚠️ Weaknesses</div><ul><li>Too much partner time per idea</li><li>Results are uncertain, and slow to see</li><li>Ideas come in from here and there</li><li>Too few experts; wins are all in marketing</li></ul></div>
-        <div class="sw o pop" style="animation-delay:.5s"><div class="sw-h">🌱 Opportunities</div><ul><li>Aspiring founders with no exposure yet</li><li>Existing businesses that aren't digital yet</li><li>No Valley-style studio rooted here</li><li>Local experts and colleges ready to help</li></ul></div>
-        <div class="sw t pop" style="animation-delay:.7s"><div class="sw-h">🌪️ Threats</div><ul><li>Best founders still leave for the coasts</li><li>Terms are easy to copy</li><li>AI makes services a commodity</li></ul></div>
-      </div>
+      <div class="kicker">Where and how work gets done · space and remote work</div>
+      <h1 class="statement">In person, <span class="accent">by design</span></h1><div class="bn"><div class="bn-c pop" style="animation-delay:0.1s"><div class="bn-e">🏢</div><b>A team of six in St. Louis</b><span>Three partners, plus leads for community and programs, talent, and operations.</span></div><div class="bn-c pop" style="animation-delay:0.3s"><div class="bn-e">🎓</div><b>A 10-week, in-person Fellowship</b><span>Creates the chance encounters the Bay gets for free (Barthelemy &amp; Mottis, 2025).</span></div><div class="bn-c pop" style="animation-delay:0.5s"><div class="bn-e">🌐</div><b>Remote in delivery</b><span>GrowthAssistant places offshore growth marketers in every portfolio company.</span></div></div>
     </div>
 
     <div data-chapter="2" class="panel slide center">
-      <div class="kicker">The weaknesses, up close</div>
-      <h1 class="statement">“We'd have to double ourselves.”</h1>
-      <div class="bn bn4">
-        <div class="bn-c pop" style="animation-delay:0.1s"><div class="bn-e">⏳</div><b>Too much time</b><span>Every idea gets a custom conversation with a partner.</span></div>
-        <div class="bn-c pop" style="animation-delay:0.25s"><div class="bn-e">❓</div><b>Unsure results</b><span>It takes months to know if a bet will work.</span></div>
-        <div class="bn-c pop" style="animation-delay:0.4s"><div class="bn-e">🧩</div><b>Ideas from here and there</b><span>Pitches arrive by phone, email and coffee, with no single path.</span></div>
-        <div class="bn-c pop" style="animation-delay:0.55s"><div class="bn-e">🧑‍🔧</div><b>Too few hands</b><span>Three partners, and expertise mostly in marketing.</span></div>
-      </div>
-      <p class="takeaway">At 8–10 companies a year, the partners are the ceiling.</p>
+      <div class="kicker">Where and how work gets done · culture and strategy</div>
+      <h1 class="statement">Strong when small. <span class="accent">Stretched at scale.</span></h1><div class="scale"><div class="sc-row"><span class="sc-l">Today</span><span class="sc-h">🧠🧠🧠</span><span class="sc-a">→</span><span class="sc-c">🐪</span><span class="sc-n">1 studio company a year. Partners act as part-time COO, CTO and salesperson.</span></div><div class="sc-row warn"><span class="sc-l">With the fund</span><span class="sc-h">🧠🧠🧠</span><span class="sc-a">→</span><span class="sc-c">🐪🐪🐪🐪🐪🐪🐪🐪🐪🐪</span><span class="sc-n">8–10 companies a year.</span></div></div><p class="takeaway">“We'd have to double ourselves.”</p>
     </div>
 
-    <div data-chapter="3" class="panel slide center">
-      <div class="kicker">The big idea</div>
-      <h1 class="statement">Don't send St. Louis to the Valley.<br><span class="accent">Root the playbook here.</span></h1>
-      <div class="roots">
-        <div class="root pop" style="animation-delay:.1s">🎓<b>Local colleges</b></div>
-        <div class="root pop" style="animation-delay:.25s">🏪<b>Local owners</b></div>
-        <div class="root pop" style="animation-delay:.4s">🧑‍🏫<b>Local experts</b></div>
-        <div class="root pop" style="animation-delay:.55s">📅<b>Local events</b></div>
-      </div>
-      <p class="takeaway">Gateway X should be deeply rooted: the place St. Louis grows its own.</p>
+    <div data-chapter="2" class="panel slide center">
+      <div class="kicker">Where and how work gets done · regional advantage</div>
+      <h1 class="statement">The Bay's bundle <span class="accent">can be separated</span></h1><div class="bundle"><div class="bd ok pop" style="animation-delay:.1s">💰<b>Capital</b><span>✅ rebuilt locally</span></div><div class="bd ok pop" style="animation-delay:.25s">🤝<b>Network</b><span>✅ rebuilt locally</span></div><div class="bd ok pop" style="animation-delay:.4s">📘<b>Playbooks</b><span>✅ rebuilt locally</span></div><div class="bd gap pop" style="animation-delay:.55s">🧑‍💻<b>Talent density</b><span>⚠️ “fragmented”: STL Homecoming finds people with St. Louis roots</span></div></div><p class="takeaway">The Valley isn't the only place to win, if your model plays to where you are.</p><div class="source">Lazarow, “Beyond Silicon Valley” (HBR, 2020): frontier startups win through balanced growth and less capital</div>
     </div>
 
     <div data-chapter="3" class="panel slide">
-      <div class="kicker">Two doors, one engine</div>
-      <div class="eng">
-        <div class="eng-l">
-          <div class="door pop" style="animation-delay:.1s"><span>🎓</span><div><b>A young founder with an idea</b><em>→ build it and scale it</em></div></div>
-          <div class="door pop" style="animation-delay:.3s"><span>🏪</span><div><b>An existing business</b><em>→ connect it to digital</em></div></div>
-          <div class="eng-plus">plugged into</div>
-          <div class="fuel pop" style="animation-delay:.5s">💻 Digital tools &amp; AI</div>
-          <div class="fuel pop" style="animation-delay:.65s">📣 Digital marketing network</div>
-          <div class="fuel pop" style="animation-delay:.8s">🌱 Seed capital</div>
-        </div>
-        <div class="eng-r"><h1 class="statement eng-title">Grow <span class="accent">exponentially</span></h1><svg class="exp-svg" viewBox="0 0 620 290" role="img" aria-label="Growth on your own is a slow line; with Gateway X it curves up"><line x1="60" y1="252" x2="580" y2="252" stroke="var(--line)" stroke-width="3"/><line x1="60" y1="20" x2="60" y2="252" stroke="var(--line)" stroke-width="3"/><polyline class="exp-line" pathLength="1" points="60,250 560,200" fill="none" stroke="#9aa1ad" stroke-width="5" stroke-dasharray="1" stroke-linecap="round"/><polyline class="exp-line exp-up" pathLength="1" points="60,250 72,249 85,248 98,247 110,246 122,245 135,244 148,243 160,242 172,240 185,239 198,237 210,235 222,233 235,231 248,228 260,226 272,223 285,220 298,217 310,213 322,209 335,205 348,200 360,196 372,190 385,185 398,178 410,172 422,164 435,156 448,148 460,138 472,128 485,117 498,106 510,93 522,79 535,64 548,48 560,30" fill="none" stroke="var(--accent)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><text x="568" y="196" class="exp-t" fill="#6b7280" text-anchor="end" dy="-12">On your own</text><text x="548" y="34" class="exp-t" fill="var(--accent)" text-anchor="end">With Gateway X</text><text x="64" y="278" class="exp-ax">Time →</text></svg></div>
-      </div>
+      <div class="kicker">Perspective-taking · founders who understand investors</div>
+      <h1 class="statement">Sell to the investor's <span class="accent">real pain</span></h1><div class="vs"><div class="vs-card"><div class="vs-emoji">📈</div><div class="vs-t">What VCs need</div><ul><li>Power-law outcomes: a few home runs return the fund</li><li>So they push speed, scale and follow-on rounds</li></ul></div><div class="vs-card on"><div class="vs-emoji">💧</div><div class="vs-t">What GatewayX's LPs needed</div><ul><li>Stakes in many funds, little cash back in a decade</li><li>GatewayX offered quarterly cash distributions from profits: “like a hedge”</li></ul></div></div><p class="takeaway">“You wanted to raise a fund. That's selling. It's not investing.”</p><div class="source">Strebulaev &amp; Dang (HBR, 2024); interview with Adam Brakhane and Shonak Patel</div>
     </div>
 
     <div data-chapter="3" class="panel slide">
-      <div class="kicker">Fixing the weaknesses</div>
-      <h1 class="statement">One door. More experts. <span class="accent">Results first.</span></h1>
-      <div class="bn">
-        <div class="bn-c pop" style="animation-delay:0.1s"><div class="bn-e">🚪</div><b>One front door, time-boxed</b><span>Every idea goes through the same online path: plain questions, a 30-minute Scale Check, a fit answer in about a week. No pitch deck, no need to know how the system works.</span></div>
-        <div class="bn-c pop" style="animation-delay:0.3s"><div class="bn-e">🧑‍🏫</div><b>Experts who build and share the pie</b><span>Industry experts advise and work alongside the founder, and earn a small share later, as the company hits its milestones.</span></div>
-        <div class="bn-c pop" style="animation-delay:0.5s"><div class="bn-e">🎯</div><b>Results before the stake</b><span>Pilot first. Gateway X's stake steps up only when milestones are hit, so less time is spent on bets that won't work.</span></div>
-      </div>
-    </div>
-
-    <div data-chapter="3" class="panel slide center">
-      <div class="kicker">Fit Check · clear criteria</div>
-      <h1 class="statement">Everyone gets a <span class="accent">clear answer</span></h1>
-      <div class="fits"><div class="fit-c ok pop" style="animation-delay:0.1s"><div class="fit-h">✅ A fit</div><div class="fit-s">We say yes when all four are true</div><ul><li>Real customers who pay, or will soon</li><li>Our network and playbook can clearly help</li><li>You can commit the time</li><li>A path to profit in about a year</li></ul></div><div class="fit-c mid pop" style="animation-delay:0.3s"><div class="fit-h">🌱 Not yet</div><div class="fit-s">Good start, one piece missing</div><ul><li>No buyer has said yes yet: talk to 5, then come back</li><li>You can't commit the time yet</li><li>Join a free event and reapply in 90 days</li></ul></div><div class="fit-c no pop" style="animation-delay:0.5s"><div class="fit-h">🙏 Not a fit</div><div class="fit-s">Better served somewhere else</div><ul><li>Needs big money before any revenue (VC fits better)</li><li>Consumer products outside our focus</li><li>Wants a quick flip, not a lasting company</li></ul></div></div>
-      <p class="takeaway">Same questions, same criteria, for every idea and every business.</p>
+      <div class="kicker">Perspective-taking · investors who understand founders</div>
+      <h1 class="statement">A write-off for a fund is a <span class="accent">founder's life's work</span></h1><div class="vs"><div class="vs-card"><div class="vs-emoji">🧗</div><div class="vs-t">Operating is punishing</div><ul><li>Founders carry concentrated risk (Rachleff)</li><li>Operator experience has real value: success persists across ventures (Gompers et al., 2010)</li></ul></div><div class="vs-card on"><div class="vs-emoji">🐪</div><div class="vs-t">“We're not investors”</div><ul><li>Raise once, reach profit quickly</li><li>The Residency tests the idea before capital goes in</li></ul></div></div>
     </div>
 
     <div data-chapter="3" class="panel slide">
-      <div class="kicker">Where to start</div>
-      <h1 class="statement">Scaling what works beats <span class="accent">starting from zero</span></h1>
-      <div class="vs">
-        <div class="vs-card dim"><div class="vs-emoji">💡</div><div class="vs-t">Brand-new idea</div><ul><li>No customers yet</li><li>Most of the risk</li><li>Still welcome, especially unconventional ones</li></ul></div>
-        <div class="vs-card on"><div class="vs-emoji">🏪</div><div class="vs-t">A business that already works</div><ul><li>Real customers and cash flow</li><li>Stuck on how to scale</li><li>Ready to grow now</li></ul></div>
-      </div>
-      <p class="takeaway">The Midwest is full of the second kind. Gateway X can be where they come to grow.</p>
-    </div>
-
-    <div data-chapter="3" class="panel slide">
-      <div class="kicker">Why the Midwest</div>
-      <div class="mw">
-        <div class="mw-text">
-          <h1 class="statement mw-title">The Valley knows the playbook.<br><span class="accent">The Midwest never got the exposure.</span></h1>
-          <div class="mw-goal">Gateway X: the Midwest's go-to place to</div>
-          <div class="mw-item">🏪 <strong>scale</strong> a business that already works</div>
-          <div class="mw-item">💡 <strong>learn and grow</strong> from an idea, even an unconventional one</div>
-        </div>
-        <svg class="mw-svg" viewBox="0 0 760 360" role="img" aria-label="St. Louis connected to Midwest cities"><line class="mw-line" pathLength="1" x1="390" y1="275" x2="330" y2="50" style="animation-delay:0.00s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="450" y2="95" style="animation-delay:0.15s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="470" y2="140" style="animation-delay:0.30s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="600" y2="110" style="animation-delay:0.45s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="200" y2="160" style="animation-delay:0.60s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="300" y2="150" style="animation-delay:0.75s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="520" y2="225" style="animation-delay:0.90s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="630" y2="215" style="animation-delay:1.05s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="210" y2="250" style="animation-delay:1.20s"/><line class="mw-line" pathLength="1" x1="390" y1="275" x2="540" y2="300" style="animation-delay:1.35s"/><circle cx="330" cy="50" r="8" fill="var(--own)"/><text class="mw-t" x="330" y="34" text-anchor="middle">Minneapolis</text><circle cx="450" cy="95" r="8" fill="var(--own)"/><text class="mw-t" x="450" y="79" text-anchor="middle">Milwaukee</text><circle cx="470" cy="140" r="8" fill="var(--own)"/><text class="mw-t" x="470" y="124" text-anchor="middle">Chicago</text><circle cx="600" cy="110" r="8" fill="var(--own)"/><text class="mw-t" x="600" y="94" text-anchor="middle">Detroit</text><circle cx="200" cy="160" r="8" fill="var(--own)"/><text class="mw-t" x="200" y="144" text-anchor="middle">Omaha</text><circle cx="300" cy="150" r="8" fill="var(--own)"/><text class="mw-t" x="300" y="134" text-anchor="middle">Des Moines</text><circle cx="520" cy="225" r="8" fill="var(--own)"/><text class="mw-t" x="520" y="209" text-anchor="middle">Indianapolis</text><circle cx="630" cy="215" r="8" fill="var(--own)"/><text class="mw-t" x="630" y="199" text-anchor="middle">Columbus</text><circle cx="210" cy="250" r="8" fill="var(--own)"/><text class="mw-t" x="210" y="234" text-anchor="middle">Kansas City</text><circle cx="540" cy="300" r="8" fill="var(--own)"/><text class="mw-t" x="540" y="284" text-anchor="middle">Louisville</text><circle cx="390" cy="275" r="26" fill="var(--accent-soft)"/><circle cx="390" cy="275" r="14" fill="var(--accent)"/><text class="mw-hub" x="390" y="323" text-anchor="middle">St. Louis · Gateway X</text></svg>
-      </div>
-    </div>
-
-    <div data-chapter="3" class="panel slide center">
-      <div class="kicker">Gateway X's vision</div>
-      <h1 class="statement">The go-to place to <span class="accent">start and scale</span> a company in the Midwest</h1>
-      <div class="vision-row">
-        <div class="vision"><div class="v-e">✨</div>Discover your potential</div>
-        <div class="vision"><div class="v-e">🤝</div>Find partners</div>
-        <div class="vision"><div class="v-e">🏛️</div>Build lasting businesses</div>
-      </div>
-      <p class="tagline">Make Gateway X a name across St. Louis and the Midwest.</p>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">You bring</div>
-      <h1 class="statement">Bring what you have</h1>
-      <div class="vs">
-        <div class="vs-card on pop" style="animation-delay:.1s"><div class="vs-emoji">💡</div><div class="vs-t">An idea</div><ul><li>Come learn how it's done</li><li>Test it with real buyers</li><li>Build it with us</li></ul></div>
-        <div class="vs-card on pop" style="animation-delay:.35s"><div class="vs-emoji">🏪</div><div class="vs-t">A business that works</div><ul><li>Real customers today</li><li>Stuck on how to scale</li><li>Ready to grow now</li></ul></div>
-      </div>
-    </div>
-
-    <div data-chapter="4" class="panel slide" data-enter="rocket">
-      <div class="kicker">What Gateway X brings</div>
-      <h1 class="statement">Our tools add to your growth</h1>
-      <div class="rkt" id="p-rocket">
-        <div class="rk-stage">
-          <div class="rk-meter"><span>Rocket parts</span><b class="rk-mult">0 / 4</b></div>
-          <div class="rk-lift">🔥 <b>Lift-off!</b> Your business, ready to grow</div>
-          <svg class="rk-svg" viewBox="0 0 900 300" role="img" aria-label="Each Gateway X tool adds a part to your rocket, then it launches">
-              <defs><linearGradient id="rkflame" x1="1" x2="0"><stop offset="0" stop-color="#ffe08a"/><stop offset=".5" stop-color="#ff8a3d"/><stop offset="1" stop-color="#ff5a28" stop-opacity="0"/></linearGradient></defs>
-              <path class="rk-trail" d="M60,150 C220,150 300,150 470,135" />
-              <line x1="20" y1="262" x2="880" y2="262" stroke="#d9d6cf" stroke-width="3"/>
-              <g class="rk-ship">
-                <path class="rk-part pt-net rk-flame" d="M150,122 C110,126 80,140 40,140 C80,140 110,154 150,158 Z" fill="url(#rkflame)"/>
-                <path class="rk-part pt-net" d="M178,120 L150,114 L150,166 L178,160 Z" fill="#6b6f78" stroke="#16213a" stroke-width="4" stroke-linejoin="round"/>
-                <path class="rk-part pt-mkt" d="M210,106 L170,58 L262,106 Z" fill="#c0442d" stroke="#16213a" stroke-width="4" stroke-linejoin="round"/>
-                <path class="rk-part pt-mkt" d="M210,174 L170,222 L262,174 Z" fill="#c0442d" stroke="#16213a" stroke-width="4" stroke-linejoin="round"/>
-                <rect x="176" y="104" width="214" height="72" rx="36" fill="#fff" stroke="#16213a" stroke-width="4"/>
-                <text class="rk-base" x="262" y="147" text-anchor="middle">Your business</text>
-                <path class="rk-part pt-tech" d="M376,104 C436,108 474,128 492,140 C474,152 436,172 376,176 Z" fill="#3c6bb0" stroke="#16213a" stroke-width="4" stroke-linejoin="round"/>
-                <g class="rk-part pt-train"><circle cx="338" cy="140" r="21" fill="#cfe3ff" stroke="#16213a" stroke-width="4"/><circle cx="331" cy="133" r="6" fill="#fff"/></g>
-              </g>
-              <g class="rk-callouts">
-                <text class="rk-c c-tech" x="470" y="88">🤖 Technology</text>
-                <text class="rk-c c-train" x="300" y="70">🎓 Training</text>
-                <text class="rk-c c-mkt" x="96" y="44">📣 Marketing</text>
-                <text class="rk-c c-net" x="30" y="196">🤝 Network = fuel</text>
-              </g>
-            </svg>
-        </div>
-        <div class="rk-cards"><div class="rk-card" data-p="tech"><div class="rk-card-top"><span class="rk-e">🤖</span><span class="rk-n">1</span></div><b>Technology</b><span>The nose cone: AI tools and delivery, so a small team can serve big clients.</span><div class="rk-x">✓ Part added</div></div><div class="rk-card" data-p="train"><div class="rk-card-top"><span class="rk-e">🎓</span><span class="rk-n">2</span></div><b>Training</b><span>The cockpit: a trained crew running a proven, meetings-first sales playbook.</span><div class="rk-x">✓ Part added</div></div><div class="rk-card" data-p="mkt"><div class="rk-card-top"><span class="rk-e">📣</span><span class="rk-n">3</span></div><b>Marketing</b><span>The fins: steer toward customers beyond St. Louis.</span><div class="rk-x">✓ Part added</div></div><div class="rk-card" data-p="net"><div class="rk-card-top"><span class="rk-e">🤝</span><span class="rk-n">4</span></div><b>Network</b><span>The fuel: warm introductions to buyers, partners and talent.</span><div class="rk-x">✓ Part added</div></div></div>
-      </div>
+      <div class="kicker">Perspective-taking · how the managers used it</div>
+      <h1 class="statement">Both insights, <span class="accent">built into the terms</span></h1><div class="vs"><div class="vs-card on"><div class="vs-emoji">💼</div><div class="vs-t">For investors</div><ul><li>Quarterly profit distributions</li><li>Helped a first-time manager raise ~$47M</li></ul></div><div class="vs-card on"><div class="vs-emoji">🧑‍💻</div><div class="vs-t">For founders</div><ul><li>Control and more ownership</li><li>A tested idea before the money</li></ul></div></div><p class="takeaway">⚠️ Watch: mandates like “St. Louis only” or “sole investor” can feel inflexible to founders.</p>
     </div>
 
     <div data-chapter="4" class="panel slide center">
-      <div class="kicker">Invested and aligned</div>
-      <h1 class="statement big-statement">Your idea. Your company.</h1>
-      <p class="scared">Scared to share your idea, or to lose control? You don't have to.</p>
-      <div class="promise">
-        <div class="pr pop" style="animation-delay:.2s"><div class="pr-e">🔒</div><div class="pr-t">Your idea stays yours</div></div>
-        <div class="pr pop" style="animation-delay:.4s"><div class="pr-e">🧑‍💼</div><div class="pr-t">You're the boss: your company, your decisions</div></div>
-        <div class="pr pop" style="animation-delay:.6s"><div class="pr-e">🧭</div><div class="pr-t">Hands-on help, not a check and goodbye</div></div>
-        <div class="pr pop" style="animation-delay:.8s"><div class="pr-e">🌱</div><div class="pr-t">We only succeed if you grow</div></div>
-      </div>
-      <h1 class="statement win pop" style="animation-delay:1.1s">When you win, <span class="accent">we win.</span></h1>
+      <div class="kicker">Culture, strategy and purpose</div>
+      <h1 class="statement">Purpose, strategy and culture <span class="accent">should reinforce each other</span></h1><div class="chain sm"><div class="link"><div class="link-l">Purpose</div><div class="link-t">🧑‍💻 Help founders, as operators who know the pain</div></div><div class="chain-arrow">↔</div><div class="link"><div class="link-l">Strategy</div><div class="link-t">💵 Self-sustaining, profit-first companies</div></div><div class="chain-arrow">↔</div><div class="link"><div class="link-l">Culture</div><div class="link-t">🐪 Build companies that survive without outside funding</div></div></div><p class="takeaway">In theory, they line up.</p><div class="source">Joly, “Does Your Company's Culture Reinforce Its Strategy and Purpose?” (HBR, 2022)</div>
     </div>
 
     <div data-chapter="4" class="panel slide">
-      <div class="kicker">Work with us · how Gateway X makes money</div>
-      <h1 class="statement">Start free. Go further only when it's working.</h1>
-      <div class="ladder"><div class="lad-step" style="--h:0">
-            <div class="lad-tag">Free</div><div class="lad-e">🎟️</div><h3>Community</h3>
-            <dl><dt>You get</dt><dd>Scale Nights, Founder Stories, Idea Lab and a free Scale Check.</dd><dt>We earn</dt><dd>Nothing. This is how we meet.</dd><dt>You commit</dt><dd>None. Come once or every month.</dd></dl>
-          </div><div class="lad-step" style="--h:1">
-            <div class="lad-tag">Flat fee</div><div class="lad-e">🧰</div><h3>Service sprint</h3>
-            <dl><dt>You get</dt><dd>A defined project: sales playbook training, AI setup or a marketing sprint.</dd><dt>We earn</dt><dd>A flat fee, agreed before you start.</dd><dt>You commit</dt><dd>One project. You own everything we build. The fee is credited if you move to a partnership.</dd></dl>
-          </div><div class="lad-step" style="--h:2">
-            <div class="lad-tag">Success fee</div><div class="lad-e">🤝</div><h3>Network partner</h3>
-            <dl><dt>You get</dt><dd>Warm intros to buyers and partners from our network.</dd><dt>We earn</dt><dd>A share of revenue only from deals we introduce.</dd><dt>You commit</dt><dd>Only when a deal closes. No deal, no fee.</dd></dl>
-          </div><div class="lad-step" style="--h:3">
-            <div class="lad-tag">Partnership</div><div class="lad-e">🚀</div><h3>Full partnership</h3>
-            <dl><dt>You get</dt><dd>Capital in steps, hands-on help, and the full network and playbook.</dd><dt>We earn</dt><dd>A small stake at the start, stepping up to 20% at the scale trigger, plus a share of profits.</dd><dt>You commit</dt><dd>Milestones you agree to, step by step.</dd></dl>
-          </div></div>
-        
+      <div class="kicker">Culture, strategy and purpose · the tension</div>
+      <h1 class="statement">The equity stake <span class="accent">vs. “founders first”</span></h1><div class="eqs"><div class="eqs-row pop" style="animation-delay:.1s"><span class="eqs-l">First $500K check</span><span class="eqs-bar"><i style="width:10%"></i></span><b>10%</b></div><div class="eqs-row pop" style="animation-delay:.4s"><span class="eqs-l">Automatic second check at $500K revenue + $25K profit</span><span class="eqs-bar"><i style="width:20%"></i></span><b>~20%</b></div></div><div class="vs"><div class="vs-card"><div class="vs-t">GatewayX's view</div><ul><li>Founders keep ~80% at exit, vs. ~40% on a typical venture path</li></ul></div><div class="vs-card on"><div class="vs-t">Our view</div><ul><li>Only if the company reaches profit</li><li>Offer flexible financing: preferred + common, or equity + debt</li></ul></div></div><div class="source">Terms: GatewayX, “Raise less. Build more.” (2026)</div>
     </div>
 
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Full partnership</div>
-      <div class="card msbox">
-          <div class="ms-head"><div><div class="kicker" style="margin:0">Full partnership · proposed terms</div><h3>Help first. Gateway X earns up to 20% as you scale.</h3></div><span class="lad-tag">You keep 80%+</span></div>
-          <p class="ms-sub">We start with a paid pilot, then invest a little at a time. Gateway X's stake steps up as the business hits each milestone, reaching the full 20% at the scale trigger you agree on together.</p>
-          <div class="ms-row"><div class="ms"><div class="ms-dot">🧪</div><div class="ms-n">Milestone 1</div><b>Pilot together</b><p>A 90-day paid service sprint. The fee is credited if you go on to a partnership.</p><span class="ms-then">→ Both sides see if it works</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:100%">You 100%</span></div><div class="eq-l">Gateway X stake: <b>none yet</b></div></div></div><div class="ms"><div class="ms-dot">🤝</div><div class="ms-n">Milestone 2</div><b>Partnership starts</b><p>Goals and milestones agreed in writing. Gateway X writes a small first check.</p><span class="ms-then">→ First capital + full network</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:95%">You 95%</span><span class="eq-gx" style="width:5%"></span></div><div class="eq-l">Gateway X stake: <b>+5% → 5% total</b></div></div></div><div class="ms"><div class="ms-dot">🧾</div><div class="ms-n">Milestone 3</div><b>First new clients</b><p>The network and playbook bring in new paying clients.</p><span class="ms-then">→ Next step of capital</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:90%">You 90%</span><span class="eq-gx" style="width:10%">GX</span></div><div class="eq-l">Gateway X stake: <b>+5% → 10% total</b></div></div></div><div class="ms"><div class="ms-dot">✅</div><div class="ms-n">Milestone 4</div><b>Profitable: the scale trigger</b><p>The business pays for itself and hits the scale you agreed on.</p><span class="ms-then">→ Capital to scale</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:80%">You 80%</span><span class="eq-gx" style="width:20%">GX</span></div><div class="eq-l">Gateway X stake: <b>+10% → 20% total</b></div></div></div><div class="ms"><div class="ms-dot">📈</div><div class="ms-n">Milestone 5</div><b>Grow and share</b><p>You keep growing and stay in charge.</p><span class="ms-then">→ Profits shared by ownership, no pressure to sell</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:80%">You 80%</span><span class="eq-gx" style="width:20%">GX</span></div><div class="eq-l">Gateway X stake: <b>stays at 20%</b></div></div></div></div>
-          <div class="fair"><div class="fair-c you"><b>🛡️ Protects you</b><span>If Gateway X doesn't deliver the help, its stake doesn't step up. You never give up more than the help you got.</span></div><div class="fair-c gx"><b>🛡️ Protects Gateway X</b><span>Pilot time is paid. Each check comes with equity, and what Gateway X has earned stays earned, even if a founder walks away.</span></div></div>
-          <p class="ms-note">Proposal for discussion, based on the ~20% stake in Gateway X's current terms (Series PROFIT). Final terms are agreed together, in writing. Community, service sprints and network partnerships involve no equity.</p>
-        </div>
-        <div class="promises"><div class="pm"><span>💬</span><div><b>No surprises</b><p>Pricing is shared before you commit.</p></div></div><div class="pm"><span>🔒</span><div><b>Your idea stays yours</b><p>And so does everything we build together.</p></div></div><div class="pm"><span>🧑‍💼</span><div><b>You stay in charge</b><p>Partners keep majority ownership and control.</p></div></div><div class="pm"><span>🌱</span><div><b>We win only if you win</b><p>We make money when your business does.</p></div></div></div>
-        
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Existing businesses · proposed terms</div>
-      <div class="msbox">
-        <div class="ms-head"><div><h3>Already running a business? We only share in the growth.</h3></div><span class="lad-tag">You keep 90%+</span></div>
-        <p class="ms-sub">You keep 100% of what you've already built. Gateway X earns a share of the profit <b>above your baseline</b>, and a stake of up to 10% only if it invests capital and you hit the growth you agreed on.</p>
-        <div class="ms-row ms-ex"><div class="ms"><div class="ms-dot">📏</div><div class="ms-n">Milestone 1</div><b>Set the baseline</b><p>At your Scale Check we write down today's numbers: your current reality.</p><span class="ms-then">→ Your starting line</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:100%">You 100%</span></div><div class="eq-l">Gateway X: <b>none</b></div></div></div><div class="ms"><div class="ms-dot">🧪</div><div class="ms-n">Milestone 2</div><b>Pilot together</b><p>A 90-day paid sprint. The fee is credited if you continue.</p><span class="ms-then">→ Both sides see if it works</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:100%">You 100%</span></div><div class="eq-l">Gateway X: <b>none</b></div></div></div><div class="ms"><div class="ms-dot">📈</div><div class="ms-n">Milestone 3</div><b>1.5× your baseline</b><p>Growth from the network, sales playbook and AI tools.</p><span class="ms-then">→ Growth share starts</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:95%">You 95%</span><span class="eq-gx" style="width:5%"></span></div><div class="eq-l">Gateway X: <b>growth share + 5% if we invested</b></div></div></div><div class="ms"><div class="ms-dot">🚀</div><div class="ms-n">Milestone 4</div><b>2×: the scale trigger</b><p>The growth target you agreed on together.</p><span class="ms-then">→ Capital to scale, if you want it</span><div class="eq"><div class="eq-bar"><span class="eq-you" style="width:90%">You 90%</span><span class="eq-gx" style="width:10%">GX</span></div><div class="eq-l">Gateway X: <b>growth share + up to 10%</b></div></div></div></div>
-      </div>
-      <p class="takeaway">Scaling what works is easier than starting from zero, so the terms are lighter.</p>
-    </div>
-
-    <div data-chapter="4" class="panel slide">
-      <div class="kicker">Your roadmap with Gateway X</div>
-      <h1 class="statement">Five stops, one road</h1>
-      <div class="pr-legend"><span class="free">🟢 Get started · free</span><span class="grow">🚀 Grow with us · when we're a fit</span></div>
-      <div class="pr-road"><div class="pr-stop free pop" style="animation-delay:0.1s"><div class="pr-pin">🩺</div><div class="pr-n">1</div><b>Free Scale Check</b><span>Book it directly. Uses Gateway X's Desired Future State exercise.</span></div><div class="pr-stop free pop" style="animation-delay:0.3s"><div class="pr-pin">🎯</div><div class="pr-n">2</div><b>See if we're a fit</b><span>A clear answer in about a week.</span></div><div class="pr-stop grow pop" style="animation-delay:0.5s"><div class="pr-pin">🔌</div><div class="pr-n">3</div><b>Plug into the network</b><span>Warm buyers, the playbook, AI tools, talent.</span></div><div class="pr-stop grow pop" style="animation-delay:0.7s"><div class="pr-pin">🤝</div><div class="pr-n">4</div><b>Grow together</b><span>Pick how we work together. You stay in charge.</span></div><div class="pr-stop grow pop" style="animation-delay:0.9s"><div class="pr-pin">🌍</div><div class="pr-n">5</div><b>Beyond the Midwest</b><span>National customers. Then help the next owner.</span></div></div>
-      <p class="takeaway">Your idea stays yours. From aspiring to <span class="accent">unstoppable.</span></p>
+    <div data-chapter="4" class="panel slide center">
+      <div class="kicker">Culture, strategy and purpose · the bigger risk</div>
+      <h1 class="statement">The founder-first culture runs on <span class="accent">partner time</span></h1><div class="heads">🧠 🧠 🧠 <span class="heads-arrow">→</span> 🐪🐪🐪🐪🐪🐪🐪🐪🐪🐪</div><p class="takeaway">At 8–10 companies a year, hands-on support gets stretched thin.</p>
     </div>
 
     <div data-chapter="5" class="panel slide">
-      <div class="kicker">How we reach owners · Events</div>
-      <h1 class="statement">More leads, without more partner time</h1>
-      <div class="ets"><div class="et pop" style="animation-delay:0.10s"><div class="et-e">🧪</div><b>Idea Lab</b><div class="et-w">Every 2 weeks · online</div><span>Still exploring? Find an idea worth testing.</span></div><div class="et pop" style="animation-delay:0.25s"><div class="et-e">🪑</div><b>Pipeline session</b><div class="et-w">Every 2 weeks · online</div><span>Q&amp;A with a founder who went through it.</span></div><div class="et pop" style="animation-delay:0.40s"><div class="et-e">🎤</div><b>Founder Stories Live</b><div class="et-w">Monthly · online</div><span>A story, Q&amp;A, then breakouts.</span></div><div class="et pop" style="animation-delay:0.55s"><div class="et-e">🌆</div><b>Scale Night</b><div class="et-w">Monthly · St. Louis + Midwest tour</div><span>For owners of real businesses.</span></div><div class="et pop" style="animation-delay:0.70s"><div class="et-e">🎓</div><b>Campus Night</b><div class="et-w">Quarterly · local colleges</div><span>Founder stories and fellowships.</span></div></div>
-      <p class="takeaway">All free. Most online. Each one ends with “Book a free Scale Check.”</p>
+      <div class="kicker">Recommendation · building the “GatewayX Effect”</div>
+      <h1 class="statement">Turn the partners' involvement <span class="accent">into a system</span></h1><div class="vs"><div class="vs-card on"><div class="vs-emoji">🧠</div><div class="vs-t">Partners keep</div><ul><li>The judgment calls only they can make</li></ul></div><div class="vs-card"><div class="vs-emoji">🔁</div><div class="vs-t">Routine work moves to</div><ul><li>Staff</li><li>Local partners</li><li>Earlier founders</li></ul></div></div><p class="takeaway">So the culture keeps pace with the strategy.</p>
     </div>
 
     <div data-chapter="5" class="panel slide">
-      <div class="kicker">How it runs · Partner network</div>
-      <h1 class="statement">Experts <span class="accent">beyond marketing</span></h1>
-      <p class="pp-sub">Gateway X's wins so far (GrowthAssistant, Aux Insights) are in marketing and growth, Jesse's expertise. To be the go-to place for every Midwest business, it needs experts from other industries working alongside its companies.</p>
-      <div class="inds"><span class="ind">🏥 Healthcare</span><span class="ind">🚚 Logistics & trades</span><span class="ind">🏦 Finance & accounting</span><span class="ind">⚖️ Legal</span><span class="ind">🏭 Manufacturing</span><span class="ind">🏠 Real estate</span></div>
-      <div class="ptypes"><div class="ptype"><div class="pt-e">🧑‍🏫</div><b>Operating partners</b><span>Industry veterans who advise and build alongside a company a few hours a week, and earn a small share as it hits milestones.</span></div><div class="ptype"><div class="pt-e">🏦</div><b>Service partners</b><span>St. Louis-area banks, accountants and law firms with founder-friendly packages.</span></div><div class="ptype"><div class="pt-e">🎓</div><b>Talent partners</b><span>Local colleges sending fellows, interns and future hires.</span></div><div class="ptype"><div class="pt-e">🤝</div><b>Community partners</b><span>Chambers of commerce and the Small Business Development Center, sending owners our way.</span></div></div>
+      <div class="kicker">Recommendation · why it matters</div>
+      <h1 class="statement">Profit-first alone <span class="accent">won't stand out</span></h1><p class="pp-sub">TinySeed also backs capital-efficient businesses and pays dividends. So what do founders weigh when the terms are equal?</p><div class="fb" role="img" aria-label="Share of founders choosing each factor"><div class="fb-row" title="Sector understanding: 53% of founders"><span class="fb-l">Sector understanding</span><span class="fb-track"><i class="fb-bar" style="--w:53%;animation-delay:0.2s"></i><b class="fb-v" style="left:calc(53% + 12px)">53%</b></span></div><div class="fb-row" title="Personal relationship and chemistry: 34% of founders"><span class="fb-l">Personal relationship and chemistry</span><span class="fb-track"><i class="fb-bar" style="--w:34%;animation-delay:0.4s"></i><b class="fb-v" style="left:calc(34% + 12px)">34%</b></span></div><div class="fb-row" title="Customer introductions: 33% of founders"><span class="fb-l">Customer introductions</span><span class="fb-track"><i class="fb-bar" style="--w:33%;animation-delay:0.6s"></i><b class="fb-v" style="left:calc(33% + 12px)">33%</b></span></div><div class="fb-row" title="Founder references: 22% of founders"><span class="fb-l">Founder references</span><span class="fb-track"><i class="fb-bar" style="--w:22%;animation-delay:0.8s"></i><b class="fb-v" style="left:calc(22% + 12px)">22%</b></span></div></div><div class="source">Frontline Ventures (2022), “What founders want”: 200+ early-stage founders picked their top 3 factors when comparing VCs with equal terms</div>
     </div>
 
     <div data-chapter="5" class="panel slide">
-      <div class="kicker">How we grow talent · Colleges</div>
-      <h1 class="statement">Grow with local colleges</h1>
-      <div class="cols"><div class="col-chip pop" style="animation-delay:0.10s" title="Washington University in St. Louis">🎓 WashU</div><div class="col-chip pop" style="animation-delay:0.22s" title="Saint Louis University">🎓 SLU</div><div class="col-chip pop" style="animation-delay:0.34s" title="University of Missouri–St. Louis">🎓 UMSL</div><div class="col-chip pop" style="animation-delay:0.46s" title="Webster University">🎓 Webster</div><div class="col-chip pop" style="animation-delay:0.58s" title="Southern Illinois University Edwardsville">🎓 SIUE</div><div class="col-chip pop" style="animation-delay:0.70s" title="University of Missouri">🎓 Mizzou</div></div>
-      <div class="col-path">
-        <div class="cp pop" style="animation-delay:.9s"><div class="cp-e">📚</div><div class="cp-t">Class projects</div><div class="cp-d">Students work on real portfolio problems</div></div>
-        <div class="cp-arrow">→</div>
-        <div class="cp pop" style="animation-delay:1.1s"><div class="cp-e">🧑‍🎓</div><div class="cp-t">Fellows</div><div class="cp-d">Paid semesters inside Gateway X companies</div></div>
-        <div class="cp-arrow">→</div>
-        <div class="cp pop" style="animation-delay:1.3s"><div class="cp-e">🚀</div><div class="cp-t">Hire or found</div><div class="cp-d">Join the herd, or bring their own idea</div></div>
-      </div>
-      <p class="takeaway">Fixes the talent gap, and keeps graduates in St. Louis.</p>
+      <div class="kicker">Recommendation · four moves</div>
+      <h1 class="statement">Four moves, matched to <span class="accent">what founders want</span></h1><div class="mvs"><div class="mv pop" style="animation-delay:0.1s"><div class="mv-top"><span class="mv-e">🎯</span><span class="mv-p">53%<em>of founders</em></span></div><b>1. Showcase sales and marketing strengths</b><span>GrowthAssistant and Aux Insights, whose AI-native delivery cut costs 60–70%.</span></div><div class="mv pop" style="animation-delay:0.3s"><div class="mv-top"><span class="mv-e">🤝</span><span class="mv-p">34%<em>of founders</em></span></div><b>2. Deepen local relationships</b><span>Colleges, business associations and advisers. Workshops led by staff and founders.</span></div><div class="mv pop" style="animation-delay:0.5s"><div class="mv-top"><span class="mv-e">🔌</span><span class="mv-p">33%<em>of founders</em></span></div><b>3. Make customer access repeatable</b><span>Portfolio intros to shared customers, and a bench of sales and delivery operators.</span></div><div class="mv pop" style="animation-delay:0.7s"><div class="mv-top"><span class="mv-e">🔁</span><span class="mv-p">22%<em>of founders</em></span></div><b>4. Make each company strengthen the next</b><span>Founder references, mentors for later cohorts, shared playbooks.</span></div></div>
     </div>
 
-    <div data-chapter="5" class="panel slide">
-      <div class="kicker">How we build trust · Founder stories</div>
-      <h1 class="statement">Let founders tell the story</h1>
-      <div class="cadence">
-        <div class="cd pop" style="animation-delay:.1s"><div class="cd-when">Every 2 weeks</div><div class="cd-e">🪑</div><div class="cd-t">Pipeline session</div><div class="cd-how">💻 Online · 30 min</div><div class="cd-d">Small group of owners already talking with us. Q&amp;A with a founder who went through it.</div></div>
-        <div class="cd pop" style="animation-delay:.3s"><div class="cd-when">Monthly</div><div class="cd-e">🎤</div><div class="cd-t">Founder Stories Live</div><div class="cd-how">💻 Online · 45 min</div><div class="cd-d">10-min story · 20-min Q&amp;A · 15-min breakouts. Open to anyone.</div></div>
-        <div class="cd pop" style="animation-delay:.5s"><div class="cd-when">Quarterly</div><div class="cd-e">🎓</div><div class="cd-t">Campus night</div><div class="cd-how">📍 In person · rotates</div><div class="cd-d">WashU, SLU, UMSL, Webster, SIUE, Mizzou.</div></div>
-        <div class="cd pop" style="animation-delay:.7s"><div class="cd-when">Always</div><div class="cd-e">🎥</div><div class="cd-t">Story library</div><div class="cd-how">🌐 On the website</div><div class="cd-d">Every session is recorded and cut into short clips.</div></div>
-      </div>
-      <div class="jesse pop" style="animation-delay:1s">⏱️ <strong>Partner time: about 1 hour a quarter.</strong> Portfolio founders and alumni host the rest.</div>
+    <div data-chapter="5" class="panel slide center">
+      <div class="kicker">Recommendation · the moat</div>
+      <h1 class="statement">The moat is what <span class="accent">builds up around GatewayX</span></h1><div class="moat"><div class="mo pop" style="animation-delay:.1s">🧠<b>Expertise</b></div><div class="mo pop" style="animation-delay:.3s">🤝<b>Relationships</b></div><div class="mo pop" style="animation-delay:.5s">🧑‍🤝‍🧑<b>Experienced people</b></div></div><p class="takeaway">Each company improves the resources for the next, keeping purpose, strategy and culture aligned as GatewayX grows.</p>
     </div>
 
-    <div data-chapter="5" class="panel slide" data-next="See Herd OS →" data-go="screen-herd">
-      <div class="kicker">How it runs · the website</div>
-      <h1 class="statement">The website fixes the bottleneck</h1>
-      <div class="wf">
-        <div class="wf-c pop" style="animation-delay:.1s"><div class="wf-e">📝</div><b>1 · Bring your idea</b><span>A 2-minute guided flow: have an idea, run a business, or still exploring. Ends with booking a free Scale Check.</span><em>📉 → more leads</em></div>
-        <div class="wf-arrow">→</div>
-        <div class="wf-c pop" style="animation-delay:.35s"><div class="wf-e">📥</div><b>2 · Request queue</b><span>Each request gets a number and a status page: received → in review → Scale Check → fit → plugged in.</span><em>🔍 → easy to find the right founders</em></div>
-        <div class="wf-arrow">→</div>
-        <div class="wf-c pop" style="animation-delay:.6s"><div class="wf-e">🧭</div><b>3 · Team dashboard</b><span>Partners move requests along, schedule, give feedback, and decide: a fit, not yet, or not a fit.</span><em>⏳ → less partner time</em></div>
-      </div>
-      <div class="wf-links"><a class="btn" href="https://wonshon-cmd.github.io/gatewayx/" target="_blank" rel="noopener">Open the live website →</a><a class="btn ghost" href="https://wonshon-cmd.github.io/gatewayx/team.html" target="_blank" rel="noopener">Team dashboard (demo)</a></div>
+    <div data-chapter="5" class="panel slide center">
+      <div class="kicker">Thank you</div>
+      <div class="hero-emoji">🐪🐪🐪</div><h1 class="statement">Each company makes the next one stronger.<br><span class="accent">That's the GatewayX Effect.</span></h1><p class="takeaway">Thank you · Questions?</p>
     </div>
 
-</section>
+    <div data-chapter="5" class="panel slide" data-next="">
+      <div class="kicker">Sources</div>
+      <ul class="refs"><li>Barthelemy &amp; Mottis (2025). To drive innovation, create the conditions for serendipity. <i>HBR</i>.</li><li>Brakhane &amp; Patel (2026, Oct 14). GatewayX AI tools workshop. MGMT 7640, Wharton.</li><li>Frontline Ventures (2022). What founders want: the results.</li><li>GatewayX (2026). Raise less. Build more. [Presentation].</li><li>Gompers, Kovner, Lerner &amp; Scharfstein (2010). Performance persistence in entrepreneurship. <i>JFE</i>.</li><li>Joly (2022). Does your company's culture reinforce its strategy and purpose? <i>HBR</i>.</li><li>Lazarow (2020). Beyond Silicon Valley. <i>HBR</i>.</li><li>Rachleff (2026, Oct 14). Product-market fit [Lecture]. MGMT 7640, Wharton.</li><li>Strebulaev &amp; Dang (2024). Make decisions with a VC mindset. <i>HBR</i>.</li><li>TinySeed (n.d.). The B2B SaaS accelerator.</li><li>Viswanathan &amp; Allen (2026, Oct 12). Regional advantage and environmental trends [Panel]. MGMT 7640, Wharton.</li></ul>
+    </div>
+
+  </section>
 
   <!-- Screen 1: the herd (3 steps) -->
   <section id="screen-herd" class="screen wizard">
@@ -1277,67 +1054,6 @@ a.btn { text-decoration: none; display: inline-block; }
   </section>
 
   <!-- Recommendation: closes the video -->
-  <section id="screen-rec" class="screen wizard">
-    <div data-chapter="6" class="panel slide">
-      <div class="kicker">Our recommendation</div>
-      <h1 class="statement">Build the moat at the studio level</h1>
-      <div class="pillars">
-        <div class="pillar"><div class="p-e">🤝</div><div class="p-t">Shared go-to-market</div><div class="p-d">Buyers, cross-selling, client logos</div></div>
-        <div class="pillar"><div class="p-e">📘</div><div class="p-t">Written playbook</div><div class="p-d">Selling + AI delivery, runs without partners</div></div>
-        <div class="pillar"><div class="p-e">🧑‍🤝‍🧑</div><div class="p-t">Talent network</div><div class="p-d">Cohort to cohort, alumni bench</div></div>
-        <div class="pillar"><div class="p-e">🧠</div><div class="p-t">Studio memory</div><div class="p-d">Lessons + data, with client consent</div></div>
-        <div class="pillar"><div class="p-e">🚦</div><div class="p-t">Milestone money</div><div class="p-d">Capital released in steps; double down or wind down</div></div>
-      </div>
-    </div>
-
-    <div data-chapter="6" class="panel slide">
-      <div class="kicker">Bottlenecks and recommendations · 1 of 2</div>
-      <div class="br"><div class="br-row pop" style="animation-delay:0.1s"><div class="br-name"><span>🧠</span>Partner dependency</div><div class="br-b"><em>Bottleneck</em>Sales, distribution, and decision-making depend heavily on the partners.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Document the sales playbook and build shared systems that founders can use independently.</div></div><div class="br-row pop" style="animation-delay:0.3s"><div class="br-name"><span>🚪</span>No standardized selection process</div><div class="br-b"><em>Bottleneck</em>Each opportunity requires a custom conversation and evaluation.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Create one application, Scale Check, and clear acceptance criteria.</div></div><div class="br-row pop" style="animation-delay:0.5s"><div class="br-name"><span>🧑‍🏫</span>Limited industry expertise</div><div class="br-b"><em>Bottleneck</em>GatewayX’s current strengths are concentrated in marketing and growth.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Recruit operating partners in healthcare, logistics, finance, and manufacturing.</div></div><div class="br-row pop" style="animation-delay:0.7s"><div class="br-name"><span>🤝</span>Weak portfolio collaboration</div><div class="br-b"><em>Bottleneck</em>Portfolio companies do not yet systematically support one another.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Enable shared customers, referrals, cross-selling, and common resources.</div></div></div>
-    </div>
-
-    <div data-chapter="6" class="panel slide">
-      <div class="kicker">Bottlenecks and recommendations · 2 of 2</div>
-      <div class="br"><div class="br-row pop" style="animation-delay:0.1s"><div class="br-name"><span>🌱</span>Limited founder pipeline</div><div class="br-b"><em>Bottleneck</em>Many local founders lack access to startup knowledge and networks.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Use university partnerships, free events, and founder stories to expand awareness.</div></div><div class="br-row pop" style="animation-delay:0.3s"><div class="br-name"><span>⏳</span>Limited partner capacity</div><div class="br-b"><em>Bottleneck</em>Growth may require doubling the number of partners.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Automate intake, standardize evaluation, and use experts to support founders.</div></div><div class="br-row pop" style="animation-delay:0.5s"><div class="br-name"><span>🧭</span>Founder independence concerns</div><div class="br-b"><em>Bottleneck</em>Shared systems may feel restrictive to founders.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Make participation optional and protect client data through consent-based sharing.</div></div><div class="br-row pop" style="animation-delay:0.7s"><div class="br-name"><span>⚖️</span>Equity dilution</div><div class="br-b"><em>Bottleneck</em>Giving equity to experts may reduce founder ownership.</div><div class="br-arrow">→</div><div class="br-r"><em>Recommendation</em>Use GatewayX’s own equity for expert incentives.</div></div></div>
-    </div>
-
-    <div data-chapter="6" class="panel slide">
-      <div class="kicker">What to implement, and when</div>
-      <div class="roadmap">
-        <div class="phase"><div class="ph-when">First 30 days</div>
-          <div class="ph-item">📘 Write down the meetings-first playbook</div>
-          <div class="ph-item">🚦 Set day-1 rules for all 6 companies</div></div>
-        <div class="phase"><div class="ph-when">By 90 days</div>
-          <div class="ph-item">🤝 One shared buyer list across the herd</div>
-          <div class="ph-item">🌆 First free online event for existing owners</div>
-          <div class="ph-item">🎓 Fellowship with 2 local colleges</div>
-          <div class="ph-item">🧑‍🏫 First 5 industry operating partners</div></div>
-        <div class="phase"><div class="ph-when">By 6 months</div>
-          <div class="ph-item">🌐 Website: Bring your idea + request tracker</div>
-          <div class="ph-item">🏢 Pilot with one existing services firm</div></div>
-      </div>
-    </div>
-
-    <div data-chapter="6" class="panel slide">
-      <div class="kicker">Where to focus</div>
-      <h1 class="statement">Track one number</h1>
-      <div class="focus-num"><span class="was">400</span> → <span class="accent">110</span></div>
-      <div class="focus-l">partner hours per launch</div>
-      <div class="risks">
-        <div><strong>Risk:</strong> founders feel less independent → <strong>Fix:</strong> shared tools are opt-in</div>
-        <div><strong>Risk:</strong> more overhead → <strong>Fix:</strong> start with the playbook, it's free</div>
-      </div>
-    </div>
-
-    <div data-chapter="6" class="panel slide center" data-next="">
-      <div class="hero-emoji">🐪🐪🐪</div>
-      <h1 class="statement">The moat isn't any single camel.<br><span class="accent">It's the system that builds them.</span></h1>
-      <div class="end-actions">
-        <a class="btn" href="https://wonshon-cmd.github.io/gatewayx/#apply" target="_blank" rel="noopener">Try the website →</a>
-        <button class="btn ghost" onclick="goScreen('screen-story')">↺ Start over</button>
-      </div>
-      <p class="takeaway">From aspiring to <span class="accent">unstoppable.</span> Thank you · Questions?</p>
-    </div>
-  </section>
 
   <!-- Founder view: pitch GatewayX (6 steps) -->
   <section id="screen-founder" class="screen wizard">
@@ -1403,7 +1119,7 @@ a.btn { text-decoration: none; display: inline-block; }
 // with progress dots and Back / Next buttons.
 
 var wizardHooks = {};
-var CHAPTERS = ["", "Today", "The challenge", "The big idea", "What owners see", "How it runs", "Next steps"];
+var CHAPTERS = ["", "Introduction", "Where work gets done", "Perspective-taking", "Culture, strategy, purpose", "Recommendation"];
 
 function renderChapter(ch) {
   var bar = document.getElementById("chapters");
