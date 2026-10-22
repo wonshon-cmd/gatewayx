@@ -838,6 +838,58 @@ a.btn { text-decoration: none; display: inline-block; }
 .fb-row { grid-template-columns: 400px 1fr; }
 .fb-v { position: absolute; top: 50%; transform: translateY(-50%); }
 
+/* v19: phone layout. Slides scroll; Back / Next stay pinned at the bottom. */
+@media (max-width: 640px) {
+  .topbar { padding: 10px 14px; gap: 8px; }
+  .brand { font-size: 19px; white-space: nowrap; }
+  .mini-arch { width: 22px; height: 22px; }
+  .nav { gap: 6px; } .nav-btn { font-size: 13px; padding: 7px 10px; white-space: nowrap; }
+  .chapters { padding: 8px 12px 0; } .chapters .ch:not(.on) { display: none; }
+  .screen, #screen-story { padding: 14px 16px 110px; }
+  .wizard .panel { min-height: 0; justify-content: flex-start !important; }
+  .wiz-nav { position: fixed; left: 0; right: 0; bottom: 0; margin: 0; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(250,249,246,.96); border-top: 1px solid var(--line); z-index: 50; }
+  .wiz-nav .dots { display: none; }
+  .wiz-nav .btn { font-size: 16px; padding: 12px 18px; }
+  .kicker { font-size: 12px; letter-spacing: .06em; }
+  .statement, #screen-story .statement { font-size: 30px !important; letter-spacing: -.5px; line-height: 1.15; }
+  .hero-title, #screen-story .hero-title { font-size: 34px !important; }
+  .hero .unstop { font-size: 20px; } .hero .tagline { font-size: 15px; }
+  .logo-slot { height: 40px; } .wordmark { font-size: 26px !important; }
+  .takeaway, #screen-story .takeaway { font-size: 18px !important; margin-top: 16px !important; }
+  .source, .pp-sub { font-size: 13px !important; }
+  .hero-emoji { font-size: 64px; margin: 4px 0 10px; }
+  .vs, .bn, .who, .paths, .bundle, .mvs, .moat, .chain, .stat-row { display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; }
+  .facts { grid-template-columns: 1fr 1fr !important; }
+  .stat-n, .facts .stat-n { font-size: 30px !important; } .stat-l { font-size: 14px !important; }
+  .chain-arrow { transform: rotate(90deg); font-size: 22px; margin: -4px auto; }
+  .link { padding: 12px 14px !important; } .link-t, .chain.sm .link-t { font-size: 18px !important; }
+  .vs-card, .bn-c, .who-c, .path, .bd, .mv, .mo { padding: 12px 14px !important; }
+  .vs-emoji, .bn-e, .path .p-e, .mv-e { font-size: 30px !important; }
+  .bd, .mo { font-size: 30px; }
+  .vs-t, .bn-c b, .path b, .bd b, .mv b, .mo b, .who-c b { font-size: 18px !important; margin: 4px 0 !important; }
+  .vs-card ul, .bn-c span, .who-c span, .path span, .bd span, .mv > span { font-size: 15px !important; line-height: 1.45 !important; }
+  .path.on { padding: 14px !important; }
+  .sc-row { grid-template-columns: auto 1fr !important; gap: 4px 10px !important; padding: 10px 12px !important; }
+  .sc-l { grid-column: 1 / -1; } .sc-h { font-size: 20px; } .sc-a { font-size: 18px; } .sc-c { font-size: 16px; grid-column: 1 / -1; } .sc-n { grid-column: 1 / -1; font-size: 14px; }
+  .heads { font-size: 26px !important; line-height: 1.4; }
+  .eqs-row { grid-template-columns: 1fr 52px !important; gap: 4px 10px !important; font-size: 15px; } .eqs-l { grid-column: 1 / -1; } .eqs-row b { font-size: 18px; }
+  .fb-row { grid-template-columns: 1fr !important; gap: 4px !important; } .fb-l { font-size: 15px; } .fb-track { height: 24px; margin-right: 52px; } .fb-v { font-size: 16px; }
+  .refs { font-size: 13px; columns: 1; }
+  .notes-bar { font-size: 14px; bottom: 64px; }
+}
+/* speaker notes (press N, or add ?notes to the link) */
+.notes-bar { display: none; position: fixed; left: 50%; transform: translateX(-50%); bottom: 16px; width: min(1100px, 94vw); background: #16213a; color: #fff; font-size: 18px; line-height: 1.45; padding: 14px 20px; border-radius: 14px; z-index: 60; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+.notes-bar b { color: #f3b6a8; margin-right: 8px; }
+body.show-notes .notes-bar { display: block; }
+body.show-notes #screen-story { padding-bottom: 170px; }
+.play-badge { display: none; position: fixed; top: 10px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-weight: 800; font-size: 13px; padding: 4px 12px; border-radius: 99px; z-index: 70; }
+body.playing .play-badge { display: block; }
+body.rec .play-badge { display: none; }
+@media (max-width: 640px) { #screen-story .hero .tagline, #screen-story .tagline { font-size: 15px !important; } #screen-story .hero .unstop { font-size: 20px !important; } }
+.notes-bar { position: static !important; transform: none !important; width: auto !important; margin: 18px 0 0; box-shadow: none; }
+body.show-notes #screen-story { padding-bottom: 80px; }
+@media (max-width: 640px) { body.show-notes #screen-story { padding-bottom: 110px; } }
+
 </style>
 </head>
 <body>
@@ -852,7 +904,7 @@ a.btn { text-decoration: none; display: inline-block; }
 
   <!-- Presentation: opens the video, then hands off to the demo -->
   <section id="screen-story" class="screen active wizard">
-    <div data-chapter="0" class="panel slide center hero" data-next="Let's begin →">
+    <div data-dur="10" data-who="Intro (Brian)" data-notes="Let the arch draw (4 s). &quot;GatewayX: camels, not unicorns.&quot;" data-chapter="0" class="panel slide center hero" data-next="Let's begin →">
       <div class="logo-slot"><img src="logo.png" alt="Gateway X" onload="this.parentNode.classList.add('has-logo')" onerror="this.remove()"><span class="wordmark">GATEWAY <span class="accent">X</span></span></div>
       <svg class="gw-svg" viewBox="0 0 800 460" role="img" aria-label="The Gateway Arch opening to a connected world"><path id="w0" class="gw-link" pathLength="1" d="M400,392 Q270.0,-50 140,70" style="animation-delay:2.30s"/><g class="gw-city" style="animation-delay:2.50s"><circle cx="140" cy="70" r="7" fill="var(--own)"/><text class="gw-t" x="140" y="56" text-anchor="middle">London</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.20s"><animateMotion dur="2.6s" repeatCount="indefinite" begin="3.20s"><mpath href="#w0"/></animateMotion></circle><path id="w1" class="gw-link" pathLength="1" d="M400,392 Q540.0,-40 680,80" style="animation-delay:2.45s"/><g class="gw-city" style="animation-delay:2.65s"><circle cx="680" cy="80" r="7" fill="var(--own)"/><text class="gw-t" x="680" y="66" text-anchor="middle">Tokyo</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.35s"><animateMotion dur="2.9s" repeatCount="indefinite" begin="3.35s"><mpath href="#w1"/></animateMotion></circle><path id="w2" class="gw-link" pathLength="1" d="M400,392 Q230.0,110 60,230" style="animation-delay:2.60s"/><g class="gw-city" style="animation-delay:2.80s"><circle cx="60" cy="230" r="7" fill="var(--own)"/><text class="gw-t" x="60" y="216" text-anchor="middle">Bay Area</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.50s"><animateMotion dur="3.2s" repeatCount="indefinite" begin="3.50s"><mpath href="#w2"/></animateMotion></circle><path id="w3" class="gw-link" pathLength="1" d="M400,392 Q275.0,272 150,420" style="animation-delay:2.75s"/><g class="gw-city" style="animation-delay:2.95s"><circle cx="150" cy="420" r="7" fill="var(--own)"/><text class="gw-t" x="150" y="406" text-anchor="middle">São Paulo</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.65s"><animateMotion dur="3.5s" repeatCount="indefinite" begin="3.65s"><mpath href="#w3"/></animateMotion></circle><path id="w4" class="gw-link" pathLength="1" d="M400,392 Q525.0,272 650,420" style="animation-delay:2.90s"/><g class="gw-city" style="animation-delay:3.10s"><circle cx="650" cy="420" r="7" fill="var(--own)"/><text class="gw-t" x="650" y="406" text-anchor="middle">Lagos</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.80s"><animateMotion dur="3.8s" repeatCount="indefinite" begin="3.80s"><mpath href="#w4"/></animateMotion></circle><path id="w5" class="gw-link" pathLength="1" d="M400,392 Q570.0,120 740,240" style="animation-delay:3.05s"/><g class="gw-city" style="animation-delay:3.25s"><circle cx="740" cy="240" r="7" fill="var(--own)"/><text class="gw-t" x="740" y="226" text-anchor="middle">Berlin</text></g><circle r="5" fill="var(--accent)" class="gw-pulse" style="animation-delay:3.95s"><animateMotion dur="4.1s" repeatCount="indefinite" begin="3.95s"><mpath href="#w5"/></animateMotion></circle><g class="gw-globe"><circle cx="400" cy="250" r="100" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><ellipse cx="400" cy="250" rx="100" ry="34" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".55"/><line x1="300" y1="250" x2="500" y2="250" stroke="var(--accent)" stroke-width="2" opacity=".55"/><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-0.0s" repeatCount="indefinite"/></ellipse><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-2.0s" repeatCount="indefinite"/></ellipse><ellipse cx="400" cy="250" ry="100" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".7"><animate attributeName="rx" values="100;0;100" dur="6s" begin="-4.0s" repeatCount="indefinite"/></ellipse></g><path class="gw-arch" pathLength="1" d="M215,400 C270,-10 530,-10 585,400"/><line class="gw-ground" x1="170" y1="402" x2="630" y2="402"/><circle cx="400" cy="392" r="9" fill="var(--accent)"/></svg>
       <h1 class="statement hero-title">Connecting St. Louis to the world.</h1>
@@ -860,97 +912,97 @@ a.btn { text-decoration: none; display: inline-block; }
       <p class="tagline">MGMT 7640 · Tech in the SF Bay Area · Team project for Adam, Shonak &amp; Jesse</p>
     </div>
 
-    <div data-chapter="1" class="panel slide">
+    <div data-dur="25" data-who="Intro" data-notes="Venture studio and fund in St. Louis. Jesse Pujji: St. Louis native, Wharton, co-founded Ampush in SF, moved home after selling it. Partners Adam Brakhane and Shonak Patel. Under $250K to start, ~$47M first fund from ~90 investors (a third St. Louis families), moving from 1 company a year to 8–10." data-chapter="1" class="panel slide">
       <div class="kicker">Introduction · who GatewayX is</div>
       <h1 class="statement">A venture studio and fund <span class="accent">in St. Louis</span></h1><div class="who"><div class="who-c pop" style="animation-delay:.1s"><b>Jesse Pujji</b><span>Founder. St. Louis native and Wharton graduate. Co-founded Ampush in San Francisco, then moved his family back home after selling it.</span></div><div class="who-c pop" style="animation-delay:.3s"><b>Adam Brakhane &amp; Shonak Patel</b><span>Partners. Together they build and back AI-native services companies.</span></div></div><div class="stat-row small-stats facts"><div class="stat"><div class="stat-n">&lt;$250K</div><div class="stat-l">to start a company</div></div><div class="stat"><div class="stat-n">~$47M</div><div class="stat-l">first fund</div></div><div class="stat"><div class="stat-n">~90</div><div class="stat-l">investors, ⅓ St. Louis families</div></div><div class="stat"><div class="stat-n accent">8–10</div><div class="stat-l">companies a year, up from 1</div></div></div><div class="source">Source: interview with Adam Brakhane and Shonak Patel, Oct 14, 2026</div>
     </div>
 
-    <div data-chapter="1" class="panel slide center">
+    <div data-dur="20" data-who="Intro" data-notes="More than two paths: bootstrapping a small business or raising to hyperscale. The middle path, built on profit and long-term growth, gives founders more upside. Camels survive a funding drought." data-chapter="1" class="panel slide center">
       <div class="kicker">Introduction · the mission</div>
       <h1 class="statement">“We want camels, <span class="accent">not unicorns.”</span></h1><div class="paths"><div class="path pop" style="animation-delay:.1s"><div class="p-e">🧱</div><b>Bootstrap</b><span>a small business</span></div><div class="path on pop" style="animation-delay:.3s"><div class="p-e">🐪</div><b>Seedstrap</b><span>profit and long-term growth: more upside for founders</span></div><div class="path pop" style="animation-delay:.5s"><div class="p-e">🦄</div><b>Raise to hyperscale</b><span>the venture path</span></div></div><p class="takeaway">Camels stay profitable through a funding drought. They don't lose their value when the money dries up.</p>
     </div>
 
-    <div data-chapter="1" class="panel slide center">
+    <div data-dur="15" data-who="Intro" data-notes="Low-cost city + small in-person team + profit-first model = one strategy. &quot;The hands-on model that makes GatewayX strong today is also its biggest risk as it scales.&quot;" data-chapter="1" class="panel slide center">
       <div class="kicker">Introduction · our argument</div>
       <h1 class="statement">The choices <span class="accent">work together</span></h1><div class="chain"><div class="link"><div class="link-l">Place</div><div class="link-t">🏙️ A low-cost city</div></div><div class="chain-arrow">+</div><div class="link"><div class="link-l">Team</div><div class="link-t">🧑‍🤝‍🧑 Small and in person</div></div><div class="chain-arrow">+</div><div class="link"><div class="link-l">Model</div><div class="link-t">💵 Profit first</div></div></div><p class="takeaway">⚠️ The hands-on model that makes GatewayX strong today<br>is also its biggest risk as it scales.</p>
     </div>
 
-    <div data-chapter="2" class="panel slide">
+    <div data-dur="30" data-who="Q1 (Mona)" data-notes="Runway (&quot;get off the hamster wheel&quot;), underserved market (&quot;even pretty good at AI, you&#x27;re going to win&quot;; Adam&#x27;s YC 2016 → Chicago → all 48 states), local capital (&quot;give up some returns to see the city thrive&quot;). Profit-first companies need the Bay&#x27;s capital less." data-chapter="2" class="panel slide">
       <div class="kicker">Where and how work gets done · why St. Louis</div>
       <h1 class="statement">St. Louis, <span class="accent">not the Bay</span></h1><div class="bn"><div class="bn-c pop" style="animation-delay:0.1s"><div class="bn-e">🛣️</div><b>Runway</b><span>Low costs let founders “get off the hamster wheel” and take a risk.</span></div><div class="bn-c pop" style="animation-delay:0.3s"><div class="bn-e">🎯</div><b>Underserved market</b><span>Less competition: “even pretty good at AI, you're going to win.” And closer to the mass market.</span></div><div class="bn-c pop" style="animation-delay:0.5s"><div class="bn-e">💰</div><b>Local capital</b><span>St. Louis investors who would “give up some returns in order to see the city thrive.”</span></div></div><p class="takeaway">The Bay's biggest asset, capital, matters less to companies that grow from profit.</p>
     </div>
 
-    <div data-chapter="2" class="panel slide">
+    <div data-dur="15" data-who="Q1" data-notes="Team of six in St. Louis; 10-week in-person Fellowship as a substitute for the Bay&#x27;s chance encounters (Barthelemy &amp; Mottis); remote work mainly in delivery via GrowthAssistant." data-chapter="2" class="panel slide">
       <div class="kicker">Where and how work gets done · space and remote work</div>
       <h1 class="statement">In person, <span class="accent">by design</span></h1><div class="bn"><div class="bn-c pop" style="animation-delay:0.1s"><div class="bn-e">🏢</div><b>A team of six in St. Louis</b><span>Three partners, plus leads for community and programs, talent, and operations.</span></div><div class="bn-c pop" style="animation-delay:0.3s"><div class="bn-e">🎓</div><b>A 10-week, in-person Fellowship</b><span>Creates the chance encounters the Bay gets for free (Barthelemy &amp; Mottis, 2025).</span></div><div class="bn-c pop" style="animation-delay:0.5s"><div class="bn-e">🌐</div><b>Remote in delivery</b><span>GrowthAssistant places offshore growth marketers in every portfolio company.</span></div></div>
     </div>
 
-    <div data-chapter="2" class="panel slide center">
+    <div data-dur="15" data-who="Q1" data-notes="One studio company a year lets partners act as part-time COO, CTO and salesperson. At 8–10: &quot;We&#x27;d have to double ourselves.&quot;" data-chapter="2" class="panel slide center">
       <div class="kicker">Where and how work gets done · culture and strategy</div>
       <h1 class="statement">Strong when small. <span class="accent">Stretched at scale.</span></h1><div class="scale"><div class="sc-row"><span class="sc-l">Today</span><span class="sc-h">🧠🧠🧠</span><span class="sc-a">→</span><span class="sc-c">🐪</span><span class="sc-n">1 studio company a year. Partners act as part-time COO, CTO and salesperson.</span></div><div class="sc-row warn"><span class="sc-l">With the fund</span><span class="sc-h">🧠🧠🧠</span><span class="sc-a">→</span><span class="sc-c">🐪🐪🐪🐪🐪🐪🐪🐪🐪🐪</span><span class="sc-n">8–10 companies a year.</span></div></div><p class="takeaway">“We'd have to double ourselves.”</p>
     </div>
 
-    <div data-chapter="2" class="panel slide center">
+    <div data-dur="20" data-who="Q1" data-notes="Capital, network and playbooks can be rebuilt locally (Lazarow). Talent density can&#x27;t: it&#x27;s &quot;fragmented,&quot; hence STL Homecoming. &quot;The Valley isn&#x27;t the only place to win.&quot;" data-chapter="2" class="panel slide center">
       <div class="kicker">Where and how work gets done · regional advantage</div>
       <h1 class="statement">The Bay's bundle <span class="accent">can be separated</span></h1><div class="bundle"><div class="bd ok pop" style="animation-delay:.1s">💰<b>Capital</b><span>✅ rebuilt locally</span></div><div class="bd ok pop" style="animation-delay:.25s">🤝<b>Network</b><span>✅ rebuilt locally</span></div><div class="bd ok pop" style="animation-delay:.4s">📘<b>Playbooks</b><span>✅ rebuilt locally</span></div><div class="bd gap pop" style="animation-delay:.55s">🧑‍💻<b>Talent density</b><span>⚠️ “fragmented”: STL Homecoming finds people with St. Louis roots</span></div></div><p class="takeaway">The Valley isn't the only place to win, if your model plays to where you are.</p><div class="source">Lazarow, “Beyond Silicon Valley” (HBR, 2020): frontier startups win through balanced growth and less capital</div>
     </div>
 
-    <div data-chapter="3" class="panel slide">
+    <div data-dur="25" data-who="Q2" data-notes="VCs run on power-law outcomes (Strebulaev &amp; Dang). GatewayX sold to LPs&#x27; liquidity pain: quarterly cash distributions, &quot;like a hedge.&quot; &quot;That&#x27;s selling. It&#x27;s not investing.&quot;" data-chapter="3" class="panel slide">
       <div class="kicker">Perspective-taking · founders who understand investors</div>
       <h1 class="statement">Sell to the investor's <span class="accent">real pain</span></h1><div class="vs"><div class="vs-card"><div class="vs-emoji">📈</div><div class="vs-t">What VCs need</div><ul><li>Power-law outcomes: a few home runs return the fund</li><li>So they push speed, scale and follow-on rounds</li></ul></div><div class="vs-card on"><div class="vs-emoji">💧</div><div class="vs-t">What GatewayX's LPs needed</div><ul><li>Stakes in many funds, little cash back in a decade</li><li>GatewayX offered quarterly cash distributions from profits: “like a hedge”</li></ul></div></div><p class="takeaway">“You wanted to raise a fund. That's selling. It's not investing.”</p><div class="source">Strebulaev &amp; Dang (HBR, 2024); interview with Adam Brakhane and Shonak Patel</div>
     </div>
 
-    <div data-chapter="3" class="panel slide">
+    <div data-dur="20" data-who="Q2" data-notes="Operating is punishing (Rachleff); success persists across ventures (Gompers et al.). &quot;We&#x27;re not investors&quot;: raise once, profit quickly, the Residency tests the idea first." data-chapter="3" class="panel slide">
       <div class="kicker">Perspective-taking · investors who understand founders</div>
       <h1 class="statement">A write-off for a fund is a <span class="accent">founder's life's work</span></h1><div class="vs"><div class="vs-card"><div class="vs-emoji">🧗</div><div class="vs-t">Operating is punishing</div><ul><li>Founders carry concentrated risk (Rachleff)</li><li>Operator experience has real value: success persists across ventures (Gompers et al., 2010)</li></ul></div><div class="vs-card on"><div class="vs-emoji">🐪</div><div class="vs-t">“We're not investors”</div><ul><li>Raise once, reach profit quickly</li><li>The Residency tests the idea before capital goes in</li></ul></div></div>
     </div>
 
-    <div data-chapter="3" class="panel slide">
+    <div data-dur="20" data-who="Q2" data-notes="Investors: quarterly distributions helped raise ~$47M. Founders: control, ownership, a tested idea. Watch: mandates can feel inflexible." data-chapter="3" class="panel slide">
       <div class="kicker">Perspective-taking · how the managers used it</div>
       <h1 class="statement">Both insights, <span class="accent">built into the terms</span></h1><div class="vs"><div class="vs-card on"><div class="vs-emoji">💼</div><div class="vs-t">For investors</div><ul><li>Quarterly profit distributions</li><li>Helped a first-time manager raise ~$47M</li></ul></div><div class="vs-card on"><div class="vs-emoji">🧑‍💻</div><div class="vs-t">For founders</div><ul><li>Control and more ownership</li><li>A tested idea before the money</li></ul></div></div><p class="takeaway">⚠️ Watch: mandates like “St. Louis only” or “sole investor” can feel inflexible to founders.</p>
     </div>
 
-    <div data-chapter="4" class="panel slide center">
+    <div data-dur="20" data-who="Q3 (Ayush)" data-notes="Joly: the three must reinforce each other. Help founders, self-sustaining companies, a camel culture. In theory they line up." data-chapter="4" class="panel slide center">
       <div class="kicker">Culture, strategy and purpose</div>
       <h1 class="statement">Purpose, strategy and culture <span class="accent">should reinforce each other</span></h1><div class="chain sm"><div class="link"><div class="link-l">Purpose</div><div class="link-t">🧑‍💻 Help founders, as operators who know the pain</div></div><div class="chain-arrow">↔</div><div class="link"><div class="link-l">Strategy</div><div class="link-t">💵 Self-sustaining, profit-first companies</div></div><div class="chain-arrow">↔</div><div class="link"><div class="link-l">Culture</div><div class="link-t">🐪 Build companies that survive without outside funding</div></div></div><p class="takeaway">In theory, they line up.</p><div class="source">Joly, “Does Your Company's Culture Reinforce Its Strategy and Purpose?” (HBR, 2022)</div>
     </div>
 
-    <div data-chapter="4" class="panel slide">
+    <div data-dur="30" data-who="Q3" data-notes="10% for the first $500K check, ~20% after the automatic second check at $500K revenue + $25K profit. Founders keep ~80% vs. ~40% on a VC path, but only if the company reaches profit. Option: preferred + common, or equity + debt." data-chapter="4" class="panel slide">
       <div class="kicker">Culture, strategy and purpose · the tension</div>
       <h1 class="statement">The equity stake <span class="accent">vs. “founders first”</span></h1><div class="eqs"><div class="eqs-row pop" style="animation-delay:.1s"><span class="eqs-l">First $500K check</span><span class="eqs-bar"><i style="width:10%"></i></span><b>10%</b></div><div class="eqs-row pop" style="animation-delay:.4s"><span class="eqs-l">Automatic second check at $500K revenue + $25K profit</span><span class="eqs-bar"><i style="width:20%"></i></span><b>~20%</b></div></div><div class="vs"><div class="vs-card"><div class="vs-t">GatewayX's view</div><ul><li>Founders keep ~80% at exit, vs. ~40% on a typical venture path</li></ul></div><div class="vs-card on"><div class="vs-t">Our view</div><ul><li>Only if the company reaches profit</li><li>Offer flexible financing: preferred + common, or equity + debt</li></ul></div></div><div class="source">Terms: GatewayX, “Raise less. Build more.” (2026)</div>
     </div>
 
-    <div data-chapter="4" class="panel slide center">
+    <div data-dur="10" data-who="Q3" data-notes="The founder-first culture depends on the partners&#x27; hands-on time, which gets stretched at 8–10 a year. Hand off to the recommendation." data-chapter="4" class="panel slide center">
       <div class="kicker">Culture, strategy and purpose · the bigger risk</div>
       <h1 class="statement">The founder-first culture runs on <span class="accent">partner time</span></h1><div class="heads">🧠 🧠 🧠 <span class="heads-arrow">→</span> 🐪🐪🐪🐪🐪🐪🐪🐪🐪🐪</div><p class="takeaway">At 8–10 companies a year, hands-on support gets stretched thin.</p>
     </div>
 
-    <div data-chapter="5" class="panel slide">
+    <div data-dur="15" data-who="Rec (Joseph)" data-notes="Partners keep the judgment calls; routine work moves to staff, local partners and earlier founders." data-chapter="5" class="panel slide">
       <div class="kicker">Recommendation · building the “GatewayX Effect”</div>
       <h1 class="statement">Turn the partners' involvement <span class="accent">into a system</span></h1><div class="vs"><div class="vs-card on"><div class="vs-emoji">🧠</div><div class="vs-t">Partners keep</div><ul><li>The judgment calls only they can make</li></ul></div><div class="vs-card"><div class="vs-emoji">🔁</div><div class="vs-t">Routine work moves to</div><ul><li>Staff</li><li>Local partners</li><li>Earlier founders</li></ul></div></div><p class="takeaway">So the culture keeps pace with the strategy.</p>
     </div>
 
-    <div data-chapter="5" class="panel slide">
+    <div data-dur="25" data-who="Rec" data-notes="TinySeed offers similar terms. Frontline Ventures (2022): sector understanding 53%, relationship 34%, customer intros 33%, founder references 22%." data-chapter="5" class="panel slide">
       <div class="kicker">Recommendation · why it matters</div>
       <h1 class="statement">Profit-first alone <span class="accent">won't stand out</span></h1><p class="pp-sub">TinySeed also backs capital-efficient businesses and pays dividends. So what do founders weigh when the terms are equal?</p><div class="fb" role="img" aria-label="Share of founders choosing each factor"><div class="fb-row" title="Sector understanding: 53% of founders"><span class="fb-l">Sector understanding</span><span class="fb-track"><i class="fb-bar" style="--w:53%;animation-delay:0.2s"></i><b class="fb-v" style="left:calc(53% + 12px)">53%</b></span></div><div class="fb-row" title="Personal relationship and chemistry: 34% of founders"><span class="fb-l">Personal relationship and chemistry</span><span class="fb-track"><i class="fb-bar" style="--w:34%;animation-delay:0.4s"></i><b class="fb-v" style="left:calc(34% + 12px)">34%</b></span></div><div class="fb-row" title="Customer introductions: 33% of founders"><span class="fb-l">Customer introductions</span><span class="fb-track"><i class="fb-bar" style="--w:33%;animation-delay:0.6s"></i><b class="fb-v" style="left:calc(33% + 12px)">33%</b></span></div><div class="fb-row" title="Founder references: 22% of founders"><span class="fb-l">Founder references</span><span class="fb-track"><i class="fb-bar" style="--w:22%;animation-delay:0.8s"></i><b class="fb-v" style="left:calc(22% + 12px)">22%</b></span></div></div><div class="source">Frontline Ventures (2022), “What founders want”: 200+ early-stage founders picked their top 3 factors when comparing VCs with equal terms</div>
     </div>
 
-    <div data-chapter="5" class="panel slide">
+    <div data-dur="30" data-who="Rec" data-notes="1) Showcase sales and marketing strengths (GrowthAssistant, Aux Insights cut costs 60–70%). 2) Deepen local relationships. 3) Make customer access repeatable. 4) Make each company strengthen the next." data-chapter="5" class="panel slide">
       <div class="kicker">Recommendation · four moves</div>
       <h1 class="statement">Four moves, matched to <span class="accent">what founders want</span></h1><div class="mvs"><div class="mv pop" style="animation-delay:0.1s"><div class="mv-top"><span class="mv-e">🎯</span><span class="mv-p">53%<em>of founders</em></span></div><b>1. Showcase sales and marketing strengths</b><span>GrowthAssistant and Aux Insights, whose AI-native delivery cut costs 60–70%.</span></div><div class="mv pop" style="animation-delay:0.3s"><div class="mv-top"><span class="mv-e">🤝</span><span class="mv-p">34%<em>of founders</em></span></div><b>2. Deepen local relationships</b><span>Colleges, business associations and advisers. Workshops led by staff and founders.</span></div><div class="mv pop" style="animation-delay:0.5s"><div class="mv-top"><span class="mv-e">🔌</span><span class="mv-p">33%<em>of founders</em></span></div><b>3. Make customer access repeatable</b><span>Portfolio intros to shared customers, and a bench of sales and delivery operators.</span></div><div class="mv pop" style="animation-delay:0.7s"><div class="mv-top"><span class="mv-e">🔁</span><span class="mv-p">22%<em>of founders</em></span></div><b>4. Make each company strengthen the next</b><span>Founder references, mentors for later cohorts, shared playbooks.</span></div></div>
     </div>
 
-    <div data-chapter="5" class="panel slide center">
+    <div data-dur="10" data-who="Rec" data-notes="Expertise, relationships and experienced people that build up around GatewayX keep purpose, strategy and culture aligned (Joly)." data-chapter="5" class="panel slide center">
       <div class="kicker">Recommendation · the moat</div>
       <h1 class="statement">The moat is what <span class="accent">builds up around GatewayX</span></h1><div class="moat"><div class="mo pop" style="animation-delay:.1s">🧠<b>Expertise</b></div><div class="mo pop" style="animation-delay:.3s">🤝<b>Relationships</b></div><div class="mo pop" style="animation-delay:.5s">🧑‍🤝‍🧑<b>Experienced people</b></div></div><p class="takeaway">Each company improves the resources for the next, keeping purpose, strategy and culture aligned as GatewayX grows.</p>
     </div>
 
-    <div data-chapter="5" class="panel slide center">
+    <div data-dur="10" data-who="Rec" data-notes="&quot;Each company makes the next one stronger. That&#x27;s the GatewayX Effect.&quot;" data-chapter="5" class="panel slide center">
       <div class="kicker">Thank you</div>
       <div class="hero-emoji">🐪🐪🐪</div><h1 class="statement">Each company makes the next one stronger.<br><span class="accent">That's the GatewayX Effect.</span></h1><p class="takeaway">Thank you · Questions?</p>
     </div>
 
-    <div data-chapter="5" class="panel slide" data-next="">
+    <div data-dur="5" data-who="" data-notes="Hold 3 s, end." data-chapter="5" class="panel slide" data-next="">
       <div class="kicker">Sources</div>
       <ul class="refs"><li>Barthelemy &amp; Mottis (2025). To drive innovation, create the conditions for serendipity. <i>HBR</i>.</li><li>Brakhane &amp; Patel (2026, Oct 14). GatewayX AI tools workshop. MGMT 7640, Wharton.</li><li>Frontline Ventures (2022). What founders want: the results.</li><li>GatewayX (2026). Raise less. Build more. [Presentation].</li><li>Gompers, Kovner, Lerner &amp; Scharfstein (2010). Performance persistence in entrepreneurship. <i>JFE</i>.</li><li>Joly (2022). Does your company's culture reinforce its strategy and purpose? <i>HBR</i>.</li><li>Lazarow (2020). Beyond Silicon Valley. <i>HBR</i>.</li><li>Rachleff (2026, Oct 14). Product-market fit [Lecture]. MGMT 7640, Wharton.</li><li>Strebulaev &amp; Dang (2024). Make decisions with a VC mindset. <i>HBR</i>.</li><li>TinySeed (n.d.). The B2B SaaS accelerator.</li><li>Viswanathan &amp; Allen (2026, Oct 12). Regional advantage and environmental trends [Panel]. MGMT 7640, Wharton.</li></ul>
     </div>
@@ -1189,6 +1241,42 @@ function setupWizard(section) {
     var sec = document.querySelector(".screen.active.wizard");
     if (sec) sec.querySelector(".wiz-next").click();
   });
+})();
+
+// Recording helpers for the presentation: N = speaker notes, P = auto-play using the video script's timing.
+// Links: ?notes shows notes, ?play starts auto-play, ?rec auto-plays with no badge (for a clean screen recording).
+(function () {
+  var story = document.getElementById("screen-story");
+  if (!story || !story.goTo) return;
+  var body = document.body, panels = story.querySelectorAll(".panel"), timer = null;
+  var bar = document.createElement("div"); bar.className = "notes-bar"; story.appendChild(bar);
+  var badge = document.createElement("div"); badge.className = "play-badge"; badge.textContent = "▶ Auto-play · press P to pause"; body.appendChild(badge);
+  var go = story.goTo;
+  story.goTo = function (n) {
+    go(n);
+    var p = panels[story.step];
+    bar.innerHTML = "";
+    var who = p.getAttribute("data-who"), say = p.getAttribute("data-notes") || "";
+    if (who) { var b = document.createElement("b"); b.textContent = who; bar.appendChild(b); }
+    bar.appendChild(document.createTextNode(say));
+    schedule();
+  };
+  function schedule() {
+    clearTimeout(timer);
+    if (!body.classList.contains("playing")) return;
+    if (story.step >= panels.length - 1) { body.classList.remove("playing"); return; }
+    timer = setTimeout(function () { story.goTo(story.step + 1); }, (+panels[story.step].getAttribute("data-dur") || 15) * 1000);
+  }
+  var q = location.search;
+  if (/notes/.test(q)) body.classList.add("show-notes");
+  if (/play|rec/.test(q)) body.classList.add("playing");
+  if (/rec/.test(q)) body.classList.add("rec");
+  document.addEventListener("keydown", function (e) {
+    if (document.activeElement.tagName === "INPUT") return;
+    if (e.key === "n" || e.key === "N") body.classList.toggle("show-notes");
+    if (e.key === "p" || e.key === "P") { body.classList.toggle("playing"); schedule(); }
+  });
+  story.goTo(story.step || 0);
 })();
 
 </script>
